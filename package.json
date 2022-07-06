@@ -18,7 +18,8 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
