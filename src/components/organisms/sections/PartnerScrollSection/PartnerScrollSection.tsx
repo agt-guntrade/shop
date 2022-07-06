@@ -53,10 +53,11 @@ export const PartnerScrollSection = ({
               height="100%"
               width="fit-content"
               style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "100%",
-                height: "100%"
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%',
+                maxWidth: '50vw'
               }}
             />
           }
