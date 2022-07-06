@@ -1,1 +1,0 @@
-export {FAQSection, FAQSectionProps} from './FAQSection'

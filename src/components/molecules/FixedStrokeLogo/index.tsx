@@ -1,1 +1,0 @@
-export {FixedStrokeLogo} from './FixedStrokeLogo'

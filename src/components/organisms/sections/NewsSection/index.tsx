@@ -1,1 +1,0 @@
-export {NewsSection, NewsSectionProps} from './NewsSection'

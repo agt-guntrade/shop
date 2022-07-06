@@ -1,1 +1,0 @@
-export {ReviewSection, ReviewSectionProps} from './ReviewSection'

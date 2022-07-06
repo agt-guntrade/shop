@@ -1,1 +1,0 @@
-export {ProductSpotlight} from './ProductSpotlight'
