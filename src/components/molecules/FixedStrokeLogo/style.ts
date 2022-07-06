@@ -3,8 +3,11 @@ import {css} from '@emotion/react'
 export const Logo = (strokeColor: string, backgroundColor: string) => css`
   .background-logo {
     position: absolute;
-    top: calc(var(--chakra-space-20) - ((4em + 2.5vw)/2 - var(--chakra-fontSizes-5xl) /2 ));
-    left: calc((4em + 2.5vw)/2);
+    top: calc(
+      var(--chakra-space-20) -
+        ((4em + 2.5vw) / 2 - var(--chakra-fontSizes-5xl) / 2)
+    );
+    left: calc((4em + 2.5vw) / 2);
     height: calc(4em + 2.5vw);
     * {
       fill: transparent;

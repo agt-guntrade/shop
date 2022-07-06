@@ -1,7 +1,11 @@
 import React from 'react'
 import {useRef, useEffect, useState} from 'react'
 
-export const useScrollSync = (offset: number = 0, offsetTop?: number, noScroll?: boolean) => {
+export const useScrollSync = (
+  offset: number = 0,
+  offsetTop?: number,
+  noScroll?: boolean
+) => {
   const [scrollTop, setScrollTop] = useState(0)
 
   const ref: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null)

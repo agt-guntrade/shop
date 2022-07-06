@@ -1,8 +1,8 @@
 export const jaenData = {
   jaenPage: {
-    id: "JaenPage fff",
+    id: 'JaenPage fff',
     chapters: {
-      'home': {
+      home: {
         ptrHead: 'JaenSection foo-bar-baz-1',
         ptrTail: 'JaenSection foo-bar-baz-8',
         sections: {

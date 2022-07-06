@@ -6,11 +6,12 @@ import usersAuth from '../snek-functions/usersAuth'
 export const useUserAuth = () => {
   const analytics = useAnalytics()
 
-  const [user, setUser] = React.useState<{
-    id: string
-    fullName: string
-    email: string
-  } | null>(null)
+  const [user, setUser] =
+    React.useState<{
+      id: string
+      fullName: string
+      email: string
+    } | null>(null)
 
   React.useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user') || 'null')

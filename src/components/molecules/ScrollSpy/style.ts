@@ -25,13 +25,12 @@ export const Spy = css`
 
   .spyblock {
     border-top-right-radius: 5px;
-    
+
     &:hover * {
       color: #eb1933;
     }
 
     #crosshair4 {
-      
     }
 
     &:hover #crosshair4 {

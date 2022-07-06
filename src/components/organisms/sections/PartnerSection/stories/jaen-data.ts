@@ -1,8 +1,8 @@
 export const jaenData = {
   jaenPage: {
-    id: "JaenPage fff",
+    id: 'JaenPage fff',
     chapters: {
-      'partner': {
+      partner: {
         ptrHead: 'JaenSection foo-bar-baz-1',
         ptrTail: 'JaenSection foo-bar-baz-1',
         sections: {
@@ -14,6 +14,6 @@ export const jaenData = {
           }
         }
       }
-    },
+    }
   }
 }

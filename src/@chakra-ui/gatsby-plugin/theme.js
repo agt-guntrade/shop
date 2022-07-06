@@ -1,1 +1,1 @@
-export {default} from "../../common/theme"
+export {default} from '../../common/theme'

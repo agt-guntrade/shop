@@ -1,1 +1,4 @@
-export {HeaderWithSearch as Header, HeaderContainerProps} from './HeaderContainer'
+export {
+  HeaderWithSearch as Header,
+  HeaderContainerProps
+} from './HeaderContainer'

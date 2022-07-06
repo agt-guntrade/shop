@@ -41,8 +41,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_900x900_crop_center.png?v=1650454526',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_900x900_crop_center.png?v=1650454526',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_225x225_crop_center.png?v=1650454526 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_450x450_crop_center.png?v=1650454526 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_900x900_crop_center.png?v=1650454526 900w',
                     sizes: '(min-width: 900px) 900px, 100vw'
@@ -70,8 +69,7 @@ export default {
                   }
                 ],
                 fallback: {
-                  src:
-                    'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_900x900_crop_center.png?v=1650454526',
+                  src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_900x900_crop_center.png?v=1650454526',
                   srcSet:
                     'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_225x225_crop_center.png?v=1650454526 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_450x450_crop_center.png?v=1650454526 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/B4Vy2x67hXuwc0_A8bBIH-transformed_900x900_crop_center.png?v=1650454526 900w',
                   sizes: '(min-width: 900px) 900px, 100vw'
@@ -121,8 +119,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_900x900_crop_center.png?v=1650454342',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_900x900_crop_center.png?v=1650454342',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_225x225_crop_center.png?v=1650454342 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_450x450_crop_center.png?v=1650454342 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_900x900_crop_center.png?v=1650454342 900w',
                     sizes: '(min-width: 900px) 900px, 100vw'
@@ -150,8 +147,7 @@ export default {
                   }
                 ],
                 fallback: {
-                  src:
-                    'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_900x900_crop_center.png?v=1650454342',
+                  src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_900x900_crop_center.png?v=1650454342',
                   srcSet:
                     'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_225x225_crop_center.png?v=1650454342 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_450x450_crop_center.png?v=1650454342 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/8uY3XnFoT1DCP4ioiCZ2Z-transformed_900x900_crop_center.png?v=1650454342 900w',
                   sizes: '(min-width: 900px) 900px, 100vw'
@@ -199,8 +195,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_900x900_crop_center.png?v=1650454002',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_900x900_crop_center.png?v=1650454002',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_225x225_crop_center.png?v=1650454002 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_450x450_crop_center.png?v=1650454002 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_900x900_crop_center.png?v=1650454002 900w',
                     sizes: '(min-width: 900px) 900px, 100vw'
@@ -228,8 +223,7 @@ export default {
                   }
                 ],
                 fallback: {
-                  src:
-                    'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_900x900_crop_center.png?v=1650454002',
+                  src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_900x900_crop_center.png?v=1650454002',
                   srcSet:
                     'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_225x225_crop_center.png?v=1650454002 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_450x450_crop_center.png?v=1650454002 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_805923de-887c-4d1f-9435-ccd19e3f63d0_900x900_crop_center.png?v=1650454002 900w',
                   sizes: '(min-width: 900px) 900px, 100vw'
@@ -277,8 +271,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_900x900_crop_center.png?v=1650453837',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_900x900_crop_center.png?v=1650453837',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_225x225_crop_center.png?v=1650453837 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_450x450_crop_center.png?v=1650453837 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_900x900_crop_center.png?v=1650453837 900w',
                     sizes: '(min-width: 900px) 900px, 100vw'
@@ -305,8 +298,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-vorne_65-transformed_1500x1500_crop_center.png?v=1650453838',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-vorne_65-transformed_1500x1500_crop_center.png?v=1650453838',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-vorne_65-transformed_375x375_crop_center.png?v=1650453838 375w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-vorne_65-transformed_750x750_crop_center.png?v=1650453838 750w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-vorne_65-transformed_1500x1500_crop_center.png?v=1650453838 1500w',
                     sizes: '(min-width: 1500px) 1500px, 100vw'
@@ -333,8 +325,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts_232-transformed_1500x1500_crop_center.png?v=1650453837',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts_232-transformed_1500x1500_crop_center.png?v=1650453837',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts_232-transformed_375x375_crop_center.png?v=1650453837 375w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts_232-transformed_750x750_crop_center.png?v=1650453837 750w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts_232-transformed_1500x1500_crop_center.png?v=1650453837 1500w',
                     sizes: '(min-width: 1500px) 1500px, 100vw'
@@ -362,8 +353,7 @@ export default {
                   }
                 ],
                 fallback: {
-                  src:
-                    'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_900x900_crop_center.png?v=1650453837',
+                  src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_900x900_crop_center.png?v=1650453837',
                   srcSet:
                     'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_225x225_crop_center.png?v=1650453837 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_450x450_crop_center.png?v=1650453837 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links_209-900x900-transformed_900x900_crop_center.png?v=1650453837 900w',
                   sizes: '(min-width: 900px) 900px, 100vw'
@@ -411,8 +401,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_900x900_crop_center.png?v=1650453698',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_900x900_crop_center.png?v=1650453698',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_225x225_crop_center.png?v=1650453698 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_450x450_crop_center.png?v=1650453698 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_900x900_crop_center.png?v=1650453698 900w',
                     sizes: '(min-width: 900px) 900px, 100vw'
@@ -439,8 +428,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-tGbDaa16Z-transformed_1500x1500_crop_center.png?v=1650453713',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-tGbDaa16Z-transformed_1500x1500_crop_center.png?v=1650453713',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-tGbDaa16Z-transformed_375x375_crop_center.png?v=1650453713 375w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-tGbDaa16Z-transformed_750x750_crop_center.png?v=1650453713 750w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-tGbDaa16Z-transformed_1500x1500_crop_center.png?v=1650453713 1500w',
                     sizes: '(min-width: 1500px) 1500px, 100vw'
@@ -467,8 +455,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-transformed_1920x1920_crop_center.png?v=1650453714',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-transformed_1920x1920_crop_center.png?v=1650453714',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-transformed_480x480_crop_center.png?v=1650453714 480w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-transformed_960x960_crop_center.png?v=1650453714 960w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-transformed_1920x1920_crop_center.png?v=1650453714 1920w',
                     sizes: '(min-width: 1920px) 1920px, 100vw'
@@ -496,8 +483,7 @@ export default {
                   }
                 ],
                 fallback: {
-                  src:
-                    'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_900x900_crop_center.png?v=1650453698',
+                  src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_900x900_crop_center.png?v=1650453698',
                   srcSet:
                     'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_225x225_crop_center.png?v=1650453698 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_450x450_crop_center.png?v=1650453698 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-900x900-transformed_900x900_crop_center.png?v=1650453698 900w',
                   sizes: '(min-width: 900px) 900px, 100vw'
@@ -545,8 +531,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_900x900_crop_center.png?v=1650453549',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_900x900_crop_center.png?v=1650453549',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_225x225_crop_center.png?v=1650453549 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_450x450_crop_center.png?v=1650453549 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_900x900_crop_center.png?v=1650453549 900w',
                     sizes: '(min-width: 900px) 900px, 100vw'
@@ -573,8 +558,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-13-transformed_1500x1500_crop_center.png?v=1650453555',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-13-transformed_1500x1500_crop_center.png?v=1650453555',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-13-transformed_375x375_crop_center.png?v=1650453555 375w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-13-transformed_750x750_crop_center.png?v=1650453555 750w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-13-transformed_1500x1500_crop_center.png?v=1650453555 1500w',
                     sizes: '(min-width: 1500px) 1500px, 100vw'
@@ -601,8 +585,7 @@ export default {
                     }
                   ],
                   fallback: {
-                    src:
-                      'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-5-transformed_1920x1920_crop_center.png?v=1650453563',
+                    src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-5-transformed_1920x1920_crop_center.png?v=1650453563',
                     srcSet:
                       'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-5-transformed_480x480_crop_center.png?v=1650453563 480w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-5-transformed_960x960_crop_center.png?v=1650453563 960w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/Koffer-5-transformed_1920x1920_crop_center.png?v=1650453563 1920w',
                     sizes: '(min-width: 1920px) 1920px, 100vw'
@@ -630,8 +613,7 @@ export default {
                   }
                 ],
                 fallback: {
-                  src:
-                    'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_900x900_crop_center.png?v=1650453549',
+                  src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_900x900_crop_center.png?v=1650453549',
                   srcSet:
                     'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_225x225_crop_center.png?v=1650453549 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_450x450_crop_center.png?v=1650453549 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-13-900x900-transformed_900x900_crop_center.png?v=1650453549 900w',
                   sizes: '(min-width: 900px) 900px, 100vw'
@@ -683,8 +665,7 @@ export default {
                 }
               ],
               fallback: {
-                src:
-                  'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_900x900_crop_center.png?v=1650453409',
+                src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_900x900_crop_center.png?v=1650453409',
                 srcSet:
                   'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_225x225_crop_center.png?v=1650453409 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_450x450_crop_center.png?v=1650453409 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_900x900_crop_center.png?v=1650453409 900w',
                 sizes: '(min-width: 900px) 900px, 100vw'
@@ -711,8 +692,7 @@ export default {
                 }
               ],
               fallback: {
-                src:
-                  'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-53-transformed_1500x1500_crop_center.png?v=1650453414',
+                src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-53-transformed_1500x1500_crop_center.png?v=1650453414',
                 srcSet:
                   'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-53-transformed_375x375_crop_center.png?v=1650453414 375w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-53-transformed_750x750_crop_center.png?v=1650453414 750w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/rechts-53-transformed_1500x1500_crop_center.png?v=1650453414 1500w',
                 sizes: '(min-width: 1500px) 1500px, 100vw'
@@ -739,8 +719,7 @@ export default {
                 }
               ],
               fallback: {
-                src:
-                  'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Beschreibung-links-1-transformed_1500x1500_crop_center.png?v=1650453418',
+                src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Beschreibung-links-1-transformed_1500x1500_crop_center.png?v=1650453418',
                 srcSet:
                   'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/Beschreibung-links-1-transformed_375x375_crop_center.png?v=1650453418 375w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/Beschreibung-links-1-transformed_750x750_crop_center.png?v=1650453418 750w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/Beschreibung-links-1-transformed_1500x1500_crop_center.png?v=1650453418 1500w',
                 sizes: '(min-width: 1500px) 1500px, 100vw'
@@ -768,8 +747,7 @@ export default {
               }
             ],
             fallback: {
-              src:
-                'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_900x900_crop_center.png?v=1650453409',
+              src: 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_900x900_crop_center.png?v=1650453409',
               srcSet:
                 'https://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_225x225_crop_center.png?v=1650453409 225w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_450x450_crop_center.png?v=1650453409 450w,\nhttps://cdn.shopify.com/s/files/1/0634/2135/0141/products/links-48-900x900-transformed_900x900_crop_center.png?v=1650453409 900w',
               sizes: '(min-width: 900px) 900px, 100vw'

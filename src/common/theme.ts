@@ -1,6 +1,6 @@
 import {extendTheme} from '@chakra-ui/react'
 import {mode, StyleFunctionProps} from '@chakra-ui/theme-tools'
-import { Dict } from '@chakra-ui/utils'
+import {Dict} from '@chakra-ui/utils'
 
 const theme = {
   config: {
@@ -45,30 +45,30 @@ const theme = {
       error: 'red.500',
       background: {
         default: 'agt.lightbackground',
-        _dark: 'agt.darkbackground',
+        _dark: 'agt.darkbackground'
       },
       text: {
         default: 'agt.grey',
-        _dark: 'white',
+        _dark: 'white'
       },
       border: {
         default: 'agt.lightstroke',
-        _dark: 'agt.darkstroke',
+        _dark: 'agt.darkstroke'
       },
       stroke: {
         default: 'agt.lightstroke',
-        _dark: 'agt.darkstroke',
+        _dark: 'agt.darkstroke'
       },
       primary: {
         default: 'agt.lightprimary',
-        _dark: 'agt.darkprimary',
+        _dark: 'agt.darkprimary'
       }
-    },
+    }
   },
   styles: {
     global: (props: Dict<any> | StyleFunctionProps) => ({
       body: {
-        bg: "background"
+        bg: 'background'
       },
       ':host,:root': {
         '--chakra-ui-focus-ring-color': '#424240'
