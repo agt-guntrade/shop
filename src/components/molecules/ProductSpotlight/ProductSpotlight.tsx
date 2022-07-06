@@ -18,7 +18,13 @@ export interface ProductshowcaseProps {
 const DescriptionBox = motion<FlexProps>(Flex)
 const WeaponBox = motion<BoxProps>(Box)
 
-export const ProductSpotlight = ({products}: ProductshowcaseProps) => {
+export const ProductSpotlight = (props: ProductshowcaseProps) => {
+  const products = props.products.filter(p =>
+    p.metafields.some(
+      m => m.namespace === 'spotlight' && m.key === 'show' && m.value === 'true'
+    )
+  )
+
   const [current, setCurrent] = React.useState(products[0])
 
   React.useEffect(() => setCurrent(products[0]), [])
@@ -71,7 +77,6 @@ export const ProductSpotlight = ({products}: ProductshowcaseProps) => {
                     initial={{opacity: 0, x: -300}}
                     animate={{opacity: 1, x: 0}}
                     transition={{duration: 0.5, type: 'spring'}}>
-                    <Text>{mirrorImage?.value}</Text>
                     <Box
                       height={{base: '300px', md: '450px'}}
                       width={{base: '300px', md: '450px'}}
@@ -115,12 +120,15 @@ export const ProductSpotlight = ({products}: ProductshowcaseProps) => {
                 ({namespace}) => namespace === 'spotlight'
               )
 
-              const title = spotlightMetafields.find(
-                ({key, value}) => key === 'titel'
-              )
-              const description = spotlightMetafields.find(
-                ({key, value}) => key === 'description'
-              )
+              let title, description
+
+              for (const metafield of spotlightMetafields) {
+                if (metafield.key === 'title') {
+                  title = metafield.value
+                } else if (metafield.key === 'description') {
+                  description = metafield.value
+                }
+              }
 
               return (
                 current === weapon && (
@@ -143,12 +151,12 @@ export const ProductSpotlight = ({products}: ProductshowcaseProps) => {
                         fontWeight="bold"
                         fontSize={{base: '20', md: '4vw', lg: '2vw'}}
                         casing="uppercase">
-                        {title?.value}
+                        {title}
                       </Text>
                       <Text
                         minH={{base: 30, md: '8vw', lg: '4vw'}}
                         fontSize={{base: '15', md: '3.5vw', lg: '1.75vw'}}>
-                        {description?.value}
+                        {description}
                       </Text>
                     </Box>
                     <Button
