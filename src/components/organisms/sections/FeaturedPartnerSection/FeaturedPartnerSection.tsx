@@ -105,7 +105,12 @@ export const FeaturedPartnerSection = ({
               }}
               name="partner"
               displayName="Partner"
-              sections={[PartnerScrollSection({name: `${name}-item`, displayName})]}
+                sections={[
+                  PartnerScrollSection({
+                    name: `${name}-item`,
+                    displayName: 'Partner Logo'
+                  })
+                ]}
             />
           }
         />
