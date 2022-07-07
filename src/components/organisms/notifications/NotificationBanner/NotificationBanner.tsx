@@ -1,6 +1,4 @@
 import {
-  Box,
-  Button,
   CloseButton,
   Container,
   Icon,
@@ -8,7 +6,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
-  useColorModeValue
+  useModalContext
 } from '@chakra-ui/react'
 import * as React from 'react'
 import {FiInfo} from '@react-icons/all-files/fi/FiInfo'
@@ -17,6 +15,8 @@ import {NotifyField} from '@jaenjs/jaen'
 export interface NotificationBannerProps {}
 
 export const NotificationBanner = (props: NotificationBannerProps) => {
+  const {onClose} = useModalContext()
+
   const isMobile = useBreakpointValue({base: true, md: false})
   return (
     <Container py={{base: '4', md: '2.5'}} position="relative" maxW="8xl">
@@ -25,6 +25,7 @@ export const NotificationBanner = (props: NotificationBannerProps) => {
         position="absolute"
         right="2"
         top="2"
+        onClick={onClose}
       />
       <Stack
         direction={{base: 'column', sm: 'row'}}
@@ -58,7 +59,10 @@ export const NotificationBanner = (props: NotificationBannerProps) => {
           direction={{base: 'column', sm: 'row'}}
           spacing={{base: '3', sm: '2'}}
           align={{base: 'stretch', sm: 'center'}}>
-          <CloseButton display={{base: 'none', sm: 'inline-flex'}} />
+          <CloseButton
+            display={{base: 'none', sm: 'inline-flex'}}
+            onClick={onClose}
+          />
         </Stack>
       </Stack>
     </Container>
