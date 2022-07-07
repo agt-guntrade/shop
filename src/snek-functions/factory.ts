@@ -2,5 +2,5 @@ import {makeFn} from '@snek-at/functions'
 
 export const fn = makeFn({
   url:
-    'https://schettn-schett-net-ami-p4xp5ppr395v-3000.githubpreview.dev/graphql'
+    'https://brn4s1v6g9.execute-api.eu-central-1.amazonaws.com/graphql'
 })
