@@ -1,13 +1,17 @@
 {
   "Banner.tsx": {
     "context": {
-      "createdAt": "2022-07-07T15:33:37.836Z",
-      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ3GLG_NEHhZd-heIrT3vXXfvIzzv4AAKKDQACSic5UvBxkEHNUvy4KQQ"
+      "createdAt": "2022-07-07T15:42:59.838Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ4GLG_wP22ckLxTS8iY9RKsdE3k6FAAKRDQACSic5UlPdixf9SRPSKQQ"
     },
     "migrations": [
       {
         "createdAt": "2022-07-07T15:33:37.836Z",
         "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ3GLG_NEHhZd-heIrT3vXXfvIzzv4AAKKDQACSic5UvBxkEHNUvy4KQQ"
+      },
+      {
+        "createdAt": "2022-07-07T15:42:59.838Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ4GLG_wP22ckLxTS8iY9RKsdE3k6FAAKRDQACSic5UlPdixf9SRPSKQQ"
       }
     ]
   }
