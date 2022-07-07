@@ -18,8 +18,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "postinstall": "patch-package"
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.7",
@@ -28,7 +27,6 @@
     "@emotion/styled": "^11",
     "@jaenjs/jaen": "^3.0.0-beta.54",
     "@react-icons/all-files": "^4.1.0",
-    "@snek-at/functions": "*",
     "@snek-at/gatsby-plugin-scaleserp": "^1.0.3",
     "@snek-at/gatsby-theme-shopify": "^1.6.5",
     "@snek-at/react-lottie": "^1.0.0-beta.3",
@@ -66,9 +64,6 @@
     "gatsby-plugin-emotion": "^7.12.1",
     "gatsby-plugin-sitemap": "^5.12.1",
     "gh-pages": "^4.0.0",
-    "serverless": "^3.19.0",
-    "serverless-offline": "^8.8.0",
-    "serverless-plugin-ifelse": "^1.0.7",
     "typescript": "^4.6.3"
   }
 }
