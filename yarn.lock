@@ -4015,10 +4015,10 @@
     escape-string-regexp "^2.0.0"
     lodash.deburr "^4.1.0"
 
-"@snek-at/functions@^0.0.32":
-  version "0.0.32"
-  resolved "https://registry.yarnpkg.com/@snek-at/functions/-/functions-0.0.32.tgz#0d9ca6f80485977b996fd922853eab3076cdd14f"
-  integrity sha512-U0HgcsUL13XD/SXH76Nu8cG/Yc4zbcpHFkGtFLWH+tCcy/x7f63tkkbdCddqfgOzJoVZOVzbx1ZOPky6RWq+pA==
+"@snek-at/functions@^0.0.34":
+  version "0.0.34"
+  resolved "https://registry.yarnpkg.com/@snek-at/functions/-/functions-0.0.34.tgz#24093a885b4d49b1c6c67983bd5b1fed2a006175"
+  integrity sha512-/ejgc9FfZTaTqxFxRaYZkODnRDrdI9RB0GvuTgKskQuB28i46JD3ZBDfRD0zj4ba035b/BH0m9kmRDmsZHTdUQ==
   dependencies:
     "@snek-at/snek-api-client" "*"
     "@swc/core" "^1.2.183"
