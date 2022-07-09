@@ -23,7 +23,7 @@ export interface BannerLayoutProps {
 
 export const BreadcrumbsBanner = ({title, path}: BannerLayoutProps) => {
   return (
-    <Box position={'relative'} color="white" h="fit-content">
+    <Box position={'relative'} color="white">
       <GCImage
         gimg={
           <StaticImage
@@ -31,7 +31,7 @@ export const BreadcrumbsBanner = ({title, path}: BannerLayoutProps) => {
             alt="Banner with title and breadcrumbs"
             imgStyle={{
               width: '100%',
-              height: '200px',
+              height: '300px',
               objectFit: 'cover'
             }}
           />
