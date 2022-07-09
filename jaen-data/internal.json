@@ -10,7 +10,8 @@
       "description": "Die Firma AGT GunTrade KG mit eigener Buchsenmacher Werkstätte, hat sich nicht nur auf den handel mit Jagdwaffen und Sportwaffen deren Munition, Wiederladerartikel, Optik, Zubehör, Waffenführerscheine und Kurse, Kommissionsverkauf Ankauf von Jagd und Sportwaffen jeglicher Art, sowie komplette Sammlung Auflösungen aus Nachlass, Erbschaften in ganz Österreich. (Behördenwege-formalitaten werden gerne unsererseits erledigt) spezialisiert. Sondern auch auf die Entwicklung und Erzeugung von Waffen durch die Haus eigene Buchsenmacher Werkstatte von Ferlacher-Jagdwaffen wie auch auf Reparatur-instandsetzung von Waffen jeglicher Art, Montagearbeiten, Schaften und Ausfertigen, Tauch und Streichbrunierungen.",
       "author": {
         "name": "Nico Schett"
-      }
+      },
+      "image": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ1GLG-VAHR_LROvxiuBpFJQF7NNr1AAKADQACSic5UsqA8hnX9A4VKQQ"
     }
   },
   "migrationHistory": [
@@ -45,7 +46,11 @@
     {
       "createdAt": "2022-07-07T15:42:59.216Z",
       "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ32LG_sHRy_JDmOXhxhdbLC9pUQZBAAKQDQACSic5UhJn3KOgTvvxKQQ"
+    },
+    {
+      "createdAt": "2022-07-09T15:32:58.433Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ5WLJn2Uvb4PXdtC4pWqjTHUuKwFaAAIUEAAC4oJJUpUmkWotT4bxKQQ"
     }
   ],
-  "finderUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ3mLG_sHb2Fb6fo1ZKRlu9po1SI_9AAKPDQACSic5Uk1ronLCii8RKQQ"
+  "finderUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ5GLJn2WYeYdLhiyJX8o7b1jlr5KSAAITEAAC4oJJUugvf-XQh5xmKQQ"
 }
