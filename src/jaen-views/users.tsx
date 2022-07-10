@@ -54,10 +54,10 @@ import {
 import {AddIcon, CheckCircleIcon, EditIcon, Icon} from '@chakra-ui/icons'
 import {Controller, useForm} from 'react-hook-form'
 import React from 'react'
-import usersGet from '../snek-functions/usersGet'
-import usersAdd from '../snek-functions/usersAdd'
-import usersUpdate from '../snek-functions/usersUpdate'
-import usersDelete from '../snek-functions/usersDelete'
+import usersGet from '../snek-functions/src/usersGet'
+import usersAdd from '../snek-functions/src/usersAdd'
+import usersUpdate from '../snek-functions/src/usersUpdate'
+import usersDelete from '../snek-functions/src/usersDelete'
 
 const UsersList = () => {
   const textColor = useColorModeValue('gray.700', 'white')
@@ -321,7 +321,8 @@ const UserDetails = () => {
               {...register('password', {
                 required: 'This is required',
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
                     'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character'
                 }
@@ -708,7 +709,8 @@ const AddUserControl = () => {
                   {...register('password', {
                     required: 'This is required',
                     pattern: {
-                      value: /^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/,
+                      value:
+                        /^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/,
                       message:
                         'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character'
                     }
