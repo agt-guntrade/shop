@@ -24,6 +24,7 @@ import {
 } from '@snek-at/gatsby-theme-shopify'
 import {GatsbyImage, IGatsbyImageData} from 'gatsby-plugin-image'
 import React from 'react'
+import ImagesViewer from 'react-images-viewer'
 
 import {FaHeart} from '@react-icons/all-files/fa/FaHeart'
 import {FaShare} from '@react-icons/all-files/fa/FaShare'
@@ -344,48 +345,77 @@ const ImageSlider = (props: {
   media: ShopifyProduct['media']
   description?: string
 }) => {
-  // null is featured image
-  const [currentMedia, setCurrentMedia] = React.useState<SliderMedia>(
-    props.featuredMedia
-  )
+  const media = props.media.concat(props.featuredMedia || [])
+  const [curMediaIndex, setCurMediaIndex] = React.useState<number>(0)
+
+  const [isPreviewOpen, setIsPreviewOpen] = React.useState<boolean>(false)
+
+  const curMedia = media[curMediaIndex]
 
   return (
-    <Box my="4" w={'100%'}>
-      <AspectRatio ratio={16 / 9}>
-        <Box>
-          {currentMedia?.image && (
-            <GatsbyImage
-              image={currentMedia.image.gatsbyImageData}
-              alt={currentMedia.image.altText || 'Product Image'}
+    <>
+      <ImagesViewer
+        currImg={curMediaIndex}
+        isOpen={isPreviewOpen}
+        onClose={() => setIsPreviewOpen(false)}
+        imgs={media.map(
+          ({
+            image: {
+              altText: caption,
+              gatsbyImageData: {
+                images: {fallback}
+              }
+            }
+          }) => ({
+            src: fallback?.src,
+            caption,
+            srcSet: fallback?.srcSet
+          })
+        )}
+        showThumbnails
+        onClickThumbnail={(index: number) => setCurMediaIndex(index)}
+        onClickNext={() => {
+          setCurMediaIndex(prevState => {
+            return prevState + 1
+          })
+        }}
+        onClickPrev={() => {
+          setCurMediaIndex(prevState => {
+            return prevState - 1
+          })
+        }}
+      />
+      <Box my="4" w={'100%'}>
+        <AspectRatio ratio={16 / 9}>
+          <Box onClick={() => setIsPreviewOpen(true)} cursor="zoom-in">
+            {curMedia?.image && (
+              <GatsbyImage
+                image={curMedia.image.gatsbyImageData}
+                alt={curMedia.image.altText || 'Product Image'}
+              />
+            )}
+          </Box>
+        </AspectRatio>
+        <Wrap
+          overflow={'hidden'}
+          bg={useColorModeValue('gray.200', 'gray.700')}
+          spacing={0}
+          justify="center">
+          {media.map((media, index) => (
+            <ImageThumbnailWrapItem
+              key={index}
+              media={media}
+              active={curMediaIndex === index}
+              onClick={() => setCurMediaIndex(index)}
             />
-          )}
+          ))}
+        </Wrap>
+
+        <Box display={{base: 'none', md: 'block'}}>
+          <ProductMoreDetail description={props.description || ''} />
         </Box>
-      </AspectRatio>
-      <Wrap
-        overflow={'hidden'}
-        bg={useColorModeValue('gray.200', 'gray.700')}
-        spacing={0}
-        justify="center">
-        <ImageThumbnailWrapItem
-          media={props.featuredMedia}
-          active={currentMedia === props.featuredMedia}
-          onClick={() => setCurrentMedia(props.featuredMedia)}
-        />
-
-        {props.media.map((media, index) => (
-          <ImageThumbnailWrapItem
-            key={index}
-            media={media}
-            active={currentMedia?.id === media.id || false}
-            onClick={() => setCurrentMedia(media)}
-          />
-        ))}
-      </Wrap>
-
-      <Box display={{base: 'none', md: 'block'}}>
-        <ProductMoreDetail description={props.description || ''} />
       </Box>
-    </Box>
+    </>
   )
 }
 
