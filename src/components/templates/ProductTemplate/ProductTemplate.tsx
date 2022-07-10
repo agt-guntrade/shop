@@ -386,7 +386,7 @@ const ImageSlider = (props: {
         }}
       />
       <Box my="4" w={'100%'}>
-        <AspectRatio ratio={16 / 9}>
+        <AspectRatio ratio={4 / 3}>
           <Box onClick={() => setIsPreviewOpen(true)} cursor="zoom-in">
             {curMedia?.image && (
               <GatsbyImage
