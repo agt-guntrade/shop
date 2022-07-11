@@ -28,7 +28,7 @@ export const AccessorieShowcase = ({}: AccessorieShowcaseProps) => {
       alignSelf={{base: 'center', lg: 'auto'}}
       backgroundImage="https://secondamendsports.com/wp-content/uploads/2019/10/4D5EB7A900000578-0-image-a-30_1529321909720-1.jpg">
       <Heading color="white" mt="90px" userSelect="none" style={{WebkitTextStroke: `1px ${getThemeColor("agt.gray")}`}}>
-        Acessories
+        Zubehör
       </Heading>
     </Box>
   )

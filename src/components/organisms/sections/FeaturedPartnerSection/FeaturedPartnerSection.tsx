@@ -91,13 +91,13 @@ export const FeaturedPartnerSection = ({
           <FeaturedPartner
             featuredAnchor={featuredAnchor}
             featuredHeading={
-              <Field.Text name="heading" defaultValue={'Empfohlene Produkte'} />
+              <Field.Text name="featuredheading" defaultValue={'Empfohlene Produkte'} />
             }
             featuredProducts={featuredProducts}
             productsPagePath={productsPagePath}
             partnerAnchor={partnerAnchor}
             partnerHeading={
-              <Field.Text name="heading" defaultValue={'Partner'} />
+              <Field.Text name="partnerheading" defaultValue={'Partner'} />
             }
             partnerscrollsections={
               <Field.Section

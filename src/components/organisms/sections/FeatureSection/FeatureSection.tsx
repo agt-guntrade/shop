@@ -32,7 +32,7 @@ export const Feature = ({image, heading, lead}: FeatureProps) => {
             {image}
           </Flex>
           <Box w="90%" h="100%">
-            <Text fontSize="3xl" fontWeight="bold">
+            <Text fontSize="xl" fontWeight="bold">
               {heading}
             </Text>
             <Text fontSize="md" fontWeight="semibold" color="agt.blue">

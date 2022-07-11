@@ -98,7 +98,7 @@ export const About = ({
           <GridItem border="1px" borderColor="border" borderRadius="7px" overflow="hidden" bg={useColorModeValue('white', 'gray.700')} area="two">
             <AspectRatio ratio={16/7} boxSize="full" css={{img: {objectFit: "cover"}}}>
               <Flex>
-                <Box w="60%" h="100%">
+                <Box w="60%" h="100%" overflow="auto">
                   <Text>
                     {bottomlefttext}
                   </Text>

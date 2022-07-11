@@ -22,6 +22,8 @@ import {
 
 import {FaFilter} from '@react-icons/all-files/fa/FaFilter'
 import {FaSort} from '@react-icons/all-files/fa/FaSort'
+import { MdEuroSymbol } from "react-icons/md"
+import {Spy} from '../../../common/assets/Spy'
 
 // tag builder => input tag output type:content
 
@@ -119,8 +121,12 @@ const PriceRangeFilter = (props: {
           <RangeSliderTrack>
             <RangeSliderFilledTrack />
           </RangeSliderTrack>
-          <RangeSliderThumb boxSize={6} index={0} />
-          <RangeSliderThumb boxSize={6} index={1} />
+          <RangeSliderThumb boxSize={6} index={0}>
+            <Box color='agt.blue' as={Spy} style={{color: 'transparent'}} />
+          </RangeSliderThumb>
+          <RangeSliderThumb boxSize={6} index={1}>
+            <Box color='agt.blue' as={Spy} style={{color: 'transparent'}} />
+          </RangeSliderThumb>
         </RangeSlider>
       </Box>
     </Box>
