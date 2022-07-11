@@ -23,7 +23,7 @@ COPY ./ ${SNEK_FUNCTIONS_BUILD_DIR}/
 WORKDIR ${SNEK_FUNCTIONS_BUILD_DIR}
 
 RUN npm install
-RUN npx snek-functions build --functions-path ./src
+RUN npx snek-functions build --functions-path .
 # Copy the built functions to the lambda function
 RUN cp -r dist node_modules ${LAMBDA_TASK_ROOT}
 
