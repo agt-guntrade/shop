@@ -115,7 +115,6 @@ const CollectionPageTemplate = (
 
   return (
     <>
-      {props.data.shopifyCollection}
       <SEO pagePath={props.path} pageMeta={buildCollectionPageMeta()} />
       <Layout path={props.path}>
         <CollectionTemplate
@@ -130,7 +129,7 @@ const CollectionPageTemplate = (
 }
 
 export const query = graphql`
-  query($relatedProductIds: [String!]!) {
+  query ($relatedProductIds: [String!]!) {
     relatedProducts: allShopifyProduct(filter: {id: {in: $relatedProductIds}}) {
       nodes {
         ...shopifyProductData
