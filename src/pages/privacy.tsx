@@ -1,9 +1,9 @@
-import React from 'react'
 import {graphql, PageProps} from 'gatsby'
+import React from 'react'
 
-import {PrivacyTemplate} from '../components/templates'
-import {Layout} from '../components/Layout'
 import {connectPage} from '@jaenjs/jaen'
+import {Layout} from '../components/Layout'
+import {PrivacyTemplate} from '../components/templates/PrivacyTemplate'
 
 const PrivacyPage = connectPage(
   ({path}: PageProps) => {

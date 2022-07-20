@@ -8,6 +8,13 @@ dotenv.config()
 const config: GatsbyConfig = {
   siteMetadata: site.siteMetadata,
   plugins: [
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: true
+      }
+    },
+    'gatsby-plugin-perf-budgets',
     'gatsby-plugin-emotion',
     {
       resolve: `gatsby-plugin-sitemap`,

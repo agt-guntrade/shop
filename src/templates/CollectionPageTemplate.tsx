@@ -86,7 +86,7 @@ import {
   getCollectionStructure
 } from '@snek-at/gatsby-theme-shopify'
 import {Layout} from '../components/Layout'
-import {CollectionTemplate} from '../components/templates'
+import {CollectionTemplate} from '../components/templates/CollectionTemplate'
 
 const CollectionPageTemplate = (
   props: PageProps<CollectionPageData, ColllectionPageContext>
@@ -129,7 +129,7 @@ const CollectionPageTemplate = (
 }
 
 export const query = graphql`
-  query ($relatedProductIds: [String!]!) {
+  query($relatedProductIds: [String!]!) {
     relatedProducts: allShopifyProduct(filter: {id: {in: $relatedProductIds}}) {
       nodes {
         ...shopifyProductData

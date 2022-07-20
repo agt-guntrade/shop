@@ -8,7 +8,7 @@ import {
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 import {Layout} from '../components/Layout'
-import {ProductTemplate} from '../components/templates'
+import {ProductTemplate} from '../components/templates/ProductTemplate'
 import {useWishlist} from '../services/wishlist'
 
 const ProductPageTemplate = (

@@ -1,11 +1,11 @@
-import React from 'react'
 import {useDisclosure} from '@chakra-ui/hooks'
-import {graphql, navigate, PageProps} from 'gatsby'
-import {useWishlist} from '../services/wishlist'
-import {WishlistTemplate} from '../components/templates'
 import {connectPage} from '@jaenjs/jaen'
-import {ContactModal} from '../components/organisms/ContactModal'
+import {graphql, PageProps} from 'gatsby'
+import React from 'react'
 import {Layout} from '../components/Layout'
+import {ContactModal} from '../components/organisms/ContactModal'
+import {WishlistTemplate} from '../components/templates/WishlistTemplate'
+import {useWishlist} from '../services/wishlist'
 
 const WishlistPage = ({path}: PageProps) => {
   const {wishlist, updateQuantity, removeFromWishlist} = useWishlist()

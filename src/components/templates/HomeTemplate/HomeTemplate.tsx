@@ -1,33 +1,30 @@
-import React from 'react'
-import {navigate} from 'gatsby'
-import {Text, Box, VStack, Divider} from '@chakra-ui/layout'
+import {VStack} from '@chakra-ui/layout'
 import {Field} from '@jaenjs/jaen'
-import {useColorModeValue} from '@chakra-ui/react'
+import {navigate} from 'gatsby'
+import React from 'react'
 
-import {ParallaxBackground} from '../../molecules/ParallaxBackground'
-import {ScrollSpy, ScrollSpyProps} from '../../molecules/ScrollSpy'
-import {SideButtons, SideButtonsProps} from '../../molecules/buttons/SideButtons'
-import {ScrollToTopButton, ScrollToTopButtonProps} from '../../molecules/buttons/ScrollToTopButton'
+import {SideButtons} from '../../molecules/buttons/SideButtons'
+import {ScrollSpy} from '../../molecules/ScrollSpy'
 // import {StickyStrokeLogo} from '../../molecules/StickyStrokeLogo'
 import {
   AboutSection,
   AboutSectionProps,
   FAQSection,
   FAQSectionProps,
-  FeaturedProductsSection,
-  FeaturedProductsSectionProps,
   FeaturedPartnerSection,
   FeaturedPartnerSectionProps,
+  FeaturedProductsSection,
+  FeaturedProductsSectionProps,
   HeroSection,
   HeroSectionProps,
   NewsSection,
   NewsSectionProps,
-  ReviewSection,
-  ReviewSectionProps,
+  PartnerSection,
+  PartnerSectionProps,
   ReviewFAQSection,
   ReviewFAQSectionProps,
-  PartnerSection,
-  PartnerSectionProps
+  ReviewSection,
+  ReviewSectionProps
 } from '../../organisms/sections'
 
 export interface HomeTemplateProps {
@@ -66,24 +63,35 @@ export const HomeTemplate = (props: HomeTemplateProps) => {
         name={props.name}
         displayName={props.displayName}
         sections={[
-          HeroSection({...props.heroSection, anchor:"hero"}),
-          FeaturedProductsSection({...props.featuredProductsSection, anchor: "featured"}),
-          FeaturedPartnerSection({...props.featuredPartnerSection, partnerAnchor: "partner", featuredAnchor: "featured"}),
-          PartnerSection({...props.partnerSection, anchor:"partner"}),
-          ReviewSection({...props.reviewSection, anchor:"review"}),
-          ReviewFAQSection({...props.reviewFAQSection, reviewAnchor: "review", faqAnchor: "faq"}),
-          FAQSection({...props.faqSection, anchor:"faq"}), 
-          AboutSection({...props.aboutSection, anchor:"about"}), 
-          NewsSection({...props.newsSection, anchor:"news"})
+          HeroSection({...props.heroSection, anchor: 'hero'}),
+          FeaturedProductsSection({
+            ...props.featuredProductsSection,
+            anchor: 'featured'
+          }),
+          FeaturedPartnerSection({
+            ...props.featuredPartnerSection,
+            partnerAnchor: 'partner',
+            featuredAnchor: 'featured'
+          }),
+          PartnerSection({...props.partnerSection, anchor: 'partner'}),
+          ReviewSection({...props.reviewSection, anchor: 'review'}),
+          ReviewFAQSection({
+            ...props.reviewFAQSection,
+            reviewAnchor: 'review',
+            faqAnchor: 'faq'
+          }),
+          FAQSection({...props.faqSection, anchor: 'faq'}),
+          AboutSection({...props.aboutSection, anchor: 'about'}),
+          NewsSection({...props.newsSection, anchor: 'news'})
         ]}
       />
       <SideButtons
-        onMailButtonClick={() => navigate("/contact/")}
-        onLocationButtonClick={() => navigate("/imprint/")}
-        onPhoneButtonClick={() => navigate("/contact/")}
+        onMailButtonClick={() => navigate('/contact/')}
+        onLocationButtonClick={() => navigate('/imprint/')}
+        onPhoneButtonClick={() => navigate('/contact/')}
       />
       {/* <ScrollToTopButton onScrollToTopClick={() => null}/> */}
-      <ScrollSpy 
+      <ScrollSpy
         anchors={[
           {
             name: 'hero',

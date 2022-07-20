@@ -1,8 +1,8 @@
-import React from 'react'
-import {graphql, PageProps} from 'gatsby'
 import {connectPage, Field} from '@jaenjs/jaen'
-import {ContactTemplate} from '../components/templates'
+import {graphql, PageProps} from 'gatsby'
+import React from 'react'
 import {Layout} from '../components/Layout'
+import {ContactTemplate} from '../components/templates/ContactTemplate'
 
 const ContactPage = connectPage(
   (props: PageProps) => {

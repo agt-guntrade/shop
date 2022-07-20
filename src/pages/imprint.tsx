@@ -1,9 +1,9 @@
+import {graphql, PageProps} from 'gatsby'
 import React from 'react'
-import {graphql, navigate, PageProps} from 'gatsby'
 
-import {ImprintTemplate} from '../components/templates'
-import {Layout} from '../components/Layout'
 import {connectPage, Field} from '@jaenjs/jaen'
+import {Layout} from '../components/Layout'
+import {ImprintTemplate} from '../components/templates/ImprintTemplate'
 
 const ImprintPage = connectPage(
   ({path}: PageProps) => {

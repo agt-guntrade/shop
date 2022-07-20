@@ -1,15 +1,19 @@
-import React from 'react'
 import {
+  Center,
   Container,
   Icon,
+  SimpleGrid,
   Text,
   useColorModeValue,
-  VStack,
-  SimpleGrid,
-  Center
+  VStack
 } from '@chakra-ui/react'
+import React from 'react'
 import {GoogleMaps} from '../../molecules/GoogleMaps'
-import {FaAddressBook, FaEnvelopeSquare, FaPhoneSquare} from 'react-icons/fa'
+
+import {FaAddressBook} from '@react-icons/all-files/fa/FaAddressBook'
+import {FaEnvelopeSquare} from '@react-icons/all-files/fa/FaEnvelopeSquare'
+import {FaPhoneSquare} from '@react-icons/all-files/fa/FaPhoneSquare'
+
 import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
 import {ContactForm} from '../../molecules/ContactForm'
 

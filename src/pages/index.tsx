@@ -5,7 +5,7 @@ import {graphql, PageProps} from 'gatsby'
 import * as React from 'react'
 
 import {Layout} from '../components/Layout'
-import {HomeTemplate} from '../components/templates'
+import {HomeTemplate} from '../components/templates/HomeTemplate'
 
 interface IndexPageData {
   googleReviews: {
@@ -81,7 +81,7 @@ const IndexPage = (props: PageProps<IndexPageData>) => {
 }
 
 export const query = graphql`
-  query ($featuredProductIds: [String!]!, $jaenPageId: String!) {
+  query($featuredProductIds: [String!]!, $jaenPageId: String!) {
     googleReviews: allGoogleReview {
       nodes {
         ...googleReviewData

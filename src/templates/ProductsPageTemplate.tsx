@@ -9,7 +9,7 @@ import {
 import {PageProps} from 'gatsby'
 import React from 'react'
 import {Layout} from '../components/Layout'
-import {ProductsTemplate} from '../components/templates'
+import {ProductsTemplate} from '../components/templates/ProductsTemplate'
 import {ProductsTemplateProps} from '../components/templates/ProductsTemplate/ProductsTemplate'
 
 const ProductsPageTemplate = (
