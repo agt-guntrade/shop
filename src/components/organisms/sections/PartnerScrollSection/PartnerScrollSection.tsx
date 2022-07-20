@@ -23,10 +23,7 @@ export interface PartnerScrollProps {
 
 export const PartnerScroll = ({image}: PartnerScrollProps) => {
   return (
-    <Flex
-      css={{img: {objectFit: 'cover'}}}
-      alignItems="stretch"
-      w="max-content"
+    <Box
       minW="280px"
       h="200px"
       p="5"
@@ -35,7 +32,7 @@ export const PartnerScroll = ({image}: PartnerScrollProps) => {
       borderColor="border"
       bg={useColorModeValue('white', 'gray.700')}>
       {image}
-    </Flex>
+    </Box>
   )
 }
 
@@ -50,15 +47,8 @@ export const PartnerScrollSection = ({
           image={
             <Field.Image
               name="image"
-              height="100%"
-              width="fit-content"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                width: '100%',
-                height: '100%',
-                maxWidth: '50vw'
-              }}
+              defaultValue={undefined}
+              objectFit="contain"
             />
           }
         />

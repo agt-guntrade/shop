@@ -81,7 +81,7 @@ const IndexPage = (props: PageProps<IndexPageData>) => {
 }
 
 export const query = graphql`
-  query($featuredProductIds: [String!]!, $jaenPageId: String!) {
+  query ($featuredProductIds: [String!]!, $jaenPageId: String!) {
     googleReviews: allGoogleReview {
       nodes {
         ...googleReviewData
@@ -133,7 +133,9 @@ export const query = graphql`
         ...shopifyProductData
       }
     }
-    ...JaenPageQuery
+    jaenPage(id: {eq: $jaenPageId}) {
+      ...JaenPageData
+    }
   }
 `
 

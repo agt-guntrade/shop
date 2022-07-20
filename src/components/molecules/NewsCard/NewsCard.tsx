@@ -33,7 +33,6 @@ import * as style from './style'
 
 //#region > Functions
 export const NewsCard = () => {
-
   return (
     <VStack
       bg={useColorModeValue('white', 'gray.700')}
@@ -47,10 +46,17 @@ export const NewsCard = () => {
       borderColor="border"
       // divider={<StackDivider />}
       css={style.CardStyle}>
-        <AspectRatio ratio={16/10} boxSize="full" css={{img: {objectFit: "cover"}}}>
-          <Box position="relative">
-            <Flex css={{img: {objectFit: "cover"}}} alignItems="stretch" w="100%" h="100%">
-              <Field.Image
+      <AspectRatio
+        ratio={16 / 10}
+        boxSize="full"
+        css={{img: {objectFit: 'cover'}}}>
+        <Box position="relative">
+          <Flex
+            css={{img: {objectFit: 'cover'}}}
+            alignItems="stretch"
+            w="100%"
+            h="100%">
+            {/* <Field.Image
                 name="imagetopleft"
                 width="100%"
                 height="100%"
@@ -64,10 +70,10 @@ export const NewsCard = () => {
                   width: "100%",
                   height: "100%"
                 }}
-              />
-            </Flex>
-          </Box>
-        </AspectRatio>
+              /> */}
+          </Flex>
+        </Box>
+      </AspectRatio>
       <VStack p="5" alignItems="start">
         {/* <Badge
           position="absolute"
