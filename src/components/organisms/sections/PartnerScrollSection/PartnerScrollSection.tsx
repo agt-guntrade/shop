@@ -24,7 +24,7 @@ export interface PartnerScrollProps {
 export const PartnerScroll = ({image}: PartnerScrollProps) => {
   return (
     <Box
-      minW="280px"
+      w="280px"
       h="200px"
       p="5"
       borderRadius="5px"
