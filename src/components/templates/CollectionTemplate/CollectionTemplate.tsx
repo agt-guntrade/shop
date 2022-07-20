@@ -1,17 +1,10 @@
-import {
-  AspectRatio,
-  Box,
-  Link,
-  SimpleGrid,
-  Text,
-  VStack
-} from '@chakra-ui/react'
+import {Box, Link, SimpleGrid, Text} from '@chakra-ui/react'
 import {
   CollectionPageData,
   getCollectionStructure
 } from '@snek-at/gatsby-theme-shopify'
 import {Link as GatsbyLink} from 'gatsby'
-import {GatsbyImage, IGatsbyImageData} from 'gatsby-plugin-image'
+import {IGatsbyImageData} from 'gatsby-plugin-image'
 
 import React from 'react'
 import {ReactPhotoCollage} from 'react-photo-collage'
@@ -46,7 +39,7 @@ export const CollectionTemplate = ({
 
       <ContainerLayout>
         <Box>
-          <SimpleGrid spacing="4" minChildWidth="200px" py="8">
+          <SimpleGrid spacing="4" minChildWidth="300px" py="8">
             <CollectionCard
               path="products"
               image={shopifyCollection.image}
@@ -117,51 +110,17 @@ const CollectionCard = ({
         transform: 'scale(1.05)',
         color: 'agt.blue'
       }}>
-      <AspectRatio ratio={1}>
-        <VStack>
-          {collageImages ? (
-            <ReactPhotoCollage
-              width="900px"
-              height={['450px', '450px']}
-              layout={[1, 4]}
-              photos={collageImages.map(image => ({
-                source: image
-              }))}
-              showNumOfRemainingPhotos
-            />
-          ) : (
-            <>
-              {image ? (
-                <GatsbyImage
-                  alt={image.altText || name}
-                  image={
-                    image.gatsbyImageData || {
-                      images: {
-                        sources: [],
-                        fallback: {
-                          src: image.src,
-                          sizes: '(min-width: 900px) 900px, 100vw'
-                        }
-                      },
-                      layout: 'constrained',
-                      width: 900,
-                      height: 900
-                    }
-                  }
-                  style={{
-                    minHeight: '100%',
-                    minWidth: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center'
-                  }}
-                />
-              ) : (
-                'no image'
-              )}
-            </>
-          )}
-        </VStack>
-      </AspectRatio>
+      <Box backgroundSize={'contain !important'}>
+        <ReactPhotoCollage
+          width="100%"
+          height={['175px', '125px']}
+          layout={[1, 3]}
+          photos={collageImages?.map(image => ({
+            source: image
+          }))}
+          showNumOfRemainingPhotos
+        />
+      </Box>
       <Text textAlign={'center'}>
         {name}
         {productsCount !== undefined && (
