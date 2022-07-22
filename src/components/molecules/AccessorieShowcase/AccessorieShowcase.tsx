@@ -10,7 +10,7 @@ export interface AccessorieShowcaseProps {}
 export const AccessorieShowcase = ({}: AccessorieShowcaseProps) => {
   return (
     <Box
-      onClick={() => navigate('/zubehör')}
+      onClick={() => navigate('/zubehor')}
       cursor="pointer"
       h={{base: '300px', lg: '320px'}}
       css={Shine}
