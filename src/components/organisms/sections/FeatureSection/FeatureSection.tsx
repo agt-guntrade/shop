@@ -39,7 +39,7 @@ export const Feature = ({image, heading, lead}: FeatureProps) => {
             h="100%">
             {image}
           </Flex>
-          <Box w="90%" h="100%">
+          <Box px="1" w="90%" h="100%">
             <Text fontSize="xl" fontWeight="bold">
               {heading}
             </Text>

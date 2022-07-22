@@ -112,7 +112,7 @@ export const About = ({
                   w="60%"
                   h="100%"
                   color="white">
-                  <Text>{toplefttext}</Text>
+                  <Text p="5">{toplefttext}</Text>
                 </Box>
               </Box>
             </AspectRatio>
@@ -130,7 +130,7 @@ export const About = ({
               css={{img: {objectFit: 'cover'}}}>
               <Flex>
                 <Box w="60%" h="100%" overflow="auto">
-                  <Text>{bottomlefttext}</Text>
+                  <Text p="5">{bottomlefttext}</Text>
                 </Box>
                 <Flex
                   css={{img: {objectFit: 'cover'}}}
