@@ -1,25 +1,85 @@
 {
   "JaenPage /": {
     "context": {
-      "createdAt": "2022-07-22T16:28:44.355Z",
-      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRLWLa0Dx3sXTPJ9Q6WW7_UPolBq77AAICDAAClzvZUv3XO1RRmluSKQQ"
+      "createdAt": "2022-07-22T21:36:13.420Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRT2LbGE059UGkEptOUBs7juVvpROhAAIQDwACKRHZUnHWyZGejKhDKQQ"
     },
     "migrations": [
       {
-        "createdAt": "2022-07-20T15:35:21.937Z",
-        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRIWLYILke4A9FD_S1aL1CrDYs_x9OAAKCDQACyurBUg_5ZQa4HAbXKQQ"
+        "createdAt": "2022-07-22T20:31:10.066Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRRWLbCQ062i8-nuTjTzPKMxPOTPvVAAJgDAAClzvZUsdpusD64myvKQQ"
       },
       {
-        "createdAt": "2022-07-20T16:34:09.922Z",
-        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRJGLYLoH_xgYhPuPwbiBFedRSzpLEAAKSDQACyurBUvR-jPk6tcDkKQQ"
+        "createdAt": "2022-07-22T21:26:05.291Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRSWLbFe1a5kdfRMZVfUdCwUx-RacxAAIIDwACKRHZUn-8Kd0TNfbkKQQ"
       },
       {
-        "createdAt": "2022-07-22T16:10:09.825Z",
-        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRKmLay-EqcLVJA48e3eybsk5w5QABNwAC_gsAApc72VLhA2WDuRzw0ykE"
+        "createdAt": "2022-07-22T21:32:26.823Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRTGLbF2ppazFc_dswAftxcKfnNv_sAAINDwACKRHZUlsGLklFY8ImKQQ"
       },
       {
-        "createdAt": "2022-07-22T16:28:44.355Z",
-        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRLWLa0Dx3sXTPJ9Q6WW7_UPolBq77AAICDAAClzvZUv3XO1RRmluSKQQ"
+        "createdAt": "2022-07-22T21:36:13.420Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRT2LbGE059UGkEptOUBs7juVvpROhAAIQDwACKRHZUnHWyZGejKhDKQQ"
+      }
+    ]
+  },
+  "JaenPage /shopping-cart/": {
+    "context": {
+      "createdAt": "2022-07-22T21:36:13.573Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRUGLbGE1Hg1cCzmJFWnM55xX2I84XAAIRDwACKRHZUlxkfFDUXVDDKQQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2022-07-22T21:36:13.573Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRUGLbGE1Hg1cCzmJFWnM55xX2I84XAAIRDwACKRHZUlxkfFDUXVDDKQQ"
+      }
+    ]
+  },
+  "JaenPage /privacy/": {
+    "context": {
+      "createdAt": "2022-07-22T21:36:13.695Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRUWLbGE0q6TqQgVEp3Yuv8ebhav_AAAISDwACKRHZUhyO_OZaDIysKQQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2022-07-22T21:36:13.695Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRUWLbGE0q6TqQgVEp3Yuv8ebhav_AAAISDwACKRHZUhyO_OZaDIysKQQ"
+      }
+    ]
+  },
+  "JaenPage /imprint/": {
+    "context": {
+      "createdAt": "2022-07-22T21:36:13.805Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRUmLbGE1TXT951juXrGixxfxNmrVtAAITDwACKRHZUtyZjqcK2kjfKQQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2022-07-22T21:36:13.805Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRUmLbGE1TXT951juXrGixxfxNmrVtAAITDwACKRHZUtyZjqcK2kjfKQQ"
+      }
+    ]
+  },
+  "JaenPage /contact/": {
+    "context": {
+      "createdAt": "2022-07-22T21:36:14.059Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRU2LbGE2i9JyQlpwv69uSnd0eX9l2AAIUDwACKRHZUtY_DmjyTXdQKQQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2022-07-22T21:36:14.059Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRU2LbGE2i9JyQlpwv69uSnd0eX9l2AAIUDwACKRHZUtY_DmjyTXdQKQQ"
+      }
+    ]
+  },
+  "JaenPage /404.html": {
+    "context": {
+      "createdAt": "2022-07-22T21:36:21.222Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRVGLbGFVxISmSYYx1_dMzAz2jNnNSAAIVDwACKRHZUuslND8a06drKQQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2022-07-22T21:36:21.222Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIRVGLbGFVxISmSYYx1_dMzAz2jNnNSAAIVDwACKRHZUuslND8a06drKQQ"
       }
     ]
   }
