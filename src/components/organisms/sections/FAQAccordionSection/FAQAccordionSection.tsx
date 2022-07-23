@@ -1,4 +1,3 @@
-import React, {ReactNode} from 'react'
 import {
   Accordion,
   AccordionButton,
@@ -9,6 +8,7 @@ import {
 import {Box} from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
 import {connectSection, Field} from '@jaenjs/jaen'
+import React, {ReactNode} from 'react'
 
 export interface FAQAccordionSectionProps {
   name: string

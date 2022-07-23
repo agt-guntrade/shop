@@ -16,18 +16,17 @@ import {
   useColorModeValue,
   VStack
 } from '@chakra-ui/react'
-import {GatsbyImage, IGatsbyImageData} from 'gatsby-plugin-image'
 
-import {MdMessage} from '@react-icons/all-files/md/MdMessage'
 import {FaHeartBroken} from '@react-icons/all-files/fa/FaHeartBroken'
+import {MdMessage} from '@react-icons/all-files/md/MdMessage'
 
 import React from 'react'
 
 import {Link as GatsbyLink} from 'gatsby'
 import {WishlistProduct} from '../../../services/wishlist'
 import {ContainerLayout} from '../../ContainerLayout'
-import {ProductRow} from '../../molecules/ProductRow'
 import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
+import {ProductRow} from '../../molecules/ProductRow'
 
 const ContinueShoppingText = () => (
   <HStack
@@ -61,7 +60,7 @@ const SummaryBox = (props: {totalPrice: number; onRequestNow: () => void}) => {
           md: 6
         }}>
         <Heading as="h3" size="md" fontWeight="bold" mb={2}>
-          Warenkorb Übersicht
+          Merkliste Übersicht
         </Heading>
         <HStack justifyContent={'space-between'}>
           <Text fontSize={'xl'}>Total</Text>
@@ -106,7 +105,7 @@ const EmptyWishList = () => {
       borderRadius="sm">
       <Icon as={FaHeartBroken} boxSize={20} color="agt.red" />
       <Heading as="h3" size="md" fontWeight="bold" mb={2}>
-        Warenkorb ist leer
+        Merkliste ist leer
       </Heading>
       <Text fontSize={'xl'}>
         Füllen Sie sie mit Ihren Wunschartikeln aus dem Shop auf.
@@ -136,7 +135,7 @@ export const WishlistTemplate = (props: {
 
   return (
     <>
-      <BreadcrumbsBanner path={props.path} title="Warenkorb" />
+      <BreadcrumbsBanner path={props.path} title="Merkliste" />
       <ContainerLayout>
         <Box
           m={{
@@ -145,7 +144,7 @@ export const WishlistTemplate = (props: {
             xl: 12
           }}>
           <Heading as="h1" size="lg" fontWeight="extrabold" pb={4}>
-            Warenkorb {`(${itemLength} Artikel)`}
+            Merkliste {`(${itemLength} Artikel)`}
           </Heading>
           {itemLength > 0 ? (
             <>

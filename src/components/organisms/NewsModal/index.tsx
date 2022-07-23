@@ -1,6 +1,6 @@
 import {Button, IconButton} from '@chakra-ui/button'
 import {Input} from '@chakra-ui/input'
-import {Text, Box, Heading, Flex} from '@chakra-ui/layout'
+import {Box, Flex, Heading, Text} from '@chakra-ui/layout'
 import {Modal, ModalContent, ModalOverlay} from '@chakra-ui/modal'
 import {useToast} from '@chakra-ui/toast'
 import {ScaleFade} from '@chakra-ui/transition'

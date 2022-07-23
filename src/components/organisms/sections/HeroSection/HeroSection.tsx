@@ -5,12 +5,13 @@ import {
   getProductTags,
   ShopifyProduct
 } from '@snek-at/gatsby-theme-shopify'
+import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
+import {GCImage} from '../../../../common/GCImage'
 
 import {AccessorieShowcase} from '../../../molecules/AccessorieShowcase'
 import {BulletShowcase} from '../../../molecules/BulletShowcase'
 import {CategoryShowcase} from '../../../molecules/CategoryShowcase'
-import {ParallaxHero} from '../../../molecules/ParallaxHero'
 import {ProductSpotlight} from '../../../molecules/ProductSpotlight'
 
 export interface CategoryProduct extends ShopifyProduct {}
@@ -70,10 +71,23 @@ export const Hero = ({
         id={anchor}
         as="section"
         width={'full'}
-        backgroundColor="#210002"
+        backgroundColor="#1F1F1D"
         position="relative"
         overflow="hidden">
-        <ParallaxHero noScroll={noScroll} />
+        <GCImage
+          gimg={
+            <StaticImage
+              src="https://i.imgur.com/8zG2Ymd.jpeg"
+              alt="Banner with title and breadcrumbs"
+              imgStyle={{
+                position: 'absolute',
+                width: '100%',
+                height: '75%',
+                objectFit: 'cover'
+              }}
+            />
+          }
+        />
         <Container maxW="8xl" py="6">
           <ProductSpotlight products={spotlightProducts} />
           <CategoryShowcase tabs={tabs} latestProducts={latestProducts} />

@@ -19,10 +19,7 @@ import {
 import {Link as GatsbyLink} from 'gatsby'
 import {GatsbyImage, IGatsbyImageData} from 'gatsby-plugin-image'
 import React from 'react'
-import {
-  calculateTextColorForBackgroundColor,
-  uuidv1
-} from '../../../common/utils'
+import {uuidv1} from '../../../common/utils'
 import {useUserAuth} from '../../../services/useUserAuth'
 
 import * as styles from './styles'
@@ -62,17 +59,21 @@ export const ProductCard = ({
     borderline = false
   }
 
-  const coloredBadges: Array<{name: string; color: string}> = []
+  const coloredBadges: Array<{name: string; color: string; bg: string}> = []
 
   if (
     new Date(product.createdAt).getTime() >
     Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
-    coloredBadges.push({name: 'Neu', color: 'agt.blue'})
+    coloredBadges.push({name: 'Neu', color: 'black', bg: 'agt.yellow'})
   }
 
   if (prices.discountFormatted) {
-    coloredBadges.push({name: prices.discountFormatted, color: 'agt.red'})
+    coloredBadges.push({
+      name: prices.discountFormatted,
+      color: 'white',
+      bg: 'agt.red'
+    })
   }
 
   return (
@@ -219,7 +220,7 @@ function ImageBoxWithTags(
       altText: string | null
       gatsbyImageData: IGatsbyImageData
     }
-    tags: Array<{name: string; color: string}>
+    tags: Array<{name: string; color: string; bg: string}>
   } & BoxProps
 ) {
   // Box with image as background and tags on bottom
@@ -255,8 +256,8 @@ function ImageBoxWithTags(
             rounded="md"
             px={2}
             mr={2}
-            color={calculateTextColorForBackgroundColor(tag.color)}
-            bgColor={tag.color}
+            color={tag.color}
+            bgColor={tag.bg}
             textTransform="none">
             {tag.name}
           </Badge>

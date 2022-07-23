@@ -58,7 +58,7 @@ export const FeaturedProducts = ({
         <Container position="relative" py="10" maxW="8xl">
           <Box textAlign="center" my="10">
             <Heading size="2xl">{heading}</Heading>
-            <Bullet color="agt.red" w="unset" fontSize="xl" mt="5" mb="10" />
+            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <ProductGrid
             prefixPath={productsPagePath}

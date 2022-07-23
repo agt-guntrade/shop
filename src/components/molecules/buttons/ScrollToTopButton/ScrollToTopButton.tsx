@@ -1,6 +1,6 @@
-import React from 'react'
 import {Flex, IconButton} from '@chakra-ui/react'
 import {FiArrowUp} from '@react-icons/all-files/fi/FiArrowUp'
+import React from 'react'
 
 export interface ScrollToTopButtonProps {
   onScrollToTopClick: () => void

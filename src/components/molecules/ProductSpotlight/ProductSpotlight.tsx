@@ -84,7 +84,12 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
                       css={flipImage(shouldMirrorImage)}>
                       {weapon.featuredMedia?.image && (
                         <GatsbyImage
+                          objectFit="contain"
                           imgClassName="image"
+                          style={{
+                            height: '100%',
+                            width: '100%'
+                          }}
                           image={weapon.featuredMedia.image.gatsbyImageData}
                           alt={
                             weapon.featuredMedia.image.altText || weapon.title
@@ -164,8 +169,8 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
                       ml={{base: 2, md: 0}}
                       size="lg"
                       borderRadius="5px"
-                      bg="agt.blue"
-                      _hover={{bg: 'white', color: 'black'}}
+                      colorScheme="agt.yellowScheme"
+                      color="black"
                       variant="solid"
                       onClick={() => navigate(`/products/${weapon.handle}`)}>
                       Mehr davon

@@ -1,29 +1,27 @@
+import {ChevronDownIcon, CloseIcon, HamburgerIcon} from '@chakra-ui/icons'
 import {
   Box,
-  Flex,
-  IconButton,
-  HStack,
-  Center,
   Button,
   Collapse,
-  VStack,
+  Container,
   Divider,
+  Flex,
+  HStack,
+  Icon,
+  IconButton,
+  Link,
+  Stack,
+  Text,
   useColorModeValue,
   useDisclosure,
-  Link,
-  Text,
-  Stack,
-  Icon,
-  Container
+  VStack
 } from '@chakra-ui/react'
-import {CloseIcon, HamburgerIcon, ChevronDownIcon} from '@chakra-ui/icons'
 import {FaShoppingBasket} from '@react-icons/all-files/fa/FaShoppingBasket'
 import {FaUser} from '@react-icons/all-files/fa/FaUser'
 import {Link as GatsbyLink} from 'gatsby'
+import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
-import {Logo} from '../../../common/assets/Logo'
 
-import * as styles from './styles'
 import {Searchbar, SearchbarProps} from '../../molecules/Searchbar'
 
 const findBestMatch = (path: string, paths: Array<string>) => {
@@ -124,15 +122,19 @@ export const Header = (props: HeaderProps) => {
               aria-label={'Toggle Navigation'}
               display={{base: 'flex', md: 'none'}}
             />
+
             <HStack
               as={GatsbyLink}
               to="/"
               cursor={'pointer'}
               spacing={{base: '10', md: '20'}}
               alignItems={'center'}
-              maxW="2xl"
-              css={styles.Logo}>
-              <Logo />
+              maxW="2xl">
+              <StaticImage
+                src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
+                alt="Snek"
+                style={{maxWidth: '300px'}}
+              />
             </HStack>
             <Box display={{base: 'none', md: 'block'}} w="100%" px={8}>
               {searchbar}
@@ -188,10 +190,10 @@ export const Header = (props: HeaderProps) => {
                 }}
                 size="sm"
                 rounded="md"
-                color={['white']}
-                colorScheme="agt.redScheme"
+                color={['black']}
+                colorScheme="agt.yellowScheme"
                 leftIcon={<FaShoppingBasket />}>
-                Warenkorb
+                Merkliste
               </Button>
               <IconButton
                 as={GatsbyLink}
@@ -201,7 +203,7 @@ export const Header = (props: HeaderProps) => {
                   sm: 'none'
                 }}
                 icon={<FaShoppingBasket />}
-                aria-label="Open Warenkorb"
+                aria-label="Open Merkliste"
                 colorScheme={'agt.redScheme'}
               />
             </HStack>

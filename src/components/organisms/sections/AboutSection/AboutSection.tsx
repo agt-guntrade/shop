@@ -1,24 +1,21 @@
-import React, {ReactNode} from 'react'
 import {
+  AspectRatio,
+  Box,
+  Container,
+  Divider,
+  Flex,
   Grid,
   GridItem,
-  Container,
-  Box,
-  Flex,
-  Text,
   Heading,
-  HStack,
-  VStack,
-  Divider,
-  AspectRatio,
+  Text,
   useColorModeValue
 } from '@chakra-ui/react'
-import {Field, connectSection} from '@jaenjs/jaen'
-import {StaticImage} from 'gatsby-plugin-image'
+import {connectSection, Field} from '@jaenjs/jaen'
+import React, {ReactNode} from 'react'
+import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
 import {FeatureSectionJSX} from '../FeatureSection'
-import {getThemeColor} from '../../../../common/utils'
 
 export interface AboutSectionProps {
   anchor?: string
@@ -83,7 +80,7 @@ export const About = ({
       <Container position="relative" py="10" maxW="8xl">
         <Box textAlign="center" my="10">
           <Heading size="2xl">{heading}</Heading>
-          <Bullet color="agt.red" w="unset" fontSize="xl" mt="5" mb="10" />
+          <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
         </Box>
         <Grid templateAreas={{base: baseAreas, lg: lgAreas}} gap={9}>
           <GridItem
@@ -170,6 +167,7 @@ export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
           topleftimage={
             <Field.Image
               name="topleftimage"
+              objectFit="fill"
               defaultValue={
                 'http://honor.ancorathemes.com/wp-content/uploads/2018/03/banner_5_bg.jpg'
               }

@@ -1,5 +1,5 @@
 import {extendTheme} from '@chakra-ui/react'
-import {mode, StyleFunctionProps} from '@chakra-ui/theme-tools'
+import {StyleFunctionProps} from '@chakra-ui/theme-tools'
 import {Dict} from '@chakra-ui/utils'
 
 const theme = {
@@ -8,7 +8,7 @@ const theme = {
   },
   colors: {
     agt: {
-      lightbackground: '#f6f8fa',
+      lightbackground: '#ffffff',
       darkbackground: '#1d1f21',
       lightstroke: '#d0d7de',
       darkstroke: '#d0d7de',
@@ -16,6 +16,7 @@ const theme = {
       darkprimary: '#2D3748',
       orange: '#ff6000',
       red: '#ef3340',
+      yellow: '#FFE401',
       blue: '#2151a1',
       blueAccent: '#1d4890',
       gray: '#1f1f1d',
@@ -33,10 +34,20 @@ const theme = {
         200: '#1d4890'
       },
       redScheme: {
+        200: '#f47079',
         300: '#f25c66',
-        600: '#d72e3a',
+        400: '#f14753',
         500: '#ef3340',
-        200: '#f47079'
+        600: '#d72e3a',
+        700: '#bf2933'
+      },
+      yellowScheme: {
+        200: '#ffec4d',
+        300: '#ffe934',
+        400: '#ffe71a',
+        500: '#FFE401',
+        600: '#e6cd01',
+        700: '#ccb601'
       }
     }
   },

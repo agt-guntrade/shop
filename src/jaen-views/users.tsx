@@ -1,20 +1,23 @@
-import {connectView} from '@jaenjs/jaen'
+import {AddIcon, CheckCircleIcon, EditIcon, Icon} from '@chakra-ui/icons'
 import {
-  Routes,
-  Route,
-  useParams,
-  useNavigate,
-  useLocation
-} from 'react-router-dom'
-import {FaUser} from '@react-icons/all-files/fa/FaUser'
-import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Box,
   Button,
-  Flex,
+  ButtonGroup,
+  ButtonProps,
   FormControl,
+  FormErrorMessage,
   FormLabel,
+  HStack,
   Input,
   InputGroup,
   InputRightElement,
+  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -22,42 +25,35 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Spinner,
+  Stack,
   Switch,
   Table,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
-  useDisclosure,
-  Text,
   useColorModeValue,
-  Checkbox,
-  Box,
-  HStack,
-  ButtonGroup,
-  FormErrorMessage,
-  InputProps,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  ButtonProps,
-  useToast,
-  Spinner,
-  Center,
-  Link,
-  Stack
+  useDisclosure,
+  useToast
 } from '@chakra-ui/react'
-import {AddIcon, CheckCircleIcon, EditIcon, Icon} from '@chakra-ui/icons'
-import {Controller, useForm} from 'react-hook-form'
+import {connectView} from '@jaenjs/jaen'
+import {FaUser} from '@react-icons/all-files/fa/FaUser'
 import React from 'react'
-import usersGet from '../snek-functions/src/usersGet'
+import {Controller, useForm} from 'react-hook-form'
+import {
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams
+} from 'react-router-dom'
 import usersAdd from '../snek-functions/src/usersAdd'
-import usersUpdate from '../snek-functions/src/usersUpdate'
 import usersDelete from '../snek-functions/src/usersDelete'
+import usersGet from '../snek-functions/src/usersGet'
+import usersUpdate from '../snek-functions/src/usersUpdate'
 
 const UsersList = () => {
   const textColor = useColorModeValue('gray.700', 'white')
@@ -321,8 +317,7 @@ const UserDetails = () => {
               {...register('password', {
                 required: 'This is required',
                 pattern: {
-                  value:
-                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
                     'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character'
                 }
@@ -709,8 +704,7 @@ const AddUserControl = () => {
                   {...register('password', {
                     required: 'This is required',
                     pattern: {
-                      value:
-                        /^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/,
+                      value: /^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/,
                       message:
                         'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character'
                     }

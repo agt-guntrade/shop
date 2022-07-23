@@ -1,20 +1,19 @@
 import {
   AspectRatio,
   Box,
+  Button,
+  Center,
+  Divider,
   Flex,
+  Heading,
+  Icon,
+  Text,
+  useClipboard,
   useColorModeValue,
   useDisclosure,
   VStack,
   Wrap,
-  WrapItem,
-  Text,
-  Button,
-  Center,
-  Divider,
-  Icon,
-  useClipboard,
-  Heading,
-  HStack
+  WrapItem
 } from '@chakra-ui/react'
 import {
   getFormattedProductPrices,
@@ -22,7 +21,7 @@ import {
   ProductPageData,
   ShopifyProduct
 } from '@snek-at/gatsby-theme-shopify'
-import {GatsbyImage, IGatsbyImageData} from 'gatsby-plugin-image'
+import {GatsbyImage} from 'gatsby-plugin-image'
 import React from 'react'
 import ImagesViewer from 'react-images-viewer'
 
@@ -35,9 +34,9 @@ import ContactModal from '../../organisms/ContactModal/ContactModal'
 
 import {replaceHexColorsInHTML} from '../../../common/utils'
 
+import {useUserAuth} from '../../../services/useUserAuth'
 import {ContainerLayout} from '../../ContainerLayout'
 import {ProductSlider} from '../../molecules/ProductSlider'
-import {useUserAuth} from '../../../services/useUserAuth'
 
 export interface ProductTemplateProps extends ProductPageData {
   path: string
@@ -64,9 +63,7 @@ export const ProductTemplate = ({
             <Flex direction={{base: 'column', lg: 'row'}}>
               <ImageSlider
                 featuredMedia={shopifyProduct.featuredMedia}
-                media={shopifyProduct.media.filter(
-                  m => m.id !== shopifyProduct.featuredMedia?.id
-                )}
+                media={shopifyProduct.media}
                 description={shopifyProduct.descriptionHtml}
               />
               <ProductDetail
@@ -324,6 +321,7 @@ const ImageThumbnailWrapItem = (props: {
         bg: useColorModeValue('gray.300', 'gray.800')
       }}
       transition="ease-out">
+      {props.aaaa}
       <GatsbyImage
         onDragStart={e => e.preventDefault()}
         draggable="false"
@@ -345,7 +343,7 @@ const ImageSlider = (props: {
   media: ShopifyProduct['media']
   description?: string
 }) => {
-  const media = props.media.concat(props.featuredMedia || [])
+  const media = props.media
   const [curMediaIndex, setCurMediaIndex] = React.useState<number>(0)
 
   const [isPreviewOpen, setIsPreviewOpen] = React.useState<boolean>(false)

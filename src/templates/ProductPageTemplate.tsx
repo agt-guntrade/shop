@@ -82,6 +82,8 @@ const ProductPageTemplate = (
     }
   }
 
+  console.log('shopifyProduct: ', props.data.shopifyProduct)
+
   return (
     <>
       <SEO pagePath={props.path} pageMeta={buildProductPageMeta()} />

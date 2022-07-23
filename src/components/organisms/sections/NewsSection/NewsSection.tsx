@@ -1,27 +1,21 @@
+import {
+  Box,
+  Container,
+  Divider,
+  Heading,
+  HStack,
+  useDisclosure
+} from '@chakra-ui/react'
+import {connectSection, Field, useJaenPageIndex} from '@jaenjs/jaen'
+import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 import {scroller} from 'react-scroll'
-import {useColorModeValue} from '@chakra-ui/color-mode'
-import {
-  AspectRatio,
-  VStack,
-  Stack,
-  useDisclosure,
-  Box,
-  Heading,
-  Text,
-  Container,
-  HStack,
-  Divider
-} from '@chakra-ui/react'
-import {Field, useJaenPageIndex, connectSection} from '@jaenjs/jaen'
-import {StaticImage} from 'gatsby-plugin-image'
-import {Slider} from '@snek-at/uikit'
 
+import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
 import {NewsCard} from '../../../molecules/NewsCard'
 import NewsModal from '../../NewsModal'
-import {getThemeColor} from '../../../../common/utils'
 import * as style from './style'
 
 export interface NewsSectionProps {
@@ -92,7 +86,7 @@ export const News = ({anchor, heading}: NewsProps) => {
         <Container position="relative" py="10" maxW="8xl">
           <Box textAlign="center" my="10">
             <Heading size="2xl">{heading}</Heading>
-            <Bullet color="agt.red" w="unset" fontSize="xl" mt="5" mb="10" />
+            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <Slider
             flexDir="column"

@@ -1,8 +1,8 @@
-import React from 'react'
-import {IconButton, ButtonGroup} from '@chakra-ui/react'
+import {ButtonGroup, IconButton} from '@chakra-ui/react'
 import {FiMail} from '@react-icons/all-files/fi/FiMail'
 import {FiMapPin} from '@react-icons/all-files/fi/FiMapPin'
 import {FiPhoneCall} from '@react-icons/all-files/fi/FiPhoneCall'
+import React from 'react'
 
 export interface SideButtonsProps {
   onMailButtonClick: () => void
@@ -14,8 +14,7 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
   return (
     <ButtonGroup
       as="aside"
-      color="white"
-      colorScheme="agt.redScheme"
+      colorScheme="agt.yellowScheme"
       position="fixed"
       bottom={{base: '0', md: '50%'}}
       right="0"
@@ -27,24 +26,30 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
       <IconButton
         w={{base: '100%', md: 'unset'}}
         aria-label="Email"
+        color="black"
         icon={<FiMail fontSize="20px" />}
         onClick={() => {
           props.onMailButtonClick()
-        }}/>
+        }}
+      />
       <IconButton
         w={{base: '100%', md: 'unset'}}
         aria-label="Location"
+        color="black"
         icon={<FiMapPin fontSize="20px" />}
         onClick={() => {
           props.onLocationButtonClick()
-        }}/>
+        }}
+      />
       <IconButton
         w={{base: '100%', md: 'unset'}}
         aria-label="Phone"
+        color="black"
         icon={<FiPhoneCall fontSize="20px" />}
         onClick={() => {
           props.onPhoneButtonClick()
-        }}/>
+        }}
+      />
     </ButtonGroup>
   )
 }

@@ -1,30 +1,27 @@
-import React, {ReactNode} from 'react'
+import {HeadingProps, TextProps} from '@chakra-ui/layout'
 import {
   Box,
-  BoxProps,
-  chakra,
-  Link,
-  Stack,
-  Text,
-  useColorModeValue,
-  VisuallyHidden,
-  StackDivider,
-  Heading,
-  SimpleGrid,
-  SimpleGridProps,
+  Button,
   ButtonGroup,
   ButtonGroupProps,
-  IconButton,
+  chakra,
+  Heading,
   HTMLChakraProps,
+  IconButton,
   Input,
-  Button
+  SimpleGrid,
+  SimpleGridProps,
+  Stack,
+  StackDivider,
+  Text,
+  useColorModeValue,
+  VisuallyHidden
 } from '@chakra-ui/react'
-import {HeadingProps, TextProps} from '@chakra-ui/layout'
-import {FiInstagram} from '@react-icons/all-files/fi/FiInstagram'
-import {FiGithub} from '@react-icons/all-files/fi/FiGithub'
 import {FiFacebook} from '@react-icons/all-files/fi/FiFacebook'
-
-import {Logo} from '../../../common/assets/Logo'
+import {FiGithub} from '@react-icons/all-files/fi/FiGithub'
+import {FiInstagram} from '@react-icons/all-files/fi/FiInstagram'
+import {StaticImage} from 'gatsby-plugin-image'
+import React, {ReactNode} from 'react'
 
 export interface FooterProps {
   col1h: React.ReactNode
@@ -42,7 +39,7 @@ const Copyright = (props: TextProps) => (
 )
 
 const SocialMediaLinks = (props: ButtonGroupProps) => (
-  <ButtonGroup variant="ghost" color="agt.red" {...props}>
+  <ButtonGroup variant="ghost" color="agt.yellowScheme.600" {...props}>
     <IconButton
       target={'_blank'}
       as="a"
@@ -216,7 +213,11 @@ export const Footer = ({
             direction={{base: 'column', lg: 'row'}}
             spacing={{base: '10', lg: '28'}}>
             <Box flex="1">
-              <Logo />
+              <StaticImage
+                src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
+                alt="Snek"
+                style={{maxWidth: '300px'}}
+              />
             </Box>
             <Stack
               direction={{base: 'column', md: 'row'}}

@@ -1,7 +1,7 @@
-import React from 'react'
 import {Box, Heading} from '@chakra-ui/react'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {Slider} from '@snek-at/uikit'
+import React from 'react'
 
 import {BulletIcon} from '../../../common/assets/icons'
 import {ProductCard} from '../ProductCard'
@@ -22,7 +22,13 @@ export const ProductSlider = ({
       {heading && (
         <Box textAlign="center" my="10">
           <Heading size="2xl">{heading}</Heading>
-          <BulletIcon color="agt.red" w="unset" fontSize="xl" mt="5" mb="10" />
+          <BulletIcon
+            color="agt.yellow"
+            w="unset"
+            fontSize="xl"
+            mt="5"
+            mb="10"
+          />
         </Box>
       )}
 

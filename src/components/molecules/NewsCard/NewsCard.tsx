@@ -1,26 +1,16 @@
 //#region > Imports
-import React from 'react'
 import {
-  Box,
-  BoxProps,
-  Flex,
-  Link,
-  Text,
-  Spacer,
-  HStack,
-  Badge,
-  VStack,
-  Heading,
   AspectRatio,
-  StackDivider
+  Badge,
+  Box,
+  Flex,
+  Heading,
+  Text,
+  VStack
 } from '@chakra-ui/layout'
-import {Avatar, useColorModeValue, useDisclosure} from '@chakra-ui/react'
-import {IconContext} from '@react-icons/all-files'
-import {AiFillStar} from '@react-icons/all-files/ai/AiFillStar'
-import {Field, useJaenPageIndex} from '@jaenjs/jaen'
-import {StaticImage} from 'gatsby-plugin-image'
-
-import {IJaenPage} from '@jaenjs/jaen/src/internal-plugins/pages/types'
+import {useColorModeValue} from '@chakra-ui/react'
+import {Field} from '@jaenjs/jaen'
+import React from 'react'
 
 import * as style from './style'
 //#endregion

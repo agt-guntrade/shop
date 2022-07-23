@@ -14,10 +14,10 @@ export const BulletStyle = css`
     }
     :hover {
       svg {
-        fill: #2151a1;
+        fill: #e6cd01;
       }
       p {
-        color: #2151a1;
+        color: #e6cd01;
       }
       transform: scale(1.1);
     }

@@ -1,6 +1,4 @@
-import React from 'react'
 import {ChevronRightIcon} from '@chakra-ui/icons'
-import {FaHome} from '@react-icons/all-files/fa/FaHome'
 import {
   Box,
   Breadcrumb,
@@ -11,8 +9,10 @@ import {
   Icon,
   Text
 } from '@chakra-ui/react'
-import {StaticImage} from 'gatsby-plugin-image'
+import {FaHome} from '@react-icons/all-files/fa/FaHome'
 import {Link as GatsbyLink} from 'gatsby'
+import {StaticImage} from 'gatsby-plugin-image'
+import React from 'react'
 
 import {GCImage} from '../../../common/GCImage'
 
@@ -71,7 +71,7 @@ export const Breadcrumbs = (props: {path: string}) => {
         item = 'Produkte'
         break
       case 'shopping-cart':
-        item = 'Warenkorb'
+        item = 'Merkliste'
         break
       case 'privacy':
         item = 'Datenschutz'

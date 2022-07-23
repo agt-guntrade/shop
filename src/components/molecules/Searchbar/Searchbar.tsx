@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {SearchIcon} from '@chakra-ui/icons'
 import {
   Box,
@@ -10,6 +9,7 @@ import {
   InputGroup,
   InputLeftElement,
   Kbd,
+  Link,
   Modal,
   ModalBody,
   ModalContent,
@@ -19,10 +19,10 @@ import {
   useColorModeValue,
   useDisclosure,
   VisuallyHidden,
-  VStack,
-  Link
+  VStack
 } from '@chakra-ui/react'
 import {getProductTags, ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
+import * as React from 'react'
 
 import {Link as GatsbyLink} from 'gatsby'
 import {ProductRow} from '../ProductRow'

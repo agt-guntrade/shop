@@ -1,15 +1,14 @@
-import React, {ReactNode} from 'react'
 import {
+  AspectRatio,
   Box,
   Flex,
-  Text,
   HStack,
-  VStack,
-  AspectRatio,
-  useColorModeValue
+  Text,
+  useColorModeValue,
+  VStack
 } from '@chakra-ui/react'
-import {Field, connectSection} from '@jaenjs/jaen'
-import {StaticImage} from 'gatsby-plugin-image'
+import {connectSection, Field} from '@jaenjs/jaen'
+import React, {ReactNode} from 'react'
 
 export interface FeatureSectionProps {
   name: string
