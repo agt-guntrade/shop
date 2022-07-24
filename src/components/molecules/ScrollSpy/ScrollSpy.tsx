@@ -1,7 +1,7 @@
-import React from 'react'
-import Scrollspy from 'react-scrollspy'
-import {scroller as Scroll} from 'react-scroll'
 import {Box, Flex, Text} from '@chakra-ui/react'
+import React from 'react'
+import {scroller as Scroll} from 'react-scroll'
+import Scrollspy from 'react-scrollspy'
 
 import {Spy} from '../../../common/assets/Spy'
 import * as style from './style'
@@ -43,20 +43,20 @@ export const ScrollSpy = ({anchors}: ScrollSpyProps) => {
         }}
         currentClassName="active-scroll-spyy">
         <Box
-          className='scrollto'
+          className="scrollto"
           bg="agt.gray"
           py="1"
           px="2"
           borderTopRightRadius={'5px'}>
           {anchors.map((anchor, index) => (
             <Flex
-              className='spyblock'
+              className="spyblock"
               alignItems="center"
               bg="agt.gray"
               py="1"
               onClick={() => scrollTo(anchor?.name)}>
               <Spy
-                className='spy'
+                className="spy"
                 number={index}
                 style={{
                   color: anchor?.name != activeSection ? 'transparent' : ''
@@ -75,16 +75,20 @@ export const ScrollSpy = ({anchors}: ScrollSpyProps) => {
           ))}
         </Box>
         <Flex
-          className='spyblock spyblock-0'
+          className="spyblock spyblock-0"
           alignItems="center"
           bg="agt.gray"
           py="1"
           px="2">
           <Spy
-            className='spy'
+            className="spy"
             number={allItemAnchors.indexOf(activeSection)}
             style={{
-              color: anchors.find(anchor => anchor.name === activeSection)?.name != activeSection ? 'transparent' : ''
+              color:
+                anchors.find(anchor => anchor.name === activeSection)?.name !=
+                activeSection
+                  ? 'transparent'
+                  : ''
             }}
           />
           <Text

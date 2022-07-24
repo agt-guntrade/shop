@@ -9,7 +9,7 @@ export const Spy = (props: any) => {
       {...props.style}>
       <path
         id="small-circle4"
-        fill="#2151a1"
+        fill="#FFE401"
         d="M 355.48,207.03
             C 355.48,289.51 288.62,356.37 206.13,356.37
               123.65,356.37 56.78,289.51 56.78,207.03
@@ -20,7 +20,7 @@ export const Spy = (props: any) => {
         id="#text"
         x="50%"
         y="55%"
-        fill="white"
+        fill="black"
         dominant-baseline="middle"
         text-anchor="middle"
         fontSize={'250'}>
