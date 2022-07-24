@@ -1,16 +1,16 @@
-import React from 'react'
 import {Box, Heading} from '@chakra-ui/layout'
 import {navigate} from 'gatsby'
+import React from 'react'
 
-import {getThemeColor} from '../../../common/utils'
 import {Shine} from '../../../common/style/base'
+import {getThemeColor} from '../../../common/utils'
 
 export interface AccessorieShowcaseProps {}
 
 export const AccessorieShowcase = ({}: AccessorieShowcaseProps) => {
   return (
     <Box
-      onClick={() => navigate('/zubehor')}
+      onClick={() => navigate('/collections/zubehor')}
       cursor="pointer"
       h={{base: '300px', lg: '320px'}}
       css={Shine}
@@ -27,7 +27,11 @@ export const AccessorieShowcase = ({}: AccessorieShowcaseProps) => {
       backgroundSize="cover"
       alignSelf={{base: 'center', lg: 'auto'}}
       backgroundImage="https://secondamendsports.com/wp-content/uploads/2019/10/4D5EB7A900000578-0-image-a-30_1529321909720-1.jpg">
-      <Heading color="white" mt="90px" userSelect="none" style={{WebkitTextStroke: `1px ${getThemeColor("agt.gray")}`}}>
+      <Heading
+        color="white"
+        mt="90px"
+        userSelect="none"
+        style={{WebkitTextStroke: `1px ${getThemeColor('agt.gray')}`}}>
         Zubehör
       </Heading>
     </Box>
