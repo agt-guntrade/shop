@@ -1,5 +1,13 @@
 import {Button} from '@chakra-ui/button'
-import {Box, BoxProps, Circle, Flex, FlexProps, Text} from '@chakra-ui/layout'
+import {
+  Box,
+  BoxProps,
+  Circle,
+  Flex,
+  StackProps,
+  Text,
+  VStack
+} from '@chakra-ui/layout'
 import {
   getFormattedProductPrices,
   ShopifyProduct
@@ -15,7 +23,7 @@ export interface ProductshowcaseProps {
   products: ShopifyProduct[]
 }
 
-const DescriptionBox = motion<FlexProps>(Flex)
+const DescriptionBox = motion<StackProps>(VStack)
 const WeaponBox = motion<BoxProps>(Box)
 
 export const ProductSpotlight = (props: ProductshowcaseProps) => {
@@ -149,7 +157,7 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
                     initial={{opacity: 0, x: 300}}
                     animate={{opacity: 1, x: 0}}
                     transition={{duration: 0.25, delay: 0.33}}>
-                    <Box
+                    <VStack
                       display={{base: 'none', lg: 'block'}}
                       mt={{base: '-2', md: '0'}}>
                       <Text
@@ -160,10 +168,10 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
                       </Text>
                       <Text
                         minH={{base: 30, md: '8vw', lg: '4vw'}}
-                        fontSize={{base: '15', md: '3.5vw', lg: '1.75vw'}}>
+                        fontSize={{base: '15', md: '3vw', lg: '1.5vw'}}>
                         {description}
                       </Text>
-                    </Box>
+                    </VStack>
                     <Button
                       w={{base: '100%', md: '50%'}}
                       ml={{base: 2, md: 0}}

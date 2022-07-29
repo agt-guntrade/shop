@@ -237,7 +237,8 @@ const ProductDetail = (props: {
             bg={'agt.gray'}
             color={'white'}
             _hover={{
-              bg: 'agt.blue'
+              bg: 'agt.yellow',
+              color: 'black'
             }}
             size="lg"
             onClick={onOpen}>

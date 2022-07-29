@@ -22,7 +22,7 @@ export interface FAQAccordionProps {
 
 export const FAQAccordion = ({question, answer}: FAQAccordionProps) => {
   return (
-    <AccordionItem>
+    <AccordionItem my="2">
       <AccordionButton
         borderTopRadius="7px"
         borderBottomRadius="7px"
@@ -89,7 +89,7 @@ export const FAQAccordionSectionJSX = ({
 }: FAQAccordionSectionProps) => (
   <Field.Section
     as={Accordion}
-    props={{defaultIndex: [0]}}
+    props={{defaultIndex: [0], allowMultiple: true}}
     sectionProps={{allowMultiple: true}}
     name={name}
     displayName={displayName}

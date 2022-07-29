@@ -22,6 +22,7 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
       flexDirection={{base: 'row', md: 'column'}}
       w={{base: '100%', md: 'unset'}}
       spacing="0"
+      gap={1.5}
       zIndex="999">
       <IconButton
         w={{base: '100%', md: 'unset'}}
