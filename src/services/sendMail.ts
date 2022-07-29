@@ -12,7 +12,7 @@ export const sendEmail = async (args: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      to_email: 'nicoschett@icloud.com',
+      to_email: 'info@agt-guntrade.at',
       reply_to_email: fromEmail,
       subject: `${name} - ${subject}`,
       content: message
