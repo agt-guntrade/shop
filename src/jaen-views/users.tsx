@@ -50,10 +50,10 @@ import {
   useNavigate,
   useParams
 } from 'react-router-dom'
-import usersAdd from '../snek-functions/src/usersAdd'
-import usersDelete from '../snek-functions/src/usersDelete'
-import usersGet from '../snek-functions/src/usersGet'
-import usersUpdate from '../snek-functions/src/usersUpdate'
+import usersAdd from '@snek-functions/agt-users/src/usersAdd'
+import usersDelete from '@snek-functions/agt-users/src/usersDelete'
+import usersGet from '@snek-functions/agt-users/src/usersGet'
+import usersUpdate from '@snek-functions/agt-users/src/usersUpdate'
 
 const UsersList = () => {
   const textColor = useColorModeValue('gray.700', 'white')

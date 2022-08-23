@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "scripts": {
-    "develop": "concurrently --kill-others \"gatsby develop --port 8000\" \"yarn --cwd ./src/snek-functions start\"",
+    "develop": "concurrently --kill-others \"gatsby develop --port 8000\" \"yarn --cwd ./@snek-functions/agt-users start\"",
     "start": "gatsby develop",
     "gbuild": "gatsby build",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages",
@@ -43,7 +43,8 @@
     "react-photo-collage": "^1.0.9",
     "react-scroll": "^1.8.7",
     "react-scrollspy": "^3.4.3",
-    "sb": "^6.5.3"
+    "sb": "^6.5.3",
+    "@snek-functions/agt-users": "./@snek-functions/agt-users"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",

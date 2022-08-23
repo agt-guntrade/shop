@@ -1,7 +1,7 @@
 import {useAnalytics} from '@jaenjs/jaen'
 import {navigate} from 'gatsby'
 import React from 'react'
-import usersAuth from '../snek-functions/src/usersAuth'
+import usersAuth from '@snek-functions/agt-users/src/usersAuth'
 
 export const useUserAuth = () => {
   const analytics = useAnalytics()
