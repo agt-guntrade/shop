@@ -2720,7 +2720,7 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.3.tgz#e45e384e4b8ec16bce2fd903af78450f6bf7ec98"
   integrity sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==
 
-"@jaenjs/jaen@^3.0.0-beta.69":
+"@jaenjs/jaen@^3.0.0-beta.71":
   version "3.0.0-beta.71"
   resolved "https://registry.yarnpkg.com/@jaenjs/jaen/-/jaen-3.0.0-beta.71.tgz#c9c20ed1876bb886d2f7a331d07c00e30151bddc"
   integrity sha512-qT7SSJU/WcgyUZvYn1LzVyR2RvhcKPJXcZ/gB5tAUeAdI6QD5maKbQ21SQfWaHWyFhu0PcXSasVJxF+gPPnTjQ==
