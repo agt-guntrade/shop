@@ -27,7 +27,7 @@
     "@emotion/styled": "^11",
     "@jaenjs/jaen": "^3.0.0-beta.75",
     "@react-icons/all-files": "^4.1.0",
-    "@snek-at/functions": "^0.0.39",
+    "@snek-at/functions": "0.0.54",
     "@snek-at/gatsby-plugin-scaleserp": "^1.0.5",
     "@snek-at/gatsby-theme-shopify": "^1.6.6",
     "@snek-at/react-lottie": "^1.0.0-beta.3",
