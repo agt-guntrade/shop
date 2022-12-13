@@ -146,7 +146,7 @@ export const ProductCard = ({
           ))}
         </Box>
 
-        <Text fontSize="sm" isTruncated>
+        <Text fontSize="sm" noOfLines={1}>
           {tags.otherString}
         </Text>
         <Text fontWeight="semibold">{product.title}</Text>
