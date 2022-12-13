@@ -95,7 +95,7 @@ export const ReviewCard = ({
         <HStack w="100%">
           <Avatar src={reviewImage} boxSize="48px" />
           <Box my="auto">
-            <Text fontWeight="bold" isTruncated maxW="100%">
+            <Text fontWeight="bold" noOfLines={1} maxW="100%">
               {reviewName}
             </Text>
             <Flex>{stars.map(star => star)}</Flex>
