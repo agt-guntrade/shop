@@ -705,7 +705,7 @@ const AddUserControl = () => {
   // return null if path not on /users but on /users/:index
   const {pathname} = useLocation()
 
-  if (pathname !== '/views/users') {
+  if (pathname !== '/views/customers') {
     return null
   }
 
