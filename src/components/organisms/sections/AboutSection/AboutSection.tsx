@@ -93,11 +93,11 @@ export const About = ({anchor}: AboutProps) => {
                   minW={'none'}
                   displayContent={false}
                   card={{
-                    headingFieldName: 'littleThingsCardheading1',
+                    headingFieldName: 'Cardheading1',
                     headingDefaultValue: '   ',
-                    textFieldName: 'littleThingsCardText1',
+                    textFieldName: 'CardText1',
                     textDefaultValue: '   ',
-                    imageFieldName: 'littleThingsCardImage1',
+                    imageFieldName: 'CardImage1',
                     imageDefaultValue: undefined
                   }}
                 />
@@ -117,11 +117,11 @@ export const About = ({anchor}: AboutProps) => {
                     minW={'none'}
                     displayContent={false}
                     card={{
-                      headingFieldName: 'littleThingsCardheading1',
+                      headingFieldName: 'Cardheading1',
                       headingDefaultValue: '   ',
-                      textFieldName: 'littleThingsCardText1',
+                      textFieldName: 'CardText1',
                       textDefaultValue: '   ',
-                      imageFieldName: 'littleThingsCardImage1',
+                      imageFieldName: 'CardImage1',
                       imageDefaultValue: undefined
                     }}
                   />
@@ -132,11 +132,11 @@ export const About = ({anchor}: AboutProps) => {
                   minW={'none'}
                   displayContent={false}
                   card={{
-                    headingFieldName: 'littleThingsCardheading2',
+                    headingFieldName: 'Cardheading2',
                     headingDefaultValue: '   ',
-                    textFieldName: 'littleThingsCardText2',
+                    textFieldName: 'CardText2',
                     textDefaultValue: '   ',
-                    imageFieldName: 'littleThingsCardImage2',
+                    imageFieldName: 'CardImage2',
                     imageDefaultValue: undefined
                   }}
                 />
@@ -147,11 +147,11 @@ export const About = ({anchor}: AboutProps) => {
                   minW={'none'}
                   displayContent={false}
                   card={{
-                    headingFieldName: 'littleThingsCardheading3',
+                    headingFieldName: 'Cardheading3',
                     headingDefaultValue: '   ',
-                    textFieldName: 'littleThingsCardText3',
+                    textFieldName: 'CardText3',
                     textDefaultValue: '   ',
-                    imageFieldName: 'littleThingsCardImage3',
+                    imageFieldName: 'CardImage3',
                     imageDefaultValue: undefined
                   }}
                 />
@@ -169,7 +169,7 @@ export const About = ({anchor}: AboutProps) => {
                 mb="-2"
                 whiteSpace="nowrap">
                 <Field.Text
-                  name="littleThingsHeading1"
+                  name="Heading1"
                   label="Heading"
                   defaultValue="<p>Auch die <i>kleinsten</i><br/> Dinge machen viel <i>Freude</i></p>"
                   rtf
@@ -177,7 +177,7 @@ export const About = ({anchor}: AboutProps) => {
               </Heading>
               <Heading fontSize={{base: 'sm', md: 'md'}} fontWeight="semibold">
                 <Field.Text
-                  name="littleThingssubtitle"
+                  name="subtitle"
                   label="Subtitle"
                   defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                 />
@@ -199,13 +199,13 @@ export const About = ({anchor}: AboutProps) => {
                 <Button color="black">Kontakiere uns</Button>
                 <Button color="black">Unsere Produkte</Button>
                 {/* <LinkButtonField
-              name="littleThingsButton1"
+              name="Button1"
               defaultValue="Zum Shop"
               defaultUrl={`/products`}
               size={{base: 'sm', md: 'md'}}
             />
             <LinkButtonField
-              name="littleThingsButton2"
+              name="Button2"
               defaultValue="Großhandel"
               defaultUrl={`/grosshandel`}
               size={{base: 'sm', md: 'md'}}
