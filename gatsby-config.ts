@@ -9,7 +9,7 @@ import {site} from './jaen-data/internal.json'
 dotenv.config()
 
 JaenSource.jaenData.read()
-const siteUrl = JaenSource.jaenData.internal.siteUrl
+const siteUrl = JaenSource.jaenData.internal.site.siteMetadata.siteUrl
 
 const config: GatsbyConfig = {
   siteMetadata: site.siteMetadata,
