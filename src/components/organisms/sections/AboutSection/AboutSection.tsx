@@ -1,12 +1,16 @@
 import {
   AspectRatio,
   Box,
+  Button,
+  ButtonGroup,
   Container,
   Divider,
   Flex,
   Grid,
   GridItem,
+  HStack,
   Heading,
+  Stack,
   Text,
   useColorModeValue
 } from '@chakra-ui/react'
@@ -16,6 +20,10 @@ import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
 import {FeatureSectionJSX} from '../FeatureSection'
+import CardWithImageBackground from '../../../molecules/CardWithImageBackground'
+import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
+import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
+import * as style from './style'
 
 export interface AboutSectionProps {
   anchor?: string
@@ -25,188 +33,197 @@ export interface AboutSectionProps {
 
 export interface AboutProps {
   anchor?: string
-  heading: ReactNode
-  toplefttext: ReactNode
-  topleftimage: ReactNode
-  bottomlefttext: ReactNode
-  bottomleftimage: ReactNode
-  rightsection: ReactNode
 }
 
-export const About = ({
-  anchor,
-  heading,
-  toplefttext,
-  topleftimage,
-  bottomlefttext,
-  bottomleftimage,
-  rightsection
-}: AboutProps) => {
-  const baseAreas = `
-    "one"
-    "two"
-    "three"
-  `
-
-  const lgAreas = `
-    "one three"
-    "two three"
-  `
+export const About = ({anchor}: AboutProps) => {
+  const cardHeight = {base: '15rem', lg: '15rem', xl: '20rem'}
+  const cardWidth = {base: '12.5rem', lg: '15.5rem', xl: '17.5rem'}
 
   return (
-    <Box id={anchor} position="relative">
-      <Divider
-        orientation="vertical"
-        position="absolute"
-        zIndex={-1}
-        // w="0"
-        // h="100%"
-        top="0"
-        left="calc(4em + 2.5vw)"
-        // borderLeft="1px"
-        borderColor="stroke"
-        display={{base: 'none', '2xl': 'block'}}
-      />
+    <>
       <Box
-        w="100%"
-        h="100%"
-        position="absolute"
-        style={{clip: 'rect(0, auto, auto, 0)'}}>
-        <FixedStrokeLogo
-          strokeColor={getThemeColor('stroke')}
-          backgroundColor={getThemeColor('background')}
-        />
-      </Box>
-      <Container position="relative" py="10" maxW="8xl">
-        <Box textAlign="center" my="10">
-          <Heading size="2xl">{heading}</Heading>
-          <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+        id={anchor}
+        // position="relative"
+        overflow="hidden"
+        css={style.Section}>
+        <Box
+          w="100%"
+          h="100%"
+          position="absolute"
+          style={{clip: 'rect(0, auto, auto, 0)'}}>
+          <StickyStrokeLogo
+            strokeColor={getThemeColor('stroke')}
+            backgroundColor={getThemeColor('background')}
+          />
         </Box>
-        <Grid templateAreas={{base: baseAreas, lg: lgAreas}} gap={9}>
-          <GridItem
-            border="1px"
-            borderColor="border"
-            borderRadius="7px"
-            overflow="hidden"
-            bg={useColorModeValue('white', 'gray.700')}
-            area="one">
-            <AspectRatio
-              ratio={16 / 9}
-              boxSize="full"
-              css={{img: {objectFit: 'cover'}}}>
-              <Box position="relative">
-                <Flex
-                  css={{img: {objectFit: 'cover'}}}
-                  alignItems="stretch"
-                  w="100%"
-                  h="100%">
-                  {topleftimage}
-                </Flex>
-                <Box
-                  position="absolute"
-                  top="0"
-                  left="0"
-                  w="60%"
-                  h="100%"
-                  color="white">
-                  <Text p="5">{toplefttext}</Text>
+
+        <Divider
+          orientation="vertical"
+          position="absolute"
+          zIndex={-1}
+          // w="0"
+          // h="100%"
+          top="0"
+          left="calc(4em + 2.5vw)"
+          // borderLeft="1px"
+          borderColor="stroke"
+          display={{base: 'none', '2xl': 'block'}}
+        />
+        <Stack
+          zIndex={-1}
+          py="20"
+          px={{base: 0, sm: 4, md: 8}}
+          align="center"
+          justify="center">
+          <Container
+            justifyContent="space-between"
+            as={Flex}
+            gap={{base: 32, xl: 8}}
+            flexDirection={{base: 'column', xl: 'row'}}
+            py={{base: 44, md: 20}}
+            maxW={CONTAINER_MAX_WIDTH}>
+            <Flex display={{base: 'none', md: 'flex'}} gap="4">
+              <Stack
+                flex="1"
+                justify="center"
+                display={{base: 'none', xl: 'flex'}}>
+                <CardWithImageBackground
+                  h={cardHeight}
+                  w={cardWidth}
+                  minW={'none'}
+                  displayContent={false}
+                  card={{
+                    headingFieldName: 'littleThingsCardheading1',
+                    headingDefaultValue: '   ',
+                    textFieldName: 'littleThingsCardText1',
+                    textDefaultValue: '   ',
+                    imageFieldName: 'littleThingsCardImage1',
+                    imageDefaultValue: undefined
+                  }}
+                />
+              </Stack>
+              <Stack
+                gap="4"
+                spacing="0"
+                h="full"
+                w="full"
+                align="center"
+                justify="center"
+                flexDirection={{base: 'row', xl: 'column'}}>
+                <Box display={{xl: 'none'}}>
+                  <CardWithImageBackground
+                    h={cardHeight}
+                    w={cardWidth}
+                    minW={'none'}
+                    displayContent={false}
+                    card={{
+                      headingFieldName: 'littleThingsCardheading1',
+                      headingDefaultValue: '   ',
+                      textFieldName: 'littleThingsCardText1',
+                      textDefaultValue: '   ',
+                      imageFieldName: 'littleThingsCardImage1',
+                      imageDefaultValue: undefined
+                    }}
+                  />
                 </Box>
-              </Box>
-            </AspectRatio>
-          </GridItem>
-          <GridItem
-            border="1px"
-            borderColor="border"
-            borderRadius="7px"
-            overflow="hidden"
-            bg={useColorModeValue('white', 'gray.700')}
-            area="two">
-            <AspectRatio
-              ratio={16 / 7}
-              boxSize="full"
-              css={{img: {objectFit: 'cover'}}}>
-              <Flex>
-                <Box w="60%" h="100%" overflow="auto">
-                  <Text p="5">{bottomlefttext}</Text>
-                </Box>
-                <Flex
-                  css={{img: {objectFit: 'cover'}}}
-                  alignItems="stretch"
-                  w="40%"
-                  h="100%">
-                  {bottomleftimage}
-                </Flex>
-              </Flex>
-            </AspectRatio>
-          </GridItem>
-          <GridItem
-            border="1px"
-            borderColor="border"
-            overflow="hidden"
-            borderRadius="7px"
-            bg={useColorModeValue('white', 'gray.700')}
-            area="three">
-            {rightsection}
-          </GridItem>
-        </Grid>
-      </Container>
-    </Box>
+                <CardWithImageBackground
+                  h={cardHeight}
+                  w={cardWidth}
+                  minW={'none'}
+                  displayContent={false}
+                  card={{
+                    headingFieldName: 'littleThingsCardheading2',
+                    headingDefaultValue: '   ',
+                    textFieldName: 'littleThingsCardText2',
+                    textDefaultValue: '   ',
+                    imageFieldName: 'littleThingsCardImage2',
+                    imageDefaultValue: undefined
+                  }}
+                />
+
+                <CardWithImageBackground
+                  h={cardHeight}
+                  w={cardWidth}
+                  minW={'none'}
+                  displayContent={false}
+                  card={{
+                    headingFieldName: 'littleThingsCardheading3',
+                    headingDefaultValue: '   ',
+                    textFieldName: 'littleThingsCardText3',
+                    textDefaultValue: '   ',
+                    imageFieldName: 'littleThingsCardImage3',
+                    imageDefaultValue: undefined
+                  }}
+                />
+              </Stack>
+            </Flex>
+
+            <Stack
+              // zIndex={'999'}
+              maxW={{xl: '50%'}}
+              spacing="8"
+              justify="center">
+              <Heading
+                fontSize={{base: 'md', md: 'xl', xl: '2xl'}}
+                lineHeight={{base: '1.25rem', md: '2rem', xl: '2.5rem'}}
+                mb="-2"
+                whiteSpace="nowrap">
+                <Field.Text
+                  name="littleThingsHeading1"
+                  label="Heading"
+                  defaultValue="<p>Auch die <i>kleinsten</i><br/> Dinge machen viel <i>Freude</i></p>"
+                  rtf
+                />
+              </Heading>
+              <Heading fontSize={{base: 'sm', md: 'md'}} fontWeight="semibold">
+                <Field.Text
+                  name="littleThingssubtitle"
+                  label="Subtitle"
+                  defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                />
+              </Heading>
+              <Text
+                fontSize={{base: 'sm', md: 'md'}}
+                fontWeight="light"
+                as="span">
+                <Field.Text
+                  name="text"
+                  label="Text"
+                  defaultValue="At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+                />
+              </Text>
+              <ButtonGroup
+                flexDir={{base: 'row-reverse', md: 'row'}}
+                colorScheme="agt.yellowScheme"
+                color="black">
+                <Button color="black">Kontakiere uns</Button>
+                <Button color="black">Unsere Produkte</Button>
+                {/* <LinkButtonField
+              name="littleThingsButton1"
+              defaultValue="Zum Shop"
+              defaultUrl={`/products`}
+              size={{base: 'sm', md: 'md'}}
+            />
+            <LinkButtonField
+              name="littleThingsButton2"
+              defaultValue="Großhandel"
+              defaultUrl={`/grosshandel`}
+              size={{base: 'sm', md: 'md'}}
+              variant="outline"
+            /> */}
+              </ButtonGroup>
+            </Stack>
+          </Container>
+        </Stack>
+      </Box>
+    </>
   )
 }
 
 export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
   connectBlock(
     () => {
-      return (
-        <About
-          anchor={anchor}
-          heading={
-            <Field.Text
-              name="heading"
-              defaultValue={'Über uns'}
-              label="Überschrift"
-            />
-          }
-          toplefttext={
-            <Field.Text
-              name="toplefttext"
-              defaultValue={'Über uns'}
-              rtf
-              label="Text"
-            />
-          }
-          topleftimage={
-            <Field.Image
-              name="topleftimage"
-              objectFit="fill"
-              defaultValue={
-                'http://honor.ancorathemes.com/wp-content/uploads/2018/03/banner_5_bg.jpg'
-              }
-              label="Text"
-            />
-          }
-          bottomlefttext={
-            <Field.Text
-              name="bottomlefttext"
-              defaultValue={'Über uns'}
-              rtf
-              label="Text"
-            />
-          }
-          bottomleftimage={
-            <Field.Image
-              name="bottomleftimage"
-              defaultValue={
-                'http://honor.ancorathemes.com/wp-content/uploads/2018/03/banner_5_bg.jpg'
-              }
-              label="Text"
-            />
-          }
-          rightsection={
-            <FeatureSectionJSX name="features" displayName="Merkmale" />
-          }
-        />
-      )
+      return <About anchor={anchor} />
     },
     {
       name: name,

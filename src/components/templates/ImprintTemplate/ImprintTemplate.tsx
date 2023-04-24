@@ -112,7 +112,7 @@ export const ImprintTemplate = ({path, content}: ImprintTemplateProps) => {
         {content}
         <GoogleMaps
           mt={5}
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10977.908361298725!2d14.2921416!3d46.5382484!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf0d0d69eedf5cb7d!2sWaffenhandel%20T%C3%BCrk!5e0!3m2!1sen!2sat!4v1647540212169!5m2!1sen!2sat"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2658.793548439696!2d13.482410015651524!3d48.21059237922942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477414f48eca0575%3A0x95a37c9b5dc7ef8e!2sWildfellnerstra%C3%9Fe%2022%2F1%2C%204910%20Ried%20im%20Innkreis!5e0!3m2!1sen!2sat!4v1682348281282!5m2!1sen!2sat"
         />
       </ContainerLayout>
     </>

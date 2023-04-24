@@ -134,31 +134,6 @@ ${message}
               />
             </FormControl>
           </Box>
-          <Box w={{base: '100%', md: '50%'}}>
-            <FormControl isInvalid={!!errors.requestOption}>
-              <FormLabel htmlFor="request-type">
-                Welches Anliegen haben Sie?
-              </FormLabel>
-              <Controller
-                name="requestOption"
-                control={control}
-                rules={{required: true}}
-                render={({field}) => (
-                  <Select
-                    placeholder="Bitte auswählen"
-                    bg="primary"
-                    borderColor="#D4D4D9"
-                    {...field}>
-                    {requestOptions.map((option, index) => (
-                      <option key={index} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </Select>
-                )}
-              />
-            </FormControl>
-          </Box>
         </Flex>
         <Box mt="3">
           <FormControl isInvalid={!!errors.message}>

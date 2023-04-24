@@ -143,13 +143,13 @@ export const PrivacyTemplate = (props: {path: string}) => {
           </a>
           .
         </Text>
-        {CookieConsentApi.allowedCategory('analytics') ? (
+        {CookieConsentApi?.allowedCategory('analytics') ? (
           <>
             <Link
               mt="4"
               mb="2"
               color="green"
-              onClick={() => CookieConsentApi.showSettings(200)}>
+              onClick={() => CookieConsentApi?.showSettings(200)}>
               Sie haben Cookies akzeptiert.
             </Link>
           </>
@@ -158,7 +158,7 @@ export const PrivacyTemplate = (props: {path: string}) => {
             mt="4"
             mb="2"
             color="agt.red"
-            onClick={() => CookieConsentApi.showSettings(200)}>
+            onClick={() => CookieConsentApi?.showSettings(200)}>
             Sie haben die Cookies nicht akzeptiert.
           </Link>
         )}

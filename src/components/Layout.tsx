@@ -43,8 +43,13 @@ export const Layout = ({path, children}: LayoutProps) => {
         ]}
         col3h="Öffnungszeiten"
         col3={[
-          'Mo. – Fr. 8.00 – 12.00 / 14.00 – 18.00',
-          'Sonn, Sams- und Feiertags geschlossen'
+          'MO: Geschlossen',
+          'DI: 8:00 - 12:00 - 14:00 - 18:00',
+          'MI: 8:00 - 12:00',
+          'DO: 8:00 - 12:00 - 14:00 - 18:00',
+          'FR: 8:00 - 12:00 - 14:00 - 18:00',
+          'SA: 8:00 - 12:00',
+          'Sonn und Feiertag: Geschlossen'
         ]}
       />
     </>
