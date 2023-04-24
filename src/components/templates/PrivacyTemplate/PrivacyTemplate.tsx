@@ -1,12 +1,26 @@
 import {Heading, Link, Text} from '@chakra-ui/react'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {useCookieState} from '../../../services/cookiemodal'
 import {ContainerLayout} from '../../ContainerLayout'
 import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
 import {getCookieConsentApi} from '@snek-at/jaen'
 
 export const PrivacyTemplate = (props: {path: string}) => {
-  const CookieConsentApi = getCookieConsentApi()
+  const showSettings = () => {
+    const CookieConsentApi = getCookieConsentApi()
+
+    CookieConsentApi.showSettings(200)
+  }
+
+  const [mapsEnabled, setMapsEnabled] = useState(false)
+
+  useEffect(() => {
+    const CookieConsentApi = getCookieConsentApi()
+
+    const analyticsEnabled = CookieConsentApi.allowedCategory('analytics')
+
+    setMapsEnabled(analyticsEnabled)
+  }, [])
 
   return (
     <>
@@ -143,22 +157,14 @@ export const PrivacyTemplate = (props: {path: string}) => {
           </a>
           .
         </Text>
-        {CookieConsentApi?.allowedCategory('analytics') ? (
+        {mapsEnabled ? (
           <>
-            <Link
-              mt="4"
-              mb="2"
-              color="green"
-              onClick={() => CookieConsentApi?.showSettings(200)}>
+            <Link mt="4" mb="2" color="green" onClick={showSettings}>
               Sie haben Cookies akzeptiert.
             </Link>
           </>
         ) : (
-          <Link
-            mt="4"
-            mb="2"
-            color="agt.red"
-            onClick={() => CookieConsentApi?.showSettings(200)}>
+          <Link mt="4" mb="2" color="agt.red" onClick={showSettings}>
             Sie haben die Cookies nicht akzeptiert.
           </Link>
         )}
