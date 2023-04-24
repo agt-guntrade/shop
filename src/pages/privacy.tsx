@@ -1,7 +1,7 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {connectPage} from '@jaenjs/jaen'
+import {connectPage} from '@snek-at/jaen'
 import {Layout} from '../components/Layout'
 import {PrivacyTemplate} from '../components/templates/PrivacyTemplate'
 
@@ -14,12 +14,12 @@ const PrivacyPage = connectPage(
     )
   },
   {
-    displayName: 'LegalPage'
+    label: 'Datenschutz'
   }
 )
 
 export const query = graphql`
-  query($jaenPageId: String!) {
+  query ($jaenPageId: String!) {
     ...JaenPageQuery
   }
 `

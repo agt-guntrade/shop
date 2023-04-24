@@ -9,7 +9,7 @@ import {
   VStack
 } from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
-import {Field} from '@jaenjs/jaen'
+import {Field} from '@snek-at/jaen'
 import React from 'react'
 
 import * as style from './style'
@@ -86,14 +86,14 @@ export const NewsCard = () => {
             color="white"
             bgColor="agt.blue"
             textTransform="none">
-            <Field.Text name="tag" defaultValue="Aktion" />
+            <Field.Text name="tag" defaultValue="Aktion" label="Tag" />
           </Badge>
         </Flex>
         <Heading
           color={useColorModeValue('gray.700', 'white')}
           fontSize={'2xl'}
           fontFamily={'body'}>
-          <Field.Text name="heading" defaultValue="Titel" />
+          <Field.Text name="heading" defaultValue="Titel" label="Titel" />
         </Heading>
         <Text color={'gray.500'} noOfLines={4}>
           <Field.Text
@@ -102,6 +102,7 @@ export const NewsCard = () => {
     diam nonumy eirmod tempor invidunt ut labore et dolore magna
     aliquyam erat, sed diam voluptua. At vero eos et accusam et
     justo duo dolores et ea rebum."
+            label="Beschreibung"
           />
         </Text>
       </VStack>

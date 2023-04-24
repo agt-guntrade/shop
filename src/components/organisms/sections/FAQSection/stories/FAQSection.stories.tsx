@@ -1,10 +1,9 @@
 import React from 'react'
-import {withJaenMock, Field} from '@jaenjs/jaen'
+import {withJaenMock} from '@snek-at/jaen'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 
 import {FAQSectionJSX} from '../FAQSection'
 import {jaenData} from './jaen-data'
-import {FAQAccordionSectionJSX} from '../../FAQAccordionSection'
 
 export default {
   title: 'Components/Organisms/Sections/FAQSection',

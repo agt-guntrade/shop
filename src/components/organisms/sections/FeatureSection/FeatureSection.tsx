@@ -7,7 +7,7 @@ import {
   useColorModeValue,
   VStack
 } from '@chakra-ui/react'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import React, {ReactNode} from 'react'
 
 export interface FeatureSectionProps {
@@ -53,18 +53,25 @@ export const Feature = ({image, heading, lead}: FeatureProps) => {
 }
 
 export const FeatureSection = ({name, displayName}: FeatureSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <Feature
-          heading={<Field.Text name="heading" defaultValue="Heading" />}
-          lead={<Field.Text name="lead" defaultValue="Lead" />}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue="Heading"
+              label="Überschrift"
+            />
+          }
+          lead={<Field.Text name="lead" defaultValue="Lead" label="Subline" />}
           image={
             <Field.Image
               name="image"
               defaultValue={
                 'http://honor.ancorathemes.com/wp-content/uploads/2018/03/banner_5_bg.jpg'
               }
+              label="Image"
             />
           }
         />
@@ -72,7 +79,7 @@ export const FeatureSection = ({name, displayName}: FeatureSectionProps) =>
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -89,9 +96,7 @@ export const FeatureSectionJSX = ({name, displayName}: FeatureSectionProps) => (
       h: '10%'
     }}
     name={name}
-    displayName={displayName}
-    sections={[
-      FeatureSection({name: `${name}-item`, displayName: displayName})
-    ]}
+    label={displayName}
+    blocks={[FeatureSection({name: `${name}-item`, displayName: displayName})]}
   />
 )

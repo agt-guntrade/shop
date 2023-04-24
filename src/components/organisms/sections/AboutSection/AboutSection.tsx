@@ -10,7 +10,7 @@ import {
   Text,
   useColorModeValue
 } from '@chakra-ui/react'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import React, {ReactNode} from 'react'
 import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
@@ -155,14 +155,25 @@ export const About = ({
 }
 
 export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <About
           anchor={anchor}
-          heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue={'Über uns'}
+              label="Überschrift"
+            />
+          }
           toplefttext={
-            <Field.Text name="toplefttext" defaultValue={'Über uns'} rtf />
+            <Field.Text
+              name="toplefttext"
+              defaultValue={'Über uns'}
+              rtf
+              label="Text"
+            />
           }
           topleftimage={
             <Field.Image
@@ -171,10 +182,16 @@ export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
               defaultValue={
                 'http://honor.ancorathemes.com/wp-content/uploads/2018/03/banner_5_bg.jpg'
               }
+              label="Text"
             />
           }
           bottomlefttext={
-            <Field.Text name="bottomlefttext" defaultValue={'Über uns'} rtf />
+            <Field.Text
+              name="bottomlefttext"
+              defaultValue={'Über uns'}
+              rtf
+              label="Text"
+            />
           }
           bottomleftimage={
             <Field.Image
@@ -182,6 +199,7 @@ export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
               defaultValue={
                 'http://honor.ancorathemes.com/wp-content/uploads/2018/03/banner_5_bg.jpg'
               }
+              label="Text"
             />
           }
           rightsection={
@@ -192,7 +210,7 @@ export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -203,7 +221,7 @@ export const AboutSectionJSX = ({
 }: AboutSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[AboutSection({name: `${name}-item`, displayName, anchor})]}
+    label={displayName}
+    blocks={[AboutSection({name: `${name}-item`, displayName, anchor})]}
   />
 )

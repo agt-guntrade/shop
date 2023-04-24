@@ -23,6 +23,8 @@ import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
 
 import {Searchbar, SearchbarProps} from '../../molecules/Searchbar'
+import {useAuthentication} from '../../../services/authentication'
+import {NavAuthButton} from './NavAuthButton'
 
 const findBestMatch = (path: string, paths: Array<string>) => {
   let bestMatch: string | undefined
@@ -64,14 +66,6 @@ export interface HeaderProps extends SearchbarProps {
     name: string
     path: string
   }[]
-  auth: {
-    isLoggedIn: boolean
-    user?: {
-      fullName: string
-    }
-    onUserClick: () => void
-    onLoginClick: () => void
-  }
 }
 
 export const Header = (props: HeaderProps) => {
@@ -90,16 +84,6 @@ export const Header = (props: HeaderProps) => {
     activePath,
     links.map(l => l.path)
   )
-
-  const authDisplayName = props.auth.user?.fullName || 'Anmelden'
-
-  const handleAuthClick = () => {
-    if (props.auth.isLoggedIn) {
-      props.auth.onUserClick()
-    } else {
-      props.auth.onLoginClick()
-    }
-  }
 
   return (
     <>
@@ -163,23 +147,7 @@ export const Header = (props: HeaderProps) => {
                 Kontakt
               </Button>
 
-              <Button
-                variant="ghost"
-                display={{
-                  base: 'none',
-                  md: 'flex'
-                }}
-                _hover={{
-                  textDecoration: 'underline'
-                }}
-                color={['white']}
-                colorScheme="agt.grayScheme"
-                fontSize={'md'}
-                size="sm"
-                rounded="md"
-                onClick={handleAuthClick}>
-                {authDisplayName}
-              </Button>
+              <NavAuthButton />
 
               <Button
                 as={GatsbyLink}
@@ -228,17 +196,7 @@ export const Header = (props: HeaderProps) => {
                       children={links}
                     />
                     <Divider />
-                    <ClickMobileNavItem
-                      name={
-                        <>
-                          <Icon as={FaUser} w={4} h={4} />
-                          <Box as="span" ml={2}>
-                            {authDisplayName}
-                          </Box>
-                        </>
-                      }
-                      onClick={handleAuthClick}
-                    />
+
                     <MobileNavItem name="Kontakt" path="/contact" />
                   </VStack>
                 </Flex>

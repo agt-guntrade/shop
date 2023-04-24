@@ -1,4 +1,4 @@
-import {connectPage} from '@jaenjs/jaen'
+import {connectPage} from '@snek-at/jaen'
 import {GoogleReview} from '@snek-at/gatsby-plugin-scaleserp'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {graphql, PageProps} from 'gatsby'
@@ -81,7 +81,7 @@ const IndexPage = (props: PageProps<IndexPageData>) => {
 }
 
 export const query = graphql`
-  query($featuredProductIds: [String!]!, $jaenPageId: String!) {
+  query ($featuredProductIds: [String!]!, $jaenPageId: String!) {
     googleReviews: allGoogleReview {
       nodes {
         ...googleReviewData
@@ -140,5 +140,5 @@ export const query = graphql`
 `
 
 export default connectPage(IndexPage, {
-  displayName: 'IndexPage'
+  displayName: 'Home'
 })

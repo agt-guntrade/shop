@@ -1,7 +1,7 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {connectPage, Field} from '@jaenjs/jaen'
+import {connectPage, Field} from '@snek-at/jaen'
 import {Layout} from '../components/Layout'
 import {ImprintTemplate} from '../components/templates/ImprintTemplate'
 
@@ -14,6 +14,7 @@ const ImprintPage = connectPage(
           content={
             <Field.Text
               name="content"
+              label="Inhalt"
               rtf
               defaultValue={`
 <h2>
@@ -124,12 +125,12 @@ const ImprintPage = connectPage(
     )
   },
   {
-    displayName: 'LegalPage'
+    label: 'Impressum'
   }
 )
 
 export const query = graphql`
-  query($jaenPageId: String!) {
+  query ($jaenPageId: String!) {
     ...JaenPageQuery
   }
 `

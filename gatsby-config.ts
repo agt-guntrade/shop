@@ -1,9 +1,15 @@
 import dotenv from 'dotenv'
 import type {GatsbyConfig} from 'gatsby'
 import path from 'path'
+import {JaenSource} from 'jaen-utils'
+import {IJaenPage} from '@snek-at/jaen'
+
 import {site} from './jaen-data/internal.json'
 
 dotenv.config()
+
+JaenSource.jaenData.read()
+const siteUrl = JaenSource.jaenData.internal.siteUrl
 
 const config: GatsbyConfig = {
   siteMetadata: site.siteMetadata,
@@ -21,13 +27,17 @@ const config: GatsbyConfig = {
               }
             }
           }`,
-        resolveSiteUrl: () => site.siteMetadata.siteUrl,
-        resolvePages: ({allSitePage: {nodes: allPages}}) => {
+        resolveSiteUrl: () => siteUrl,
+        resolvePages: ({
+          allSitePage: {nodes: allPages}
+        }: {
+          allSitePage: {nodes: IJaenPage[]}
+        }) => {
           return allPages.map(page => {
             return {...page}
           })
         },
-        serialize: ({path, modifiedGmt}) => {
+        serialize: ({path, modifiedGmt}: any) => {
           return {
             url: path,
             lastmod: modifiedGmt
@@ -36,9 +46,9 @@ const config: GatsbyConfig = {
       }
     },
     {
-      resolve: '@jaenjs/jaen',
+      resolve: `gatsby-plugin-jaen`,
       options: {
-        jaenProjectId: 3
+        snekResourceId: `63571eee-f41c-4745-9130-d746c2cb97a3`
       }
     },
     '@chakra-ui/gatsby-plugin',

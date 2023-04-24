@@ -6,7 +6,7 @@ import {
   HStack,
   useDisclosure
 } from '@chakra-ui/react'
-import {connectSection, Field, useJaenPageIndex} from '@jaenjs/jaen'
+import {connectBlock, Field, useIndexField} from '@snek-at/jaen'
 import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 import {scroller} from 'react-scroll'
@@ -34,7 +34,7 @@ export const News = ({anchor, heading}: NewsProps) => {
   const [url, setUrl] = React.useState<string>()
   const {isOpen, onOpen, onClose} = useDisclosure()
 
-  const index = useJaenPageIndex({
+  const index = useIndexField({
     jaenPageId: 'JaenPage /news/'
   })
 
@@ -135,11 +135,21 @@ export const News = ({anchor, heading}: NewsProps) => {
               <NewsModal
                 url={url || ''}
                 highlight={
-                  <Field.Text name="highlight" defaultValue="Aktion" />
+                  <Field.Text
+                    name="highlight"
+                    defaultValue="Aktion"
+                    label="Tag"
+                  />
                 }
                 isOpen={isOpen}
                 onClose={onClose}
-                heading={<Field.Text name="heading" defaultValue="Titel" />}
+                heading={
+                  <Field.Text
+                    name="heading"
+                    defaultValue="Titel"
+                    label="Überschrift"
+                  />
+                }
                 text={
                   <Field.Text
                     name="description"
@@ -147,6 +157,7 @@ export const News = ({anchor, heading}: NewsProps) => {
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua. At vero eos et accusam et
                 justo duo dolores et ea rebum."
+                    label="Beschreibung"
                   />
                 }
                 image={
@@ -171,16 +182,22 @@ export const News = ({anchor, heading}: NewsProps) => {
 }
 
 export const NewsSection = ({name, displayName, anchor}: NewsSectionProps) =>
-  connectSection(
+  connectBlock(
     () => (
       <News
         anchor={anchor}
-        heading={<Field.Text name="heading" defaultValue={'Neuigkeiten'} />}
+        heading={
+          <Field.Text
+            name="heading"
+            defaultValue={'Neuigkeiten'}
+            label="Überschrift"
+          />
+        }
       />
     ),
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -191,7 +208,7 @@ export const NewsSectionJSX = ({
 }: NewsSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[NewsSection({name: `${name}-item`, displayName, anchor})]}
+    label={displayName}
+    blocks={[NewsSection({name: `${name}-item`, displayName, anchor})]}
   />
 )

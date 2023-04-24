@@ -1,13 +1,6 @@
 import React from 'react'
 import {Button} from '@chakra-ui/button'
-import {
-  Box,
-  BoxProps,
-  Center,
-  Flex,
-  SimpleGrid,
-  Text
-} from '@chakra-ui/layout'
+import {Box, BoxProps, Center, Flex, SimpleGrid, Text} from '@chakra-ui/layout'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {useBreakpointValue} from '@chakra-ui/media-query'
 import {AnimatePresence, motion} from 'framer-motion'
@@ -56,7 +49,7 @@ export const CategoryTab = ({
   prefixPath
 }: CategoryTabProps) => {
   return (
-    <AnimatePresence exitBeforeEnter custom={direction}>
+    <AnimatePresence mode="wait" custom={direction}>
       {visible === 'visible' && (
         <TabBox
           position="relative"
@@ -68,7 +61,12 @@ export const CategoryTab = ({
           exit="exit"
           px={2}
           transition={{duration: 0.15}}>
-          <ProductGrid products={products} spacing="5" columns={{base: 2, sm: 2, md: 3, xl: 6}} prefixPath={prefixPath} />
+          <ProductGrid
+            products={products}
+            spacing="5"
+            columns={{base: 2, sm: 2, md: 3, xl: 6}}
+            prefixPath={prefixPath}
+          />
         </TabBox>
       )}
     </AnimatePresence>
@@ -97,8 +95,8 @@ export const CategoryShowcase = ({
   const [direction, setDirection] = React.useState('right')
 
   const firstRadius = useBreakpointValue({
-    base: {borderTopRadius: '5px', borderLeft: '1px', borderRight: "1px"},
-    md: {borderTopLeftRadius: '5px', borderLeft: '1px', borderRight: "0px"}
+    base: {borderTopRadius: '5px', borderLeft: '1px', borderRight: '1px'},
+    md: {borderTopLeftRadius: '5px', borderLeft: '1px', borderRight: '0px'}
   })
 
   tabs['LATEST'] = {
@@ -116,20 +114,39 @@ export const CategoryShowcase = ({
   })
 
   return (
-    <Box zIndex="2" position="relative" mt={-20} css={style.CategoryShowcase(getThemeColor("border"))} >
+    <Box
+      zIndex="2"
+      position="relative"
+      mt={-20}
+      css={style.CategoryShowcase(getThemeColor('border'))}>
       <Flex>
-        <Flex direction={{base: 'column', md: 'row'}} borderTopLeftRadius='5px' w={{base: '100%', md: 'unset'}}>
+        <Flex
+          direction={{base: 'column', md: 'row'}}
+          borderTopLeftRadius="5px"
+          w={{base: '100%', md: 'unset'}}>
           {tabsList.map(([titel, collection], index) => {
             const isCurrent = current === titel
             return (
               <Box
+                key={index}
                 className="tabs"
                 userSelect="none"
-                minW='max-content'
+                minW="max-content"
                 _hover={isCurrent ? {bg: 'agt.lightgray'} : {bg: '#424240'}}
                 borderTop="1px"
                 _first={firstRadius}
-                _last={{base: {borderTopRadius: '0px',  borderLeft: '1px', borderRight: "1px"}, md: {borderTopRightRadius: '5px', borderLeft: '0px', borderRight: "1px"}}}
+                _last={{
+                  base: {
+                    borderTopRadius: '0px',
+                    borderLeft: '1px',
+                    borderRight: '1px'
+                  },
+                  md: {
+                    borderTopRightRadius: '5px',
+                    borderLeft: '0px',
+                    borderRight: '1px'
+                  }
+                }}
                 cursor="pointer"
                 bg={isCurrent ? 'primary' : 'agt.gray'}
                 py="3"
@@ -152,7 +169,12 @@ export const CategoryShowcase = ({
             )
           })}
         </Flex>
-        <Box w="100%" borderColor="border" borderBottom="1px" display={{base: 'none', md: 'block'}} />
+        <Box
+          w="100%"
+          borderColor="border"
+          borderBottom="1px"
+          display={{base: 'none', md: 'block'}}
+        />
       </Flex>
       <Box
         justifyContent="center"
@@ -168,6 +190,7 @@ export const CategoryShowcase = ({
         {tabsList.map(([titel, collection], index) => {
           return (
             <CategoryTab
+              key={index}
               visible={current === titel ? 'visible' : 'hidden'}
               products={collection.items
                 .sort((a, b) =>

@@ -34,9 +34,21 @@ import ContactModal from '../../organisms/ContactModal/ContactModal'
 
 import {replaceHexColorsInHTML} from '../../../common/utils'
 
-import {useUserAuth} from '../../../services/useUserAuth'
 import {ContainerLayout} from '../../ContainerLayout'
 import {ProductSlider} from '../../molecules/ProductSlider'
+import {useAuthentication} from '../../../services/authentication'
+
+function removeLastPartOfPath(path: string) {
+  let lastSlashIndex = path.lastIndexOf('/')
+  if (lastSlashIndex === -1) {
+    return ''
+  }
+  if (lastSlashIndex === path.length - 1) {
+    path = path.substring(0, path.length - 1)
+    lastSlashIndex = path.lastIndexOf('/')
+  }
+  return path.substring(0, lastSlashIndex + 1)
+}
 
 export interface ProductTemplateProps extends ProductPageData {
   path: string
@@ -52,7 +64,7 @@ export const ProductTemplate = ({
   isOnWishList = false
 }: ProductTemplateProps) => {
   // remove last part of path
-  const prefixPath = path.split('/').slice(0, -1).join('/')
+  const prefixPath = removeLastPartOfPath(path)
 
   return (
     <>
@@ -138,7 +150,7 @@ const ProductDetail = (props: {
   isOnWishList?: boolean
   onWishlistAdd: (id: string) => void
 }) => {
-  const {user} = useUserAuth()
+  const {user} = useAuthentication()
 
   console.log('proeuct user', user)
 
@@ -284,7 +296,7 @@ function ShareText() {
       verticalAlign="center"
       cursor="pointer">
       <Icon as={FaShare} mr="2" />
-      <Text fontWeight={'semibold'} onClick={onCopy}>
+      <Text fontWeight={'semibold'} onClick={onCopy} as="span">
         Teilen
         {hasCopied && (
           <Text ml="2" fontWeight={'thin'}>
@@ -322,7 +334,6 @@ const ImageThumbnailWrapItem = (props: {
         bg: useColorModeValue('gray.300', 'gray.800')
       }}
       transition="ease-out">
-      {props.aaaa}
       <GatsbyImage
         onDragStart={e => e.preventDefault()}
         draggable="false"

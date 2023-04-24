@@ -1,5 +1,5 @@
 import {Box, Container, Divider, Heading, HStack} from '@chakra-ui/layout'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 
@@ -34,6 +34,7 @@ export interface ReviewProps {
 export const Review = ({anchor, heading, googleReviews, bg}: ReviewProps) => {
   const reviewsForSlider = googleReviews.map((review: ReviewItem) => (
     <ReviewCard
+      key={review.id}
       reviewId={review.id}
       reviewImage={review.sourceImage}
       reviewName={review.source}
@@ -130,20 +131,26 @@ export const ReviewSection = ({
   anchor,
   googleReviews
 }: ReviewSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <Review
           anchor={anchor}
           bg="agt.darkbackground"
-          heading={<Field.Text name="heading" defaultValue="Bewertungen" />}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue="Bewertungen"
+              label="Bewertungen"
+            />
+          }
           googleReviews={googleReviews}
         />
       )
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -155,8 +162,8 @@ export const ReviewSectionJSX = ({
 }: ReviewSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[
+    label={displayName}
+    blocks={[
       ReviewSection({name: `${name}-item`, displayName, anchor, googleReviews})
     ]}
   />

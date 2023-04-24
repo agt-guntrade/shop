@@ -1,14 +1,12 @@
 import {Heading, Link, Text} from '@chakra-ui/react'
-import {useCookieConsent} from '@jaenjs/jaen'
 import React from 'react'
 import {useCookieState} from '../../../services/cookiemodal'
 import {ContainerLayout} from '../../ContainerLayout'
 import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
+import {getCookieConsentApi} from '@snek-at/jaen'
 
 export const PrivacyTemplate = (props: {path: string}) => {
-  const cookieSettings = useCookieState()
-
-  const {consentLevel, cookieconsent} = useCookieConsent()
+  const CookieConsentApi = getCookieConsentApi()
 
   return (
     <>
@@ -145,13 +143,13 @@ export const PrivacyTemplate = (props: {path: string}) => {
           </a>
           .
         </Text>
-        {cookieconsent?.validCookie('cc_jaen_cookie') ? (
+        {CookieConsentApi.allowedCategory('analytics') ? (
           <>
             <Link
               mt="4"
               mb="2"
               color="green"
-              onClick={() => cookieconsent.showSettings(200)}>
+              onClick={() => CookieConsentApi.showSettings(200)}>
               Sie haben Cookies akzeptiert.
             </Link>
           </>
@@ -160,7 +158,7 @@ export const PrivacyTemplate = (props: {path: string}) => {
             mt="4"
             mb="2"
             color="agt.red"
-            onClick={() => cookieconsent.showSettings(200)}>
+            onClick={() => CookieConsentApi.showSettings(200)}>
             Sie haben die Cookies nicht akzeptiert.
           </Link>
         )}

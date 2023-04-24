@@ -4,7 +4,7 @@ import {useColorModeValue} from '@chakra-ui/react'
 import {Link as GatsbyLink, navigate} from 'gatsby'
 import {Button} from '@chakra-ui/button'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
-import {Field, connectSection} from '@jaenjs/jaen'
+import {Field, connectBlock} from '@snek-at/jaen'
 
 import {ProductCard} from '../../../molecules/ProductCard'
 import {Bullet} from '../../../atoms/Bullet'
@@ -84,20 +84,28 @@ export const FeaturedPartnerSection = ({
   featuredProducts,
   productsPagePath = '/products'
 }: FeaturedPartnerSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <>
           <FeaturedPartner
             featuredAnchor={featuredAnchor}
             featuredHeading={
-              <Field.Text name="featuredheading" defaultValue={'Empfohlene Produkte'} />
+              <Field.Text
+                name="featuredheading"
+                defaultValue={'Empfohlene Produkte'}
+                label="Überschrift"
+              />
             }
             featuredProducts={featuredProducts}
             productsPagePath={productsPagePath}
             partnerAnchor={partnerAnchor}
             partnerHeading={
-              <Field.Text name="partnerheading" defaultValue={'Partner'} />
+              <Field.Text
+                name="partnerheading"
+                defaultValue={'Partner'}
+                label="Überschrift"
+              />
             }
             partnerscrollsections={
               <Field.Section
@@ -115,8 +123,8 @@ export const FeaturedPartnerSection = ({
                   // w: '100%'
                 }}
                 name="partner"
-                displayName="Partner"
-                sections={[
+                label="Partner"
+                blocks={[
                   PartnerScrollSection({
                     name: `${name}-item`,
                     displayName: 'Partner Logo'
@@ -130,7 +138,7 @@ export const FeaturedPartnerSection = ({
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -144,8 +152,8 @@ export const FeaturedProductsSectionJSX = ({
 }: FeaturedPartnerSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[
+    label={displayName}
+    blocks={[
       FeaturedPartnerSection({
         name: `${name}-item`,
         featuredAnchor,

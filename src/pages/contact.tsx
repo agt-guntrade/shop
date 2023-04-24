@@ -1,4 +1,4 @@
-import {connectPage, Field} from '@jaenjs/jaen'
+import {connectPage, Field} from '@snek-at/jaen'
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 import {Layout} from '../components/Layout'
@@ -11,12 +11,23 @@ const ContactPage = connectPage(
         <ContactTemplate
           path={props.path}
           email={
-            <Field.Text name="email" defaultValue={'info@agt-guntrade.at'} />
+            <Field.Text
+              name="email"
+              defaultValue={'info@agt-guntrade.at'}
+              label="E-Mail"
+            />
           }
-          phone={<Field.Text name="phone" defaultValue={'+43 676 3232 12'} />}
+          phone={
+            <Field.Text
+              name="phone"
+              label="Telefon"
+              defaultValue={'+43 676 3232 12'}
+            />
+          }
           address={
             <Field.Text
               name="address"
+              label="Adresse"
               defaultValue={'Reßnig 20, 9170 Ferlach'}
             />
           }
@@ -25,12 +36,12 @@ const ContactPage = connectPage(
     )
   },
   {
-    displayName: 'ContactPage'
+    label: 'Kontakt'
   }
 )
 
 export const query = graphql`
-  query($jaenPageId: String!) {
+  query ($jaenPageId: String!) {
     ...JaenPageQuery
   }
 `

@@ -1,4 +1,5 @@
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
+import {navigate} from 'gatsby'
 import {IGatsbyImageData} from 'gatsby-plugin-image'
 import React from 'react'
 
@@ -71,8 +72,13 @@ export function useWishlist() {
     setWishlist(wishlist)
   }, [])
 
+  const onGoToWishlist = () => {
+    navigate('/shopping-cart')
+  }
+
   return {
     wishlist,
+    onGoToWishlist,
     addToWishlist: (product: WishlistProduct) => {
       WishlistService.addToWishlist(product)
       setWishlist(WishlistService.getWishlist())

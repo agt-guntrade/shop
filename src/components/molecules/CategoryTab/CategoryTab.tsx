@@ -126,6 +126,7 @@ export const CategoryShowcase = ({
           const isCurrent = current === titel
           return (
             <Box
+              key={index}
               userSelect="none"
               _hover={isCurrent ? {bg: 'agt.lightgray'} : {bg: '#424240'}}
               _first={firstRadius}
@@ -166,6 +167,7 @@ export const CategoryShowcase = ({
         {tabsList.map(([titel, collection], index) => {
           return (
             <CategoryTab
+              key={index}
               visible={current === titel ? 'visible' : 'hidden'}
               products={collection.items
                 .sort((a, b) =>

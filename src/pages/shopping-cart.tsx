@@ -1,5 +1,5 @@
 import {useDisclosure} from '@chakra-ui/hooks'
-import {connectPage} from '@jaenjs/jaen'
+import {connectPage} from '@snek-at/jaen'
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 import {Layout} from '../components/Layout'
@@ -36,11 +36,11 @@ const WishlistPage = ({path}: PageProps) => {
 }
 
 export default connectPage(WishlistPage, {
-  displayName: 'WishlistPage'
+  label: 'Wunschliste'
 })
 
 export const query = graphql`
-  query($jaenPageId: String!) {
+  query ($jaenPageId: String!) {
     ...JaenPageQuery
   }
 `

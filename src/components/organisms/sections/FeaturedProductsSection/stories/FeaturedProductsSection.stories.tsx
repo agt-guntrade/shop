@@ -1,7 +1,6 @@
 import React from 'react'
-import {withJaenMock} from '@jaenjs/jaen'
+import {withJaenMock} from '@snek-at/jaen'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
-import {Field} from '@jaenjs/jaen'
 
 import {FeaturedProductsSectionJSX} from '../FeaturedProductsSection'
 import {jaenData} from './jaen-data'
@@ -12,10 +11,10 @@ export default {
   component: FeaturedProductsSectionJSX,
   decorators: [
     Story => {
-      const MockedStory = withJaenMock(Story, {jaenPage: {...jaenData.jaenPage}})
-      return(
-        <MockedStory/>
-      )
+      const MockedStory = withJaenMock(Story, {
+        jaenPage: {...jaenData.jaenPage}
+      })
+      return <MockedStory />
     }
   ]
 } as ComponentMeta<typeof FeaturedProductsSectionJSX>
@@ -26,9 +25,9 @@ const Template: ComponentStory<typeof FeaturedProductsSectionJSX> = args => (
 
 export const Default = Template.bind({})
 Default.args = {
-  name: "featured",
-  displayName: "Empfohlen",
-  anchor: "",
-  productsPagePath: "",
+  name: 'featured',
+  displayName: 'Empfohlen',
+  anchor: '',
+  productsPagePath: '',
   featuredProducts: data.products
 }

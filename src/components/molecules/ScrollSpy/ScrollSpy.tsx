@@ -50,6 +50,7 @@ export const ScrollSpy = ({anchors}: ScrollSpyProps) => {
           borderTopRightRadius={'5px'}>
           {anchors.map((anchor, index) => (
             <Flex
+              key={index}
               className="spyblock"
               alignItems="center"
               bg="agt.gray"

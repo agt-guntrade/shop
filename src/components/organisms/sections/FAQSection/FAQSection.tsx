@@ -1,6 +1,6 @@
 import {Box, Container, Divider, Heading, Stack} from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import React, {ReactNode} from 'react'
 
 import {getThemeColor} from '../../../../common/utils'
@@ -103,21 +103,32 @@ export const FAQ = ({
 }
 
 export const FAQSection = ({anchor, name, displayName}: FAQSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <FAQ
           anchor={anchor}
           bg="agt.darkbackground"
-          heading={<Field.Text name="heading" defaultValue="Fragen" />}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue="Fragen"
+              label="Überschrift"
+            />
+          }
           faqheading={
             <Field.Text
               name="faqheading"
               defaultValue="Häufig gestellte Fragen"
+              label="Überschrift"
             />
           }
           contactheading={
-            <Field.Text name="contactheading" defaultValue="Jetzt Anfragen" />
+            <Field.Text
+              name="contactheading"
+              defaultValue="Jetzt Anfragen"
+              label="Überschrift"
+            />
           }
           accordionsection={
             <FAQAccordionSectionJSX name="faq" displayName="Frage" />
@@ -127,14 +138,14 @@ export const FAQSection = ({anchor, name, displayName}: FAQSectionProps) =>
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
 export const FAQSectionJSX = ({name, displayName, anchor}: FAQSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[FAQSection({name: `${name}-item`, anchor, displayName})]}
+    label={displayName}
+    blocks={[FAQSection({name: `${name}-item`, anchor, displayName})]}
   />
 )

@@ -28,6 +28,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     data?.allShopifyProduct?.nodes || [],
     29072003
   )
+
   const featuredProductIds = featuredProducts.slice(0, 12).map(({id}) => id)
 
   // cache the featured product ids
@@ -49,7 +50,9 @@ export const onCreatePage: GatsbyNode['onCreatePage'] = async ({
   // but sadly it is. Gatsby should be able to handle this, but for some reason
   // it doesn't.
   // Ref: https://www.gatsbyjs.com/docs/creating-and-modifying-pages/
-  if (path === '/' && !page.context.featuredProductIds) {
+  //
+  // 1 year later, maybe this is fixed now? I'll have to check.
+  if (path === '/' && !page.context?.featuredProductIds) {
     deletePage(page)
 
     // get featured products from cache

@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/accordion'
 import {Box} from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import React, {ReactNode} from 'react'
 
 export interface FAQAccordionSectionProps {
@@ -60,11 +60,13 @@ export const FAQAccordionSection = ({
   name,
   displayName
 }: FAQAccordionSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <FAQAccordion
-          question={<Field.Text name="question" defaultValue="Frage" />}
+          question={
+            <Field.Text name="question" defaultValue="Frage" label="Frage" />
+          }
           answer={
             <Field.Text
               name="answer"
@@ -72,6 +74,7 @@ export const FAQAccordionSection = ({
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
         minim veniam, quis nostrud exercitation ullamco laboris nisi ut
         aliquip ex ea commodo consequat."
+              label="Antwort"
             />
           }
         />
@@ -79,7 +82,7 @@ export const FAQAccordionSection = ({
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -88,11 +91,11 @@ export const FAQAccordionSectionJSX = ({
   displayName
 }: FAQAccordionSectionProps) => (
   <Field.Section
-    as={Accordion}
+    as={Accordion as any}
     props={{defaultIndex: [0], allowMultiple: true}}
     sectionProps={{allowMultiple: true}}
     name={name}
-    displayName={displayName}
-    sections={[FAQAccordionSection({name: `${name}-item`, displayName})]}
+    label={displayName}
+    blocks={[FAQAccordionSection({name: `${name}-item`, displayName})]}
   />
 )

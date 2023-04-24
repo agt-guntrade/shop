@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react'
 import {Divider, Box} from '@chakra-ui/layout'
-import {Field, connectSection} from '@jaenjs/jaen'
+import {Field, connectBlock} from '@snek-at/jaen'
 
 import {getThemeColor} from '../../../../common/utils'
 import {ParallaxBackground} from '../../../molecules/ParallaxBackground'
@@ -39,19 +39,23 @@ export const ReviewFAQ = ({
 }: ReviewFAQProps) => {
   return (
     <Box position="relative">
-      <ParallaxBackground strokeColor={getThemeColor("stroke")} backgroundColor={getThemeColor("agt.darkbackground")} offset={200}/>
+      <ParallaxBackground
+        strokeColor={getThemeColor('stroke')}
+        backgroundColor={getThemeColor('agt.darkbackground')}
+        offset={200}
+      />
       <Divider
-        orientation='horizontal'
+        orientation="horizontal"
         position="absolute"
-        boxSizing='border-box'
+        boxSizing="border-box"
         borderColor="stroke"
         top="0"
         left="0"
       />
       <Divider
-        orientation='horizontal'
+        orientation="horizontal"
         position="absolute"
-        boxSizing='border-box'
+        boxSizing="border-box"
         borderColor="stroke"
         bottom="0"
         left="0"
@@ -62,7 +66,7 @@ export const ReviewFAQ = ({
         googleReviews={googleReviews}
       />
       <FAQ
-        anchor={faqAnchor} 
+        anchor={faqAnchor}
         heading={faqHeading}
         faqheading={faqFaqheading}
         contactheading={contactHeading}
@@ -77,34 +81,75 @@ export const ReviewFAQSection = ({
   displayName,
   reviewAnchor,
   faqAnchor,
-  googleReviews,
-}: ReviewFAQSectionProps) => 
-  connectSection(() => {
-    return (
-      <>
-        <ReviewFAQ
-          reviewAnchor={reviewAnchor}
-          faqAnchor={faqAnchor}
-          reviewHeading={<Field.Text name="heading" defaultValue="Bewertungen" />}
-          faqHeading={<Field.Text name="heading" defaultValue="Fragen" />}
-          faqFaqheading={<Field.Text name="faqheading" defaultValue="Häufig gestellte Fragen" />}
-          contactHeading={<Field.Text name="contactheading" defaultValue="Jetzt Anfragen" />}
-          accordionsection={<FAQAccordionSectionJSX name="faq" displayName="Frage" />}
-          googleReviews={googleReviews}
-        />
-      </>
-    )
-  },
-  {
-    name: name,
-    displayName: displayName
-  }
-)
+  googleReviews
+}: ReviewFAQSectionProps) =>
+  connectBlock(
+    () => {
+      return (
+        <>
+          <ReviewFAQ
+            reviewAnchor={reviewAnchor}
+            faqAnchor={faqAnchor}
+            reviewHeading={
+              <Field.Text
+                name="heading"
+                defaultValue="Bewertungen"
+                label="Überschrift"
+              />
+            }
+            faqHeading={
+              <Field.Text
+                name="heading"
+                defaultValue="Fragen"
+                label="Überschrift"
+              />
+            }
+            faqFaqheading={
+              <Field.Text
+                name="faqheading"
+                defaultValue="Häufig gestellte Fragen"
+                label='Überschrift "FAQ"'
+              />
+            }
+            contactHeading={
+              <Field.Text
+                name="contactheading"
+                defaultValue="Jetzt Anfragen"
+                label="Überschrift"
+              />
+            }
+            accordionsection={
+              <FAQAccordionSectionJSX name="faq" displayName="Frage" />
+            }
+            googleReviews={googleReviews}
+          />
+        </>
+      )
+    },
+    {
+      name: name,
+      label: displayName
+    }
+  )
 
-export const ReviewFAQSectionJSX = ({name, displayName, faqAnchor, reviewAnchor, googleReviews}:  ReviewFAQSectionProps) => (
+export const ReviewFAQSectionJSX = ({
+  name,
+  displayName,
+  faqAnchor,
+  reviewAnchor,
+  googleReviews
+}: ReviewFAQSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[ReviewFAQSection({name: `${name}-item`, displayName, faqAnchor, reviewAnchor, googleReviews})]}
+    label={displayName}
+    blocks={[
+      ReviewFAQSection({
+        name: `${name}-item`,
+        displayName,
+        faqAnchor,
+        reviewAnchor,
+        googleReviews
+      })
+    ]}
   />
 )

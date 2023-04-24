@@ -1,4 +1,4 @@
-import {SEO} from '@jaenjs/jaen'
+import {Head as JaenHead} from '@snek-at/jaen'
 import {
   getCollectionStructure,
   ProductsPageContext,
@@ -12,17 +12,14 @@ import {Layout} from '../components/Layout'
 import {ProductsTemplate} from '../components/templates/ProductsTemplate'
 import {ProductsTemplateProps} from '../components/templates/ProductsTemplate/ProductsTemplate'
 
-const ProductsPageTemplate = (
-  props: PageProps<ProductsPageData, ProductsPageContext>
-) => {
-  const {
-    implicitTags,
-    tags,
-    maxPrice,
-    minPrice,
-    vendors,
-    productTypes
-  } = props.pageContext
+export type ProductsPageTemplateProps = PageProps<
+  ProductsPageData,
+  ProductsPageContext
+>
+
+const ProductsPageTemplate = (props: ProductsPageTemplateProps) => {
+  const {implicitTags, tags, maxPrice, minPrice, vendors, productTypes} =
+    props.pageContext
 
   const search = useProductSearch({
     filters: {
@@ -97,32 +94,25 @@ const ProductsPageTemplate = (
   }
 
   return (
-    <>
-      <SEO pagePath={props.path} pageMeta={buildProductsPageMeta()} />
-      <Layout path={props.path}>
-        <ProductsTemplate
-          path={props.path}
-          products={search.products}
-          isFetching={search.isFetching}
-          fetchNextPage={search.fetchNextPage}
-          filters={{
-            tags,
-            vendors,
-            productTypes,
-            minPrice,
-            maxPrice
-          }}
-          activeFilters={search.filters}
-          updateFilter={updateFilter}
-          sortOptions={[
-            'Alphabetisch',
-            'Preis aufsteigend',
-            'Preis absteigend'
-          ]}
-          onSortChange={onSortChange}
-        />
-      </Layout>
-    </>
+    <Layout path={props.path}>
+      <ProductsTemplate
+        path={props.path}
+        products={search.products}
+        isFetching={search.isFetching}
+        fetchNextPage={search.fetchNextPage}
+        filters={{
+          tags,
+          vendors,
+          productTypes,
+          minPrice,
+          maxPrice
+        }}
+        activeFilters={search.filters}
+        updateFilter={updateFilter}
+        sortOptions={['Alphabetisch', 'Preis aufsteigend', 'Preis absteigend']}
+        onSortChange={onSortChange}
+      />
+    </Layout>
   )
 }
 
@@ -134,3 +124,16 @@ export default (
     <ProductsPageTemplate {...props} />
   </SearchProvider>
 )
+
+export const Head = (props: ProductsPageTemplateProps) => {
+  return (
+    <JaenHead {...(props as any)}>
+      <title id="title">AGT GunTrade - Artikel</title>
+      <meta
+        id="meta-description"
+        name="description"
+        content="Alle Artikel von AGT GunTrade im Überblick"
+      />
+    </JaenHead>
+  )
+}

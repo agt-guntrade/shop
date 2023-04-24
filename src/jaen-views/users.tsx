@@ -1,19 +1,23 @@
 import {AddIcon, CheckCircleIcon, EditIcon, Icon} from '@chakra-ui/icons'
 import {
+  Alert,
   AlertDialog,
   AlertDialogBody,
   AlertDialogContent,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  AlertIcon,
   Box,
   Button,
   ButtonGroup,
   ButtonProps,
+  Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
   HStack,
+  IconButton,
   Input,
   InputGroup,
   InputRightElement,
@@ -39,10 +43,12 @@ import {
   useDisclosure,
   useToast
 } from '@chakra-ui/react'
-import {connectView} from '@jaenjs/jaen'
-import {FaUser} from '@react-icons/all-files/fa/FaUser'
-import React from 'react'
-import {Controller, useForm} from 'react-hook-form'
+import {connectView, snekResourceId} from '@snek-at/jaen'
+import {RiFolderUserFill} from '@react-icons/all-files/ri/RiFolderUserFill'
+// import {usersAdd, usersDelete, usersGet, usersUpdate} from '@snek-functions/iam'
+// import {IReducedUser, IUser} from '@snek-functions/iam/dist/interfaces'
+import React, {useCallback, useEffect} from 'react'
+import {Controller, set, useForm} from 'react-hook-form'
 import {
   Route,
   Routes,
@@ -50,86 +56,106 @@ import {
   useNavigate,
   useParams
 } from 'react-router-dom'
-import usersAdd from '@snek-functions/agt-users/src/usersAdd'
-import usersDelete from '@snek-functions/agt-users/src/usersDelete'
-import usersGet from '@snek-functions/agt-users/src/usersGet'
-import usersUpdate from '@snek-functions/agt-users/src/usersUpdate'
+import {Mutation, Query} from '@snek-functions/origin/dist/schema.generated'
+import {sq} from '@snek-functions/origin'
+
+type User = ReturnType<Query['user']>
+
+type UserCreate = Parameters<Mutation['userRegister']>[0]
+type UserUpdate = Parameters<Mutation['userUpdate']>[0]
+
+// type User = Parameters<Mutation["userMe"]>[0];
 
 const UsersList = () => {
-  const textColor = useColorModeValue('gray.700', 'white')
-
   const navigate = useNavigate()
+  const {state} = useLocation()
 
-  const {users, isLoading, clearCacheAndFetch} = useUsers()
+  const {users, isLoading, isAuthorized} = useUsers()
+
+  console.log(users)
+
+  React.useEffect(() => {
+    if (isLoading) return
+
+    if (state?.userId) {
+      const userIndex = users.findIndex(user => user.id === state.userId)
+
+      if (userIndex !== -1) {
+        navigate((userIndex + 1).toString(), {replace: true})
+      }
+    }
+  }, [users, isLoading, state])
 
   return (
     <>
       <Stack overflowY={'auto'} height="100%">
-        <Table variant={'simple'}>
-          <Thead position="sticky" top={0} bgColor={'white'} zIndex={1}>
-            <Tr my=".8rem" pl="0px">
-              <Th pl="0px" color="gray.400">
-                Id
-              </Th>
-              <Th color="gray.400">E-Mail</Th>
-              <Th color="gray.400">Name</Th>
-              <Th color="gray.400">Created at</Th>
-              <Th color="gray.400">Active</Th>
-
-              <Th></Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {users.map((user, index) => (
-              <Tr>
-                <Td p={1}>
-                  <Text fontSize="sm" color={textColor} textAlign={'left'}>
-                    {index + 1}
-                  </Text>
-                </Td>
-                <Td>
-                  <Text fontSize="sm" color={textColor}>
-                    {user.email}
-                  </Text>
-                </Td>
-                <Td>
-                  <Text fontSize="sm" color={textColor}>
-                    {user.fullName}
-                  </Text>
-                </Td>
-                <Td>
-                  <Text fontSize="sm" color={textColor}>
-                    {new Date(user.createdAt).toDateString()}
-                  </Text>
-                </Td>
-                <Td>{user.isActive ? <CheckCircleIcon /> : null}</Td>
-                <Td textAlign={'right'}>
-                  <Button
-                    p="0px"
-                    bg="transparent"
-                    onClick={() => navigate((index + 1).toString())}>
-                    <Icon as={EditIcon} color="gray.400" cursor="pointer" />
-                  </Button>
-                </Td>
+        {isLoading ? (
+          <Flex
+            height="100%"
+            width="100%"
+            justifyContent="center"
+            alignItems="center">
+            <Spinner />
+          </Flex>
+        ) : isAuthorized ? (
+          <Table>
+            <Thead position="sticky" top={0} zIndex={1} borderColor="black">
+              <Tr my=".8rem">
+                <Th></Th>
+                <Th>E-Mail Address</Th>
+                <Th>Username</Th>
+                <Th>First Name</Th>
+                <Th>Last Name</Th>
+                <Th>Created at</Th>
+                <Th>Active</Th>
+                <Th>Admin</Th>
+                <Th></Th>
               </Tr>
-            ))}
-          </Tbody>
-        </Table>
-
-        <Link fontSize="sm" color={textColor} onClick={clearCacheAndFetch}>
-          <HStack>
-            <Text>Refresh</Text>
-            {isLoading && (
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="agt.blue"
-                size="sm"
-              />
-            )}
-          </HStack>
-        </Link>
+            </Thead>
+            <Tbody>
+              {users
+                .map((user, index) => (
+                  <Tr key={user.id}>
+                    <Td>
+                      <Text fontSize="xs">{index + 1}</Text>
+                    </Td>
+                    <Td>
+                      <Text fontSize="sm">{user.primaryEmailAddress}</Text>
+                    </Td>
+                    <Td>
+                      <Text fontSize="sm">{user.username}</Text>
+                    </Td>
+                    <Td>
+                      <Text fontSize="sm">{user.details?.firstName}</Text>
+                    </Td>
+                    <Td>
+                      <Text fontSize="sm">{user.details?.lastName}</Text>
+                    </Td>
+                    <Td>
+                      <Text fontSize="sm">
+                        {new Date(user.createdAt).toDateString()}
+                      </Text>
+                    </Td>
+                    <Td>{user.isActive ? <CheckCircleIcon /> : null}</Td>
+                    <Td>{user.isAdmin ? <CheckCircleIcon /> : null}</Td>
+                    <Td textAlign={'right'}>
+                      <IconButton
+                        aria-label="Edit"
+                        icon={<EditIcon />}
+                        onClick={() => navigate(user.id)}
+                      />
+                    </Td>
+                  </Tr>
+                ))
+                .reverse()}
+            </Tbody>
+          </Table>
+        ) : (
+          <Alert colorScheme="red">
+            <AlertIcon />
+            You are not authorized to view this page.
+          </Alert>
+        )}
       </Stack>
     </>
   )
@@ -196,32 +222,42 @@ const AlertDialogButton = React.forwardRef<
 const UserDetails = () => {
   const params = useParams()
 
-  const index = params.index
+  const userId = params.userId
 
-  if (!index) {
+  if (!userId) {
     return null
   }
 
   const navigate = useNavigate()
 
-  const {users, isFetching, updateUser, deleteUser} = useUsers()
-
-  const user = users[parseInt(index) - 1]
+  const {users, updateUser, deleteUser, isLoading} = useUsers()
 
   const [changePasword, setChangePassword] = React.useState(false)
 
+  const user = users.find(user => user.id === userId)
+
   type FormValues = {
-    fullName: string
-    email: string
+    emailAddress: string
+    details?: {
+      firstName?: string
+      lastName?: string
+    }
+    username: string
     isActive: boolean
+    isAdmin: boolean
     password?: string
   }
 
   const defaultValues = user
     ? {
-        fullName: user.fullName,
-        email: user.email,
-        isActive: user.isActive
+        emailAddress: user.primaryEmailAddress,
+        details: {
+          firstName: user.details?.firstName,
+          lastName: user.details?.lastName
+        },
+        username: user.username,
+        isActive: user.isActive,
+        isAdmin: user.isAdmin
       }
     : {}
 
@@ -252,7 +288,7 @@ const UserDetails = () => {
       }
     })
 
-    const ok = await updateUser({id: user.id, ...diff})
+    const ok = await updateUser(userId, diff)
 
     if (ok) {
       reset(values)
@@ -261,7 +297,7 @@ const UserDetails = () => {
   }
 
   const handleDelete = async () => {
-    const ok = await deleteUser(user.id)
+    const ok = await deleteUser(userId)
 
     if (ok) {
       navigate(-1)
@@ -273,7 +309,7 @@ const UserDetails = () => {
   }, [user])
 
   if (!user) {
-    if (isFetching) {
+    if (isLoading) {
       return <Text>Loading</Text>
     }
 
@@ -283,12 +319,16 @@ const UserDetails = () => {
   return (
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl isInvalid={!!errors.email}>
+        <FormControl>
+          <FormLabel>ID</FormLabel>
+          <Input placeholder={user.id} disabled />
+        </FormControl>
+        <FormControl isInvalid={!!errors.emailAddress}>
           <FormLabel>E-Mail</FormLabel>
           <Input
             isDisabled
             placeholder="max.mustermann@snek.at"
-            {...register('email', {
+            {...register('emailAddress', {
               required: 'This is required',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -296,19 +336,45 @@ const UserDetails = () => {
               }
             })}
           />
-          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors.emailAddress?.message}</FormErrorMessage>
         </FormControl>
 
-        <FormControl mt={4} isInvalid={!!errors.fullName}>
-          <FormLabel>Name</FormLabel>
+        <FormControl mt={4} isInvalid={!!errors.username}>
+          <FormLabel>Username</FormLabel>
           <Input
-            placeholder="Max Mustermann"
-            {...register('fullName', {
+            placeholder="max.muster"
+            {...register('username', {
               required: 'This is required'
             })}
           />
-          <FormErrorMessage>{errors.fullName?.message}</FormErrorMessage>
+          <FormErrorMessage>
+            {errors.details?.firstName?.message}
+          </FormErrorMessage>
         </FormControl>
+
+        <Stack direction="row">
+          <Flex>
+            <FormControl mt={4} isInvalid={!!errors.details?.lastName}>
+              <FormLabel>Firstname</FormLabel>
+              <Input placeholder="Max" {...register('details.firstName', {})} />
+              <FormErrorMessage>
+                {errors.details?.lastName?.message}
+              </FormErrorMessage>
+            </FormControl>
+          </Flex>
+          <Flex>
+            <FormControl mt={4} isInvalid={!!errors.details?.lastName}>
+              <FormLabel>Lastname</FormLabel>
+              <Input
+                placeholder="Mustermann"
+                {...register('details.lastName', {})}
+              />
+              <FormErrorMessage>
+                {errors.details?.lastName?.message}
+              </FormErrorMessage>
+            </FormControl>
+          </Flex>
+        </Stack>
 
         <FormControl mt={4} isInvalid={!!errors.password}>
           <FormLabel>Password</FormLabel>
@@ -317,7 +383,8 @@ const UserDetails = () => {
               {...register('password', {
                 required: 'This is required',
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
                     'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character'
                 }
@@ -347,6 +414,24 @@ const UserDetails = () => {
           <FormErrorMessage>{errors.isActive?.message}</FormErrorMessage>
         </FormControl>
 
+        <FormControl mt={4} isInvalid={!!errors.isAdmin}>
+          <FormLabel>Admin</FormLabel>
+          <Controller
+            control={control}
+            name="isAdmin"
+            defaultValue={user.isAdmin}
+            render={({field: {value, onChange, onBlur, ref}}) => (
+              <Switch
+                ref={ref}
+                onChange={onChange}
+                onBlur={onBlur}
+                isChecked={value}
+              />
+            )}
+          />
+          <FormErrorMessage>{errors.isAdmin?.message}</FormErrorMessage>
+        </FormControl>
+
         <FormControl mt={4}>
           <FormLabel>Created at</FormLabel>
           <Input
@@ -358,7 +443,7 @@ const UserDetails = () => {
         <Box mt={8}>
           <HStack width="full">
             <ButtonGroup isDisabled={!isDirty}>
-              <Button type="submit" colorScheme="teal" isLoading={isSubmitting}>
+              <Button type="submit" isLoading={isSubmitting}>
                 Save Changes
               </Button>
               <Button variant="outline" onClick={onReset}>
@@ -380,96 +465,33 @@ const UserDetails = () => {
           </HStack>
         </Box>
       </form>
-      <Text fontSize="sm" color="gray.400" textAlign={'right'}>
-        {user.id}
-      </Text>
     </Box>
   )
 }
 
-const useDidMountEffect = (
-  func: {(): void; (): void},
-  deps: React.DependencyList | undefined
-) => {
-  const didMount = React.useRef(false)
-
-  React.useEffect(() => {
-    if (didMount.current) {
-      func()
-    } else {
-      didMount.current = true
-    }
-  }, deps)
-}
-
 const useUsers = () => {
-  type Cache = {
-    users: Array<{
-      id: string
-      fullName: string
-      email: string
-      isActive: boolean
-      createdAt: string
-    }>
-    timestamp: number
-  }
-
   const toast = useToast()
 
-  const [isFetching, setIsFetching] = React.useState(true)
-
   const [isLoading, setIsLoading] = React.useState(true)
+  const [isAuthorized, setIsAuthorized] = React.useState(false)
 
-  const [users, setUsers] = React.useState<Cache['users']>([])
-
-  React.useEffect(() => {
-    const fetchUsers = async () => {
-      setIsLoading(true)
-      const fetchedUsers = (await usersGet()) || []
-
-      setIsFetching(false)
-      setUsers(fetchedUsers)
-      setIsLoading(false)
-    }
-
-    // check local storage for users
-
-    const cache: Cache | null =
-      JSON.parse(localStorage.getItem('users') || '{}') || null
-
-    console.log('try to refetch', cache)
-
-    // check if timestamp is older than 1 minute or if no cache is available
-
-    if (!cache?.timestamp || (cache && Date.now() - cache.timestamp > 60000)) {
-      fetchUsers()
-    } else {
-      setUsers(cache.users)
-      setIsLoading(false)
-      console.log('using cache', cache)
-    }
-  }, [isFetching])
-
-  React.useEffect(() => {
-    // cache users in local storage with timestamp
-    console.log('caching users', users)
-
-    if (!isLoading) {
-      localStorage.setItem(
-        'users',
-        JSON.stringify({timestamp: Date.now(), users})
-      )
-    }
-  }, [isLoading, users])
-
-  const clearCacheAndFetch = React.useCallback(() => {
-    localStorage.removeItem('users')
-
-    setIsFetching(true)
-  }, [])
+  const [users, setUsers] = React.useState<
+    {
+      id: string
+      primaryEmailAddress: string
+      username: string
+      createdAt: string
+      details?: {
+        firstName?: string
+        lastName?: string
+      }
+      isActive: boolean
+      isAdmin: boolean
+    }[]
+  >([])
 
   const checkErrors = (errors: Array<{message: string}>) => {
-    if (errors.length > 0) {
+    if (errors?.length > 0) {
       toast({
         title: 'Error',
         description: errors[0].message,
@@ -479,81 +501,69 @@ const useUsers = () => {
       })
     }
 
-    return errors.length === 0
+    return !errors || errors.length === 0
   }
 
-  const addUser = async (user: {
-    email: string
-    fullName: string
-    password: string
-  }) => {
-    const {data, errors} = await usersAdd.execute(user)
+  const fetchUsers = useCallback(async () => {
+    const [users, errors] = await sq.query(Mutation =>
+      Mutation.allUser({resourceId: snekResourceId}).map(user => ({
+        id: user.id,
+        primaryEmailAddress: user.primaryEmailAddress,
+        username: user.username,
+        createdAt: user.createdAt,
+        details: {
+          firstName: user.details?.firstName || undefined,
+          lastName: user.details?.lastName || undefined
+        },
+        isActive: user.isActive,
+        isAdmin: user.isAdmin
+      }))
+    )
 
     const ok = checkErrors(errors)
 
     if (ok) {
-      setUsers([...users, data])
-
-      toast({
-        title: 'Success',
-        description: 'User added',
-        status: 'success',
-        duration: 5000,
-        isClosable: true
-      })
+      setIsAuthorized(true)
     }
 
-    return ok
-  }
+    setUsers(users)
+    setIsLoading(false)
+  }, [])
 
-  const updateUser = async (user: {
-    id: string
-    email?: string
-    fullName?: string
-    password?: string
-    isActive?: boolean
-  }) => {
-    const {errors} = await usersUpdate.execute(user)
+  useEffect(() => {
+    fetchUsers()
+  }, [])
 
-    const ok = checkErrors(errors)
+  const addUser = async (values: UserCreate['values']) => {
+    const [newUser, errors] = await sq.mutate(Mutation => {
+      const user = Mutation.userRegister({
+        resourceId: snekResourceId,
+        values,
+        skipEmailVerification: true
+      }).user
 
-    if (ok) {
-      setUsers(
-        users.map(u =>
-          u.id === user.id
-            ? {
-                ...u,
-                ...user
-              }
-            : u
-        )
-      )
-
-      toast({
-        title: 'Success',
-        description: 'User updated',
-        status: 'success',
-        duration: 5000,
-        isClosable: true
-      })
-    }
-
-    return ok
-  }
-
-  const deleteUser = async (id: string) => {
-    const {errors} = await usersDelete.execute({
-      id
+      return {
+        id: user.id,
+        primaryEmailAddress: user.primaryEmailAddress,
+        username: user.username,
+        createdAt: user.createdAt,
+        details: {
+          firstName: user.details?.firstName || undefined,
+          lastName: user.details?.lastName || undefined
+        },
+        isActive: user.isActive,
+        isAdmin: user.isAdmin
+      }
     })
 
     const ok = checkErrors(errors)
 
     if (ok) {
-      setUsers(users.filter(u => u.id !== id))
+      setUsers([...users, newUser])
 
       toast({
         title: 'Success',
-        description: 'User deleted',
+        description: 'User created',
         status: 'success',
         duration: 5000,
         isClosable: true
@@ -563,15 +573,63 @@ const useUsers = () => {
     return ok
   }
 
+  const updateUser = async (
+    id: UserUpdate['id'],
+    values: UserUpdate['values']
+  ) => {
+    const [updatedUser, errors] = await sq.mutate(Mutation => {
+      const user = Mutation.userUpdate({
+        id,
+        values
+      })
+
+      return {
+        id: user.id,
+        primaryEmailAddress: user.primaryEmailAddress,
+        username: user.username,
+        createdAt: user.createdAt,
+        details: {
+          firstName: user.details?.firstName || undefined,
+          lastName: user.details?.lastName || undefined
+        },
+        isActive: user.isActive,
+        isAdmin: user.isAdmin
+      }
+    })
+
+    const ok = checkErrors(errors)
+
+    if (ok) {
+      setUsers(users.map(u => (u.id === id ? updatedUser : u)))
+    }
+
+    return ok
+  }
+
+  const deleteUser = async (userId: string) => {
+    const [deletedUser, errors] = await sq.mutate(Mutation =>
+      Mutation.userDelete({id: userId})
+    )
+
+    const ok = checkErrors(errors)
+
+    if (ok) {
+      setUsers(users.filter(u => u.id !== userId))
+    }
+
+    return ok
+  }
+
+  console.log('users', users)
+
   return {
     users,
-    clearCacheAndFetch,
     addUser,
     updateUser,
     deleteUser,
 
-    isFetching,
-    isLoading
+    isLoading,
+    isAuthorized
   }
 }
 
@@ -582,7 +640,7 @@ const UsersView = () => {
     <>
       <Routes>
         <Route index element={<UsersList />} />
-        <Route path=":index" element={<UserDetails />} />
+        <Route path=":userId" element={<UserDetails />} />
       </Routes>
     </>
   )
@@ -596,6 +654,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, any>(
     return (
       <InputGroup size="md">
         <Input
+          autoComplete="new-password"
           ref={ref}
           pr="4.5rem"
           type={show ? 'text' : 'password'}
@@ -620,13 +679,6 @@ const AddUserControl = () => {
   const {addUser} = useUsers()
 
   const initialRef = React.useRef<HTMLInputElement | null>(null)
-  const finalRef = React.useRef()
-
-  type FormValues = {
-    fullName: string
-    email: string
-    password: string
-  }
 
   const {
     register,
@@ -634,25 +686,19 @@ const AddUserControl = () => {
     handleSubmit,
     control,
     formState: {errors, isSubmitting, isDirty, isValid}
-  } = useForm<FormValues>({})
+  } = useForm<UserCreate['values']>({})
 
   const handleClose = () => {
     reset()
     onClose()
   }
 
-  const onSubmit = async (values: FormValues) => {
-    const ok = await addUser({
-      email: values.email,
-      fullName: values.fullName,
-      password: values.password
-    })
+  const onSubmit = async (values: UserCreate['values']) => {
+    const ok = await addUser(values)
 
     if (ok) {
       handleClose()
-
-      // reload page
-      navigate('')
+      navigate(0)
     }
   }
 
@@ -672,11 +718,12 @@ const AddUserControl = () => {
             <ModalHeader>Add a user</ModalHeader>
             <ModalCloseButton onClick={handleClose} />
             <ModalBody pb={6}>
-              <FormControl isInvalid={!!errors.email}>
+              <FormControl isInvalid={!!errors.emailAddress}>
                 <FormLabel>E-Mail</FormLabel>
                 <Input
                   placeholder="max.mustermann@snek.at"
-                  {...register('email', {
+                  type="email"
+                  {...register('emailAddress', {
                     required: 'This is required',
                     pattern: {
                       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
@@ -684,19 +731,49 @@ const AddUserControl = () => {
                     }
                   })}
                 />
-                <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+                <FormErrorMessage>
+                  {errors.emailAddress?.message}
+                </FormErrorMessage>
               </FormControl>
 
-              <FormControl mt={4} isInvalid={!!errors.fullName}>
-                <FormLabel>Name</FormLabel>
+              <FormControl isInvalid={!!errors.username}>
+                <FormLabel>Username</FormLabel>
                 <Input
-                  placeholder="Max Mustermann"
-                  {...register('fullName', {
+                  placeholder="max.mustermann"
+                  {...register('username', {
                     required: 'This is required'
                   })}
                 />
-                <FormErrorMessage>{errors.fullName?.message}</FormErrorMessage>
+                <FormErrorMessage>{errors.username?.message}</FormErrorMessage>
               </FormControl>
+
+              <Stack direction={'row'}>
+                <Flex>
+                  <FormControl mt={4} isInvalid={!!errors.details?.firstName}>
+                    <FormLabel>Firstname</FormLabel>
+                    <Input
+                      placeholder="Max"
+                      {...register('details.firstName')}
+                    />
+                    <FormErrorMessage>
+                      {errors.details?.firstName?.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Flex>
+
+                <Flex>
+                  <FormControl mt={4} isInvalid={!!errors.details?.lastName}>
+                    <FormLabel>Lastname</FormLabel>
+                    <Input
+                      placeholder="Mustermann"
+                      {...register('details.lastName')}
+                    />
+                    <FormErrorMessage>
+                      {errors.details?.lastName?.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                </Flex>
+              </Stack>
 
               <FormControl mt={4} isInvalid={!!errors.password}>
                 <FormLabel>Password</FormLabel>
@@ -704,7 +781,8 @@ const AddUserControl = () => {
                   {...register('password', {
                     required: 'This is required',
                     pattern: {
-                      value: /^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/,
+                      value:
+                        /^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/,
                       message:
                         'Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character'
                     }
@@ -716,10 +794,7 @@ const AddUserControl = () => {
 
             <ModalFooter>
               <ButtonGroup isDisabled={!isDirty}>
-                <Button
-                  type="submit"
-                  colorScheme="teal"
-                  isLoading={isSubmitting}>
+                <Button type="submit" isLoading={isSubmitting}>
                   Create
                 </Button>
                 <Button variant="outline" onClick={handleClose}>
@@ -739,10 +814,9 @@ const AddUserControl = () => {
 }
 
 export default connectView(UsersView, {
-  path: '/users',
-  displayName: 'Großhandelskunden',
-  description:
-    'Hier sind alle Benutzer aufgelistet, die Zugriff auf diese Seite haben.',
-  Icon: FaUser,
+  path: '/customers',
+  label: 'Kunden',
+  heading: 'Kunden',
+  Icon: RiFolderUserFill,
   controls: [<AddUserControl />]
 })

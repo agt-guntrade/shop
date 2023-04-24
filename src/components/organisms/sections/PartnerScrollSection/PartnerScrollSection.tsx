@@ -8,7 +8,7 @@ import {
   AspectRatio,
   useColorModeValue
 } from '@chakra-ui/react'
-import {Field, connectSection} from '@jaenjs/jaen'
+import {Field, connectBlock} from '@snek-at/jaen'
 import {StaticImage} from 'gatsby-plugin-image'
 import {Slider} from '@snek-at/uikit'
 
@@ -40,7 +40,7 @@ export const PartnerScrollSection = ({
   name,
   displayName
 }: PartnerScrollSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <PartnerScroll
@@ -49,6 +49,7 @@ export const PartnerScrollSection = ({
               name="image"
               defaultValue={undefined}
               objectFit="contain"
+              label="Partner Logo"
             />
           }
         />
@@ -56,7 +57,7 @@ export const PartnerScrollSection = ({
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -84,8 +85,8 @@ export const PartnerScrollSectionJSX = ({
         // w: '100%'
       }}
       name="partner"
-      displayName="Merkmale"
-      sections={[PartnerScrollSection({name: `${name}-item`, displayName})]}
+      label="Partner Liste"
+      blocks={[PartnerScrollSection({name: `${name}-item`, displayName})]}
     />
   </Slider>
 )

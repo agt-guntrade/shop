@@ -2,7 +2,11 @@ import {Box, Container, useColorModeValue} from '@chakra-ui/react'
 
 import React from 'react'
 
-export const ContainerLayout: React.FC = ({children}) => {
+export interface ContainerLayoutProps {
+  children: React.ReactNode
+}
+
+export const ContainerLayout: React.FC<ContainerLayoutProps> = ({children}) => {
   return (
     <>
       <Container

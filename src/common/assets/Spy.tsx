@@ -21,8 +21,8 @@ export const Spy = (props: any) => {
         x="50%"
         y="55%"
         fill="black"
-        dominant-baseline="middle"
-        text-anchor="middle"
+        dominantBaseline="middle"
+        textAnchor="middle"
         fontSize={'250'}>
         {props.number}
       </text>

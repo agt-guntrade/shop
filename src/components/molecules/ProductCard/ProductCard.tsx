@@ -20,9 +20,9 @@ import {Link as GatsbyLink} from 'gatsby'
 import {GatsbyImage, IGatsbyImageData} from 'gatsby-plugin-image'
 import React from 'react'
 import {uuidv1} from '../../../common/utils'
-import {useUserAuth} from '../../../services/useUserAuth'
 
 import * as styles from './styles'
+import {useAuthentication} from '../../../services/authentication'
 
 export interface ProductCardProps {
   product: ShopifyProduct
@@ -41,9 +41,14 @@ export const ProductCard = ({
   bcolor,
   prefixPath
 }: ProductCardProps) => {
-  const {user} = useUserAuth()
+  const {user} = useAuthentication()
 
-  const path = prefixPath ? `${prefixPath}/${product.handle}` : product.handle
+  const prefixPathTrimmed = prefixPath
+    ? prefixPath.trim().replace(/\/+$/, '')
+    : ''
+  const path = `${prefixPathTrimmed}/${product.handle}`
+
+  console.log(prefixPath, prefixPathTrimmed, path)
 
   const radioRef = React.useRef<(HTMLInputElement | null)[]>([])
 

@@ -61,7 +61,7 @@ export const ReviewCard = ({
       const color = rating <= i ? '#E2E8F0' : '#ef3340'
 
       stars.push(
-        <IconContext.Provider value={{color: color, size: '20px'}}>
+        <IconContext.Provider value={{color: color, size: '20px'}} key={i}>
           <AiFillStar />
         </IconContext.Provider>
       )
@@ -74,13 +74,13 @@ export const ReviewCard = ({
   return (
     <Box css={style.Borderline}>
       <VStack
-        className='borderline'
+        className="borderline"
         bg="primary"
         // minH="200px"
         borderRadius="5px"
         border="1px"
         borderColor="border"
-        boxSizing='border-box'
+        boxSizing="border-box"
         _hover={{
           before: {borderColor: 'agt.red'},
           _after: {borderColor: 'agt.red'}

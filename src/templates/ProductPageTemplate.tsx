@@ -1,4 +1,4 @@
-import {SEO, useAnalytics} from '@jaenjs/jaen'
+import {Head as JaenHead} from '@snek-at/jaen'
 import {
   getFormattedProductPrices,
   getProductTags,
@@ -11,25 +11,23 @@ import {Layout} from '../components/Layout'
 import {ProductTemplate} from '../components/templates/ProductTemplate'
 import {useWishlist} from '../services/wishlist'
 
-const ProductPageTemplate = (
-  props: PageProps<ProductPageData, ProductPageContext>
-) => {
+type ProductPageTemplateProps = PageProps<ProductPageData, ProductPageContext>
+
+const ProductPageTemplate = (props: ProductPageTemplateProps) => {
   const {shopifyProduct, relatedProducts} = props.data
 
   const {wishlist, addToWishlist, removeFromWishlist} = useWishlist()
 
   const isOnWishList = wishlist.some(item => item.id === shopifyProduct.id)
 
-  const analytics = useAnalytics()
+  // const analytics = useAnalytics()
 
   console.log(`isOnWishList: ${isOnWishList}`)
 
   const handleWishlistAdd = (id: string) => {
     if (!isOnWishList) {
-      const {
-        priceFormatted,
-        compareAtPriceFormatted
-      } = getFormattedProductPrices(shopifyProduct)
+      const {priceFormatted, compareAtPriceFormatted} =
+        getFormattedProductPrices(shopifyProduct)
 
       const {price, compareAtPrice} = shopifyProduct.variants[0]
 
@@ -49,44 +47,24 @@ const ProductPageTemplate = (
         quantity: 1
       }
 
-      analytics.track('wishlist-add', {
-        id,
-        handle: shopifyProduct.handle,
-        title: shopifyProduct.title
-      })
+      // analytics.track('wishlist-add', {
+      //   id,
+      //   handle: shopifyProduct.handle,
+      //   title: shopifyProduct.title
+      // })
 
       addToWishlist(payload)
     } else {
-      analytics.track('wishlist-remove', {
-        id
-      })
+      // analytics.track('wishlist-remove', {
+      //   id
+      // })
 
       removeFromWishlist(id)
     }
   }
 
-  const buildProductPageMeta = () => {
-    let title = shopifyProduct.title
-    let description =
-      shopifyProduct.description +
-      ` | Produkttyp: ${shopifyProduct.productType}` +
-      ` | Hersteller: ${shopifyProduct.vendor}`
-
-    return {
-      title,
-      description,
-      image:
-        shopifyProduct.featuredMedia?.image.gatsbyImageData.images.fallback
-          ?.src,
-      datePublished: shopifyProduct.createdAt
-    }
-  }
-
-  console.log('shopifyProduct: ', props.data.shopifyProduct)
-
   return (
     <>
-      <SEO pagePath={props.path} pageMeta={buildProductPageMeta()} />
       <Layout path={props.path}>
         <ProductTemplate
           path={props.path}
@@ -101,7 +79,7 @@ const ProductPageTemplate = (
 }
 
 export const query = graphql`
-  query($productId: String!, $relatedProductIds: [String!]!) {
+  query ($productId: String!, $relatedProductIds: [String!]!) {
     relatedProducts: allShopifyProduct(filter: {id: {in: $relatedProductIds}}) {
       nodes {
         ...shopifyProductData
@@ -114,3 +92,35 @@ export const query = graphql`
 `
 
 export default ProductPageTemplate
+
+export const Head = (props: ProductPageTemplateProps) => {
+  const shopifyProduct = props.data.shopifyProduct
+
+  return (
+    <JaenHead {...(props as any)}>
+      <title id="title">{shopifyProduct.title} | AGT GunTrade</title>
+      <meta
+        id="meta-description"
+        name="description"
+        content={
+          shopifyProduct.description +
+          ` | Produkttyp: ${shopifyProduct.productType}` +
+          ` | Hersteller: ${shopifyProduct.vendor}`
+        }
+      />
+      <meta
+        id="meta-date"
+        name="date"
+        content={new Date(shopifyProduct.createdAt).toISOString()}
+      />
+      <meta
+        id="meta-image"
+        name="image"
+        content={
+          shopifyProduct.featuredMedia?.image.gatsbyImageData.images.fallback
+            ?.src
+        }
+      />
+    </JaenHead>
+  )
+}

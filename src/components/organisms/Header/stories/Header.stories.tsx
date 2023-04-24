@@ -37,23 +37,10 @@ Default.args = {
       name: 'Laufrohlinge',
       path: '/laufrohlinge'
     }
-  ],
-  auth: {
-    isLoggedIn: false,
-    onUserClick: () => {},
-    onLoginClick: () => {}
-  }
+  ]
 }
 
 export const LoggedIn = Template.bind({})
 LoggedIn.args = {
-  ...Default.args,
-  auth: {
-    onUserClick: () => {},
-    onLoginClick: () => {},
-    isLoggedIn: true,
-    user: {
-      fullName: 'John Doe'
-    }
-  }
+  ...Default.args
 }

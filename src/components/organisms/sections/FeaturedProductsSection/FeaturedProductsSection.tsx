@@ -1,6 +1,6 @@
 import {Button} from '@chakra-ui/button'
 import {Box, Center, Container, Divider, Heading} from '@chakra-ui/layout'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {Link as GatsbyLink} from 'gatsby'
 import React, {ReactNode} from 'react'
@@ -22,7 +22,7 @@ export interface FeaturedProductsSectionProps {
 export interface FeaturedProductsProps {
   anchor?: string
   featuredProducts: ShopifyProduct[]
-  productsPagePath: string
+  productsPagePath?: string
   heading: ReactNode
 }
 
@@ -89,14 +89,20 @@ export const FeaturedProductsSection = ({
   displayName,
   anchor,
   featuredProducts,
-  productsPagePath = '/products'
+  productsPagePath
 }: FeaturedProductsSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <FeaturedProducts
           anchor={anchor}
-          heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue={'Über uns'}
+              label="Überschrift"
+            />
+          }
           featuredProducts={featuredProducts}
           productsPagePath={productsPagePath}
         />
@@ -104,7 +110,7 @@ export const FeaturedProductsSection = ({
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -117,8 +123,8 @@ export const FeaturedProductsSectionJSX = ({
 }: FeaturedProductsSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[
+    label={displayName}
+    blocks={[
       FeaturedProductsSection({
         name: `${name}-item`,
         anchor,

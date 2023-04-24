@@ -1,5 +1,5 @@
 import React from 'react'
-import {withJaenMock} from '@jaenjs/jaen'
+import {withJaenMock} from '@snek-at/jaen'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 
 import {HomeTemplate} from '../HomeTemplate'
@@ -45,13 +45,13 @@ export default {
       const MockedStory = withJaenMock(Story, {
         jaenPage: {
           ...jaenData.jaenPage,
-          ...jaenPageAbout.jaenPage, 
-          ...jaenPageFAQ.jaenPage, 
+          ...jaenPageAbout.jaenPage,
+          ...jaenPageFAQ.jaenPage,
           ...jaenPageNews.jaenPage,
           //...jaenPagePartner.jaenPage,
           chapters: {
             ...jaenData.jaenPage.chapters,
-            ...jaenPageAbout.jaenPage.chapters, 
+            ...jaenPageAbout.jaenPage.chapters,
             ...jaenPageFAQ.jaenPage.chapters,
             ...jaenPagePartner.jaenPage.chapters
           }
@@ -60,9 +60,7 @@ export default {
           ...jaenPageNews.jaenPages
         }
       })
-      return(
-        <MockedStory/>
-      )
+      return <MockedStory />
     }
   ]
 } as ComponentMeta<typeof HomeTemplate>
@@ -70,12 +68,17 @@ export default {
 const aboutSectionArgs = AboutSectionStories.Default.args as AboutSectionProps
 const faqSectionArgs = FAQSectionStories.Default.args as FAQSectionProps
 const heroSectionArgs = HeroSectionStories.Default.args as HeroSectionProps
-const featuredProductsSectionArgs = FeaturedProductsSectionStories.Default.args as FeaturedProductsSectionProps
-const featuredPartnerSectionArgs = FeaturedPartnerSectionStories.Default.args as FeaturedPartnerSectionProps
-const reviewSectionArgs = ReviewSectionStories.Default.args as ReviewSectionProps
-const reviewFAQSectionArgs = ReviewFAQSectionStories.Default.args as ReviewFAQSectionProps
+const featuredProductsSectionArgs = FeaturedProductsSectionStories.Default
+  .args as FeaturedProductsSectionProps
+const featuredPartnerSectionArgs = FeaturedPartnerSectionStories.Default
+  .args as FeaturedPartnerSectionProps
+const reviewSectionArgs = ReviewSectionStories.Default
+  .args as ReviewSectionProps
+const reviewFAQSectionArgs = ReviewFAQSectionStories.Default
+  .args as ReviewFAQSectionProps
 const newsSectionArgs = NewsSectionStories.Default.args as NewsSectionProps
-const partnerSectionArgs = PartnerSectionStories.Default.args as PartnerSectionProps
+const partnerSectionArgs = PartnerSectionStories.Default
+  .args as PartnerSectionProps
 // const scrollToTopButtonArgs = ScrollToTopStories.Default.args as ScrollToTopButtonProps
 // const sideButtonsArgs = SideButtonsStories.Default.args as SideButtonsProps
 // const scrollSpyArgs = ScrollSpyStories.Default.args as ScrollSpyProps
@@ -86,8 +89,8 @@ const Template: ComponentStory<typeof HomeTemplate> = args => (
 
 export const Default = Template.bind({})
 Default.args = {
-  name: "home",
-  displayName: "Sections",
+  name: 'home',
+  displayName: 'Sections',
   aboutSection: aboutSectionArgs,
   faqSection: faqSectionArgs,
   heroSection: heroSectionArgs,

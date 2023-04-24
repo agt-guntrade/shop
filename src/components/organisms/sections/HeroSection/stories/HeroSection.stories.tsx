@@ -1,5 +1,5 @@
 import React from 'react'
-import {withJaenMock, Field} from '@jaenjs/jaen'
+import {withJaenMock} from '@snek-at/jaen'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 
 import {HeroSectionJSX} from '../HeroSection'
@@ -11,10 +11,10 @@ export default {
   component: HeroSectionJSX,
   decorators: [
     Story => {
-      const MockedStory = withJaenMock(Story, {jaenPage: {...jaenData.jaenPage}})
-      return(
-        <MockedStory/>
-      )
+      const MockedStory = withJaenMock(Story, {
+        jaenPage: {...jaenData.jaenPage}
+      })
+      return <MockedStory />
     }
   ]
 } as ComponentMeta<typeof HeroSectionJSX>
@@ -25,10 +25,10 @@ const Template: ComponentStory<typeof HeroSectionJSX> = args => (
 
 export const Default = Template.bind({})
 Default.args = {
-  anchor: "",
-  name: "hero",
-  displayName: "Hero",
+  anchor: '',
+  name: 'hero',
+  displayName: 'Hero',
   categoryProducts: data.categoryShowcase.nodes,
   spotlightProducts: data.weaponSpotlight.nodes,
-  latestProducts: data.latestProducts.nodes,
+  latestProducts: data.latestProducts.nodes
 }

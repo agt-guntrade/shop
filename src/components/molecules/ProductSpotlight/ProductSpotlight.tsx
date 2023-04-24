@@ -199,6 +199,7 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
           {products.map(weapon => {
             return (
               <Circle
+                key={weapon.id}
                 cursor="pointer"
                 size="2"
                 mr="1"

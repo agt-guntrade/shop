@@ -1,5 +1,5 @@
 import {VStack} from '@chakra-ui/layout'
-import {Field} from '@jaenjs/jaen'
+import {Field} from '@snek-at/jaen'
 import {navigate} from 'gatsby'
 import React from 'react'
 
@@ -61,8 +61,8 @@ export const HomeTemplate = (props: HomeTemplateProps) => {
           mt: 0
         }}
         name={props.name}
-        displayName={props.displayName}
-        sections={[
+        label={props.displayName}
+        blocks={[
           HeroSection({...props.heroSection, anchor: 'hero'}),
           FeaturedProductsSection({
             ...props.featuredProductsSection,

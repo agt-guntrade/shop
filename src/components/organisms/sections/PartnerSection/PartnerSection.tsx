@@ -1,5 +1,5 @@
 import {Box, Container, Divider, Heading, HStack} from '@chakra-ui/layout'
-import {connectSection, Field} from '@jaenjs/jaen'
+import {connectBlock, Field} from '@snek-at/jaen'
 import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 
@@ -86,12 +86,18 @@ export const PartnerSection = ({
   name,
   displayName
 }: PartnerSectionProps) =>
-  connectSection(
+  connectBlock(
     () => {
       return (
         <Partner
           anchor={anchor}
-          heading={<Field.Text name="heading" defaultValue={'Partner'} />}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue={'Partner'}
+              label="Heading"
+            />
+          }
           partnerscrollsections={
             <Field.Section
               as={HStack}
@@ -108,8 +114,8 @@ export const PartnerSection = ({
                 // w: '100%'
               }}
               name="partner"
-              displayName="Partner"
-              sections={[
+              label="Partner"
+              blocks={[
                 PartnerScrollSection({
                   name: `partner-item`,
                   displayName: 'Partner'
@@ -122,7 +128,7 @@ export const PartnerSection = ({
     },
     {
       name: name,
-      displayName: displayName
+      label: displayName
     }
   )
 
@@ -133,7 +139,7 @@ export const PartnerSectionJSX = ({
 }: PartnerSectionProps) => (
   <Field.Section
     name={name}
-    displayName={displayName}
-    sections={[PartnerSection({name: `${name}-item`, anchor, displayName})]}
+    label={displayName}
+    blocks={[PartnerSection({name: `${name}-item`, anchor, displayName})]}
   />
 )

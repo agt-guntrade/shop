@@ -55,6 +55,7 @@ export const CollectionTemplate = ({
 
               return (
                 <CollectionCard
+                  key={index}
                   path={path || 'products'}
                   image={subCollection.image}
                   name={name || 'No collection title'}
@@ -69,7 +70,7 @@ export const CollectionTemplate = ({
         <ProductSlider
           products={relatedProducts.nodes}
           heading="Weitere Empfehlungen"
-          prefixPath={`${path}/products`}
+          prefixPath={path + 'products'}
         />
       </ContainerLayout>
     </>
@@ -115,9 +116,11 @@ const CollectionCard = ({
           width="100%"
           height={['175px', '125px']}
           layout={[1, 3]}
-          photos={collageImages?.map(image => ({
-            source: image
-          }))}
+          photos={
+            collageImages?.map(image => ({
+              source: image
+            })) || []
+          }
           showNumOfRemainingPhotos
         />
       </Box>
