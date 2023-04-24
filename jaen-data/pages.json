@@ -1,1 +1,38 @@
-{}
+{
+  "JaenPage /": {
+    "context": {
+      "createdAt": "2023-04-24T16:47:35.470Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVsWRGsqe36fFfyA5oyDWBLswmv5wMAAIVEQACC285Unef0jNk6Q4wLwQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2023-04-24T16:47:35.470Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVsWRGsqe36fFfyA5oyDWBLswmv5wMAAIVEQACC285Unef0jNk6Q4wLwQ"
+      }
+    ]
+  },
+  "JaenPage /contact/": {
+    "context": {
+      "createdAt": "2023-04-24T16:47:35.702Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVsmRGsqfVQ7ta_Gk06CC84yOanafjAAIWEQACC285Us-b8v_SU44-LwQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2023-04-24T16:47:35.702Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVsmRGsqfVQ7ta_Gk06CC84yOanafjAAIWEQACC285Us-b8v_SU44-LwQ"
+      }
+    ]
+  },
+  "JaenPage /imprint/": {
+    "context": {
+      "createdAt": "2023-04-24T16:47:35.907Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVs2RGsqdBolh6Uw8I8nQy3mS7gg9hAAIXEQACC285UoGsqItdLSTWLwQ"
+    },
+    "migrations": [
+      {
+        "createdAt": "2023-04-24T16:47:35.907Z",
+        "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVs2RGsqdBolh6Uw8I8nQy3mS7gg9hAAIXEQACC285UoGsqItdLSTWLwQ"
+      }
+    ]
+  }
+}
