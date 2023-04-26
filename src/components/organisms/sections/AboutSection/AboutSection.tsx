@@ -24,6 +24,7 @@ import CardWithImageBackground from '../../../molecules/CardWithImageBackground'
 import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
 import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
 import * as style from './style'
+import {Link} from 'gatsby'
 
 export interface AboutSectionProps {
   anchor?: string
@@ -175,25 +176,13 @@ export const About = ({anchor}: AboutProps) => {
                   defaultValue="At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
                 />
               </Text>
-              <ButtonGroup
-                flexDir={{base: 'row-reverse', md: 'row'}}
-                colorScheme="agt.yellowScheme"
-                color="black">
-                <Button color="black">Kontakiere uns</Button>
-                <Button color="black">Unsere Produkte</Button>
-                {/* <LinkButtonField
-              name="Button1"
-              defaultValue="Zum Shop"
-              defaultUrl={`/products`}
-              size={{base: 'sm', md: 'md'}}
-            />
-            <LinkButtonField
-              name="Button2"
-              defaultValue="Großhandel"
-              defaultUrl={`/grosshandel`}
-              size={{base: 'sm', md: 'md'}}
-              variant="outline"
-            /> */}
+              <ButtonGroup colorScheme="agt.yellowScheme" color="black">
+                <Button color="black" as={Link} to="/contact">
+                  Kontakiere uns
+                </Button>
+                <Button color="black" as={Link} to="/products">
+                  Unsere Produkte
+                </Button>
               </ButtonGroup>
             </Stack>
           </Container>
