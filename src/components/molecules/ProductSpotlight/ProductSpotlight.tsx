@@ -18,6 +18,7 @@ import {GatsbyImage} from 'gatsby-plugin-image'
 import React from 'react'
 
 import {flipImage} from './style'
+import {HStack, Stack} from '@chakra-ui/react'
 
 export interface ProductshowcaseProps {
   products: ShopifyProduct[]
@@ -49,7 +50,7 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
 
   return (
     <Flex justifyContent="center" alignItems="flex-start">
-      <Box
+      <VStack
         color="white"
         zIndex="1"
         h="40vh"
@@ -57,7 +58,9 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
         mb="36"
         w={{base: '300px', md: '770px', lg: '60%'}}
         alignSelf="center">
-        <Flex
+        <Stack
+          h={'full'}
+          gap="8"
           direction={{base: 'column', md: 'row'}}
           alignSelf="center"
           alignItems={'center'}
@@ -152,23 +155,19 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
                     mt={{base: '14', md: '0'}}
                     w={{base: '300px', md: '370px', lg: '60%'}}
                     key={index}
-                    ml={{base: 'auto', lg: '10'}}
-                    mr={{base: 'auto', md: '0'}}
                     initial={{opacity: 0, x: 300}}
                     animate={{opacity: 1, x: 0}}
                     transition={{duration: 0.25, delay: 0.33}}>
-                    <VStack
-                      display={{base: 'none', lg: 'block'}}
-                      mt={{base: '-2', md: '0'}}>
+                    <VStack display={{base: 'none', md: 'block'}}>
                       <Text
                         fontWeight="bold"
-                        fontSize={{base: '20', md: '4vw', lg: '2vw'}}
+                        fontSize={'4xl'}
                         casing="uppercase">
                         {title}
                       </Text>
                       <Text
                         minH={{base: 30, md: '8vw', lg: '4vw'}}
-                        fontSize={{base: '15', md: '3vw', lg: '1.5vw'}}>
+                        fontSize={'lg'}>
                         {description}
                       </Text>
                     </VStack>
@@ -188,7 +187,7 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
               )
             })}
           </AnimatePresence>
-        </Flex>
+        </Stack>
         <Flex
           justifyContent="center"
           alignContent="center"
@@ -213,7 +212,7 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
             )
           })}
         </Flex>
-      </Box>
+      </VStack>
     </Flex>
   )
 }
