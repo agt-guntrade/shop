@@ -34,9 +34,10 @@ export interface AboutSectionProps {
 
 export interface AboutProps {
   anchor?: string
+  heading: ReactNode
 }
 
-export const About = ({anchor}: AboutProps) => {
+export const About = ({anchor, heading}: AboutProps) => {
   const cardHeight = {base: '15rem', lg: '15rem', xl: '20rem'}
   const cardWidth = {base: '12.5rem', lg: '15.5rem', xl: '17.5rem'}
 
@@ -76,12 +77,15 @@ export const About = ({anchor}: AboutProps) => {
           px={{base: 0, sm: 4, md: 8}}
           align="center"
           justify="center">
+          <Box textAlign="center" my="10">
+            <Heading size="2xl">{heading}</Heading>
+            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+          </Box>
           <Container
             justifyContent="space-between"
             as={Flex}
             gap={{base: 32, xl: 8}}
             flexDirection={{base: 'column', xl: 'row'}}
-            py={{base: 44, md: 20}}
             maxW={CONTAINER_MAX_WIDTH}>
             <Flex gap="4" justify="center" alignSelf="center">
               <Stack flex="1" justify="center">
@@ -195,7 +199,18 @@ export const About = ({anchor}: AboutProps) => {
 export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
   connectBlock(
     () => {
-      return <About anchor={anchor} />
+      return (
+        <About
+          anchor={anchor}
+          heading={
+            <Field.Text
+              name="heading"
+              defaultValue={'Über uns'}
+              label="Heading"
+            />
+          }
+        />
+      )
     },
     {
       name: name,
@@ -206,11 +221,14 @@ export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
 export const AboutSectionJSX = ({
   name,
   displayName,
-  anchor
+  anchor,
+  heading
 }: AboutSectionProps) => (
   <Field.Section
     name={name}
     label={displayName}
-    blocks={[AboutSection({name: `${name}-item`, displayName, anchor})]}
+    blocks={[
+      AboutSection({name: `${name}-item`, displayName, anchor, heading})
+    ]}
   />
 )
