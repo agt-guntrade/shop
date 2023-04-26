@@ -25,6 +25,7 @@ export const Spy = css`
 
   .spyblock {
     border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 
     &:hover * {
       color: #eb1933;

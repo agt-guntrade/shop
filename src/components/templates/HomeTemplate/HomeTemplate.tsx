@@ -95,7 +95,11 @@ export const HomeTemplate = (props: HomeTemplateProps) => {
         anchors={[
           {
             name: 'hero',
-            label: 'AGT'
+            label: 'AGT Gun Trade'
+          },
+          {
+            name: 'about',
+            label: 'Über uns'
           },
           {
             name: 'featured',
@@ -112,10 +116,6 @@ export const HomeTemplate = (props: HomeTemplateProps) => {
           {
             name: 'faq',
             label: 'Fragen'
-          },
-          {
-            name: 'about',
-            label: 'Über uns'
           },
           {
             name: 'news',

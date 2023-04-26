@@ -29,7 +29,7 @@ export const ScrollSpy = ({anchors}: ScrollSpyProps) => {
     <Flex
       color="white"
       position="fixed"
-      bottom="0"
+      bottom="50vh"
       left="0"
       display={{base: 'none', md: 'flex'}}
       flexDirection="column"
