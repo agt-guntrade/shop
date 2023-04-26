@@ -82,11 +82,8 @@ export const About = ({anchor}: AboutProps) => {
             flexDirection={{base: 'column', xl: 'row'}}
             py={{base: 44, md: 20}}
             maxW={CONTAINER_MAX_WIDTH}>
-            <Flex display={{base: 'none', md: 'flex'}} gap="4">
-              <Stack
-                flex="1"
-                justify="center"
-                display={{base: 'none', xl: 'flex'}}>
+            <Flex gap="4" justify="center" alignSelf="center">
+              <Stack flex="1" justify="center">
                 <CardWithImageBackground
                   h={cardHeight}
                   w={cardWidth}
@@ -102,30 +99,14 @@ export const About = ({anchor}: AboutProps) => {
                   }}
                 />
               </Stack>
+
               <Stack
                 gap="4"
                 spacing="0"
                 h="full"
                 w="full"
                 align="center"
-                justify="center"
-                flexDirection={{base: 'row', xl: 'column'}}>
-                <Box display={{xl: 'none'}}>
-                  <CardWithImageBackground
-                    h={cardHeight}
-                    w={cardWidth}
-                    minW={'none'}
-                    displayContent={false}
-                    card={{
-                      headingFieldName: 'Cardheading1',
-                      headingDefaultValue: '   ',
-                      textFieldName: 'CardText1',
-                      textDefaultValue: '   ',
-                      imageFieldName: 'CardImage1',
-                      imageDefaultValue: undefined
-                    }}
-                  />
-                </Box>
+                justify="center">
                 <CardWithImageBackground
                   h={cardHeight}
                   w={cardWidth}
@@ -160,7 +141,9 @@ export const About = ({anchor}: AboutProps) => {
 
             <Stack
               // zIndex={'999'}
-              maxW={{xl: '50%'}}
+              maxW={{
+                xl: '50%'
+              }}
               spacing="8"
               justify="center">
               <Heading
