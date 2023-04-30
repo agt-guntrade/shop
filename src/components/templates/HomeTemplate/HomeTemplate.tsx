@@ -87,7 +87,7 @@ export const HomeTemplate = (props: HomeTemplateProps) => {
       />
       <SideButtons
         onMailButtonClick={() => navigate('/contact/')}
-        onLocationButtonClick={() => navigate('/imprint/')}
+        onLocationButtonClick={() => navigate('/impressum/')}
         onPhoneButtonClick={() => navigate('/contact/')}
       />
       {/* <ScrollToTopButton onScrollToTopClick={() => null}/> */}

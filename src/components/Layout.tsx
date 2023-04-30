@@ -31,7 +31,7 @@ export const Layout = ({path, children}: LayoutProps) => {
         ]}
         col2h="Rechtliches"
         col2={[
-          <Link as={GatsbyLink} to={'/imprint'}>
+          <Link as={GatsbyLink} to={'/impressum'}>
             Impressum
           </Link>,
           <Link as={GatsbyLink} to={'/privacy'}>

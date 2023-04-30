@@ -61,29 +61,32 @@ export const ContactForm = ({
 
     const subject = `Anfrage (${requestOption}) über AGT Shop`
 
-    const body = `
-Anfrage von ${name} ${lastname} (${email}) über AGT Shop.
-
-<== Inhalt der Anfrage ==>
-
-${message}
-`
-
-    await sendEmail({
+    const sucess = await sendEmail({
       fromEmail: email,
       name: `${name} ${lastname}`,
       subject,
-      message: body
+      message
     })
 
-    toast({
-      title: 'Anfrage erfolgreich versendet',
-      description:
-        'Vielen Dank für Ihre Anfrage. Wir werden uns so schnell wie möglich bei Ihnen melden.',
-      status: 'success',
-      duration: 9000,
-      isClosable: true
-    })
+    if (!sucess) {
+      toast({
+        title: 'Anfrage konnte nicht versendet werden',
+        description:
+          'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
+        status: 'error',
+        duration: 9000,
+        isClosable: true
+      })
+    } else {
+      toast({
+        title: 'Anfrage erfolgreich versendet',
+        description:
+          'Vielen Dank für Ihre Anfrage. Wir werden uns so schnell wie möglich bei Ihnen melden.',
+        status: 'success',
+        duration: 9000,
+        isClosable: true
+      })
+    }
 
     reset()
   }
