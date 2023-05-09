@@ -4,15 +4,15 @@ import path from 'path'
 import {JaenSource} from 'jaen-utils'
 import {IJaenPage} from '@snek-at/jaen'
 
-import {site} from './jaen-data/internal.json'
+import {siteMetadata} from './jaen-data/internal.json'
 
 dotenv.config()
 
 JaenSource.jaenData.read()
-const siteUrl = JaenSource.jaenData.internal.site.siteMetadata.siteUrl
+const siteUrl = JaenSource.jaenData.internal.siteMetadata.siteUrl
 
 const config: GatsbyConfig = {
-  siteMetadata: site.siteMetadata,
+  siteMetadata: siteMetadata,
   plugins: [
     'gatsby-plugin-emotion',
     {

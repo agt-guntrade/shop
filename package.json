@@ -25,7 +25,7 @@
     "@react-icons/all-files": "^4.1.0",
     "@snek-at/gatsby-plugin-scaleserp": "^1.0.5",
     "@snek-at/gatsby-theme-shopify": "^1.11.2",
-    "@snek-at/jaen": "^0.0.41",
+    "@snek-at/jaen": "^0.0.45",
     "@snek-at/uikit": "^1.0.0",
     "@snek-functions/origin": "^0.2.9",
     "framer-motion": "^10.0.1",
