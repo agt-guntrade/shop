@@ -1,17 +1,17 @@
 {
   "site": {
     "siteMetadata": {
-      "title": "AGT GunTrade",
-      "siteUrl": "https://www.agt-guntrade.at",
+      "title": "AGT Gun Trade KG - Hochwertige Jagd- und Sportwaffen online kaufen",
+      "siteUrl": "https://agt.snek.at",
       "organization": {
         "name": "",
         "url": ""
       },
-      "description": "AGT GunTrade KG - Ihr kompetenter Partner für Jagd- und Sportwaffen in Österreich!",
+      "description": "Entdecken Sie bei AGT Gun Trade KG eine breite Auswahl an hochwertigen Jagd- und Sportwaffen sowie Zubehör. Unser erfahrener Büchsenmacher-Service bietet Reparaturen, Montagen, Brünierungen und Tuning an. Kaufen Sie bequem online ein und genießen Sie erstklassigen Service und Fachberatung. Erfüllen Sie Ihre Leidenschaft für Jagd und Sport mit AGT Gun Trade KG.",
       "author": {
-        "name": "AGT GunTrade"
+        "name": ""
       },
-      "image": "https://osg.snek.at/storage/BQACAgQAAxkDAAIQ1mLG-v_SC2299HNH2CtZ8_g_V9vSAAKCDQACSic5Uli9udvfpeLpKQQ"
+      "image": "https://osg.snek.at/storage/BQACAgQAAxkDAAIV42RanwdakCHf9sbT9CZh5XnWuhEbAAJwDQACj-7YUokOcz2Fyo6sLwQ"
     }
   },
   "widgets": [],
@@ -83,7 +83,11 @@
     {
       "createdAt": "2023-04-25T13:00:44.236Z",
       "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVx2RHyE-654gu_OkWIVjz-bPK9DVqAAKDDgACC29BUnKZskmlbFsKLwQ"
+    },
+    {
+      "createdAt": "2023-05-09T19:31:16.799Z",
+      "fileUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIV5WRanxeF_I7yaYNJ0NYLMottnP0wAAJyDQACj-7YUnPy9XgDDjydLwQ"
     }
   ],
-  "finderUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIVxmRHyE9F8RmcKGjUcumYBLhV0oP5AAKCDgACC29BUkhbzzNDAAHrYC8E"
+  "finderUrl": "https://osg.snek.at/storage/BQACAgQAAxkDAAIV5GRanxb4zKQdA1nvfwQ9iGI-zzLRAAJxDQACj-7YUk0iF4VRWMa1LwQ"
 }
