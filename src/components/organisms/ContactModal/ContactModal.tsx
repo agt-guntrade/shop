@@ -83,12 +83,15 @@ Mit freundlichen Grüßen!
       .map(item => item.title)
       .join(', ')}`
 
-    const sucess = await sendEmail({
-      fromEmail: email,
-      name: `${firstName} ${lastName}`,
-      subject,
-      message: message
-    })
+    const sucess = await sendEmail(
+      {
+        fromEmail: email,
+        name: `${firstName} ${lastName}`,
+        subject,
+        message: message
+      },
+      'AGT_ORDER_MAIL'
+    )
 
     if (!sucess) {
       toast({

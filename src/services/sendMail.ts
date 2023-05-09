@@ -1,12 +1,15 @@
 import {sq} from '@snek-functions/origin'
 import {doNotConvertToString} from 'snek-query'
 
-export const sendEmail = async (data: {
-  fromEmail: string
-  name: string
-  subject: string
-  message: string
-}) => {
+export const sendEmail = async (
+  data: {
+    fromEmail: string
+    name: string
+    subject: string
+    message: string
+  },
+  type: 'AGT_CONTACT_MAIL' | 'AGT_ORDER_MAIL' = 'AGT_CONTACT_MAIL'
+) => {
   const [_, errors] = await sq.mutate(m =>
     m.mailpressMailSchedule({
       envelope: {
@@ -16,7 +19,7 @@ export const sendEmail = async (data: {
         }
       },
       template: {
-        id: 'AGT_CONTACT_MAIL',
+        id: type,
         values: {
           name: data.name,
           email: data.fromEmail,
