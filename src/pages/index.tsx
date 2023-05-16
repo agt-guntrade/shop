@@ -142,3 +142,5 @@ export const query = graphql`
 export default connectPage(IndexPage, {
   displayName: 'Home'
 })
+
+export {Head} from '@snek-at/jaen'

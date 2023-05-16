@@ -97,30 +97,19 @@ export const Head = (props: ProductPageTemplateProps) => {
   const shopifyProduct = props.data.shopifyProduct
 
   return (
-    <JaenHead {...(props as any)}>
-      <title id="title">{shopifyProduct.title} | AGT GunTrade</title>
-      <meta
-        id="meta-description"
-        name="description"
-        content={
+    <JaenHead
+      {...(props as any)}
+      jaenPageMetadata={{
+        title: shopifyProduct.title,
+        description:
           shopifyProduct.description +
           ` | Produkttyp: ${shopifyProduct.productType}` +
-          ` | Hersteller: ${shopifyProduct.vendor}`
-        }
-      />
-      <meta
-        id="meta-date"
-        name="date"
-        content={new Date(shopifyProduct.createdAt).toISOString()}
-      />
-      <meta
-        id="meta-image"
-        name="image"
-        content={
+          ` | Hersteller: ${shopifyProduct.vendor}`,
+        date: new Date(shopifyProduct.createdAt).toISOString(),
+        image:
           shopifyProduct.featuredMedia?.image?.gatsbyImageData?.images?.fallback
             ?.src
-        }
-      />
-    </JaenHead>
+      }}
+    />
   )
 }

@@ -1,7 +1,7 @@
-import {graphql, PageProps} from 'gatsby'
+import {graphql} from 'gatsby'
 import React from 'react'
 
-import {Head as JaenHead} from '@snek-at/jaen'
+import {Head as JaenHead, PageProps} from '@snek-at/jaen'
 import {
   CollectionPageData,
   ColllectionPageContext,
@@ -53,19 +53,17 @@ export const Head = (props: CollectionPageTemplateProps) => {
   const {name} = getCollectionStructure(collectionId)
 
   return (
-    <JaenHead {...(props as any)}>
-      <title id="title">{name}</title>
-      <meta
-        id="meta-description"
-        name="description"
-        content={
+    <JaenHead
+      {...(props as any)}
+      jaenPageMetadata={{
+        title: name,
+        description:
           shopifyCollection.description +
           ' | Unterkategorien: ' +
           shopifySubCollections.nodes.map(n => n.title).join(', ') +
           ' | Weitere Produkte: ' +
           relatedProducts.nodes.map(n => n.title).join(', ')
-        }
-      />
-    </JaenHead>
+      }}
+    />
   )
 }

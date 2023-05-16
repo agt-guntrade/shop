@@ -41,3 +41,5 @@ const NotFoundPage = (props: PageProps) => {
 }
 
 export default NotFoundPage
+
+export {Head} from '@snek-at/jaen'

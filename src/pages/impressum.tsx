@@ -136,3 +136,5 @@ export const query = graphql`
 `
 
 export default ImprintPage
+
+export {Head} from '@snek-at/jaen'

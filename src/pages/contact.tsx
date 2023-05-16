@@ -47,3 +47,5 @@ export const query = graphql`
 `
 
 export default ContactPage
+
+export {Head} from '@snek-at/jaen'

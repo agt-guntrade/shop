@@ -25,3 +25,5 @@ export const query = graphql`
 `
 
 export default PrivacyPage
+
+export {Head} from '@snek-at/jaen'

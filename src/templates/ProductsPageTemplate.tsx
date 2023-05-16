@@ -1,4 +1,4 @@
-import {Head as JaenHead} from '@snek-at/jaen'
+import {Head as JaenHead, PageProps} from '@snek-at/jaen'
 import {
   getCollectionStructure,
   ProductsPageContext,
@@ -6,7 +6,6 @@ import {
   SearchProvider,
   useProductSearch
 } from '@snek-at/gatsby-theme-shopify'
-import {PageProps} from 'gatsby'
 import React from 'react'
 import {Layout} from '../components/Layout'
 import {ProductsTemplate} from '../components/templates/ProductsTemplate'
@@ -118,7 +117,7 @@ const ProductsPageTemplate = (props: ProductsPageTemplateProps) => {
 
 export default (
   props: JSX.IntrinsicAttributes &
-    PageProps<ProductsPageData, ProductsPageContext, unknown, object>
+    PageProps<ProductsPageData, ProductsPageContext>
 ) => (
   <SearchProvider>
     <ProductsPageTemplate {...props} />
@@ -127,13 +126,12 @@ export default (
 
 export const Head = (props: ProductsPageTemplateProps) => {
   return (
-    <JaenHead {...(props as any)}>
-      <title id="title">AGT GunTrade - Artikel</title>
-      <meta
-        id="meta-description"
-        name="description"
-        content="Alle Artikel von AGT GunTrade im Überblick"
-      />
-    </JaenHead>
+    <JaenHead
+      {...(props as any)}
+      jaenPageMetadata={{
+        title: 'AGT GunTrade - Artikel',
+        description: 'Alle Artikel von AGT GunTrade im Überblick'
+      }}
+    />
   )
 }
