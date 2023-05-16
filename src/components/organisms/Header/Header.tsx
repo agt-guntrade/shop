@@ -190,11 +190,7 @@ export const Header = (props: HeaderProps) => {
 
                   <VStack spacing={4} py={4} align="left" mx={4}>
                     {activePath && <MobileNavItem name="Hauptseite" path="/" />}
-                    <MobileNavItem
-                      name="Kategorien"
-                      path="/"
-                      children={links}
-                    />
+                    <MobileNavItem name="Kategorien" children={links} />
                     <Divider />
 
                     <MobileNavItem name="Kontakt" path="/contact" />
@@ -254,7 +250,7 @@ export const Header = (props: HeaderProps) => {
 
 interface NavItem {
   name: string
-  path: string
+  path?: string
   children?: Array<NavItem>
 }
 
@@ -263,30 +259,34 @@ const MobileNavItem = ({name, children, path}: NavItem) => {
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
+      <Button
         py={2}
-        as={GatsbyLink}
-        to={!children ? path : '#'}
+        as={children ? undefined : GatsbyLink}
+        // @ts-ignore
+        to={children ? undefined : path}
+        variant={'ghost'}
         justify={'space-between'}
-        align={'center'}
+        justifyContent={'space-between'}
         _hover={{
           textDecoration: 'none'
-        }}>
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}>
-          {name}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
+        }}
+        rightIcon={
+          <>
+            {children && (
+              <Icon
+                as={ChevronDownIcon}
+                transition={'all .25s ease-in-out'}
+                transform={isOpen ? 'rotate(180deg)' : ''}
+                w={6}
+                h={6}
+              />
+            )}
+          </>
+        }
+        fontWeight={600}
+        color={useColorModeValue('gray.600', 'gray.200')}>
+        {name}
+      </Button>
 
       <Collapse in={isOpen} animateOpacity style={{marginTop: '0!important'}}>
         <Stack
