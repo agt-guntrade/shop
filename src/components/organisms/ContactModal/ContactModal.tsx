@@ -1,228 +1,244 @@
-import {Button} from '@chakra-ui/button'
-import {Checkbox} from '@chakra-ui/checkbox'
-import {FormControl, FormErrorMessage, FormLabel} from '@chakra-ui/form-control'
-import {Input} from '@chakra-ui/input'
-import {Box, Flex, Text} from '@chakra-ui/layout'
 import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Heading,
+  HStack,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalHeader,
-  ModalOverlay
-} from '@chakra-ui/modal'
-import {Textarea} from '@chakra-ui/textarea'
-import {useToast} from '@chakra-ui/toast'
+  ModalFooter,
+  ModalOverlay,
+  Stack,
+  Text,
+  Textarea
+} from '@chakra-ui/react'
 import React from 'react'
-import {useForm} from 'react-hook-form'
-import {sendEmail} from '../../../services/sendMail'
+import {Controller, useForm} from 'react-hook-form'
+import {CheckboxStyled} from '../../molecules/CheckboxStyled'
+
+export interface ContactFormValues {
+  firstName: string
+  lastName: string
+  email: string
+  phone?: string
+  message: string
+
+  agreeToTerms: boolean
+}
 
 export interface ContactModalProps {
   isOpen: boolean
-  heading: React.ReactNode
-  text: React.ReactNode
-  onClose: Function
-  wishlist: {
-    title: string
-    quantity: number
-  }[]
+  onClose: () => void
+
+  onSubmit: (data: ContactFormValues) => Promise<void>
+
+  fixedValues?: {
+    firstName?: string
+    lastName?: string
+    email?: string
+    phone?: string
+  }
+
+  defaultValues?: {
+    message?: string
+  }
 }
 
-export const ContactModal = ({
+export const ContactModal: React.FC<ContactModalProps> = ({
   isOpen,
-  heading,
-  text,
-  wishlist,
-  onClose
-}: ContactModalProps) => {
-  const toast = useToast()
-  const generateEmailContent = () => {
-    const wishlistText = wishlist
-      .map(item => {
-        return `- ${item.quantity} x ${item.title}`
-      })
-      .join('\n')
-
-    const content = `Sehr geehrtes AGT Team,
-ich würde gerne ein Kaufangebot für folgende Artikel einholen:
-
-${wishlistText}
-
-
-Mit freundlichen Grüßen!
-    `
-
-    return content
-  }
-
-  const defaultValues = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: generateEmailContent(),
-    agbChecked: false
-  }
-
+  onClose,
+  onSubmit,
+  fixedValues,
+  defaultValues
+}) => {
   const {
+    register,
+    control,
     handleSubmit,
     reset,
-    register,
     formState: {errors, isSubmitting}
-  } = useForm<typeof defaultValues>({
-    defaultValues
-  })
+  } = useForm<ContactFormValues>({})
 
   React.useEffect(() => {
-    reset(defaultValues)
-  }, [wishlist])
+    reset(fixedValues)
+  }, [fixedValues])
 
-  const onSubmit = async (data: typeof defaultValues) => {
-    const {firstName, lastName, email, message} = data
-
-    const subject = `Kaufanfrage für ${wishlist
-      .map(item => item.title)
-      .join(', ')}`
-
-    const sucess = await sendEmail(
-      {
-        fromEmail: email,
-        name: `${firstName} ${lastName}`,
-        subject,
-        message: message
-      },
-      'AGT_ORDER_MAIL'
-    )
-
-    if (!sucess) {
-      toast({
-        title: 'Anfrage konnte nicht versendet werden',
-        description:
-          'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
-        status: 'error',
-        duration: 9000,
-        isClosable: true
-      })
-    } else {
-      toast({
-        title: 'Anfrage erfolgreich versendet',
-        description:
-          'Vielen Dank für Ihre Anfrage. Wir werden uns so schnell wie möglich bei Ihnen melden.',
-        status: 'success',
-        duration: 9000,
-        isClosable: true
-      })
+  React.useEffect(() => {
+    if (!isOpen) {
+      reset()
     }
-
-    onClose()
-  }
+  }, [isOpen])
 
   return (
     <Modal
       isOpen={isOpen}
-      onClose={() => {
-        onClose()
-      }}
-      isCentered
-      scrollBehavior="inside">
+      onClose={onClose}
+      size="2xl"
+      blockScrollOnMount={false}>
       <ModalOverlay />
-      <ModalContent
-        bg="primary"
-        borderRadius="5px"
-        minH="60vh"
-        maxW={{base: '90vw', md: '64vw', xl: '60vw'}}>
-        <ModalHeader ml="5" fontWeight={'bold'}>
-          {heading}
-        </ModalHeader>
-        <ModalCloseButton />
-        <ModalBody mx="5" mb="5">
-          <Text mb="3">{text}</Text>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Flex mb="3" direction={{base: 'column', md: 'row'}}>
-              <Box mr="5" w={{base: '100%', md: '50%'}}>
-                <FormControl isInvalid={!!errors.firstName}>
-                  <FormLabel htmlFor="first-name">Vorname</FormLabel>
-                  <Input
-                    bg="white"
-                    placeholder="Max"
-                    {...register('firstName', {required: true})}
-                    borderColor="#D4D4D9"
-                  />
-                </FormControl>
-              </Box>
-              <Box w={{base: '100%', md: '50%'}}>
-                <FormControl isInvalid={!!errors.lastName}>
-                  <FormLabel htmlFor="last-name">Nachname</FormLabel>
-                  <Input
-                    bg="white"
-                    placeholder="Mustermann"
-                    {...register('lastName', {required: true})}
-                    borderColor="#D4D4D9"
-                  />
-                </FormControl>
-              </Box>
-            </Flex>
 
-            <Box mb="3">
-              <FormControl isInvalid={!!errors.email}>
-                <FormLabel htmlFor="email">Email Adresse</FormLabel>
-                <Input
-                  bg="white"
-                  placeholder="max.mustermann@example.at"
-                  {...register('email', {
-                    required: true,
-                    pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
-                  })}
-                  borderColor="#D4D4D9"
-                />
-              </FormControl>
-            </Box>
-            <Box mb="5">
-              <FormControl isInvalid={!!errors.message}>
-                <FormLabel htmlFor="message">Nachricht</FormLabel>
+      <ModalContent>
+        <form
+          onSubmit={event => {
+            void handleSubmit(onSubmit)(event)
+          }}>
+          <ModalCloseButton />
+          <ModalBody
+            p={{
+              base: 4,
+              md: 8,
+              lg: 12,
+              xl: 16
+            }}>
+            <Stack spacing="6">
+              <Heading
+                as="h2"
+                size={{
+                  base: 'md',
+                  md: 'lg'
+                }}>
+                Kontaktieren Sie uns
+              </Heading>
+
+              <Text size="b2015">
+                Wir freuen uns über Ihre Nachricht und werden uns
+                schnellstmöglich bei Ihnen melden.
+              </Text>
+
+              <HStack>
+                <FormControl isRequired isInvalid={!!errors.firstName}>
+                  <FormLabel htmlFor="firstName" fontSize="sm">
+                    Vorname
+                  </FormLabel>
+                  <Input
+                    id="firstName"
+                    placeholder="Max"
+                    {...register('firstName', {
+                      required: true
+                    })}
+                    isDisabled={!!fixedValues?.firstName}
+                  />
+
+                  <FormErrorMessage fontSize="sm">
+                    {errors.firstName?.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isRequired isInvalid={!!errors.lastName}>
+                  <FormLabel htmlFor="lastName" fontSize="sm">
+                    Nachname
+                  </FormLabel>
+                  <Input
+                    id="lastName"
+                    placeholder="Mustermann"
+                    {...register('lastName', {
+                      required: true
+                    })}
+                    isDisabled={!!fixedValues?.lastName}
+                  />
+
+                  <FormErrorMessage fontSize="sm">
+                    {errors.lastName?.message}
+                  </FormErrorMessage>
+                </FormControl>
+              </HStack>
+              <HStack>
+                <FormControl isRequired isInvalid={!!errors.email}>
+                  <FormLabel htmlFor="email" fontSize="sm">
+                    E-Mail
+                  </FormLabel>
+                  <Input
+                    id="email"
+                    placeholder="max.mustermann@example.com"
+                    type="email"
+                    {...register('email', {
+                      required: true
+                    })}
+                    isDisabled={!!fixedValues?.email}
+                  />
+
+                  <FormErrorMessage fontSize="sm">
+                    {errors.email?.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={!!errors.email}>
+                  <FormLabel htmlFor="phone" fontSize="sm">
+                    Telefonnummer
+                  </FormLabel>
+                  <Input
+                    id="phone"
+                    placeholder="+43 123 456 789"
+                    type="phone"
+                    {...register('phone', {
+                      required: false
+                    })}
+                    isDisabled={!!fixedValues?.phone}
+                  />
+
+                  <FormErrorMessage fontSize="sm">
+                    {errors.email?.message}
+                  </FormErrorMessage>
+                </FormControl>
+              </HStack>
+              <FormControl isRequired isInvalid={!!errors.message}>
+                <FormLabel htmlFor="message" fontSize="sm">
+                  Wie können wir Ihnen helfen?
+                </FormLabel>
                 <Textarea
-                  bg="white"
-                  resize="vertical"
-                  borderColor="#D4D4D9"
-                  h="30vh"
+                  id="message"
+                  placeholder="Nachricht"
+                  defaultValue={defaultValues?.message}
                   {...register('message', {required: true})}
                 />
+
+                <FormErrorMessage fontSize="sm">
+                  {errors.message?.message}
+                </FormErrorMessage>
               </FormControl>
-            </Box>
-            <Box>
-              <FormControl isInvalid={!!errors.agbChecked}>
-                <Flex>
-                  <Checkbox
-                    {...register('agbChecked', {required: true})}
-                    borderColor="#D4D4D9"
-                    bg="white"
-                    h="fit-content"
-                    mt="0.5"
-                    mr="2"
-                  />
-                  <Text mt={'-2px'}>
-                    Ich habe die AGBs gelesen und stimme der Verarbeitung meiner
-                    Daten zu.
-                  </Text>
-                </Flex>
-                {errors.agbChecked && (
-                  <FormErrorMessage>
-                    Bitte akzeptieren Sie die AGBs
-                  </FormErrorMessage>
-                )}
+
+              <FormControl isRequired isInvalid={!!errors.agreeToTerms}>
+                <Controller
+                  render={({field, fieldState, formState}) => (
+                    <CheckboxStyled
+                      ref={field.ref}
+                      onBlur={field.onBlur}
+                      onChange={field.onChange}
+                      checked={field.value}
+                      roundedFull>
+                      <Text
+                        fontSize={{
+                          base: 'xs',
+                          md: 'sm'
+                        }}>
+                        Ich bin damit einverstanden, dass meine Angaben zur
+                        Kontaktaufnahme und für Rückfragen gespeichert werden.
+                      </Text>
+                    </CheckboxStyled>
+                  )}
+                  name="agreeToTerms"
+                  control={control}
+                  rules={{
+                    required:
+                      'Bitte bestätigen Sie die Bedinungen zur Kontaktaufnahme'
+                  }}
+                />
+                <FormErrorMessage fontSize="sm">
+                  {errors.agreeToTerms?.message}
+                </FormErrorMessage>
               </FormControl>
-              <Button
-                mt="4"
-                colorScheme="agt.grayScheme"
-                type="submit"
-                isLoading={isSubmitting}>
-                Absenden
-              </Button>
-            </Box>
-          </form>
-        </ModalBody>
+            </Stack>
+          </ModalBody>
+
+          <ModalFooter borderTop="1px solid" color="gray.200">
+            <Button isLoading={isSubmitting} type="submit" py="7 !important">
+              Senden
+            </Button>
+          </ModalFooter>
+        </form>
       </ModalContent>
     </Modal>
   )
 }
-
-export default ContactModal

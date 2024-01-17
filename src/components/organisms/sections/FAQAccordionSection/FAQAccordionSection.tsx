@@ -7,8 +7,8 @@ import {
 } from '@chakra-ui/accordion'
 import {Box} from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
-import {connectBlock, Field} from '@snek-at/jaen'
-import React, {ReactNode} from 'react'
+import {connectBlock, Field} from '@atsnek/jaen'
+import React, {ReactNode, useMemo} from 'react'
 
 export interface FAQAccordionSectionProps {
   name: string
@@ -61,27 +61,22 @@ export const FAQAccordionSection = ({
   displayName
 }: FAQAccordionSectionProps) =>
   connectBlock(
-    () => {
-      return (
-        <FAQAccordion
-          question={
-            <Field.Text name="question" defaultValue="Frage" label="Frage" />
-          }
-          answer={
-            <Field.Text
-              name="answer"
-              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat."
-              label="Antwort"
-            />
-          }
-        />
-      )
-    },
+    () => (
+      <FAQAccordion
+        question={<Field.Text name="question" defaultValue="Frage" />}
+        answer={
+          <Field.Text
+            name="answer"
+            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat."
+          />
+        }
+      />
+    ),
     {
-      name: name,
+      name,
       label: displayName
     }
   )
@@ -89,13 +84,19 @@ export const FAQAccordionSection = ({
 export const FAQAccordionSectionJSX = ({
   name,
   displayName
-}: FAQAccordionSectionProps) => (
-  <Field.Section
-    as={Accordion as any}
-    props={{defaultIndex: [0], allowMultiple: true}}
-    sectionProps={{allowMultiple: true}}
-    name={name}
-    label={displayName}
-    blocks={[FAQAccordionSection({name: `${name}-item`, displayName})]}
-  />
-)
+}: FAQAccordionSectionProps) => {
+  const blocks = useMemo(() => {
+    return [FAQAccordionSection({name: `${name}-item`, displayName})]
+  }, [name, displayName])
+
+  return (
+    <Field.Section
+      as={Accordion}
+      props={{defaultIndex: [0], allowMultiple: true}}
+      // sectionProps={{allowMultiple: true}}
+      name={name}
+      label={displayName}
+      blocks={blocks}
+    />
+  )
+}

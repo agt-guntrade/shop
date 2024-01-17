@@ -1,5 +1,5 @@
 import {Box, Container, Flex} from '@chakra-ui/react'
-import {connectBlock, Field} from '@snek-at/jaen'
+import {connectBlock, Field} from '@atsnek/jaen'
 import {
   getCollectionStructure,
   getProductTags,
@@ -113,23 +113,14 @@ export const HeroSection = ({
   latestProducts,
   categoryProducts,
   spotlightProducts
-}: HeroSectionProps) =>
-  connectBlock(
-    () => {
-      return (
-        <Hero
-          anchor={anchor}
-          latestProducts={latestProducts}
-          categoryProducts={categoryProducts}
-          spotlightProducts={spotlightProducts}
-        />
-      )
-    },
-    {
-      name: name,
-      label: displayName
-    }
-  )
+}: HeroSectionProps) => (
+  <Hero
+    anchor={anchor}
+    latestProducts={latestProducts}
+    categoryProducts={categoryProducts}
+    spotlightProducts={spotlightProducts}
+  />
+)
 
 export const HeroSectionJSX = ({
   name,
@@ -138,19 +129,4 @@ export const HeroSectionJSX = ({
   latestProducts,
   categoryProducts,
   spotlightProducts
-}: HeroSectionProps) => (
-  <Field.Section
-    name={name}
-    label={displayName}
-    blocks={[
-      HeroSection({
-        name: `${name}-item`,
-        anchor,
-        displayName,
-        latestProducts,
-        categoryProducts,
-        spotlightProducts
-      })
-    ]}
-  />
-)
+}: HeroSectionProps) => null

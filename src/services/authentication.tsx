@@ -1,5 +1,5 @@
 import {useDisclosure} from '@chakra-ui/react'
-import {snekResourceId} from '@snek-at/jaen'
+import {snekResourceId} from '@atsnek/jaen'
 import {getTokenPair, setTokenPair, sq} from '@snek-functions/origin'
 import React, {useEffect} from 'react'
 

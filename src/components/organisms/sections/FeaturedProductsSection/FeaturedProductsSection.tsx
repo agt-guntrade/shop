@@ -1,6 +1,6 @@
 import {Button} from '@chakra-ui/button'
 import {Box, Center, Container, Divider, Heading} from '@chakra-ui/layout'
-import {connectBlock, Field} from '@snek-at/jaen'
+import {connectBlock, Field} from '@atsnek/jaen'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {Link as GatsbyLink} from 'gatsby'
 import React, {ReactNode} from 'react'
@@ -76,7 +76,7 @@ export const FeaturedProducts = ({
         <Container position="relative" py="10" maxW="8xl">
           <Box textAlign="center" my="10">
             <Heading size="2xl">{heading}</Heading>
-            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+            <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <ProductGrid
             prefixPath={productsPagePath}
@@ -108,29 +108,14 @@ export const FeaturedProductsSection = ({
   anchor,
   featuredProducts,
   productsPagePath
-}: FeaturedProductsSectionProps) =>
-  connectBlock(
-    () => {
-      return (
-        <FeaturedProducts
-          anchor={anchor}
-          heading={
-            <Field.Text
-              name="heading"
-              defaultValue={'Über uns'}
-              label="Überschrift"
-            />
-          }
-          featuredProducts={featuredProducts}
-          productsPagePath={productsPagePath}
-        />
-      )
-    },
-    {
-      name: name,
-      label: displayName
-    }
-  )
+}: FeaturedProductsSectionProps) => (
+  <FeaturedProducts
+    anchor={anchor}
+    heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
+    featuredProducts={featuredProducts}
+    productsPagePath={productsPagePath}
+  />
+)
 
 export const FeaturedProductsSectionJSX = ({
   name,
@@ -139,17 +124,10 @@ export const FeaturedProductsSectionJSX = ({
   featuredProducts,
   productsPagePath
 }: FeaturedProductsSectionProps) => (
-  <Field.Section
-    name={name}
-    label={displayName}
-    blocks={[
-      FeaturedProductsSection({
-        name: `${name}-item`,
-        anchor,
-        displayName,
-        featuredProducts,
-        productsPagePath
-      })
-    ]}
+  <FeaturedProducts
+    anchor={anchor}
+    heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
+    featuredProducts={featuredProducts}
+    productsPagePath={productsPagePath}
   />
 )

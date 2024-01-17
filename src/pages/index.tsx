@@ -1,10 +1,9 @@
-import {connectPage} from '@snek-at/jaen'
+import {PageConfig} from '@atsnek/jaen'
 import {GoogleReview} from '@snek-at/gatsby-plugin-scaleserp'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {graphql, PageProps} from 'gatsby'
 import * as React from 'react'
 
-import {Layout} from '../components/Layout'
 import {HomeTemplate} from '../components/templates/HomeTemplate'
 
 interface IndexPageData {
@@ -26,57 +25,56 @@ interface IndexPageData {
 }
 
 // markup
-const IndexPage = (props: PageProps<IndexPageData>) => {
+const IndexPage: React.FC<PageProps<IndexPageData>> = props => {
   return (
-    <Layout path={props.path}>
-      <HomeTemplate
-        name="home"
-        displayName="Sections"
-        heroSection={{
-          name: 'hero',
-          displayName: 'Hero',
-          latestProducts: props.data.latestProducts.nodes,
-          categoryProducts: props.data.categoryShowcase.nodes,
-          spotlightProducts: props.data.productSpotlight.nodes
-        }}
-        featuredProductsSection={{
-          name: 'featured',
-          displayName: 'Empfehlungen',
-          featuredProducts: props.data.featuredProducts.nodes
-        }}
-        partnerSection={{
-          name: 'partner',
-          displayName: 'Vertretungen'
-        }}
-        featuredPartnerSection={{
-          name: 'featuredpartner',
-          displayName: 'Empfehlungen/Vertretungen',
-          featuredProducts: props.data.featuredProducts.nodes
-        }}
-        faqSection={{
-          name: 'faq',
-          displayName: 'Fragen und Antworten'
-        }}
-        reviewSection={{
-          name: 'review',
-          displayName: 'Bewertungen',
-          googleReviews: props.data.googleReviews.nodes
-        }}
-        reviewFAQSection={{
-          name: 'reviewfaq',
-          displayName: 'Bewertungen/FAQ',
-          googleReviews: props.data.googleReviews.nodes
-        }}
-        aboutSection={{
-          name: 'about',
-          displayName: 'Über uns'
-        }}
-        newsSection={{
-          name: 'news',
-          displayName: 'Neuigkeiten'
-        }}
-      />
-    </Layout>
+    <HomeTemplate
+      name="home"
+      displayName="Sections"
+      heroSection={{
+        name: 'hero',
+        displayName: 'Hero',
+        latestProducts: props.data.latestProducts.nodes,
+        categoryProducts: props.data.categoryShowcase.nodes,
+        spotlightProducts: props.data.productSpotlight.nodes
+      }}
+      featuredProductsSection={{
+        name: 'featured',
+        displayName: 'Empfehlungen',
+        featuredProducts: props.data.featuredProducts.nodes
+      }}
+      partnerSection={{
+        name: 'partner',
+        displayName: 'Vertretungen'
+      }}
+      featuredPartnerSection={{
+        name: 'featuredpartner',
+        displayName: 'Empfehlungen/Vertretungen',
+        featuredProducts: props.data.featuredProducts.nodes
+      }}
+      faqSection={{
+        name: 'faq',
+        displayName: 'Fragen und Antworten'
+      }}
+      reviewSection={{
+        name: 'review',
+        displayName: 'Bewertungen',
+        googleReviews: props.data.googleReviews.nodes
+      }}
+      reviewFAQSection={{
+        name: 'reviewfaq',
+        displayName: 'Bewertungen/FAQ',
+        googleReviews: props.data.googleReviews.nodes
+      }}
+      aboutSection={{
+        heading: null,
+        name: 'about',
+        displayName: 'Über uns'
+      }}
+      newsSection={{
+        name: 'news',
+        displayName: 'Neuigkeiten'
+      }}
+    />
   )
 }
 
@@ -139,8 +137,17 @@ export const query = graphql`
   }
 `
 
-export default connectPage(IndexPage, {
-  displayName: 'Home'
-})
+export default IndexPage
 
-export {Head} from '@snek-at/jaen'
+export {Head} from '@atsnek/jaen'
+
+export const pageConfig: PageConfig = {
+  label: 'AGT GunTrade',
+  icon: 'FaHome',
+  childTemplates: [],
+  menu: {
+    label: 'Startseite',
+    type: 'app',
+    order: 100
+  }
+}

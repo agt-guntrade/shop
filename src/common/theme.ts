@@ -1,12 +1,26 @@
-import {extendTheme} from '@chakra-ui/react'
+import {Theme, extendTheme, withDefaultColorScheme} from '@chakra-ui/react'
 import {StyleFunctionProps} from '@chakra-ui/theme-tools'
 import {Dict} from '@chakra-ui/utils'
 
-const theme = {
+const theme: Theme = {
   config: {
-    initialColorMode: false
+    initialColorMode: 'dark'
   },
   colors: {
+    brand: {
+      50: '#FEFFE7',
+      100: '#FAFFC1',
+      200: '#FAFF86',
+      300: '#FFFF41',
+      400: '#FFF30E',
+      500: '#FEE501',
+      600: '#D0AA00',
+      700: '#A67B02',
+      800: '#895F0A',
+      900: '#744E0F',
+      950: '#442904'
+    },
+
     agt: {
       lightbackground: '#ffffff',
       darkbackground: '#1d1f21',
@@ -103,7 +117,19 @@ const theme = {
   },
   shadows: {
     outline: '0 0 0 3px #424240'
+  },
+  components: {
+    Button: {
+      baseStyle: props => ({
+        color: 'red'
+      })
+    }
   }
 }
 
-export default extendTheme(theme)
+export default extendTheme(
+  theme,
+  withDefaultColorScheme({
+    colorScheme: 'brand'
+  })
+)

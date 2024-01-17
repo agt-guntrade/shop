@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {useCookieState} from '../../../services/cookiemodal'
 import {ContainerLayout} from '../../ContainerLayout'
 import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
-import {getCookieConsentApi} from '@snek-at/jaen'
+import {getCookieConsentApi} from '@atsnek/jaen'
 
 export const PrivacyTemplate = (props: {path: string}) => {
   const showSettings = () => {

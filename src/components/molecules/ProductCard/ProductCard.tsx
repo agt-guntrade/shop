@@ -23,6 +23,7 @@ import {uuidv1} from '../../../common/utils'
 
 import * as styles from './styles'
 import {useAuthentication} from '../../../services/authentication'
+import {useWholesaleUser} from '../../../hooks/use-wholesale-user'
 
 export interface ProductCardProps {
   product: ShopifyProduct
@@ -41,14 +42,10 @@ export const ProductCard = ({
   bcolor,
   prefixPath
 }: ProductCardProps) => {
-  const {user} = useAuthentication()
-
   const prefixPathTrimmed = prefixPath
     ? prefixPath.trim().replace(/\/+$/, '')
     : ''
   const path = `${prefixPathTrimmed}/${product.handle}`
-
-  console.log(prefixPath, prefixPathTrimmed, path)
 
   const radioRef = React.useRef<(HTMLInputElement | null)[]>([])
 
@@ -56,7 +53,9 @@ export const ProductCard = ({
 
   const prices = getFormattedProductPrices(product)
 
-  const taxable = user ? false : product.variants[0]?.taxable
+  const isWholesale = useWholesaleUser()
+
+  const taxable = isWholesale ? false : product.variants[0]?.taxable
 
   const cardId = uuidv1()
 
@@ -70,7 +69,7 @@ export const ProductCard = ({
     new Date(product.createdAt).getTime() >
     Date.now() - 7 * 24 * 60 * 60 * 1000
   ) {
-    coloredBadges.push({name: 'Neu', color: 'black', bg: 'agt.yellow'})
+    coloredBadges.push({name: 'Neu', color: 'black', bg: 'brand.500'})
   }
 
   if (prices.discountFormatted) {
@@ -156,11 +155,10 @@ export const ProductCard = ({
         </Text>
         <Text fontWeight="semibold">{product.title}</Text>
         <ProductPrices prices={prices} />
-        {taxable && (
-          <Text fontSize="xs" color="gray.600" textAlign={'center'}>
-            inkl. MwSt.
-          </Text>
-        )}
+
+        <Text fontSize="xs" color="gray.600" textAlign={'center'}>
+          {taxable ? 'inkl.' : 'exkl.'} Ust.
+        </Text>
         <Spacer
           position="absolute"
           className="bspacer"

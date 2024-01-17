@@ -6,7 +6,7 @@ import {
   HStack,
   useDisclosure
 } from '@chakra-ui/react'
-import {connectBlock, Field, useIndexField} from '@snek-at/jaen'
+import {connectBlock, Field, useJaenPageIndex} from '@atsnek/jaen'
 import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 import {scroller} from 'react-scroll'
@@ -34,7 +34,7 @@ export const News = ({anchor, heading}: NewsProps) => {
   const [url, setUrl] = React.useState<string>()
   const {isOpen, onOpen, onClose} = useDisclosure()
 
-  const index = useIndexField({
+  const index = useJaenPageIndex({
     jaenPageId: 'JaenPage /news/'
   })
 
@@ -86,7 +86,7 @@ export const News = ({anchor, heading}: NewsProps) => {
         <Container position="relative" py="10" maxW="8xl">
           <Box textAlign="center" my="10">
             <Heading size="2xl">{heading}</Heading>
-            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+            <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <Slider
             flexDir="column"
@@ -100,7 +100,7 @@ export const News = ({anchor, heading}: NewsProps) => {
               width="max-content"
               minW="100%"
               justifyContent="center">
-              {index.children.map(page => {
+              {index.childPages.map(page => {
                 React.useEffect(() => {
                   if (
                     window &&
@@ -135,21 +135,11 @@ export const News = ({anchor, heading}: NewsProps) => {
               <NewsModal
                 url={url || ''}
                 highlight={
-                  <Field.Text
-                    name="highlight"
-                    defaultValue="Aktion"
-                    label="Tag"
-                  />
+                  <Field.Text name="highlight" defaultValue="Aktion" />
                 }
                 isOpen={isOpen}
                 onClose={onClose}
-                heading={
-                  <Field.Text
-                    name="heading"
-                    defaultValue="Titel"
-                    label="Überschrift"
-                  />
-                }
+                heading={<Field.Text name="heading" defaultValue="Titel" />}
                 text={
                   <Field.Text
                     name="description"
@@ -157,7 +147,6 @@ export const News = ({anchor, heading}: NewsProps) => {
                 diam nonumy eirmod tempor invidunt ut labore et dolore magna
                 aliquyam erat, sed diam voluptua. At vero eos et accusam et
                 justo duo dolores et ea rebum."
-                    label="Beschreibung"
                   />
                 }
                 image={
@@ -186,13 +175,7 @@ export const NewsSection = ({name, displayName, anchor}: NewsSectionProps) =>
     () => (
       <News
         anchor={anchor}
-        heading={
-          <Field.Text
-            name="heading"
-            defaultValue={'Neuigkeiten'}
-            label="Überschrift"
-          />
-        }
+        heading={<Field.Text name="heading" defaultValue={'Neuigkeiten'} />}
       />
     ),
     {

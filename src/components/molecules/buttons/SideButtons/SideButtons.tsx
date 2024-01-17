@@ -14,7 +14,7 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
   return (
     <ButtonGroup
       as="aside"
-      colorScheme="agt.yellowScheme"
+      colorScheme="brand"
       position="fixed"
       bottom={{base: '0', md: '50%'}}
       right="0"

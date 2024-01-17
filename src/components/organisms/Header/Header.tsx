@@ -12,50 +12,56 @@ import {
   Link,
   Stack,
   Text,
+  VStack,
   useColorModeValue,
-  useDisclosure,
-  VStack
+  useDisclosure
 } from '@chakra-ui/react'
 import {FaShoppingBasket} from '@react-icons/all-files/fa/FaShoppingBasket'
-import {FaUser} from '@react-icons/all-files/fa/FaUser'
 import {Link as GatsbyLink} from 'gatsby'
 import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
 
 import {Searchbar, SearchbarProps} from '../../molecules/Searchbar'
-import {useAuthentication} from '../../../services/authentication'
 import {NavAuthButton} from './NavAuthButton'
+import {useBasket} from '../../../services/basket'
+import {useContactModal} from '../../../services/contact'
+import {useAuthenticationContext} from '@atsnek/jaen'
 
+/**
+ *
+ * Find the best match for a path in a list of paths.
+ *
+ * Example:
+ * path = /waffen/luftdruckwaffen/luftgewehre
+ * paths = ['/waffen', '/waffen/luftdruckwaffen', '/waffen/luftdruckwaffen/test']
+ *
+ * returns '/waffen/luftdruckwaffen'
+ *
+ *
+ * @param path
+ * @param paths
+ * @returns
+ */
 const findBestMatch = (path: string, paths: Array<string>) => {
-  let bestMatch: string | undefined
-  let bestMatchScore = 0
+  const pathParts = path.split('/').filter(p => p !== '')
+  const pathPartsLength = pathParts.length
 
-  // check how many a path matches the current path
-  // if it is the best match, save it
-  paths.forEach(pathToMatch => {
-    // iterate over all path parts and check how many of them match
-    let score = 0
-    const pathParts = path.replace(/\/$/, '').split('/').filter(Boolean)
-    const pathToMatchParts = pathToMatch
-      .replace(/\/$/, '')
-      .split('/')
-      .filter(Boolean)
+  const bestMatch = paths.reduce((prev, curr) => {
+    const currParts = curr.split('/').filter(p => p !== '')
+    const currPartsLength = currParts.length
 
-    for (let i = 0; i < pathParts.length; i++) {
-      if (pathParts[i] !== pathToMatchParts[i]) {
-        // if the path part does not match, exit the loop
-        break
-      }
-
-      score++
+    if (currPartsLength > pathPartsLength) {
+      return prev
     }
 
-    // if the score is better than the current best match, save it
-    if (score > bestMatchScore) {
-      bestMatch = pathToMatch
-      bestMatchScore = score
+    const match = currParts.every((part, i) => part === pathParts[i])
+
+    if (match) {
+      return curr
     }
-  })
+
+    return prev
+  }, '')
 
   return bestMatch
 }
@@ -69,21 +75,21 @@ export interface HeaderProps extends SearchbarProps {
 }
 
 export const Header = (props: HeaderProps) => {
-  const {path: activePath, links, searchResultProducts, onSearch} = props
+  const {path: activePath, links} = props
 
   const {isOpen, onToggle} = useDisclosure()
-
-  const searchbar = (
-    <Searchbar
-      searchResultProducts={searchResultProducts}
-      onSearch={onSearch}
-    />
-  )
 
   const bestMatch = findBestMatch(
     activePath,
     links.map(l => l.path)
   )
+
+  const authContext = useAuthenticationContext()
+
+  const basketContext = useBasket()
+  const contactContext = useContactModal()
+
+  const grayColor = useColorModeValue('gray.200', 'gray.600')
 
   return (
     <>
@@ -91,102 +97,102 @@ export const Header = (props: HeaderProps) => {
         bg={['agt.gray', 'agt.gray', 'agt.gray', 'agt.gray']}
         color={['white', 'white', 'primary.700', 'primary.700']}
         w="full">
-        <Container maxW="8xl">
-          <HStack py={4} alignItems={'center'} justifyContent={'space-between'}>
-            <IconButton
-              onClick={onToggle}
-              icon={
-                isOpen ? (
-                  <CloseIcon w={3} h={3} />
-                ) : (
-                  <HamburgerIcon w={5} h={5} />
-                )
-              }
-              variant={'ghost'}
-              aria-label={'Toggle Navigation'}
-              display={{base: 'flex', md: 'none'}}
-            />
-
+        {!authContext.isAuthenticated && (
+          <Container maxW="8xl">
             <HStack
-              as={GatsbyLink}
-              to="/"
-              cursor={'pointer'}
-              spacing={{base: '10', md: '20'}}
+              py={4}
               alignItems={'center'}
-              maxW="2xl">
-              <StaticImage
-                src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
-                alt="Snek"
-                style={{maxWidth: '300px'}}
-              />
-            </HStack>
-            <Box display={{base: 'none', md: 'block'}} w="100%" px={8}>
-              {searchbar}
-            </Box>
-
-            <HStack
-              spacing={4}
-              alignItems={'center'}
-              justifyContent={'flex-end'}>
-              <Button
-                as={GatsbyLink}
-                to="/contact"
-                variant="ghost"
-                display={{
-                  base: 'none',
-                  md: 'flex'
-                }}
-                _hover={{
-                  textDecoration: 'underline'
-                }}
-                color={['white']}
-                colorScheme="agt.grayScheme"
-                fontSize={'md'}
-                size="sm"
-                rounded="md">
-                Kontakt
-              </Button>
-
-              <NavAuthButton />
-
-              <Button
-                as={GatsbyLink}
-                to="/shopping-cart"
-                display={{
-                  base: 'none',
-                  sm: 'flex'
-                }}
-                size="sm"
-                rounded="md"
-                color={['black']}
-                colorScheme="agt.yellowScheme"
-                leftIcon={<FaShoppingBasket />}>
-                Merkliste
-              </Button>
+              justifyContent={'space-between'}>
               <IconButton
-                as={GatsbyLink}
-                to="/shopping-cart"
-                display={{
-                  base: 'flex',
-                  sm: 'none'
-                }}
-                icon={<FaShoppingBasket />}
-                aria-label="Open Merkliste"
-                colorScheme={'agt.redScheme'}
+                onClick={onToggle}
+                icon={
+                  isOpen ? (
+                    <CloseIcon w={3} h={3} />
+                  ) : (
+                    <HamburgerIcon w={5} h={5} />
+                  )
+                }
+                variant={'ghost'}
+                aria-label={'Toggle Navigation'}
+                display={{base: 'flex', md: 'none'}}
               />
+
+              <HStack
+                as={GatsbyLink}
+                to="/"
+                cursor={'pointer'}
+                spacing={{base: '10', md: '20'}}
+                alignItems={'center'}
+                maxW="2xl">
+                <StaticImage
+                  src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
+                  alt="AGT GunTrade Logo"
+                  style={{maxWidth: '300px'}}
+                />
+              </HStack>
+              <Box display={{base: 'none', md: 'block'}} w="100%" px={8}>
+                <Searchbar />
+              </Box>
+
+              <HStack
+                spacing={4}
+                alignItems={'center'}
+                justifyContent={'flex-end'}>
+                <Button
+                  onClick={() => {
+                    contactContext.onOpen()
+                  }}
+                  variant="ghost"
+                  display={{
+                    base: 'none',
+                    md: 'flex'
+                  }}
+                  _hover={{
+                    textDecoration: 'underline'
+                  }}
+                  color={['white']}
+                  colorScheme="agt.grayScheme"
+                  fontSize={'md'}
+                  size="sm"
+                  rounded="md">
+                  Kontakt
+                </Button>
+
+                <NavAuthButton />
+
+                <Button
+                  onClick={basketContext.onOpen}
+                  display={{
+                    base: 'none',
+                    sm: 'flex'
+                  }}
+                  size="sm"
+                  rounded="md"
+                  color={['black']}
+                  colorScheme="brand"
+                  leftIcon={<FaShoppingBasket />}>
+                  Warenkorb
+                </Button>
+                <IconButton
+                  onClick={basketContext.onOpen}
+                  display={{
+                    base: 'flex',
+                    sm: 'none'
+                  }}
+                  icon={<FaShoppingBasket />}
+                  aria-label="Open Warenkorb"
+                  colorScheme={'agt.redScheme'}
+                />
+              </HStack>
             </HStack>
-          </HStack>
-        </Container>
+          </Container>
+        )}
         <Box>
           <Collapse in={isOpen} animateOpacity>
             <Box py="4">
-              <Box
-                display={{base: 'flex', md: 'none'}}
-                w="100%"
-                bg="white"
-                color="black">
+              <Box display={{base: 'flex', md: 'none'}} w="100%" bg="white">
                 <Flex direction={'column'} w="100%" py="2">
-                  {searchbar}
+                  <Searchbar />
 
                   <VStack spacing={4} py={4} align="left" mx={4}>
                     {activePath && <MobileNavItem name="Hauptseite" path="/" />}
@@ -225,20 +231,17 @@ export const Header = (props: HeaderProps) => {
                 px={2}
                 py={1}
                 rounded={'md'}
-                bg={
-                  link.path === bestMatch
-                    ? useColorModeValue('gray.200', 'gray.600')
-                    : 'transparent'
-                }
+                fontSize="lg"
+                bg={link.path === bestMatch ? grayColor : 'transparent'}
                 _hover={{
                   textDecoration: 'none',
-                  bg: useColorModeValue('gray.200', 'gray.600')
+                  bg: grayColor
                 }}
                 _focus={{
                   textDecoration: 'none',
-                  bg: useColorModeValue('gray.200', 'gray.600')
+                  bg: grayColor
                 }}>
-                <Text fontSize="lg">{link.name}</Text>
+                {link.name}
               </Link>
             ))}
           </HStack>

@@ -1,1 +1,1 @@
-export {ContactModal} from './ContactModal'
+export {ContactFormValues, ContactModal} from './ContactModal'

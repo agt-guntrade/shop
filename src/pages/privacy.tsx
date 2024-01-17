@@ -1,22 +1,12 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {connectPage} from '@snek-at/jaen'
-import {Layout} from '../components/Layout'
+import {PageConfig} from '@atsnek/jaen'
 import {PrivacyTemplate} from '../components/templates/PrivacyTemplate'
 
-const PrivacyPage = connectPage(
-  ({path}: PageProps) => {
-    return (
-      <Layout path={path}>
-        <PrivacyTemplate path={path} />
-      </Layout>
-    )
-  },
-  {
-    label: 'Datenschutz'
-  }
-)
+const PrivacyPage: React.FC<PageProps> = ({path}) => {
+  return <PrivacyTemplate path={path} />
+}
 
 export const query = graphql`
   query ($jaenPageId: String!) {
@@ -26,4 +16,9 @@ export const query = graphql`
 
 export default PrivacyPage
 
-export {Head} from '@snek-at/jaen'
+export {Head} from '@atsnek/jaen'
+
+export const pageConfig: PageConfig = {
+  label: 'Datenschutz',
+  childTemplates: []
+}

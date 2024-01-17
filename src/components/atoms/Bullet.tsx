@@ -1,9 +1,12 @@
 import {createIcon} from '@chakra-ui/react'
 
 export const Bullet = createIcon({
-    displayName: 'BulletIcon',
-    viewBox: '0 0 100 23.013',
-    d: `M 75.30,3.31
+  displayName: 'BulletIcon',
+  viewBox: '0 0 100 23.013',
+  defaultProps: {
+    color: 'brand.500'
+  },
+  d: `M 75.30,3.31
           C 75.30,3.31 65.90,3.31 65.90,3.31
               65.90,3.31 59.70,0.11 59.70,0.11
               59.64,0.10 59.58,0.08 59.52,0.07
@@ -164,5 +167,4 @@ export const Bullet = createIcon({
               92.10,13.40 92.00,13.41 92.00,13.41
               91.33,13.69 90.62,13.96 89.90,14.21
               88.75,14.60 87.72,14.90 86.80,15.10 Z`
-  })
-  
+})

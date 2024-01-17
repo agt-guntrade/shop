@@ -1,5 +1,5 @@
 import {VStack} from '@chakra-ui/layout'
-import {Field} from '@snek-at/jaen'
+import {Field} from '@atsnek/jaen'
 import {navigate} from 'gatsby'
 import React from 'react'
 
@@ -26,6 +26,7 @@ import {
   ReviewSection,
   ReviewSectionProps
 } from '../../organisms/sections'
+import {useContactModal} from '../../../services/contact'
 
 export interface HomeTemplateProps {
   name: string
@@ -45,52 +46,37 @@ export interface HomeTemplateProps {
 }
 
 export const HomeTemplate = (props: HomeTemplateProps) => {
+  const contact = useContactModal()
+
   return (
     <>
-      <Field.Section
-        as={VStack}
-        props={{
-          w: '100%',
-          spacing: 0,
-          justify: 'center'
-        }}
-        sectionProps={{
-          w: '100%',
-          h: '100%',
-          position: 'relative',
-          mt: 0
-        }}
-        name={props.name}
-        label={props.displayName}
-        blocks={[
-          HeroSection({...props.heroSection, anchor: 'hero'}),
-          FeaturedProductsSection({
-            ...props.featuredProductsSection,
-            anchor: 'featured'
-          }),
-          FeaturedPartnerSection({
-            ...props.featuredPartnerSection,
-            partnerAnchor: 'partner',
-            featuredAnchor: 'featured'
-          }),
-          PartnerSection({...props.partnerSection, anchor: 'partner'}),
-          ReviewSection({...props.reviewSection, anchor: 'review'}),
-          ReviewFAQSection({
-            ...props.reviewFAQSection,
-            reviewAnchor: 'review',
-            faqAnchor: 'faq'
-          }),
-          FAQSection({...props.faqSection, anchor: 'faq'}),
-          AboutSection({...props.aboutSection, anchor: 'about'}),
-          NewsSection({...props.newsSection, anchor: 'news'})
-        ]}
+      <HeroSection {...props.heroSection} anchor="hero" />
+
+      <AboutSection {...props.aboutSection} anchor="about" />
+
+      {/* <FeaturedProductsSection
+        {...props.featuredProductsSection}
+        anchor="featured"
+      /> */}
+
+      <FeaturedPartnerSection
+        {...props.featuredPartnerSection}
+        partnerAnchor="partner"
+        featuredAnchor="featured"
       />
+
+      <ReviewFAQSection
+        {...props.reviewFAQSection}
+        reviewAnchor="review"
+        faqAnchor="faq"
+      />
+
       <SideButtons
-        onMailButtonClick={() => navigate('/contact/')}
+        onMailButtonClick={() => contact.onOpen()}
         onLocationButtonClick={() => navigate('/impressum/')}
         onPhoneButtonClick={() => navigate('/contact/')}
       />
-      {/* <ScrollToTopButton onScrollToTopClick={() => null}/> */}
+
       <ScrollSpy
         anchors={[
           {

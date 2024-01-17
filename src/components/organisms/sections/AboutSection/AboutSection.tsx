@@ -14,7 +14,7 @@ import {
   Text,
   useColorModeValue
 } from '@chakra-ui/react'
-import {connectBlock, Field} from '@snek-at/jaen'
+import {connectBlock, Field} from '@atsnek/jaen'
 import React, {ReactNode} from 'react'
 import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
@@ -25,10 +25,12 @@ import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
 import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
 import * as style from './style'
 import {Link} from 'gatsby'
+import {useContactModal} from '../../../../services/contact'
 
 export interface AboutSectionProps {
   anchor?: string
   name: string
+  heading: ReactNode
   displayName: string
 }
 
@@ -53,6 +55,8 @@ export const About = ({anchor, heading}: AboutProps) => {
     xl: '17.5rem'
   }
 
+  const contactConxtex = useContactModal()
+
   return (
     <>
       <Box
@@ -60,7 +64,7 @@ export const About = ({anchor, heading}: AboutProps) => {
         // position="relative"
         overflow="hidden"
         css={style.Section}>
-        <Box
+        {/* <Box
           w="100%"
           h="100%"
           position="absolute"
@@ -69,7 +73,7 @@ export const About = ({anchor, heading}: AboutProps) => {
             strokeColor={getThemeColor('stroke')}
             backgroundColor={getThemeColor('background')}
           />
-        </Box>
+        </Box> */}
 
         <Divider
           orientation="vertical"
@@ -91,7 +95,7 @@ export const About = ({anchor, heading}: AboutProps) => {
           justify="center">
           <Box textAlign="center" my="10">
             <Heading size="2xl">{heading}</Heading>
-            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+            <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <Container
             justifyContent="space-between"
@@ -157,7 +161,7 @@ export const About = ({anchor, heading}: AboutProps) => {
             </Flex>
 
             <Stack
-              // zIndex={'999'}
+              zIndex={'999'}
               maxW={{
                 xl: '50%'
               }}
@@ -170,15 +174,12 @@ export const About = ({anchor, heading}: AboutProps) => {
                 whiteSpace="nowrap">
                 <Field.Text
                   name="Heading1"
-                  label="Heading"
-                  defaultValue="<p>Auch die <i>kleinsten</i><br/> Dinge machen viel <i>Freude</i></p>"
-                  rtf
+                  defaultValue="Auch die <i>kleinsten</i><br/> Dinge machen viel <i>Freude</i>"
                 />
               </Heading>
               <Heading fontSize={{base: 'sm', md: 'md'}} fontWeight="semibold">
                 <Field.Text
                   name="subtitle"
-                  label="Subtitle"
                   defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                 />
               </Heading>
@@ -188,15 +189,17 @@ export const About = ({anchor, heading}: AboutProps) => {
                 as="span">
                 <Field.Text
                   name="text"
-                  label="Text"
                   defaultValue="At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
                 />
               </Text>
-              <ButtonGroup colorScheme="agt.yellowScheme" color="black">
-                <Button color="black" as={Link} to="/contact">
+              <ButtonGroup colorScheme="agt.grayScheme" size="lg">
+                <Button
+                  onClick={() => {
+                    contactConxtex.onOpen()
+                  }}>
                   Kontakiere uns
                 </Button>
-                <Button color="black" as={Link} to="/products">
+                <Button as={Link} to="/products">
                   Unsere Produkte
                 </Button>
               </ButtonGroup>
@@ -208,39 +211,20 @@ export const About = ({anchor, heading}: AboutProps) => {
   )
 }
 
-export const AboutSection = ({anchor, name, displayName}: AboutSectionProps) =>
-  connectBlock(
-    () => {
-      return (
-        <About
-          anchor={anchor}
-          heading={
-            <Field.Text
-              name="heading"
-              defaultValue={'Über uns'}
-              label="Heading"
-            />
-          }
-        />
-      )
-    },
-    {
-      name: name,
-      label: displayName
-    }
-  )
+export const AboutSection = ({
+  anchor,
+  name,
+  displayName
+}: AboutSectionProps) => (
+  <About
+    anchor={anchor}
+    heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
+  />
+)
 
 export const AboutSectionJSX = ({
   name,
   displayName,
   anchor,
   heading
-}: AboutSectionProps) => (
-  <Field.Section
-    name={name}
-    label={displayName}
-    blocks={[
-      AboutSection({name: `${name}-item`, displayName, anchor, heading})
-    ]}
-  />
-)
+}: AboutSectionProps) => null

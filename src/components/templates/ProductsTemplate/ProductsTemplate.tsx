@@ -56,8 +56,6 @@ export const ProductsTemplate = (props: ProductsTemplateProps) => {
 
         const currentScroll = window.pageYOffset + window.innerHeight
 
-        console.log(yOfDivEnd, currentScroll)
-
         if (yOfDivEnd < currentScroll) {
           props.fetchNextPage()
         }
@@ -132,12 +130,6 @@ export const ProductsTemplate = (props: ProductsTemplateProps) => {
     <>
       <BreadcrumbsBanner title="Produkte" path={props.path} />
       <ContainerLayout>
-        <Header
-          onMobileFilterClick={mobile.onToggle}
-          sortOptions={props.sortOptions}
-          onSortChange={props.onSortChange}
-          disableFilter={!hasTagsFilter && !hasPriceFilter}
-        />
         <Flex>
           {!disableFilter && (
             <>
@@ -177,7 +169,7 @@ export const ProductsTemplate = (props: ProductsTemplateProps) => {
                   thickness="4px"
                   speed="0.65s"
                   emptyColor="gray.200"
-                  color="agt.blue"
+                  colorScheme="brand"
                   size="xl"
                 />
               </Center>

@@ -110,7 +110,7 @@ const PriceRangeFilter = (props: {
 
       <Box px="4">
         <RangeSlider
-          colorScheme={'agt.yellowScheme'}
+          colorScheme={'brand'}
           min={props.minPrice}
           max={props.maxPrice}
           defaultValue={defaultValue}

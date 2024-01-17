@@ -1,13 +1,13 @@
 import {Box, Container, Divider, Heading, Stack} from '@chakra-ui/layout'
-import {useColorModeValue} from '@chakra-ui/react'
-import {connectBlock, Field} from '@snek-at/jaen'
+import {useColorModeValue, Text, Button} from '@chakra-ui/react'
+import {connectBlock, Field} from '@atsnek/jaen'
 import React, {ReactNode} from 'react'
 
 import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
-import {ContactForm} from '../../../molecules/ContactForm'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
 import {FAQAccordionSectionJSX} from '../FAQAccordionSection'
+import {useContactModal} from '../../../../services/contact'
 
 export interface FAQSectionProps {
   anchor?: string
@@ -21,6 +21,7 @@ export interface FAQProps {
   heading: ReactNode
   faqheading: ReactNode
   contactheading: ReactNode
+  contacttext: ReactNode
   accordionsection: ReactNode
 }
 
@@ -29,9 +30,12 @@ export const FAQ = ({
   heading,
   faqheading,
   contactheading,
+  contacttext,
   accordionsection,
   bg
 }: FAQProps) => {
+  const contact = useContactModal()
+
   return (
     <Box
       id={anchor}
@@ -63,7 +67,7 @@ export const FAQ = ({
           <Heading color="white" size="2xl">
             {heading}
           </Heading>
-          <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+          <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
         </Box>
         <Stack
           direction={{base: 'column', lg: 'row'}}
@@ -92,9 +96,17 @@ export const FAQ = ({
             <Heading mb="5" as="h3">
               {contactheading}
             </Heading>
-            <ContactForm
-              requestOptions={['Option A', 'Option B', 'Option C']}
-            />
+
+            <Text mb="5">{contacttext}</Text>
+
+            <Button
+              color="black"
+              size="lg"
+              onClick={() => {
+                contact.onOpen()
+              }}>
+              Kontaktieren
+            </Button>
           </Box>
         </Stack>
       </Container>
@@ -109,25 +121,20 @@ export const FAQSection = ({anchor, name, displayName}: FAQSectionProps) =>
         <FAQ
           anchor={anchor}
           bg="agt.darkbackground"
-          heading={
-            <Field.Text
-              name="heading"
-              defaultValue="Fragen"
-              label="Überschrift"
-            />
-          }
+          heading={<Field.Text name="heading" defaultValue="Fragen" />}
           faqheading={
             <Field.Text
               name="faqheading"
               defaultValue="Häufig gestellte Fragen"
-              label="Überschrift"
             />
           }
           contactheading={
+            <Field.Text name="contactheading" defaultValue="Jetzt Anfragen" />
+          }
+          contacttext={
             <Field.Text
-              name="contactheading"
-              defaultValue="Jetzt Anfragen"
-              label="Überschrift"
+              name="contacttext"
+              defaultValue="Haben Sie Fragen? Wir helfen Ihnen gerne weiter!"
             />
           }
           accordionsection={

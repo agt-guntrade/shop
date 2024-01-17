@@ -4,7 +4,7 @@ import {useColorModeValue} from '@chakra-ui/react'
 import {Link as GatsbyLink, navigate} from 'gatsby'
 import {Button} from '@chakra-ui/button'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
-import {Field, connectBlock} from '@snek-at/jaen'
+import {Field, connectBlock} from '@atsnek/jaen'
 
 import {ProductCard} from '../../../molecules/ProductCard'
 import {Bullet} from '../../../atoms/Bullet'
@@ -83,64 +83,45 @@ export const FeaturedPartnerSection = ({
   partnerAnchor,
   featuredProducts,
   productsPagePath = '/products'
-}: FeaturedPartnerSectionProps) =>
-  connectBlock(
-    () => {
-      return (
-        <>
-          <FeaturedPartner
-            featuredAnchor={featuredAnchor}
-            featuredHeading={
-              <Field.Text
-                name="featuredheading"
-                defaultValue={'Empfohlene Produkte'}
-                label="Überschrift"
-              />
-            }
-            featuredProducts={featuredProducts}
-            productsPagePath={productsPagePath}
-            partnerAnchor={partnerAnchor}
-            partnerHeading={
-              <Field.Text
-                name="partnerheading"
-                defaultValue={'Partner'}
-                label="Überschrift"
-              />
-            }
-            partnerscrollsections={
-              <Field.Section
-                as={HStack}
-                props={{
-                  h: '100%',
-                  py: '5',
-                  spacing: '5',
-                  width: 'max-content',
-                  minW: '100%',
-                  justifyContent: 'center'
-                }}
-                sectionProps={{
-                  h: '100%'
-                  // w: '100%'
-                }}
-                name="partner"
-                label="Partner"
-                blocks={[
-                  PartnerScrollSection({
-                    name: `${name}-item`,
-                    displayName: 'Partner Logo'
-                  })
-                ]}
-              />
-            }
-          />
-        </>
-      )
-    },
-    {
-      name: name,
-      label: displayName
+}: FeaturedPartnerSectionProps) => (
+  <FeaturedPartner
+    featuredAnchor={featuredAnchor}
+    featuredHeading={
+      <Field.Text name="featuredheading" defaultValue={'Empfohlene Produkte'} />
     }
-  )
+    featuredProducts={featuredProducts}
+    productsPagePath={productsPagePath}
+    partnerAnchor={partnerAnchor}
+    partnerHeading={
+      <Field.Text name="partnerheading" defaultValue={'Partner'} />
+    }
+    partnerscrollsections={
+      <Field.Section
+        as={HStack}
+        props={{
+          h: '100%',
+          py: '5',
+          spacing: '5',
+          width: 'max-content',
+          minW: '100%',
+          justifyContent: 'center'
+        }}
+        sectionProps={{
+          h: '100%'
+          // w: '100%'
+        }}
+        name="partner"
+        label="Partner"
+        blocks={[
+          PartnerScrollSection({
+            name: `${name}-item`,
+            displayName: 'Partner Logo'
+          })
+        ]}
+      />
+    }
+  />
+)
 
 export const FeaturedProductsSectionJSX = ({
   name,
@@ -150,18 +131,41 @@ export const FeaturedProductsSectionJSX = ({
   featuredProducts,
   productsPagePath
 }: FeaturedPartnerSectionProps) => (
-  <Field.Section
-    name={name}
-    label={displayName}
-    blocks={[
-      FeaturedPartnerSection({
-        name: `${name}-item`,
-        featuredAnchor,
-        partnerAnchor,
-        displayName,
-        featuredProducts,
-        productsPagePath
-      })
-    ]}
+  <FeaturedPartner
+    featuredAnchor={featuredAnchor}
+    featuredHeading={
+      <Field.Text name="featuredheading" defaultValue={'Empfohlene Produkte'} />
+    }
+    featuredProducts={featuredProducts}
+    productsPagePath={productsPagePath}
+    partnerAnchor={partnerAnchor}
+    partnerHeading={
+      <Field.Text name="partnerheading" defaultValue={'Partner'} />
+    }
+    partnerscrollsections={
+      <Field.Section
+        as={HStack}
+        props={{
+          h: '100%',
+          py: '5',
+          spacing: '5',
+          width: 'max-content',
+          minW: '100%',
+          justifyContent: 'center'
+        }}
+        sectionProps={{
+          h: '100%'
+          // w: '100%'
+        }}
+        name="partner"
+        label="Partner"
+        blocks={[
+          PartnerScrollSection({
+            name: `${name}-item`,
+            displayName: 'Partner Logo'
+          })
+        ]}
+      />
+    }
   />
 )

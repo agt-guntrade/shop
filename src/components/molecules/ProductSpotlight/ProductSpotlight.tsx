@@ -176,7 +176,6 @@ export const ProductSpotlight = (props: ProductshowcaseProps) => {
                       ml={{base: 2, md: 0}}
                       size="lg"
                       borderRadius="5px"
-                      colorScheme="agt.yellowScheme"
                       color="black"
                       variant="solid"
                       onClick={() => navigate(`/products/${weapon.handle}`)}>

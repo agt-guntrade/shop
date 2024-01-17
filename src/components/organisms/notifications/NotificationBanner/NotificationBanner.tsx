@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import {FiInfo} from '@react-icons/all-files/fi/FiInfo'
-import {Field} from '@snek-at/jaen'
+import {Field} from '@atsnek/jaen'
 
 export interface NotificationBannerProps {}
 
@@ -50,8 +50,6 @@ export const NotificationBanner = (props: NotificationBannerProps) => {
                 defaultValue={
                   'Wir haben gerade unser neues Produkt auf den Markt gebracht. Lesen Sie unsere Pressemitteilung'
                 }
-                rtf
-                label="Text"
               />
             </Text>
           </Stack>

@@ -39,7 +39,7 @@ const Copyright = (props: TextProps) => (
 )
 
 const SocialMediaLinks = (props: ButtonGroupProps) => (
-  <ButtonGroup variant="ghost" color="agt.yellowScheme.600" {...props}>
+  <ButtonGroup variant="ghost" color="brand.600" {...props}>
     <IconButton
       target={'_blank'}
       as="a"

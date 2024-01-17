@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react'
 import {Divider, Box} from '@chakra-ui/layout'
-import {Field, connectBlock} from '@snek-at/jaen'
+import {Field, connectBlock} from '@atsnek/jaen'
 
 import {getThemeColor} from '../../../../common/utils'
 import {ParallaxBackground} from '../../../molecules/ParallaxBackground'
@@ -24,6 +24,7 @@ export interface ReviewFAQProps {
   faqHeading: ReactNode
   faqFaqheading: ReactNode
   contactHeading: ReactNode
+  contactText: ReactNode
   accordionsection: ReactNode
 }
 
@@ -34,6 +35,7 @@ export const ReviewFAQ = ({
   faqHeading,
   faqFaqheading,
   contactHeading,
+  contactText,
   googleReviews,
   accordionsection
 }: ReviewFAQProps) => {
@@ -70,6 +72,7 @@ export const ReviewFAQ = ({
         heading={faqHeading}
         faqheading={faqFaqheading}
         contactheading={contactHeading}
+        contacttext={contactText}
         accordionsection={accordionsection}
       />
     </Box>
@@ -82,55 +85,28 @@ export const ReviewFAQSection = ({
   reviewAnchor,
   faqAnchor,
   googleReviews
-}: ReviewFAQSectionProps) =>
-  connectBlock(
-    () => {
-      return (
-        <>
-          <ReviewFAQ
-            reviewAnchor={reviewAnchor}
-            faqAnchor={faqAnchor}
-            reviewHeading={
-              <Field.Text
-                name="heading"
-                defaultValue="Bewertungen"
-                label="Überschrift"
-              />
-            }
-            faqHeading={
-              <Field.Text
-                name="heading"
-                defaultValue="Fragen"
-                label="Überschrift"
-              />
-            }
-            faqFaqheading={
-              <Field.Text
-                name="faqheading"
-                defaultValue="Häufig gestellte Fragen"
-                label='Überschrift "FAQ"'
-              />
-            }
-            contactHeading={
-              <Field.Text
-                name="contactheading"
-                defaultValue="Jetzt Anfragen"
-                label="Überschrift"
-              />
-            }
-            accordionsection={
-              <FAQAccordionSectionJSX name="faq" displayName="Frage" />
-            }
-            googleReviews={googleReviews}
-          />
-        </>
-      )
-    },
-    {
-      name: name,
-      label: displayName
+}: ReviewFAQSectionProps) => (
+  <ReviewFAQ
+    reviewAnchor={reviewAnchor}
+    faqAnchor={faqAnchor}
+    reviewHeading={<Field.Text name="heading" defaultValue="Bewertungen" />}
+    faqHeading={<Field.Text name="heading" defaultValue="Fragen" />}
+    faqFaqheading={
+      <Field.Text name="faqheading" defaultValue="Häufig gestellte Fragen" />
     }
-  )
+    contactHeading={
+      <Field.Text name="contactheading" defaultValue="Jetzt Anfragen" />
+    }
+    contactText={
+      <Field.Text
+        name="contacttext"
+        defaultValue="Haben Sie Fragen? Wir helfen Ihnen gerne weiter!"
+      />
+    }
+    accordionsection={<FAQAccordionSectionJSX name="faq" displayName="Frage" />}
+    googleReviews={googleReviews}
+  />
+)
 
 export const ReviewFAQSectionJSX = ({
   name,
@@ -138,18 +114,4 @@ export const ReviewFAQSectionJSX = ({
   faqAnchor,
   reviewAnchor,
   googleReviews
-}: ReviewFAQSectionProps) => (
-  <Field.Section
-    name={name}
-    label={displayName}
-    blocks={[
-      ReviewFAQSection({
-        name: `${name}-item`,
-        displayName,
-        faqAnchor,
-        reviewAnchor,
-        googleReviews
-      })
-    ]}
-  />
-)
+}: ReviewFAQSectionProps) => null

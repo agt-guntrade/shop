@@ -1,57 +1,18 @@
 import dotenv from 'dotenv'
 import type {GatsbyConfig} from 'gatsby'
 import path from 'path'
-import {JaenSource} from 'jaen-utils'
-import {IJaenPage} from '@snek-at/jaen'
-
-import {siteMetadata} from './jaen-data/internal.json'
 
 dotenv.config()
 
-JaenSource.jaenData.read()
-const siteUrl = JaenSource.jaenData.internal.siteMetadata.siteUrl
-
 const config: GatsbyConfig = {
-  siteMetadata: siteMetadata,
   plugins: [
-    'gatsby-plugin-emotion',
-    {
-      resolve: `gatsby-plugin-sitemap`,
-      options: {
-        excludes: [`/jaen/admin`, `/_`],
-        query: `
-          {
-            allSitePage {
-              nodes {
-                path
-              }
-            }
-          }`,
-        resolveSiteUrl: () => siteUrl,
-        resolvePages: ({
-          allSitePage: {nodes: allPages}
-        }: {
-          allSitePage: {nodes: IJaenPage[]}
-        }) => {
-          return allPages.map(page => {
-            return {...page}
-          })
-        },
-        serialize: ({path, modifiedGmt}: any) => {
-          return {
-            url: path,
-            lastmod: modifiedGmt
-          }
-        }
-      }
-    },
     {
       resolve: `gatsby-plugin-jaen`,
       options: {
         snekResourceId: `6ce49cab-c6bf-4b68-853b-2e7d96b859bf`
       }
     },
-    '@chakra-ui/gatsby-plugin',
+    `gatsby-jaen-mailpress`,
     {
       resolve: '@snek-at/gatsby-plugin-scaleserp',
       options: {
@@ -63,14 +24,14 @@ const config: GatsbyConfig = {
       resolve: '@snek-at/gatsby-theme-shopify',
       options: {
         productPageTemplate: path.resolve(
-          'src/templates/ProductPageTemplate.tsx'
+          'src/shop-templates/ProductPageTemplate.tsx'
         ),
         collectionPageTemplate: path.resolve(
-          'src/templates/CollectionPageTemplate.tsx'
+          'src/shop-templates/CollectionPageTemplate.tsx'
         ),
 
         productsPageTemplate: path.resolve(
-          'src/templates/ProductsPageTemplate.tsx'
+          'src/shop-templates/ProductsPageTemplate.tsx'
         )
       }
     }

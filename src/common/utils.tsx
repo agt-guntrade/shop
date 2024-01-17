@@ -3,6 +3,11 @@ import {Box, useToken} from '@chakra-ui/react'
 import {getColor} from '@chakra-ui/theme-tools'
 
 import theme from './theme'
+import {
+  ShopifyProduct,
+  getFormattedProductPrices
+} from '@snek-at/gatsby-theme-shopify'
+import {getProductMetafields} from './getProductMetafields'
 
 const breakpoints = ['0em', '30em', '48em', '62em', '80em', '96em']
 
@@ -52,6 +57,48 @@ export function replaceHexColorsInHTML(
   return html.replace(re, colorbHex)
 }
 
-export const getThemeColor = (color: string) => (
-  getColor(theme, color, useToken('colors', color, "green"))
-)
+export const getThemeColor = (color: string) =>
+  getColor(theme, color, useToken('colors', color, 'green'))
+
+export function formatPrice(
+  value: number,
+  opts: {locale?: string; currency?: string} = {}
+) {
+  const {locale = 'de-DE', currency = 'USD'} = opts
+  const formatter = new Intl.NumberFormat(locale, {
+    currency,
+    style: 'currency',
+    maximumFractionDigits: 2
+  })
+
+  return formatter.format(value)
+}
+
+export const getProductPrices = (
+  product: ShopifyProduct,
+  opts: {isWholesale: boolean}
+): {
+  priceFormatted: string
+  compareAtPriceFormatted: string | null
+  discountFormatted: string | null
+  wholesalePrice: number | null
+} => {
+  const metafields = getProductMetafields(product)
+  const prices = getFormattedProductPrices(product)
+  let wholesalePrice = null
+
+  if (opts.isWholesale) {
+    const {amount: price, currency_code: currency} = JSON.parse(
+      metafields.wholesale?.price || '{}'
+    )
+
+    wholesalePrice = price
+
+    prices.priceFormatted = formatPrice(price, {currency})
+  }
+
+  return {
+    ...prices,
+    wholesalePrice
+  }
+}

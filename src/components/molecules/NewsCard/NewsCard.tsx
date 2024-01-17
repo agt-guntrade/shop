@@ -9,7 +9,7 @@ import {
   VStack
 } from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
-import {Field} from '@snek-at/jaen'
+import {Field} from '@atsnek/jaen'
 import React from 'react'
 
 import * as style from './style'

@@ -1,17 +1,37 @@
-import {Box, BoxProps, Heading, Link, Text} from '@chakra-ui/react'
-import {getCookieConsentApi} from '@snek-at/jaen'
-import React, {useEffect, useState} from 'react'
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  BoxProps,
+  Center,
+  Heading,
+  Link,
+  Spinner,
+  Text
+} from '@chakra-ui/react'
+import {useCookieConsentContext} from '@atsnek/jaen'
+import {useEffect, useState} from 'react'
 // import {useCookieConsent} from '@jaenjs/jaen'
 
 export interface GoogleMapsProps extends BoxProps {
   src: string
 }
 
-export const GoogleMaps: React.FC<GoogleMapsProps> = ({src, ...props}) => {
-  const handleAccept = () => {
-    const CookieConsentApi = getCookieConsentApi()
+export const GoogleMaps = ({src, ...props}: GoogleMapsProps) => {
+  const [isMounted, setIsMounted] = useState(false)
 
-    CookieConsentApi.accept('analytics')
+  const cc = useCookieConsentContext()
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  const handleAccept = () => {
+    if (!cc) throw new Error('CookieConsentContext is not initialized')
+
+    cc.accept('analytics')
 
     setMapsEnabled(true)
   }
@@ -19,32 +39,47 @@ export const GoogleMaps: React.FC<GoogleMapsProps> = ({src, ...props}) => {
   const [mapsEnabled, setMapsEnabled] = useState(false)
 
   useEffect(() => {
-    const CookieConsentApi = getCookieConsentApi()
+    if (cc) {
+      const analyticsEnabled = cc.allowedCategory('analytics')
 
-    const analyticsEnabled = CookieConsentApi.allowedCategory('analytics')
+      setMapsEnabled(analyticsEnabled)
+    }
+  }, [cc])
 
-    setMapsEnabled(analyticsEnabled)
-  }, [])
-
-  if (!mapsEnabled) {
+  if (!isMounted) {
     return (
-      <Box bg="gray.200">
-        <Heading as="h1" size="xl">
+      <Center boxSize="full" bg="gray.200">
+        <Spinner />
+      </Center>
+    )
+  }
+
+  if (mapsEnabled === false) {
+    return (
+      <Alert
+        h="full"
+        status="warning"
+        variant="subtle"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center">
+        <Spinner />
+        <AlertTitle mt={4} mb={1} fontSize="lg">
           Google Maps is nicht verfügbar
-        </Heading>
-        <Text as="h2" size="lg">
-          Durch Ihre Cookie Einstellungen können wir Google Maps nicht anzeigen.
-        </Text>
-        <Text as="h2" size="lg">
+        </AlertTitle>
+        <AlertDescription maxWidth="sm">
           Bitte aktivieren Sie Cookies, um Google Maps anzuzeigen.{' '}
-          <Link onClick={handleAccept}>Analytics Cookie aktivieren</Link>
-        </Text>
-      </Box>
+          <Link onClick={handleAccept} variant="link">
+            Analyse Cookies aktivieren
+          </Link>
+        </AlertDescription>
+      </Alert>
     )
   }
 
   return (
-    <Box {...props}>
+    <Box {...props} bg="gray.200">
       <iframe
         src={src}
         width="100%"
@@ -52,7 +87,6 @@ export const GoogleMaps: React.FC<GoogleMapsProps> = ({src, ...props}) => {
         style={{
           border: 1
         }}
-        loading="lazy"
       />
     </Box>
   )

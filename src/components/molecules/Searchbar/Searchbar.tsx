@@ -3,38 +3,24 @@ import {
   Box,
   Button,
   ButtonProps,
-  Divider,
   HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
   Kbd,
-  Link,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Text,
   useColorModeValue,
-  useDisclosure,
-  VisuallyHidden,
-  VStack
+  VisuallyHidden
 } from '@chakra-ui/react'
-import {getProductTags, ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import * as React from 'react'
 
-import {Link as GatsbyLink} from 'gatsby'
-import {ProductRow} from '../ProductRow'
+import {useSearch} from '../../../services/search'
 
-export interface SearchbarProps {
-  searchResultProducts: Array<ShopifyProduct>
-  onSearch: (value: string) => void
-}
+export interface SearchbarProps {}
 
-export const SearchbarButton = (props: ButtonProps) => {
+export const Searchbar = (props: ButtonProps) => {
+  const search = useSearch()
+
   return (
     <Button
+      variant="ghost"
       w="full"
       flex="1"
       type="button"
@@ -50,7 +36,7 @@ export const SearchbarButton = (props: ButtonProps) => {
       _focus={{shadow: 'outline'}}
       shadow="base"
       rounded="md"
-      {...props}>
+      onClick={search.onOpen}>
       <SearchIcon />
       <HStack w="full" mx="3" spacing="4px">
         <Text textAlign="left" flex="1">
@@ -71,125 +57,6 @@ export const SearchbarButton = (props: ButtonProps) => {
         </HStack>
       </HStack>
     </Button>
-  )
-}
-
-export const Searchbar = (props: SearchbarProps) => {
-  const {isOpen, onOpen, onClose} = useDisclosure()
-
-  let timeout: NodeJS.Timeout | null = null
-
-  const [searchValue, setSearchValue] = React.useState('')
-
-  const delayedSearch = (e: React.SyntheticEvent<HTMLInputElement>) => {
-    const value = e.currentTarget.value
-
-    setSearchValue(value)
-  }
-
-  React.useEffect(() => {
-    if (!timeout) {
-      timeout = setTimeout(() => {
-        props.onSearch(searchValue)
-      }, 500)
-    }
-
-    return () => {
-      if (timeout) {
-        clearTimeout(timeout)
-      }
-    }
-  }, [searchValue])
-
-  // event listener for keyboard events
-  React.useEffect(() => {
-    // handle strg + k
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'k' && e.ctrlKey) {
-        e.preventDefault()
-        // prevents the event from being called twice, thus the search modal
-        // only opens once
-        e.stopImmediatePropagation()
-
-        onOpen()
-      }
-    }
-
-    document.addEventListener('keydown', handleKeyDown)
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [])
-
-  const searchItemBg = useColorModeValue('gray.200', 'gray.600')
-
-  return (
-    <>
-      <SearchbarButton onClick={onOpen} />
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        size="xl"
-        scrollBehavior="inside">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader p={0} m={2}>
-            <InputGroup>
-              <InputLeftElement
-                pointerEvents="none"
-                children={<SearchIcon color={'agt.blue'} />}
-              />
-              <Input
-                placeholder={'Suche nach Artikeln'}
-                border="none"
-                _focus={{
-                  boxShadow: 'none'
-                }}
-                color={useColorModeValue('gray.700', 'gray.300')}
-                onChange={delayedSearch}
-              />
-            </InputGroup>
-          </ModalHeader>
-          <ModalBody px="2">
-            {props.searchResultProducts.length > 0 && (
-              <>
-                <Divider />
-                <VStack m="4" align="left">
-                  {props.searchResultProducts.map((product, index) => {
-                    const tags = getProductTags(product)
-
-                    return (
-                      <Link
-                        as={GatsbyLink}
-                        to={`/products/${product.handle}`}
-                        key={index}
-                        _hover={{
-                          textDecoration: 'none',
-                          color: 'agt.blue'
-                        }}
-                        px="4"
-                        py="2"
-                        bg={searchItemBg}
-                        rounded="md"
-                        cursor="pointer"
-                        transition="ease-out">
-                        <ProductRow
-                          title={product.title}
-                          featuredMedia={product.featuredMedia}
-                          categoryString={tags.categoryString}
-                          otherString={tags.otherString}
-                        />
-                      </Link>
-                    )
-                  })}
-                </VStack>
-              </>
-            )}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </>
   )
 }
 

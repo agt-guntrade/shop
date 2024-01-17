@@ -70,9 +70,6 @@ export const Breadcrumbs = (props: {path: string}) => {
       case 'products':
         item = 'Produkte'
         break
-      case 'shopping-cart':
-        item = 'Merkliste'
-        break
       case 'privacy':
         item = 'Datenschutz'
         break

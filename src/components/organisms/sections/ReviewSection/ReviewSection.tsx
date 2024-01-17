@@ -1,5 +1,5 @@
 import {Box, Container, Divider, Heading, HStack} from '@chakra-ui/layout'
-import {connectBlock, Field} from '@snek-at/jaen'
+import {connectBlock, Field} from '@atsnek/jaen'
 import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 
@@ -102,7 +102,7 @@ export const Review = ({anchor, heading, googleReviews, bg}: ReviewProps) => {
             <Heading color="white" size="2xl">
               {heading}
             </Heading>
-            <Bullet color="agt.yellow" w="unset" fontSize="xl" mt="5" mb="10" />
+            <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <Slider
             flexDir="column"
@@ -137,13 +137,7 @@ export const ReviewSection = ({
         <Review
           anchor={anchor}
           bg="agt.darkbackground"
-          heading={
-            <Field.Text
-              name="heading"
-              defaultValue="Bewertungen"
-              label="Bewertungen"
-            />
-          }
+          heading={<Field.Text name="heading" defaultValue="Bewertungen" />}
           googleReviews={googleReviews}
         />
       )

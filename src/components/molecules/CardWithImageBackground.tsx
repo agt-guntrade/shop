@@ -1,9 +1,9 @@
 import {Box, Grid, Heading, HStack, Stack, Text} from '@chakra-ui/react'
-import {Field, useStatus} from '@snek-at/jaen'
+import {Field, useContentManagement} from '@atsnek/jaen'
 import {navigate} from 'gatsby'
 import React from 'react'
 import {FC} from 'react'
-import {BiChevronRight} from 'react-icons/bi'
+import {BiChevronRight} from '@react-icons/all-files/bi/BiChevronRight'
 
 interface ICardWithImageBackgroundProps {
   card: {
@@ -30,7 +30,7 @@ const CardWithImageBackground: FC<ICardWithImageBackgroundProps> = ({
   h,
   isSmallText = false
 }) => {
-  const {isEditing} = useStatus()
+  const {isEditing} = useContentManagement()
 
   return (
     <Stack
@@ -53,11 +53,7 @@ const CardWithImageBackground: FC<ICardWithImageBackgroundProps> = ({
       overflow={'hidden'}
       minW={minW || '20rem'}>
       {card.imageFieldName && (
-        <Field.Image
-          name={card.imageFieldName}
-          label="Image"
-          defaultValue={undefined}
-        />
+        <Field.Image name={card.imageFieldName} defaultValue={undefined} />
       )}
       <Box position="absolute">
         {displayContent && (
@@ -66,7 +62,6 @@ const CardWithImageBackground: FC<ICardWithImageBackgroundProps> = ({
               <Heading fontSize={{base: 'lg', xl: 'xl'}} fontWeight="700">
                 <Field.Text
                   name={card.headingFieldName}
-                  label="Heading"
                   defaultValue={card.headingDefaultValue ?? ''}
                 />
               </Heading>
@@ -79,7 +74,6 @@ const CardWithImageBackground: FC<ICardWithImageBackgroundProps> = ({
                 as="span">
                 <Field.Text
                   name={card.textFieldName}
-                  label="Text"
                   defaultValue={card.textDefaultValue ?? ''}
                 />
               </Text>

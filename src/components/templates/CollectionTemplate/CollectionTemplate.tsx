@@ -1,4 +1,12 @@
-import {Box, Link, SimpleGrid, Text} from '@chakra-ui/react'
+import {
+  Box,
+  Grid,
+  GridItem,
+  Image,
+  Link,
+  SimpleGrid,
+  Text
+} from '@chakra-ui/react'
 import {
   CollectionPageData,
   getCollectionStructure
@@ -7,7 +15,6 @@ import {Link as GatsbyLink} from 'gatsby'
 import {IGatsbyImageData} from 'gatsby-plugin-image'
 
 import React from 'react'
-import {ReactPhotoCollage} from 'react-photo-collage'
 import {gridPadBoxes} from '../../../common/utils'
 import {ContainerLayout} from '../../ContainerLayout'
 import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
@@ -47,7 +54,6 @@ export const CollectionTemplate = ({
               name="Alle Produkte anzeigen"
             />
             {subCollections.nodes.map((subCollection, index) => {
-              console.log(`index: ${index}`)
               const {name, path} = getCollectionStructure(
                 subCollection.title,
                 shopifyCollection.title
@@ -96,6 +102,8 @@ const CollectionCard = ({
   name,
   productsCount
 }: CollectionCardProps) => {
+  const images = image ? [image.src] : collageImages || []
+
   return (
     <Link
       as={GatsbyLink}
@@ -111,19 +119,35 @@ const CollectionCard = ({
         transform: 'scale(1.05)',
         color: 'agt.blue'
       }}>
-      <Box backgroundSize={'contain !important'}>
-        <ReactPhotoCollage
-          width="100%"
-          height={['175px', '125px']}
-          layout={[1, 3]}
-          photos={
-            collageImages?.map(image => ({
-              source: image
-            })) || []
-          }
-          showNumOfRemainingPhotos
-        />
-      </Box>
+      <Grid
+        boxSize="xs"
+        templateColumns="repeat(3, 1fr)" // Adjust the number of columns as needed
+        gap={2}>
+        {images.slice(0, 3).map((imageUrl, index) => (
+          <GridItem key={index} colSpan={1} rowSpan={1}>
+            <Image
+              rounded="md"
+              bg="gray.200"
+              src={imageUrl}
+              alt={`Photo ${index + 1}`}
+              boxSize="100%"
+              objectFit="cover"
+            />
+          </GridItem>
+        ))}
+
+        {images.length < 3 &&
+          [...Array(3 - images.length)].map((_, index) => (
+            <GridItem key={index} colSpan={1} rowSpan={1}>
+              <Box
+                bg="gray.200"
+                boxSize="100%"
+                objectFit="cover"
+                rounded="md"
+              />
+            </GridItem>
+          ))}
+      </Grid>{' '}
       <Text textAlign={'center'}>
         {name}
         {productsCount !== undefined && (
