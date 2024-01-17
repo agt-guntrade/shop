@@ -6,8 +6,8 @@ name: Deploy Gatsby site to Pages
 
 on:
   # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+  #push:
+  #  branches: ["main"]
   # Allows you to run this workflow from another workflow
   workflow_call:
 
@@ -81,8 +81,6 @@ jobs:
           GATSBY_MYSHOPIFY_URL:  ${{ secrets.GATSBY_MYSHOPIFY_URL }}
           GATSBY_STOREFRONT_API_KEY:  ${{ secrets.GATSBY_STOREFRONT_API_KEY }}
           SHOPIFY_APP_PASSWORD:  ${{ secrets.SHOPIFY_APP_PASSWORD }}
-          SCALE_SERP_GOOGLE_PLACE_ID: ${{ secrets.SCALE_SERP_GOOGLE_PLACE_ID }}
-          SCALE_SERP_APIKEY: ${{ secrets.SCALE_SERP_APIKEY }}
           PREFIX_PATHS: 'true'
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
@@ -90,8 +88,8 @@ jobs:
         with:
           path: ./public
 
-  # Deployment job
-  deploy:
+  # Job to deploy the build artifacts to GitHub Pages.
+  deploy-github-pages:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -101,3 +99,26 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+
+  # Job to deploy the build artifacts to Cloudflare Pages.
+  deploy-cloudflare:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      # Download the build artifacts
+      # See: https://github.com/actions/download-artifact
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: github-pages
+      # Deploy the build artifacts to Cloudflare Pages
+      # See: https://github.com/cloudflare/pages-action
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: snek
+          directory: ./public
+          # Optional: Specify the Wrangler version
+          wranglerVersion: '3'
