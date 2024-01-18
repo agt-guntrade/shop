@@ -142,7 +142,7 @@ export default IndexPage
 export {Head} from '@atsnek/jaen'
 
 export const pageConfig: PageConfig = {
-  label: 'AGT GunTrade',
+  label: 'AGT Gun Trade',
   icon: 'FaHome',
   childTemplates: [],
   menu: {

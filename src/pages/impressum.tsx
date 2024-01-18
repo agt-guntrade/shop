@@ -130,6 +130,6 @@ export default ImprintPage
 export {Head} from '@atsnek/jaen'
 
 export const pageConfig: PageConfig = {
-  label: 'Impressum | AGT GunTrade',
+  label: 'Impressum | AGT Gun Trade',
   childTemplates: []
 }

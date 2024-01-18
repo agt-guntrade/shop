@@ -6,7 +6,7 @@ import {ContactTemplate} from '../components/templates/ContactTemplate'
 const ContactPage: React.FC<PageProps> = props => (
   <ContactTemplate
     path={props.path}
-    email={<Field.Text name="email" defaultValue={'info@agt-guntrade.at'} />}
+    email={<Field.Text name="email" defaultValue={'info@agt-Gun Trade.at'} />}
     phone={<Field.Text name="phone" defaultValue={'+43 (0) 676 6510977'} />}
     address={
       <Field.Text

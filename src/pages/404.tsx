@@ -29,5 +29,5 @@ export default NotFoundPage
 export {Head} from '@atsnek/jaen'
 
 export const pageConfig: PageConfig = {
-  label: '404 | AGT GunTrade'
+  label: '404 | AGT Gun Trade'
 }

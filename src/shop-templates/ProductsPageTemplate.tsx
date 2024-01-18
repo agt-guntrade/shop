@@ -125,15 +125,15 @@ export const Head = (props: ProductsPageTemplateProps) => {
     <JaenHead
       {...(props as any)}
       jaenPageMetadata={{
-        title: 'Onlineshop | AGT GunTrade',
-        description: 'Alle Artikel von AGT GunTrade im Überblick'
+        title: 'Onlineshop | AGT Gun Trade',
+        description: 'Alle Artikel von AGT Gun Trade im Überblick'
       }}
     />
   )
 }
 
 export const pageConfig: PageConfig = {
-  label: 'Onlineshop | AGT GunTrade',
+  label: 'Onlineshop | AGT Gun Trade',
   icon: 'FaShopify',
   childTemplates: []
 }

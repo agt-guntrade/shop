@@ -126,7 +126,7 @@ export const Header = (props: HeaderProps) => {
                 maxW="2xl">
                 <StaticImage
                   src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
-                  alt="AGT GunTrade Logo"
+                  alt="AGT Gun Trade Logo"
                   style={{maxWidth: '300px'}}
                 />
               </HStack>

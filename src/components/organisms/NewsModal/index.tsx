@@ -33,7 +33,7 @@ export const NewsModal = ({
 
   const toast = useToast()
   if (isOpen) {
-    history.pushState('AGT-Guntrade News', '', url)
+    history.pushState('AGT-Gun Trade News', '', url)
   }
   return (
     <Modal

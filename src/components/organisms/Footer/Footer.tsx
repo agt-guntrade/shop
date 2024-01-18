@@ -57,7 +57,7 @@ const SocialMediaLinks = (props: ButtonGroupProps) => (
     <IconButton
       target={'_blank'}
       as="a"
-      href="https://github.com/snek-at/agt-guntrade-shop"
+      href="https://github.com/snek-at/agt-Gun Trade-shop"
       aria-label="GitHub"
       icon={<FiGithub fontSize="20px" />}
     />

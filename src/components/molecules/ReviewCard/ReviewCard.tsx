@@ -48,11 +48,11 @@ export const ReviewCard = ({
 
   const onOpen = () => {
     setIsOpen(true)
-    history.pushState('AGT-Guntrade Reviews', '', `/?${reviewId}`)
+    history.pushState('AGT-Gun Trade Reviews', '', `/?${reviewId}`)
   }
   const onClose = () => {
     setIsOpen(false)
-    history.pushState('AGT-Guntrade-Shop', '', '/')
+    history.pushState('AGT-Gun Trade-Shop', '', '/')
   }
 
   const createReviewStars = (rating: number) => {
