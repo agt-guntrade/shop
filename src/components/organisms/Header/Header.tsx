@@ -22,10 +22,10 @@ import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
 
 import {Searchbar, SearchbarProps} from '../../molecules/Searchbar'
-import {NavAuthButton} from './NavAuthButton'
 import {useBasket} from '../../../services/basket'
 import {useContactModal} from '../../../services/contact'
 import {useAuthenticationContext} from '@atsnek/jaen'
+import {ShoppingCartButton} from './ShoppingCartButton'
 
 /**
  *
@@ -158,30 +158,7 @@ export const Header = (props: HeaderProps) => {
                   Kontakt
                 </Button>
 
-                <NavAuthButton />
-
-                <Button
-                  onClick={basketContext.onOpen}
-                  display={{
-                    base: 'none',
-                    sm: 'flex'
-                  }}
-                  size="sm"
-                  rounded="md"
-                  colorScheme="brand"
-                  leftIcon={<FaShoppingBasket />}>
-                  Warenkorb
-                </Button>
-                <IconButton
-                  onClick={basketContext.onOpen}
-                  display={{
-                    base: 'flex',
-                    sm: 'none'
-                  }}
-                  icon={<FaShoppingBasket />}
-                  aria-label="Open Warenkorb"
-                  colorScheme={'agt.redScheme'}
-                />
+                <ShoppingCartButton />
               </HStack>
             </HStack>
           </Container>

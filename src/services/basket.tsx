@@ -382,7 +382,7 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
           onClose={onClose}
           products={cleanedLineItems}
           wholesale={isWholesale}
-          requestCheckout={isWholesale}
+          requestCheckout={true}
           subtotal={lineItemsSubtotalPrice}
           onProductQuantityChange={(id, quantity) => {
             void updateProduct({id, quantity})

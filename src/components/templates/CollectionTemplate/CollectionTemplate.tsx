@@ -2,8 +2,11 @@ import {
   Box,
   Grid,
   GridItem,
+  Heading,
   Image,
   Link,
+  LinkBox,
+  LinkOverlay,
   SimpleGrid,
   Text
 } from '@chakra-ui/react'
@@ -105,19 +108,18 @@ const CollectionCard = ({
   const images = image ? [image.src] : collageImages || []
 
   return (
-    <Link
-      as={GatsbyLink}
-      to={path}
+    <LinkBox
       key={path}
       borderRadius="lg"
       overflow="hidden"
       position="relative"
       p="4"
       mb="4"
+      textAlign="center"
       cursor="pointer"
       _hover={{
         transform: 'scale(1.05)',
-        color: 'agt.blue'
+        color: 'agt.brand'
       }}>
       <Grid
         boxSize="xs"
@@ -147,15 +149,17 @@ const CollectionCard = ({
               />
             </GridItem>
           ))}
-      </Grid>{' '}
-      <Text textAlign={'center'}>
-        {name}
-        {productsCount !== undefined && (
-          <Text as="span" fontSize="sm" color="gray.500">
-            {` (${productsCount})`}
-          </Text>
-        )}
-      </Text>
-    </Link>
+      </Grid>
+      <Heading as="h3" mt="4" size="lg">
+        <LinkOverlay as={GatsbyLink} to={path}>
+          {name}
+          {productsCount !== undefined && (
+            <Text as="span" color="gray.500">
+              {` (${productsCount})`}
+            </Text>
+          )}
+        </LinkOverlay>
+      </Heading>
+    </LinkBox>
   )
 }

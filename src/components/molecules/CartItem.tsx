@@ -128,7 +128,7 @@ export const CartItem = (props: CartItemProps) => {
                     textDecoration: 'underline'
                   }}
                   onClick={onClickDelete}>
-                  Delete
+                  Entfernen
                 </Link>
               </HStack>
             )}

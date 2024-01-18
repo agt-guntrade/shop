@@ -1,8 +1,11 @@
-import {Box, Button, Stack, Text} from '@chakra-ui/react'
+import {Box, Button, ButtonGroup, Stack, Text, Link} from '@chakra-ui/react'
+import {Link as GatsbyLink} from 'gatsby'
 import {FaArrowRight} from '@react-icons/all-files/fa/FaArrowRight'
+import {FaArrowLeft} from '@react-icons/all-files/fa/FaArrowLeft'
 import * as React from 'react'
 
 import {formatPrice} from '../../../common/utils'
+import {useBasket} from '../../../services/basket'
 
 export interface CartOrderSummaryProps {
   subtotal: number
@@ -19,6 +22,15 @@ export const CartOrderSummary = ({
   checkoutButtonText,
   onClickCheckout
 }: CartOrderSummaryProps) => {
+  const basketContext = useBasket()
+
+  const disableBuyButton = React.useMemo(
+    () =>
+      basketContext.checkout?.lineItems.length === 0 ||
+      basketContext.checkout?.lineItems.length === undefined,
+    [basketContext.checkout?.lineItems.length]
+  )
+
   return (
     <Stack spacing="8" width="full" px="2">
       <Stack spacing="6">
@@ -44,13 +56,27 @@ export const CartOrderSummary = ({
 
         <>{infoText}</>
       </Stack>
-      <Button
-        size="md"
-        py="9 !important"
-        rightIcon={<FaArrowRight />}
-        onClick={onClickCheckout}>
-        {checkoutButtonText}
-      </Button>
+
+      <ButtonGroup w="full">
+        <Button
+          w="full"
+          variant="outline"
+          size="md"
+          leftIcon={<FaArrowLeft />}
+          py="9 !important"
+          onClick={basketContext.onClose}>
+          Weiter einkaufen
+        </Button>
+        <Button
+          w="full"
+          size="md"
+          py="9 !important"
+          rightIcon={<FaArrowRight />}
+          onClick={onClickCheckout}
+          isDisabled={disableBuyButton}>
+          {checkoutButtonText}
+        </Button>
+      </ButtonGroup>
     </Stack>
   )
 }

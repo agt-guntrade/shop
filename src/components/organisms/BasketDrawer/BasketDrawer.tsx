@@ -13,7 +13,9 @@ import {
   Stack,
   Text,
   Link as CLink,
-  AlertDescription
+  AlertDescription,
+  Button,
+  Spacer
 } from '@chakra-ui/react'
 import {Link} from 'gatsby'
 import {FaBox} from '@react-icons/all-files/fa/FaBox'
@@ -57,7 +59,7 @@ export const BasketDrawer = ({
             in Verbindung setzen, um die Anfrage zu bestätigen.
           </Text>
 
-          {!wholesale && (
+          {/* {!wholesale && (
             <Text fontSize={'sm'}>
               Sind Sie ein Wiederverkäufer?{' '}
               <CLink
@@ -70,7 +72,7 @@ export const BasketDrawer = ({
                 Hier geht's zum Großhandel.
               </CLink>
             </Text>
-          )}
+          )} */}
         </Stack>
       </AlertDescription>
     </Alert>
@@ -135,21 +137,19 @@ export const BasketDrawer = ({
               <>
                 {wholesale ? (
                   <Text fontSize="sm" mt="0 !important">
-                    Alle Preise exkl. 20% USt und zzgl. Versandkosten.
+                    Alle Preise exkl. 20% USt.
                   </Text>
                 ) : (
                   <HStack color="gray.600" mt="0 !important">
                     <FaBox />
-                    <Text fontSize="sm">
-                      Alle Preise inkl. 20% USt und zzgl. Versandkosten.
-                    </Text>
+                    <Text fontSize="sm">Alle Preise inkl. 20% USt.</Text>
                   </HStack>
                 )}
-                {requestCheckout && temporaryProductRequestAlert}
+                {/* {requestCheckout && temporaryProductRequestAlert} */}
               </>
             }
             checkoutButtonText={
-              wholesale || requestCheckout ? 'jetzt anfragen' : 'zur Kassa'
+              wholesale || requestCheckout ? 'Jetzt anfragen' : 'Zur Kassa'
             }
           />
         </DrawerFooter>
