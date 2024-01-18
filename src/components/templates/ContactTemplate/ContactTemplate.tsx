@@ -44,7 +44,6 @@ export const ContactTemplate = (props: ContactTemplateProps) => {
         borderRadius="lg">
         <Button
           size="lg"
-          color="black"
           onClick={() => {
             contact.onOpen()
           }}>

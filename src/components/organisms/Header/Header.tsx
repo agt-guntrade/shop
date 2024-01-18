@@ -168,7 +168,6 @@ export const Header = (props: HeaderProps) => {
                   }}
                   size="sm"
                   rounded="md"
-                  color={['black']}
                   colorScheme="brand"
                   leftIcon={<FaShoppingBasket />}>
                   Warenkorb

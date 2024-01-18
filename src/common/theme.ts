@@ -1,24 +1,24 @@
-import {Theme, extendTheme, withDefaultColorScheme} from '@chakra-ui/react'
+import {extendTheme, withDefaultColorScheme} from '@chakra-ui/react'
 import {StyleFunctionProps} from '@chakra-ui/theme-tools'
 import {Dict} from '@chakra-ui/utils'
 
-const theme: Theme = {
+const theme = {
   config: {
     initialColorMode: 'dark'
   },
   colors: {
     brand: {
-      50: '#FEFFE7',
-      100: '#FAFFC1',
-      200: '#FAFF86',
-      300: '#FFFF41',
-      400: '#FFF30E',
-      500: '#FEE501',
-      600: '#D0AA00',
-      700: '#A67B02',
-      800: '#895F0A',
-      900: '#744E0F',
-      950: '#442904'
+      50: '#fefce8',
+      100: '#fef9c3',
+      200: '#fef08a',
+      300: '#fde047',
+      400: '#facc15',
+      500: '#eab308',
+      600: '#ca8a04',
+      700: '#a16207',
+      800: '#854d0e',
+      900: '#713f12',
+      950: '#422006'
     },
 
     agt: {
@@ -117,13 +117,6 @@ const theme: Theme = {
   },
   shadows: {
     outline: '0 0 0 3px #424240'
-  },
-  components: {
-    Button: {
-      baseStyle: props => ({
-        color: 'red'
-      })
-    }
   }
 }
 

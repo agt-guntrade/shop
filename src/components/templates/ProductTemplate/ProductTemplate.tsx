@@ -281,7 +281,6 @@ const ProductDetail = (props: {
               </NumberInputStepper>
             </NumberInput>
             <Button
-              color="black"
               // display={{
               //   base: 'none',
               //   md: 'flex'

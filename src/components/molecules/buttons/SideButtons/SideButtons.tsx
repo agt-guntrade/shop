@@ -27,7 +27,6 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
       <IconButton
         w={{base: '100%', md: 'unset'}}
         aria-label="Email"
-        color="black"
         icon={<FiMail fontSize="20px" />}
         onClick={() => {
           props.onMailButtonClick()
@@ -36,7 +35,6 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
       <IconButton
         w={{base: '100%', md: 'unset'}}
         aria-label="Location"
-        color="black"
         icon={<FiMapPin fontSize="20px" />}
         onClick={() => {
           props.onLocationButtonClick()
@@ -45,7 +43,6 @@ export const SideButtons: React.FC<SideButtonsProps> = props => {
       <IconButton
         w={{base: '100%', md: 'unset'}}
         aria-label="Phone"
-        color="black"
         icon={<FiPhoneCall fontSize="20px" />}
         onClick={() => {
           props.onPhoneButtonClick()

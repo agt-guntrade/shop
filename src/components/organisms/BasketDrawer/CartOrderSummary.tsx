@@ -47,7 +47,6 @@ export const CartOrderSummary = ({
       <Button
         size="md"
         py="9 !important"
-        color="black"
         rightIcon={<FaArrowRight />}
         onClick={onClickCheckout}>
         {checkoutButtonText}

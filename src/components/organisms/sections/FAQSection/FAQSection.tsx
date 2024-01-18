@@ -100,7 +100,6 @@ export const FAQ = ({
             <Text mb="5">{contacttext}</Text>
 
             <Button
-              color="black"
               size="lg"
               onClick={() => {
                 contact.onOpen()
