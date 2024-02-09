@@ -47,10 +47,10 @@
     css-tree "^2.3.1"
     is-potential-custom-element-name "^1.0.1"
 
-"@atsnek/jaen@^1.0.0-rc.49":
-  version "1.0.0-rc.49"
-  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.49.tgz#531b897a29edd0e2c329351148dea438f2198f0b"
-  integrity sha512-HwhRpL7Dwm7rqk5aybmf5mL98hpPaq8Hfy3JLFkzyEiPPedd05gVL1jFcNkqS9HmWLtI+5F1akMDeV/wMc2HTg==
+"@atsnek/jaen@^1.0.0-rc.50":
+  version "1.0.0-rc.50"
+  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.50.tgz#555c319a34f0977aeb95abc698af1582cdac1152"
+  integrity sha512-m/pHKtHm7xS+PKTsl6R1jGck5v+jsQQD2SJz5kN4VXzUZAEdHkaQzGSAyBc7J+JhnvE6RPdUjn8TDGLWa0k7cA==
   dependencies:
     "@chakra-ui/react" "^2.8.0"
     "@react-icons/all-files" "https://github.com/react-icons/react-icons/releases/download/v4.11.0/react-icons-all-files-4.11.0.tgz"
