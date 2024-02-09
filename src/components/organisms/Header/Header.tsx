@@ -24,7 +24,7 @@ import React from 'react'
 import {Searchbar, SearchbarProps} from '../../molecules/Searchbar'
 import {useBasket} from '../../../services/basket'
 import {useContactModal} from '../../../services/contact'
-import {useAuthenticationContext} from '@atsnek/jaen'
+import {useAuth} from '@atsnek/jaen'
 import {ShoppingCartButton} from './ShoppingCartButton'
 
 /**
@@ -84,9 +84,8 @@ export const Header = (props: HeaderProps) => {
     links.map(l => l.path)
   )
 
-  const authContext = useAuthenticationContext()
+  const authContext = useAuth()
 
-  const basketContext = useBasket()
   const contactContext = useContactModal()
 
   const grayColor = useColorModeValue('gray.200', 'gray.600')

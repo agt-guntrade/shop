@@ -47,10 +47,10 @@
     css-tree "^2.3.1"
     is-potential-custom-element-name "^1.0.1"
 
-"@atsnek/jaen@^1.0.0-rc.46":
-  version "1.0.0-rc.46"
-  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.46.tgz#237ce759240a7a8843bdd8564295475dd2ecce97"
-  integrity sha512-yeO/aHrv7SiZMysoZ6Qzosb2fDShXbRSyuEOQ1D4u+v5fooVaKpVo0edwL5dVYNB1TkPiR0MbiioT2eS+5kEBw==
+"@atsnek/jaen@^1.0.0-rc.49":
+  version "1.0.0-rc.49"
+  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.49.tgz#531b897a29edd0e2c329351148dea438f2198f0b"
+  integrity sha512-HwhRpL7Dwm7rqk5aybmf5mL98hpPaq8Hfy3JLFkzyEiPPedd05gVL1jFcNkqS9HmWLtI+5F1akMDeV/wMc2HTg==
   dependencies:
     "@chakra-ui/react" "^2.8.0"
     "@react-icons/all-files" "https://github.com/react-icons/react-icons/releases/download/v4.11.0/react-icons-all-files-4.11.0.tgz"
@@ -61,6 +61,8 @@
     gatsby-plugin-image "^3.11.0"
     imtool "^1.2.1"
     isomorphic-dompurify "^1.8.0"
+    oidc-client-ts "^2.4.0"
+    react-oidc-context "^2.3.1"
     react-photo-view "^1.2.3"
     react-redux "^8.1.1"
     redux "^4.2.1"
@@ -8130,6 +8132,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-js@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
+  integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
+
 crypto-random-string@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
@@ -10636,10 +10643,10 @@ gatsby-plugin-image@^2.12.1, gatsby-plugin-image@^3, gatsby-plugin-image@^3.11.0
     objectFitPolyfill "^2.3.5"
     prop-types "^15.8.1"
 
-gatsby-plugin-jaen@1.0.0-rc.70:
-  version "1.0.0-rc.70"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-jaen/-/gatsby-plugin-jaen-1.0.0-rc.70.tgz#a651230fb7f51408111a0435f04256e34b80b7f3"
-  integrity sha512-zb1TcOeMb5sFCqCUfJjAWGyqEshTCaxeeChf0vHqpLyGDveWE3j66FIUNnSdwjXO3dLCfKbjfcRW+ImD9ViHQg==
+gatsby-plugin-jaen@1.0.0-rc.73:
+  version "1.0.0-rc.73"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-jaen/-/gatsby-plugin-jaen-1.0.0-rc.73.tgz#d2a9798cd0e0a6a96d2cf57fe0ae46d99d1ba609"
+  integrity sha512-3neNEuwSPA6PQ8Vbvu0PJpQR6+EMZE8w9NT/YrZFraATOKYQ4voHG8aKshKo115yzj3EMCPVTprQvDa9Z7XDgg==
   dependencies:
     "@chakra-ui/react" "^2.8.0"
     "@emotion/react" "^11.11.1"
@@ -13306,6 +13313,11 @@ junk@^3.1.0:
   resolved "https://registry.yarnpkg.com/junk/-/junk-3.1.0.tgz#31499098d902b7e98c5d9b9c80f43457a88abfa1"
   integrity sha512-pBxcB3LFc8QVgdggvZWyeys+hnrNWg4OcZIU/1X59k5jQdLBlCsYGRQaz234SqoRLTCgMH00fY0xRJH+F9METQ==
 
+jwt-decode@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
+
 keyv@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.1.0.tgz#ecc228486f69991e49e9476485a5be1e8fc5c4d9"
@@ -14672,6 +14684,14 @@ obliterator@^2.0.1, obliterator@^2.0.2:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
   integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
+
+oidc-client-ts@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/oidc-client-ts/-/oidc-client-ts-2.4.0.tgz#764c8a33de542026e2798de9849ce8049047d7e5"
+  integrity sha512-WijhkTrlXK2VvgGoakWJiBdfIsVGz6CFzgjNNqZU1hPKV2kyeEaJgLs7RwuiSp2WhLfWBQuLvr2SxVlZnk3N1w==
+  dependencies:
+    crypto-js "^4.2.0"
+    jwt-decode "^3.1.2"
 
 on-exit-leak-free@^2.1.0:
   version "2.1.2"
@@ -16268,6 +16288,11 @@ react-merge-refs@^1.0.0, react-merge-refs@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-1.1.0.tgz#73d88b892c6c68cbb7a66e0800faa374f4c38b06"
   integrity sha512-alTKsjEL0dKH/ru1Iyn7vliS2QRcBp9zZPGoWxUOvRGWPUYgjo+V01is7p04It6KhgrzhJGnIj9GgX8W4bZoCQ==
+
+react-oidc-context@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/react-oidc-context/-/react-oidc-context-2.3.1.tgz#04eea5aaea972af1a49de6b8d5ff103b9daa0e73"
+  integrity sha512-WdhmEU6odNzMk9pvOScxUkf6/1aduiI/nQryr7+iCl2VDnYLASDTIV/zy58KuK4VXG3fBaRKukc/mRpMjF9a3Q==
 
 react-photo-view@^1.2.3:
   version "1.2.4"

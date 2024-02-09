@@ -1,4 +1,3 @@
-import {useAuthenticationContext} from '@atsnek/jaen'
 import {SearchIcon} from '@chakra-ui/icons'
 import {
   Image,

@@ -22,7 +22,6 @@ import React from 'react'
 import {uuidv1} from '../../../common/utils'
 
 import * as styles from './styles'
-import {useAuthentication} from '../../../services/authentication'
 import {useWholesaleUser} from '../../../hooks/use-wholesale-user'
 
 export interface ProductCardProps {

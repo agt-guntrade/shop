@@ -1,4 +1,4 @@
-import {useAuthenticationContext} from '@atsnek/jaen'
+import {useAuth} from '@atsnek/jaen'
 import {Button, IconButton} from '@chakra-ui/react'
 import {AiOutlineUser} from '@react-icons/all-files/ai/AiOutlineUser'
 import React from 'react'
@@ -6,7 +6,7 @@ import React from 'react'
 export interface NavAuthButtonProps {}
 
 export const NavAuthButton: React.FC<NavAuthButtonProps> = () => {
-  const authContext = useAuthenticationContext()
+  const authContext = useAuth()
 
   return (
     <>
@@ -15,7 +15,9 @@ export const NavAuthButton: React.FC<NavAuthButtonProps> = () => {
         size="sm"
         rounded="md"
         leftIcon={<AiOutlineUser />}
-        onClick={authContext.openLoginModal}>
+        onClick={() => {
+          authContext.signinRedirect()
+        }}>
         Anmelden
       </Button>
       <IconButton
@@ -23,7 +25,9 @@ export const NavAuthButton: React.FC<NavAuthButtonProps> = () => {
         display={{base: 'flex', lg: 'none'}}
         icon={<AiOutlineUser />}
         aria-label="Anmelden"
-        onClick={authContext.openLoginModal}
+        onClick={() => {
+          authContext.signinRedirect()
+        }}
       />
     </>
   )
