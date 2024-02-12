@@ -268,6 +268,7 @@ export const Filter = (props: FilterProps) => {
 
       {Object.entries(groupedFilter).map(([tagType, values]) => (
         <CheckboxFilterBox
+          key={tagType}
           label={tagType}
           values={values.map(c => ({
             label: c.label,

@@ -1,1 +1,4 @@
-export {FAQAccordionSection, FAQAccordionSectionJSX} from './FAQAccordionSection'
+export {
+  FAQAccordionSection,
+  FAQAccordionSectionProps
+} from './FAQAccordionSection'

@@ -1,45 +1,27 @@
+import {Field} from '@atsnek/jaen'
 import {
-  AspectRatio,
   Box,
   Button,
   ButtonGroup,
   Container,
   Divider,
   Flex,
-  Grid,
-  GridItem,
-  HStack,
   Heading,
-  Stack,
-  Text,
-  useColorModeValue
+  Stack
 } from '@chakra-ui/react'
-import {connectBlock, Field} from '@atsnek/jaen'
-import React, {ReactNode} from 'react'
-import {getThemeColor} from '../../../../common/utils'
-import {Bullet} from '../../../atoms/Bullet'
-import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
-import {FeatureSectionJSX} from '../FeatureSection'
-import CardWithImageBackground from '../../../molecules/CardWithImageBackground'
-import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
-import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
-import * as style from './style'
 import {Link} from 'gatsby'
+import React from 'react'
+import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
 import {useContactModal} from '../../../../services/contact'
+import {Bullet} from '../../../atoms/Bullet'
+import CardWithImageBackground from '../../../molecules/CardWithImageBackground'
+import * as style from './style'
 
 export interface AboutSectionProps {
-  anchor?: string
   name: string
-  heading: ReactNode
-  displayName: string
 }
 
-export interface AboutProps {
-  anchor?: string
-  heading: ReactNode
-}
-
-export const About = ({anchor, heading}: AboutProps) => {
+export const AboutSection = ({name}: AboutSectionProps) => {
   const cardHeight = {
     base: '12.5rem',
     sm: '15rem',
@@ -60,7 +42,7 @@ export const About = ({anchor, heading}: AboutProps) => {
   return (
     <>
       <Box
-        id={anchor}
+        id={name}
         // position="relative"
         overflow="hidden"
         css={style.Section}>
@@ -94,7 +76,12 @@ export const About = ({anchor, heading}: AboutProps) => {
           align="center"
           justify="center">
           <Box textAlign="center" my="10">
-            <Heading size="2xl">{heading}</Heading>
+            <Field.Text
+              as={Heading}
+              name={`${name}-heading`}
+              defaultValue="Über uns"
+              size="2xl"
+            />
             <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <Container
@@ -167,31 +154,28 @@ export const About = ({anchor, heading}: AboutProps) => {
               }}
               spacing="8"
               justify="center">
-              <Heading
+              <Field.Text
+                as={Heading}
+                name="Heading1"
+                defaultValue="Auch die <i>kleinsten</i><br/> Dinge machen viel <i>Freude</i>"
                 fontSize={{base: 'md', md: 'xl', xl: '2xl'}}
                 lineHeight={{base: '1.25rem', md: '2rem', xl: '2.5rem'}}
                 mb="-2"
-                whiteSpace="nowrap">
-                <Field.Text
-                  name="Heading1"
-                  defaultValue="Auch die <i>kleinsten</i><br/> Dinge machen viel <i>Freude</i>"
-                />
-              </Heading>
-              <Heading fontSize={{base: 'sm', md: 'md'}} fontWeight="semibold">
-                <Field.Text
-                  name="subtitle"
-                  defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-                />
-              </Heading>
-              <Text
+                whiteSpace="nowrap"
+              />
+              <Field.Text
+                as={Heading}
+                name="subtitle"
+                defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                fontSize={{base: 'sm', md: 'md'}}
+                fontWeight="semibold"
+              />
+              <Field.Text
+                name="text"
+                defaultValue="At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
                 fontSize={{base: 'sm', md: 'md'}}
                 fontWeight="light"
-                as="span">
-                <Field.Text
-                  name="text"
-                  defaultValue="At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
-                />
-              </Text>
+              />
               <ButtonGroup colorScheme="agt.grayScheme" size="lg">
                 <Button
                   onClick={() => {
@@ -210,21 +194,3 @@ export const About = ({anchor, heading}: AboutProps) => {
     </>
   )
 }
-
-export const AboutSection = ({
-  anchor,
-  name,
-  displayName
-}: AboutSectionProps) => (
-  <About
-    anchor={anchor}
-    heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
-  />
-)
-
-export const AboutSectionJSX = ({
-  name,
-  displayName,
-  anchor,
-  heading
-}: AboutSectionProps) => null

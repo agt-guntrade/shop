@@ -1,10 +1,18 @@
 import {PageConfig} from '@atsnek/jaen'
 import {GoogleReview} from '@snek-at/gatsby-plugin-scaleserp'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
-import {graphql, PageProps} from 'gatsby'
+import {graphql, navigate, PageProps} from 'gatsby'
 import * as React from 'react'
 
-import {HomeTemplate} from '../components/templates/HomeTemplate'
+import {
+  HeroSection,
+  AboutSection,
+  FeaturedPartnerSection,
+  ReviewFAQSection
+} from '../components/organisms/sections'
+import {SideButtons} from '../components/molecules/buttons/SideButtons'
+import {useContactModal} from '../services/contact'
+import {ScrollSpy} from '../components/molecules/ScrollSpy'
 
 interface IndexPageData {
   googleReviews: {
@@ -26,55 +34,64 @@ interface IndexPageData {
 
 // markup
 const IndexPage: React.FC<PageProps<IndexPageData>> = props => {
+  const contact = useContactModal()
+
   return (
-    <HomeTemplate
-      name="home"
-      displayName="Sections"
-      heroSection={{
-        name: 'hero',
-        displayName: 'Hero',
-        latestProducts: props.data.latestProducts.nodes,
-        categoryProducts: props.data.categoryShowcase.nodes,
-        spotlightProducts: props.data.productSpotlight.nodes
-      }}
-      featuredProductsSection={{
-        name: 'featured',
-        displayName: 'Empfehlungen',
-        featuredProducts: props.data.featuredProducts.nodes
-      }}
-      partnerSection={{
-        name: 'partner',
-        displayName: 'Vertretungen'
-      }}
-      featuredPartnerSection={{
-        name: 'featuredpartner',
-        displayName: 'Empfehlungen/Vertretungen',
-        featuredProducts: props.data.featuredProducts.nodes
-      }}
-      faqSection={{
-        name: 'faq',
-        displayName: 'Fragen und Antworten'
-      }}
-      reviewSection={{
-        name: 'review',
-        displayName: 'Bewertungen',
-        googleReviews: props.data.googleReviews.nodes
-      }}
-      reviewFAQSection={{
-        name: 'reviewfaq',
-        displayName: 'Bewertungen/FAQ',
-        googleReviews: props.data.googleReviews.nodes
-      }}
-      aboutSection={{
-        heading: null,
-        name: 'about',
-        displayName: 'Über uns'
-      }}
-      newsSection={{
-        name: 'news',
-        displayName: 'Neuigkeiten'
-      }}
-    />
+    <>
+      <HeroSection
+        name="hero"
+        latestProducts={props.data.latestProducts.nodes}
+        categoryProducts={props.data.categoryShowcase.nodes}
+        spotlightProducts={props.data.productSpotlight.nodes}
+      />
+      <AboutSection name="about" />
+
+      <FeaturedPartnerSection
+        name="featuredpartner"
+        featuredProducts={props.data.featuredProducts.nodes}
+        productsPagePath="/products"
+      />
+
+      <ReviewFAQSection
+        name="reviewfaq"
+        googleReviews={props.data.googleReviews.nodes}
+      />
+
+      <SideButtons
+        onMailButtonClick={() => contact.onOpen()}
+        onLocationButtonClick={() => navigate('/impressum/')}
+        onPhoneButtonClick={() => navigate('/contact/')}
+      />
+
+      <ScrollSpy
+        anchors={[
+          {
+            name: 'hero',
+            label: 'AGT Gun Trade'
+          },
+          {
+            name: 'about',
+            label: 'Über uns'
+          },
+          {
+            name: 'featuredpartner-featured-products',
+            label: 'Empfohlene Produkte'
+          },
+          {
+            name: 'featuredpartner-partner',
+            label: 'Partner'
+          },
+          {
+            name: 'reviewfaq-review',
+            label: 'Bewertungen'
+          },
+          {
+            name: 'reviewfaq-faq',
+            label: 'Fragen'
+          }
+        ]}
+      />
+    </>
   )
 }
 

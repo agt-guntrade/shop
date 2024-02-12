@@ -1,3 +1,4 @@
+import {Field, connectBlock} from '@atsnek/jaen'
 import {
   Accordion,
   AccordionButton,
@@ -7,8 +8,7 @@ import {
 } from '@chakra-ui/accordion'
 import {Box} from '@chakra-ui/layout'
 import {useColorModeValue} from '@chakra-ui/react'
-import {connectBlock, Field} from '@atsnek/jaen'
-import React, {ReactNode, useMemo} from 'react'
+import React, {ReactNode} from 'react'
 
 export interface FAQAccordionSectionProps {
   name: string
@@ -56,39 +56,28 @@ export const FAQAccordion = ({question, answer}: FAQAccordionProps) => {
   )
 }
 
-export const FAQAccordionSection = ({
-  name,
-  displayName
-}: FAQAccordionSectionProps) =>
-  connectBlock(
-    () => (
-      <FAQAccordion
-        question={<Field.Text name="question" defaultValue="Frage" />}
-        answer={
-          <Field.Text
-            name="answer"
-            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+export const FAQAccordionSectionBlock = connectBlock(
+  () => (
+    <FAQAccordion
+      question={<Field.Text name="question" defaultValue="Frage" />}
+      answer={
+        <Field.Text
+          name="answer"
+          defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 minim veniam, quis nostrud exercitation ullamco laboris nisi ut
 aliquip ex ea commodo consequat."
-          />
-        }
-      />
-    ),
-    {
-      name,
-      label: displayName
-    }
-  )
+        />
+      }
+    />
+  ),
+  {name: 'FAQAccordion', label: 'FAQ Accordion'}
+)
 
-export const FAQAccordionSectionJSX = ({
+export const FAQAccordionSection = ({
   name,
   displayName
 }: FAQAccordionSectionProps) => {
-  const blocks = useMemo(() => {
-    return [FAQAccordionSection({name: `${name}-item`, displayName})]
-  }, [name, displayName])
-
   return (
     <Field.Section
       as={Accordion}
@@ -96,7 +85,7 @@ export const FAQAccordionSectionJSX = ({
       // sectionProps={{allowMultiple: true}}
       name={name}
       label={displayName}
-      blocks={blocks}
+      blocks={[FAQAccordionSectionBlock]}
     />
   )
 }

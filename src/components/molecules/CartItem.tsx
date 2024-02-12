@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Flex,
   HStack,
   Image,
@@ -121,7 +122,8 @@ export const CartItem = (props: CartItemProps) => {
                     onChangeQuantity?.(value)
                   }}
                 />
-                <Link
+                <Button
+                  variant="link"
                   fontSize="sm"
                   color="blue.500"
                   _hover={{
@@ -129,7 +131,7 @@ export const CartItem = (props: CartItemProps) => {
                   }}
                   onClick={onClickDelete}>
                   Entfernen
-                </Link>
+                </Button>
               </HStack>
             )}
           </Stack>

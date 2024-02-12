@@ -1,9 +1,8 @@
 import {Box, Container, Flex} from '@chakra-ui/react'
-import {connectBlock, Field} from '@atsnek/jaen'
 import {
+  ShopifyProduct,
   getCollectionStructure,
-  getProductTags,
-  ShopifyProduct
+  getProductTags
 } from '@snek-at/gatsby-theme-shopify'
 import {StaticImage} from 'gatsby-plugin-image'
 import React from 'react'
@@ -18,15 +17,6 @@ export interface CategoryProduct extends ShopifyProduct {}
 
 export interface HeroSectionProps {
   name: string
-  displayName: string
-  anchor?: string
-  latestProducts: ShopifyProduct[]
-  categoryProducts: CategoryProduct[]
-  spotlightProducts: ShopifyProduct[]
-}
-
-export interface HeroProps {
-  anchor?: string
   latestProducts: ShopifyProduct[]
   categoryProducts: ShopifyProduct[]
   spotlightProducts: ShopifyProduct[]
@@ -43,13 +33,13 @@ export interface Tabs {
   [name: string]: Categories
 }
 
-export const Hero = ({
-  anchor,
+export const HeroSection = ({
+  name,
   latestProducts,
   categoryProducts,
   spotlightProducts,
   noScroll
-}: HeroProps) => {
+}: HeroSectionProps) => {
   const tabs: Tabs = {}
 
   categoryProducts.forEach(node => {
@@ -68,7 +58,7 @@ export const Hero = ({
   return (
     <>
       <Box
-        id={anchor}
+        id={name}
         as="section"
         width={'full'}
         backgroundColor="#1F1F1D"
@@ -105,28 +95,3 @@ export const Hero = ({
     </>
   )
 }
-
-export const HeroSection = ({
-  anchor,
-  name,
-  displayName,
-  latestProducts,
-  categoryProducts,
-  spotlightProducts
-}: HeroSectionProps) => (
-  <Hero
-    anchor={anchor}
-    latestProducts={latestProducts}
-    categoryProducts={categoryProducts}
-    spotlightProducts={spotlightProducts}
-  />
-)
-
-export const HeroSectionJSX = ({
-  name,
-  displayName,
-  anchor,
-  latestProducts,
-  categoryProducts,
-  spotlightProducts
-}: HeroSectionProps) => null

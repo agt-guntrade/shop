@@ -1,45 +1,30 @@
 import {Button} from '@chakra-ui/button'
 import {Box, Center, Container, Divider, Heading} from '@chakra-ui/layout'
-import {connectBlock, Field} from '@atsnek/jaen'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {Link as GatsbyLink} from 'gatsby'
 import React, {ReactNode} from 'react'
 
 import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
-import {ProductGrid} from '../../../molecules/ProductGrid'
-import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
-import * as style from './style'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
+import {ProductGrid} from '../../../molecules/ProductGrid'
+import * as style from './style'
+import {Field} from '@atsnek/jaen'
 
 export interface FeaturedProductsSectionProps {
   name: string
-  displayName: string
-  anchor?: string
   featuredProducts: ShopifyProduct[]
-  productsPagePath?: string
-}
-
-export interface FeaturedProductsProps {
-  anchor?: string
-  featuredProducts: ShopifyProduct[]
-  productsPagePath?: string
-  heading: ReactNode
+  productsPagePath: string
 }
 
 export const FeaturedProducts = ({
-  anchor,
-  heading,
+  name,
   featuredProducts,
   productsPagePath
-}: FeaturedProductsProps) => {
+}: FeaturedProductsSectionProps) => {
   return (
     <>
-      <Box
-        id={anchor}
-        position="relative"
-        overflow="hidden"
-        css={style.Section}>
+      <Box id={name} position="relative" overflow="hidden" css={style.Section}>
         <Divider
           orientation="horizontal"
           position="absolute"
@@ -75,7 +60,12 @@ export const FeaturedProducts = ({
         </Box>
         <Container position="relative" py="10" maxW="8xl">
           <Box textAlign="center" my="10">
-            <Heading size="2xl">{heading}</Heading>
+            <Field.Text
+              name={`${name}-heading`}
+              as={Heading}
+              size="2xl"
+              defaultValue={'Featured Products'}
+            />
             <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <ProductGrid
@@ -101,33 +91,3 @@ export const FeaturedProducts = ({
     </>
   )
 }
-
-export const FeaturedProductsSection = ({
-  name,
-  displayName,
-  anchor,
-  featuredProducts,
-  productsPagePath
-}: FeaturedProductsSectionProps) => (
-  <FeaturedProducts
-    anchor={anchor}
-    heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
-    featuredProducts={featuredProducts}
-    productsPagePath={productsPagePath}
-  />
-)
-
-export const FeaturedProductsSectionJSX = ({
-  name,
-  displayName,
-  anchor,
-  featuredProducts,
-  productsPagePath
-}: FeaturedProductsSectionProps) => (
-  <FeaturedProducts
-    anchor={anchor}
-    heading={<Field.Text name="heading" defaultValue={'Über uns'} />}
-    featuredProducts={featuredProducts}
-    productsPagePath={productsPagePath}
-  />
-)

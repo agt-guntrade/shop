@@ -1,48 +1,22 @@
-import React, {ReactNode} from 'react'
-import {HStack, Text, Box} from '@chakra-ui/layout'
-import {useColorModeValue} from '@chakra-ui/react'
-import {Link as GatsbyLink, navigate} from 'gatsby'
-import {Button} from '@chakra-ui/button'
+import {Box, Text} from '@chakra-ui/layout'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
-import {Field, connectBlock} from '@atsnek/jaen'
+import React from 'react'
 
-import {ProductCard} from '../../../molecules/ProductCard'
-import {Bullet} from '../../../atoms/Bullet'
-import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
 import {getThemeColor} from '../../../../common/utils'
 import {FeaturedProducts} from '../FeaturedProductsSection/FeaturedProductsSection'
-import {Partner} from '../PartnerSection/PartnerSection'
-import {PartnerScrollSection} from '../PartnerScrollSection'
-import * as style from './style'
+import {PartnerSection} from '../PartnerSection/PartnerSection'
 
 export interface FeaturedPartnerSectionProps {
   name: string
-  displayName: string
-  featuredAnchor?: string
-  partnerAnchor?: string
   featuredProducts: ShopifyProduct[]
-  productsPagePath?: string
+  productsPagePath: string
 }
 
-export interface FeaturedPartnerProps {
-  featuredAnchor?: string
-  partnerAnchor?: string
-  featuredProducts: ShopifyProduct[]
-  productsPagePath?: string
-  featuredHeading: ReactNode
-  partnerHeading: ReactNode
-  partnerscrollsections: ReactNode
-}
-
-export const FeaturedPartner = ({
-  featuredAnchor,
-  partnerAnchor,
-  featuredHeading,
-  partnerHeading,
+export const FeaturedPartnerSection = ({
+  name,
   featuredProducts,
-  productsPagePath,
-  partnerscrollsections
-}: FeaturedPartnerProps) => {
+  productsPagePath
+}: FeaturedPartnerSectionProps) => {
   return (
     <Box position={'relative'}>
       <Box
@@ -62,110 +36,11 @@ export const FeaturedPartner = ({
         </Text>
       </Box>
       <FeaturedProducts
-        anchor={featuredAnchor}
-        heading={featuredHeading}
+        name={name + '-featured-products'}
         featuredProducts={featuredProducts}
         productsPagePath={productsPagePath}
       />
-      <Partner
-        anchor={partnerAnchor}
-        heading={partnerHeading}
-        partnerscrollsections={partnerscrollsections}
-      />
+      <PartnerSection name={name + '-partner'} />
     </Box>
   )
 }
-
-export const FeaturedPartnerSection = ({
-  name,
-  displayName,
-  featuredAnchor,
-  partnerAnchor,
-  featuredProducts,
-  productsPagePath = '/products'
-}: FeaturedPartnerSectionProps) => (
-  <FeaturedPartner
-    featuredAnchor={featuredAnchor}
-    featuredHeading={
-      <Field.Text name="featuredheading" defaultValue={'Empfohlene Produkte'} />
-    }
-    featuredProducts={featuredProducts}
-    productsPagePath={productsPagePath}
-    partnerAnchor={partnerAnchor}
-    partnerHeading={
-      <Field.Text name="partnerheading" defaultValue={'Partner'} />
-    }
-    partnerscrollsections={
-      <Field.Section
-        as={HStack}
-        props={{
-          h: '100%',
-          py: '5',
-          spacing: '5',
-          width: 'max-content',
-          minW: '100%',
-          justifyContent: 'center'
-        }}
-        sectionProps={{
-          h: '100%'
-          // w: '100%'
-        }}
-        name="partner"
-        label="Partner"
-        blocks={[
-          PartnerScrollSection({
-            name: `${name}-item`,
-            displayName: 'Partner Logo'
-          })
-        ]}
-      />
-    }
-  />
-)
-
-export const FeaturedProductsSectionJSX = ({
-  name,
-  displayName,
-  featuredAnchor,
-  partnerAnchor,
-  featuredProducts,
-  productsPagePath
-}: FeaturedPartnerSectionProps) => (
-  <FeaturedPartner
-    featuredAnchor={featuredAnchor}
-    featuredHeading={
-      <Field.Text name="featuredheading" defaultValue={'Empfohlene Produkte'} />
-    }
-    featuredProducts={featuredProducts}
-    productsPagePath={productsPagePath}
-    partnerAnchor={partnerAnchor}
-    partnerHeading={
-      <Field.Text name="partnerheading" defaultValue={'Partner'} />
-    }
-    partnerscrollsections={
-      <Field.Section
-        as={HStack}
-        props={{
-          h: '100%',
-          py: '5',
-          spacing: '5',
-          width: 'max-content',
-          minW: '100%',
-          justifyContent: 'center'
-        }}
-        sectionProps={{
-          h: '100%'
-          // w: '100%'
-        }}
-        name="partner"
-        label="Partner"
-        blocks={[
-          PartnerScrollSection({
-            name: `${name}-item`,
-            displayName: 'Partner Logo'
-          })
-        ]}
-      />
-    }
-  />
-)

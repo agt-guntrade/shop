@@ -1,7 +1,7 @@
+import {Field} from '@atsnek/jaen'
 import {Box, Container, Divider, Heading, HStack} from '@chakra-ui/layout'
-import {connectBlock, Field} from '@atsnek/jaen'
 import {Slider} from '@snek-at/uikit'
-import React, {ReactNode} from 'react'
+import React from 'react'
 
 import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
@@ -19,19 +19,10 @@ export interface ReviewItem {
 
 export interface ReviewSectionProps {
   name: string
-  displayName: string
-  anchor?: string
   googleReviews: ReviewItem[]
 }
 
-export interface ReviewProps {
-  anchor?: string
-  bg?: string
-  heading: ReactNode
-  googleReviews: ReviewItem[]
-}
-
-export const Review = ({anchor, heading, googleReviews, bg}: ReviewProps) => {
+export const ReviewSection = ({name, googleReviews}: ReviewSectionProps) => {
   const reviewsForSlider = googleReviews.map((review: ReviewItem) => (
     <ReviewCard
       key={review.id}
@@ -46,10 +37,9 @@ export const Review = ({anchor, heading, googleReviews, bg}: ReviewProps) => {
   return (
     <>
       <Box
-        id={anchor}
+        id={name}
         position="relative"
         overflow="hidden"
-        bg={bg}
         color="ece8e1"
         pb="16"
         css={style.Section}>
@@ -99,9 +89,13 @@ export const Review = ({anchor, heading, googleReviews, bg}: ReviewProps) => {
         </Box>
         <Container position="relative" py="10" maxW="8xl">
           <Box textAlign="center" my="10">
-            <Heading color="white" size="2xl">
-              {heading}
-            </Heading>
+            <Field.Text
+              as={Heading}
+              name={`${name}-heading`}
+              size="2xl"
+              defaultValue="Reviews"
+              color="white"
+            />
             <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
           </Box>
           <Slider
@@ -124,41 +118,3 @@ export const Review = ({anchor, heading, googleReviews, bg}: ReviewProps) => {
     </>
   )
 }
-
-export const ReviewSection = ({
-  name,
-  displayName,
-  anchor,
-  googleReviews
-}: ReviewSectionProps) =>
-  connectBlock(
-    () => {
-      return (
-        <Review
-          anchor={anchor}
-          bg="agt.darkbackground"
-          heading={<Field.Text name="heading" defaultValue="Bewertungen" />}
-          googleReviews={googleReviews}
-        />
-      )
-    },
-    {
-      name: name,
-      label: displayName
-    }
-  )
-
-export const ReviewSectionJSX = ({
-  name,
-  displayName,
-  anchor,
-  googleReviews
-}: ReviewSectionProps) => (
-  <Field.Section
-    name={name}
-    label={displayName}
-    blocks={[
-      ReviewSection({name: `${name}-item`, displayName, anchor, googleReviews})
-    ]}
-  />
-)
