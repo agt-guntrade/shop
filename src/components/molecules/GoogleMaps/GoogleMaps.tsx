@@ -13,7 +13,7 @@ import {
 } from '@chakra-ui/react'
 import {useCookieConsentContext} from '@atsnek/jaen'
 import {useEffect, useState} from 'react'
-// import {useCookieConsent} from '@jaenjs/jaen'
+import React from 'react'
 
 export interface GoogleMapsProps extends BoxProps {
   src: string

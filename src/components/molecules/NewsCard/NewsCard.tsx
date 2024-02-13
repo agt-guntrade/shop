@@ -89,22 +89,24 @@ export const NewsCard = () => {
             <Field.Text name="tag" defaultValue="Aktion" label="Tag" />
           </Badge>
         </Flex>
-        <Heading
+        <Field.Text
+          as={Heading}
+          name="heading"
+          defaultValue="Titel"
+          label="Titel"
           color={useColorModeValue('gray.700', 'white')}
           fontSize={'2xl'}
-          fontFamily={'body'}>
-          <Field.Text name="heading" defaultValue="Titel" label="Titel" />
-        </Heading>
-        <Text color={'gray.500'} noOfLines={4}>
-          <Field.Text
-            name="description"
-            defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+          fontFamily={'body'}
+        />
+        <Field.Text
+          name="description"
+          defaultValue="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
     diam nonumy eirmod tempor invidunt ut labore et dolore magna
     aliquyam erat, sed diam voluptua. At vero eos et accusam et
     justo duo dolores et ea rebum."
-            label="Beschreibung"
-          />
-        </Text>
+          color={'gray.500'}
+          noOfLines={4}
+        />
       </VStack>
     </VStack>
   )

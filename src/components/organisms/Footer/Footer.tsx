@@ -22,6 +22,7 @@ import {FiGithub} from '@react-icons/all-files/fi/FiGithub'
 import {FiInstagram} from '@react-icons/all-files/fi/FiInstagram'
 import {StaticImage} from 'gatsby-plugin-image'
 import React, {ReactNode} from 'react'
+import Logo from '../../../gatsby-plugin-jaen/components/Logo'
 
 export interface FooterProps {
   col1h: React.ReactNode
@@ -213,11 +214,7 @@ export const Footer = ({
             direction={{base: 'column', lg: 'row'}}
             spacing={{base: '10', lg: '28'}}>
             <Box flex="1">
-              <StaticImage
-                src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
-                alt="Snek"
-                style={{maxWidth: '300px'}}
-              />
+              <Logo />
             </Box>
             <Stack
               direction={{base: 'column', md: 'row'}}

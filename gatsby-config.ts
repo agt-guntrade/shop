@@ -9,7 +9,17 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-jaen`,
       options: {
-        snekResourceId: `6ce49cab-c6bf-4b68-853b-2e7d96b859bf`
+        snekResourceId: `6ce49cab-c6bf-4b68-853b-2e7d96b859bf`,
+        remote: {
+          repository: 'agt-guntrade/shop'
+        },
+        zitadel: {
+          organizationId: '253329432192745475',
+          clientId: '252746210698395651@services',
+          authority: 'https://access.netsnek.com',
+          redirectUri: 'http://localhost:8000',
+          projectIds: []
+        }
       }
     },
     `gatsby-jaen-mailpress`,

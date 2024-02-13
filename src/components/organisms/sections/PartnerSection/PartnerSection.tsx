@@ -1,7 +1,7 @@
-import {Box, Container, Divider, Heading, HStack} from '@chakra-ui/layout'
-import {connectBlock, Field} from '@atsnek/jaen'
+import {Field} from '@atsnek/jaen'
+import {Box, Container, Divider, HStack, Heading} from '@chakra-ui/layout'
 import {Slider} from '@snek-at/uikit'
-import React, {ReactNode} from 'react'
+import React from 'react'
 
 import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
@@ -10,25 +10,13 @@ import {PartnerScrollSection} from '../PartnerScrollSection'
 import * as style from './style'
 
 export interface PartnerSectionProps {
-  anchor?: string
   name: string
-  displayName: string
 }
 
-export interface PartnerProps {
-  anchor?: string
-  heading: ReactNode
-  partnerscrollsections: ReactNode
-}
-
-export const Partner = ({
-  anchor,
-  heading,
-  partnerscrollsections
-}: PartnerProps) => {
+export const PartnerSection = ({name}: PartnerSectionProps) => {
   return (
     <Box
-      id={anchor}
+      id={name}
       position="relative"
       overflow="hidden"
       pb="10"
@@ -66,7 +54,12 @@ export const Partner = ({
       </Box>
       <Container position="relative" py="10" maxW="8xl">
         <Box textAlign="center" my="10">
-          <Heading size="2xl">{heading}</Heading>
+          <Field.Text
+            as={Heading}
+            name={`${name}-heading`}
+            size="2xl"
+            defaultValue="Partner"
+          />
           <Bullet w="unset" fontSize="xl" mt="5" mb="10" />
         </Box>
         <Slider
@@ -74,51 +67,31 @@ export const Partner = ({
           alignItems="stretch"
           w="100%"
           elementProps={{boxSize: 'none'}}>
-          {partnerscrollsections}
+          <Field.Section
+            as={HStack}
+            props={{
+              h: '100%',
+              py: '5',
+              spacing: '5',
+              width: 'max-content',
+              minW: '100%',
+              justifyContent: 'center'
+            }}
+            sectionProps={{
+              h: '100%'
+              // w: '100%'
+            }}
+            name="partner"
+            label="Partner"
+            blocks={[
+              PartnerScrollSection({
+                name: `${name}-item`,
+                displayName: 'Partner Logo'
+              })
+            ]}
+          />
         </Slider>
       </Container>
     </Box>
   )
 }
-
-export const PartnerSection = ({
-  anchor,
-  name,
-  displayName
-}: PartnerSectionProps) => (
-  <Partner
-    anchor={anchor}
-    heading={<Field.Text name="heading" defaultValue={'Partner'} />}
-    partnerscrollsections={
-      <Field.Section
-        as={HStack}
-        props={{
-          h: '100%',
-          py: '5',
-          spacing: '5',
-          width: 'max-content',
-          minW: '100%',
-          justifyContent: 'center'
-        }}
-        sectionProps={{
-          h: '100%'
-          // w: '100%'
-        }}
-        name="partner"
-        label="Partner"
-        blocks={[
-          PartnerScrollSection({
-            name: `partner-item`,
-            displayName: 'Partner'
-          })
-        ]}
-      />
-    }
-  />
-)
-
-export const PartnerSectionJSX = ({
-  name,
-  displayName,
-  anchor
-}: PartnerSectionProps) => null

@@ -8,8 +8,6 @@ export interface HeaderContainerProps {
 }
 
 export const HeaderContainer = ({path}: HeaderContainerProps) => {
-  console.log('HeaderContainer', path)
-
   const menu = useFlatMenu()
 
   // const analytics = useAnalytics()

@@ -5,7 +5,7 @@ import {doNotConvertToString} from 'snek-query'
 
 import {BasketDrawer} from '../components/organisms/BasketDrawer'
 
-import {useAuthenticationContext} from '@atsnek/jaen'
+import {useAuth} from '@atsnek/jaen'
 import {useToast} from '@chakra-ui/react'
 import {OrderFormValues, OrderModal} from '../components/organisms/OrderModal'
 import {useWholesaleUser} from '../hooks/use-wholesale-user'
@@ -157,7 +157,7 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
     const [meta, setMeta] = React.useState<Record<string, any> | null>(null)
     const [isOrderOpen, setIsOrderOpen] = React.useState(false)
 
-    const authentication = useAuthenticationContext()
+    const authentication = useAuth()
 
     const onOrderClose = () => {
       setIsOrderOpen(false)
@@ -293,9 +293,9 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
       }
 
       return {
-        firstName: authentication.user.details?.firstName,
-        lastName: authentication.user.details?.lastName,
-        email: authentication.user.primaryEmail
+        firstName: authentication.user.profile.given_name,
+        lastName: authentication.user.profile.family_name,
+        email: authentication.user.profile.email
       }
     }, [authentication.user])
 
