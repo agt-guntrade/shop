@@ -26,6 +26,7 @@ import {useBasket} from '../../../services/basket'
 import {useContactModal} from '../../../services/contact'
 import {useAuth} from '@atsnek/jaen'
 import {ShoppingCartButton} from './ShoppingCartButton'
+import Logo from '../../../gatsby-plugin-jaen/components/Logo'
 
 /**
  *
@@ -123,11 +124,7 @@ export const Header = (props: HeaderProps) => {
                 spacing={{base: '10', md: '20'}}
                 alignItems={'center'}
                 maxW="2xl">
-                <StaticImage
-                  src="https://osg.snek.at/storage/BQACAgQAAxkDAAIRYWLcUNC3zwxMZyu5rL7nN2KemEVPAAJoDAACKRHhUsOwfaK3UyezKQQ"
-                  alt="AGT Gun Trade Logo"
-                  style={{maxWidth: '300px'}}
-                />
+                <Logo mode="light" />
               </HStack>
               <Box display={{base: 'none', md: 'block'}} w="100%" px={8}>
                 <Searchbar />
