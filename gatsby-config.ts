@@ -17,7 +17,10 @@ const config: GatsbyConfig = {
           organizationId: '253329432192745475',
           clientId: '252746210698395651@services',
           authority: 'https://access.netsnek.com',
-          redirectUri: 'http://localhost:8000',
+          redirectUri:
+            process.env.NODE_ENV === 'production'
+              ? 'https://agt.schett.net'
+              : 'http://localhost:8000',
           projectIds: []
         }
       }
