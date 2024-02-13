@@ -19,6 +19,7 @@ const Logo: React.FC<{
       }}
       viewBox="0 0 46000 15000"
       fill={mode === 'light' ? '#FFF' : '#2B2A29'}
+      color={mode === 'light' ? '#FFF' : '#2B2A29'}
       xmlnsXlink="http://www.w3.org/1999/xlink">
       <defs>
         <style type="text/css">
