@@ -1,15 +1,14 @@
 import {useToast} from '@chakra-ui/react'
-import {getTokenPair, sq} from '@snek-functions/origin'
+import {sq} from 'gatsby-jaen-mailpress'
 import React, {useMemo} from 'react'
-import {RouteComponentProps} from '@reach/router'
-import {asEnumKey, doNotConvertToString} from 'snek-query'
+import {doNotConvertToString} from 'snek-query'
 
+import {useAuth} from '@atsnek/jaen'
+import {navigate} from 'gatsby'
 import {
   ContactFormValues,
   ContactModal
 } from '../components/organisms/ContactModal'
-import {useAuth} from '@atsnek/jaen'
-import {navigate} from 'gatsby'
 import {useQueryRouter} from '../hooks/use-query-router'
 
 export interface ContactModalContextProps {
@@ -82,23 +81,18 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({
     console.log(data, meta)
 
     const [_, errors] = await sq.mutate(m =>
-      m.mailpressMailSchedule({
+      m.sendTemplateMail({
         envelope: {
-          replyTo: {
-            value: data.email,
-            type: doNotConvertToString('EMAIL_ADDRESS') as any
-          }
+          replyTo: data.email
         },
-        template: {
-          id: '20fa5252-8463-4f98-b13f-274fdb4a2e67',
-          values: {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            phone: data.phone,
-            message: data.message,
-            invokedOnUrl: meta?.url
-          }
+        id: '20fa5252-8463-4f98-b13f-274fdb4a2e67',
+        values: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+          invokedOnUrl: meta?.url
         }
       })
     )

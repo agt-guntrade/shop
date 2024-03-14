@@ -18,7 +18,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@atsnek/jaen": "^1.0.0-rc.54",
+    "@atsnek/jaen": "^1.0.0-rc.56",
     "@chakra-ui/icons": "^2",
     "@chakra-ui/react": "^2",
     "@emotion/react": "^11",
@@ -28,9 +28,9 @@
     "@snek-at/uikit": "^1.0.0",
     "framer-motion": "^10.0.1",
     "gatsby": "^5",
-    "gatsby-jaen-mailpress": "^0.0.1",
+    "gatsby-jaen-mailpress": "^0.0.3",
     "gatsby-plugin-image": "^3",
-    "gatsby-plugin-jaen": "1.0.0-rc.76",
+    "gatsby-plugin-jaen": "1.0.0-rc.82",
     "react": "^18",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43",

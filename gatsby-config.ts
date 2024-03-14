@@ -9,19 +9,23 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-jaen`,
       options: {
-        snekResourceId: `6ce49cab-c6bf-4b68-853b-2e7d96b859bf`,
         remote: {
           repository: 'agt-guntrade/shop'
         },
         zitadel: {
           organizationId: '253329432192745475',
           clientId: '252746210698395651@services',
-          authority: 'https://access.netsnek.com',
+          authority: 'https://access.cronit.io',
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://agt.schett.net'
               : 'http://localhost:8000',
           projectIds: []
+        },
+        sentry: {
+          org: 'cronit',
+          project: 'agt-guntrade',
+          dsn: 'https://73e0f0013a0662b813329e54f99055a6@o4506263462871040.ingest.us.sentry.io/4506910130503680'
         }
       }
     },

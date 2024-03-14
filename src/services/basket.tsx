@@ -1,5 +1,5 @@
 import {withStoreContext} from '@snek-at/gatsby-theme-shopify'
-import {sq} from '@snek-functions/origin'
+import {sq} from 'gatsby-jaen-mailpress'
 import React, {useCallback, useMemo} from 'react'
 import {doNotConvertToString} from 'snek-query'
 
@@ -223,40 +223,35 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
       const order = await createOrFetchCheckout()
 
       const [_, errors] = await sq.mutate(m =>
-        m.mailpressMailSchedule({
+        m.sendTemplateMail({
           envelope: {
-            replyTo: {
-              value: data.email,
-              type: doNotConvertToString('EMAIL_ADDRESS') as any
-            }
+            replyTo: data.email
           },
-          template: {
-            id: '3c4d4e2f-0916-4902-8228-60d35ef9854f',
-            values: {
-              cart: cleanedLineItems.map(lineItem => ({
-                name: lineItem.title.toString(),
-                quantity: lineItem.quantity,
-                sku: lineItem.variant?.sku,
-                price: lineItem.variant?.price.amount,
-                imgSrc: lineItem.variant?.image?.src
-              })),
-              order: {
-                id: order.id,
-                totalPrice: order.totalPrice.amount,
-                currency: order.totalPrice.currencyCode,
-                note: data.message
-              },
-              customer: {
-                emailAddress: data.email,
-                firstName: data.firstName,
-                lastName: data.lastName,
-                phone: data.phone
-              },
-              wholesale: isWholesale,
-              email: data.email,
-              message: data.message,
-              invokedOnUrl: meta?.url
-            }
+          id: '3c4d4e2f-0916-4902-8228-60d35ef9854f',
+          values: {
+            cart: cleanedLineItems.map(lineItem => ({
+              name: lineItem.title.toString(),
+              quantity: lineItem.quantity,
+              sku: lineItem.variant?.sku,
+              price: lineItem.variant?.price.amount,
+              imgSrc: lineItem.variant?.image?.src
+            })),
+            order: {
+              id: order.id,
+              totalPrice: order.totalPrice.amount,
+              currency: order.totalPrice.currencyCode,
+              note: data.message
+            },
+            customer: {
+              emailAddress: data.email,
+              firstName: data.firstName,
+              lastName: data.lastName,
+              phone: data.phone
+            },
+            wholesale: isWholesale,
+            email: data.email,
+            message: data.message,
+            invokedOnUrl: meta?.url
           }
         })
       )
