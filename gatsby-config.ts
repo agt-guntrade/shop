@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
         zitadel: {
           organizationId: '253329432192745475',
           clientId: '252746210698395651@services',
-          authority: 'https://access.cronit.io',
+          authority: 'https://accounts.cronit.io',
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://agt.schett.net'
