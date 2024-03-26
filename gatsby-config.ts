@@ -25,7 +25,7 @@ const config: GatsbyConfig = {
         sentry: {
           org: 'cronit',
           project: 'agt-guntrade',
-          dsn: 'https://c0719152fd8297c15d5a3a8b181bfdb0@sentry.cronit.io/4'
+          dsn: 'https://80e0097af1f71b1df45d4e3ec519912e@sentry.cronit.io/6'
         }
       }
     },
