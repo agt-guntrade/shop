@@ -47,11 +47,12 @@
     css-tree "^2.3.1"
     is-potential-custom-element-name "^1.0.1"
 
-"@atsnek/jaen@^1.0.0-rc.62":
-  version "1.0.0-rc.62"
-  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.62.tgz#0e6d24ef52f0270ad2b3d0dcee71b9839149e681"
-  integrity sha512-lVOpYYVqVXmZAP88Fe+PsCgensOwQsPMha7TzQjetnIl7MmrVxNFl8mk3QA6+ateD+ph0ZKCutU6s8OZSAqCOw==
+"@atsnek/jaen@^1.0.0-rc.63":
+  version "1.0.0-rc.63"
+  resolved "https://registry.yarnpkg.com/@atsnek/jaen/-/jaen-1.0.0-rc.63.tgz#a8663c6bc64acf502da0725e4516e01ae0fe2281"
+  integrity sha512-FOqEaOtxD6xk102BP9YrrGxSKMdoFDMex7+aj3NfKKKIwyHt/e/zwBSHp0bLNRER8AHV+dWIXiGB9+1Jgatgcw==
   dependencies:
+    "@chakra-ui/icons" "^2.1.1"
     "@chakra-ui/react" "^2.8.0"
     "@react-icons/all-files" "https://github.com/react-icons/react-icons/releases/download/v4.11.0/react-icons-all-files-4.11.0.tgz"
     "@reduxjs/toolkit" "^1.9.5"
@@ -1537,7 +1538,7 @@
   dependencies:
     "@chakra-ui/shared-utils" "2.0.5"
 
-"@chakra-ui/icons@^2":
+"@chakra-ui/icons@^2", "@chakra-ui/icons@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-2.1.1.tgz#58ff0f9e703f2f4f89debd600ce4e438f43f9c9a"
   integrity sha512-3p30hdo4LlRZTT5CwoAJq3G9fHI0wDc0pBaMHj4SUn0yomO+RcDRlzhdXqdr5cVnzax44sqXJVnf3oQG0eI+4g==
