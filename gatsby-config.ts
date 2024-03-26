@@ -18,7 +18,7 @@ const config: GatsbyConfig = {
           authority: 'https://accounts.cronit.io',
           redirectUri:
             process.env.NODE_ENV === 'production'
-              ? 'https://agt.schett.net'
+              ? 'https://ried.agt-guntrade.at'
               : 'http://localhost:8000',
           projectIds: []
         },
