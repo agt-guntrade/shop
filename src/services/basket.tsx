@@ -227,7 +227,7 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
           envelope: {
             replyTo: data.email
           },
-          id: '3c4d4e2f-0916-4902-8228-60d35ef9854f',
+          id: '496c0085-bb6f-471f-82fa-66770b516b71',
           values: {
             cart: cleanedLineItems.map(lineItem => ({
               name: lineItem.title.toString(),
@@ -297,76 +297,6 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
     const onCheckout = async (): Promise<void> => {
       onClose()
       setIsOrderOpen(true)
-      // if (wholesale) {
-      //   const emailAddress = auth.user?.email
-
-      //   if (!emailAddress) {
-      //     throw new Error('No email address')
-      //   }
-
-      //   const c = await createOrFetchCheckout()
-
-      //   const [_, errors] = await sq.mutate(m =>
-      //     m.mailpressMailSchedule({
-      //       envelope: {
-      //         replyTo: {
-      //           value: emailAddress,
-      //           type: doNotConvertToString('EMAIL_ADDRESS') as any
-      //         }
-      //       },
-      //       template: {
-      //         id: 'BALLOONS_ORDER_EMAIL',
-      //         values: {
-      //           cart: checkout?.lineItems.map(lineItem => ({
-      //             name: lineItem.title.toString(),
-      //             quantity: lineItem.quantity,
-      //             sku: lineItem.variant?.sku,
-      //             price: lineItem.variant?.price.amount,
-      //             imgSrc: lineItem.variant?.image?.src
-      //           })),
-      //           order: {
-      //             id: c.id,
-      //             totalPrice: c.totalPrice.amount,
-      //             currency: c.totalPrice.currencyCode
-      //           },
-      //           customer: {
-      //             fullName: auth.user?.name,
-      //             emailAddress
-      //           }
-      //         }
-      //       }
-      //     })
-      //   )
-
-      //   if (errors) {
-      //     // Deutsch
-      //     toast({
-      //       title: 'Fehler',
-      //       description: 'Es ist ein Fehler aufgetreten.',
-      //       status: 'error',
-      //       duration: 5000,
-      //       isClosable: true
-      //     })
-      //   } else {
-      //     toast({
-      //       title: 'Erfolg',
-      //       description: `Ihre Bestellung wurde erfolgreich abgeschickt. Sie erhalten eine Bestätigung per E-Mail.`,
-      //       status: 'success',
-      //       duration: 5000,
-      //       isClosable: true
-      //     })
-
-      //     onClose()
-      //   }
-      // } else {
-      //   if (checkout?.webUrl) {
-      //     window.open(checkout?.webUrl, '_blank')
-      //     alert('onCheckout')
-      //   }
-      // }
-
-      // setCheckout(null)
-      // localStorage.removeItem('checkoutId')
     }
 
     return (
