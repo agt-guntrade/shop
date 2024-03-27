@@ -15,7 +15,7 @@ const ImprintPage: React.FC<PageProps> = ({path}) => {
           name="content"
           defaultValue={`
 <h2>
-<strong>AGT Gun Trade KG Impressum</strong>
+<strong>AGT Gun Trade GmbH Impressum</strong>
 </h2>
 <p>Hauptsitz Ried im Innkreis</p>
 <p>Wildfellnerstraße 22/1</p>
@@ -40,7 +40,7 @@ Weitere Kontakt Möglichkeiten <a href="/kontakt">Kontakt </a>.
 <strong>Grundlegende Richtung der Website (Blattlinie)</strong>
 </h2>
 <p>
-Information über AGT Gun Trade KG, allgemeine Unternehmensinformationen
+Information über AGT Gun Trade GmbH, allgemeine Unternehmensinformationen
 sowie Informationen zu Produkten und Dienstleistungen des Unternehmens und
 Förderung des Absatzes derselben.
 </p>
@@ -79,9 +79,9 @@ Alle Inhalte (Bilder, Fotos, Texte, Videos etc.) auf dieser und den
 übrigen Seiten der AGT-Unternehmenshomepage sowie die Gestaltung der
 Seiten sind urheberrechtlich geschützt. Alle Rechte, insbesondere das
 Recht der Vervielfältigung, der Verbreitung und der Zur-Verfügung-Stellung
-sowie der Übersetzung sind der AGT Gun Trade KG vorbehalten. Kein Teil
+sowie der Übersetzung sind der AGT Gun Trade GmbH vorbehalten. Kein Teil
 dieser Seiten darf in irgendeiner Form in welchem Verfahren auch immer
-ohne schriftliche Genehmigung der AGT Gun Trade KG reproduziert oder unter
+ohne schriftliche Genehmigung der AGT Gun Trade GmbH reproduziert oder unter
 Verwendung elektronischer Systeme gespeichert, bearbeitet, vervielfältigt,
 verbreitet oder zur Verfügung gestellt werden. Der Download von Inhalten
 zum persönlichen, privaten und nicht-kommerziellen Gebrauch ist jedoch
