@@ -28,7 +28,7 @@
     "@snek-at/uikit": "^1.0.0",
     "framer-motion": "^10.0.1",
     "gatsby": "^5",
-    "gatsby-jaen-mailpress": "^0.0.3",
+    "gatsby-jaen-mailpress": "^0.0.4",
     "gatsby-plugin-image": "^3",
     "gatsby-plugin-jaen": "1.0.0-rc.87",
     "react": "^18",

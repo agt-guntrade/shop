@@ -10805,10 +10805,10 @@ gatsby-graphiql-explorer@^3.13.0:
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-3.13.0.tgz#28c207d81c597b76508ff980dc4949a847124d6d"
   integrity sha512-KK1+ka+rC8mBSaR2iBR/rVZa/KLYtGoK+lkjDw+rGGWB3zzwPQJtmNz9QYeOaelUy5PHQaMvyTxbBK5DWiyUhw==
 
-gatsby-jaen-mailpress@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/gatsby-jaen-mailpress/-/gatsby-jaen-mailpress-0.0.3.tgz#74e70ef7787efbab9c19aa3297200d7d1b81c4e5"
-  integrity sha512-bD0XZMT10/noYM9qgVO30ziyRShSsrB0JDQV0taZMrLaXDlfb08OG+zotgYremTwDdL8JBVFgCvzaGODuCDrgA==
+gatsby-jaen-mailpress@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-jaen-mailpress/-/gatsby-jaen-mailpress-0.0.4.tgz#32c3d9c3700fe098a83511cde011219fd3d3838b"
+  integrity sha512-RJpL8+gNviyGAHCJ0QC0KifluhRoObTGYc87iVD6gWyulU3I0/lxqBhZQ/cT8o0HSLIIn4/pvRgvOfebJ+q4/g==
   dependencies:
     "@monaco-editor/react" "^4.6.0"
     "@react-icons/all-files" "https://github.com/react-icons/react-icons/releases/download/v4.11.0/react-icons-all-files-4.11.0.tgz"
