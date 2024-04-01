@@ -49,6 +49,7 @@ export const cardStyle = (
       }
 
       &:after {
+        box-sizing: border-box;
         transition: all 150ms;
         position: absolute;
         content: '';
