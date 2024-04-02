@@ -5,7 +5,7 @@ export const Logo = (props: any) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height={48}
-      viewBox="0 0 1479 544"
+      viewBox="0 0 544 544"
       {...props}>
       <path
         id="squerl2"
@@ -21,7 +21,7 @@ export const Logo = (props: any) => {
              528.95,187.41 523.98,117.86 475.56,69.61
              475.56,69.61 475.56,69.61 475.56,69.61 Z"
       />
-      <path
+      {/* <path
         id="small-circle2"
         fill="#eb1933"
         d="M 422.85,271.16
@@ -29,7 +29,7 @@ export const Logo = (props: any) => {
              189.96,421.19 122.78,354.02 122.78,271.16
              122.78,188.30 189.96,121.13 272.82,121.13
              355.68,121.13 422.85,188.30 422.85,271.16 Z"
-      />
+      /> */}
       <path
         id="crosshair3"
         fill="#ffffff"

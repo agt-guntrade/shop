@@ -8,7 +8,6 @@ import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
 import {ProductGrid} from '../../../molecules/ProductGrid'
-import * as style from './style'
 import {Field} from '@atsnek/jaen'
 
 export interface FeaturedProductsSectionProps {
@@ -24,7 +23,7 @@ export const FeaturedProducts = ({
 }: FeaturedProductsSectionProps) => {
   return (
     <>
-      <Box id={name} position="relative" overflow="hidden" css={style.Section}>
+      <Box id={name} position="relative" overflow="hidden">
         <Divider
           orientation="horizontal"
           position="absolute"

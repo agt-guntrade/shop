@@ -15,7 +15,8 @@ import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
 import {useContactModal} from '../../../../services/contact'
 import {Bullet} from '../../../atoms/Bullet'
 import CardWithImageBackground from '../../../molecules/CardWithImageBackground'
-import * as style from './style'
+import { StickyStrokeLogo } from '../../../molecules/StickyStrokeLogo'
+import { getThemeColor } from '../../../../common/utils'
 
 export interface AboutSectionProps {
   name: string
@@ -44,18 +45,17 @@ export const AboutSection = ({name}: AboutSectionProps) => {
       <Box
         id={name}
         // position="relative"
-        overflow="hidden"
-        css={style.Section}>
-        {/* <Box
+        overflow="hidden">
+        <Box
           w="100%"
-          h="100%"
+          h="50%"
           position="absolute"
           style={{clip: 'rect(0, auto, auto, 0)'}}>
           <StickyStrokeLogo
             strokeColor={getThemeColor('stroke')}
             backgroundColor={getThemeColor('background')}
           />
-        </Box> */}
+        </Box>
 
         <Divider
           orientation="vertical"
