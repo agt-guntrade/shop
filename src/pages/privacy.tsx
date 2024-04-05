@@ -1,7 +1,7 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {PageConfig, useCookieConsentContext} from '@atsnek/jaen'
+import {Field, PageConfig, useCookieConsentContext} from '@atsnek/jaen'
 import {Heading, Text, Button} from '@chakra-ui/react'
 import {ContainerLayout} from '../components/ContainerLayout'
 import {BreadcrumbsBanner} from '../components/molecules/BreadcrumbsBanner'
@@ -13,137 +13,51 @@ const PrivacyPage: React.FC<PageProps> = ({path}) => {
     <>
       <BreadcrumbsBanner path={path} title="Datenschutz" />
       <ContainerLayout>
-        <Heading as="h1" size="lg" fontWeight="extrabold" pb={4}>
-          Datenschutz
-        </Heading>
-        <Heading as="h4" size="md" mt="4">
-          Ihrer Einwilligung zur Datenverarbeitung
-        </Heading>
+        <Field.Text
+          name="content"
+          defaultValue={`Datenschutzerklärung
 
-        <Text>
-          Nur mit Ihrer ausdrücklichen Einwilligung sind einige Vorgänge der
-          Datenverarbeitung möglich. Ein Widerruf Ihrer bereits erteilten
-          Einwilligung ist jederzeit möglich. Für den Widerruf genügt eine
-          formlose Mitteilung per E-Mail. Die Rechtmäßigkeit der bis zum
-          Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.
-        </Text>
+Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003). In diesen Datenschutzinformationen informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.
 
-        <Heading as="h4" size="md" mt="4">
-          Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde
-        </Heading>
+Datenspeicherung
 
-        <Text>
-          Als Betroffener steht Ihnen im Falle eines datenschutzrechtlichen
-          Verstoßes ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
-          Zuständige Aufsichtsbehörde bezüglich datenschutzrechtlicher Fragen
-          ist der Landesdatenschutzbeauftragte des Bundeslandes, in dem sich der
-          Sitz unseres Unternehmens befindet. Der folgende Link stellt eine
-          Liste der Datenschutzbeauftragten sowie deren Kontaktdaten bereit:{' '}
-          <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html">
-            https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html
-          </a>
-          .
-        </Text>
+Wir weisen darauf hin, dass zum Zweck des einfacheren Einkaufsvorganges und zur späteren Vertragsabwicklung von Webshop-Betreiber im Rahmen von Cookies die IP-Daten des Anschlussinhabers gespeichert werden, ebenso wie persönliche Daten des Käufers.
 
-        <Heading as="h4" size="md" mt="4">
-          Recht auf Datenübertragbarkeit
-        </Heading>
+Darüber hinaus werden zum Zweck der Vertragsabwicklung folgende Daten auch bei uns gespeichert: Name, Anschrift, Email, Telefonnummer. Die von Ihnen bereit gestellten Daten sind zur Vertragserfüllung bzw. zur Durchführung vorvertraglicher Maßnahmen erforderlich. Ohne diese Daten können wir den Vertrag mit Ihnen nicht abschließen. Eine Datenübermittlung an Dritte erfolgt nicht, mit Ausnahme der Übermittlung an Transportunternehmen sowie an unseren Steuerberater zur Erfüllung unserer steuerrechtlichen Verpflichtungen.
 
-        <Text>
-          Ihnen steht das Recht zu, Daten, die wir auf Grundlage Ihrer
-          Einwilligung oder in Erfüllung eines Vertrags automatisiert
-          verarbeiten, an sich oder an Dritte aushändigen zu lassen. Die
-          Bereitstellung erfolgt in einem maschinenlesbaren Format. Sofern Sie
-          die direkte Übertragung der Daten an einen anderen Verantwortlichen
-          verlangen, erfolgt dies nur, soweit es technisch machbar ist.
-        </Text>
+Nach Abbruch des Einkaufsvorganges werden die bei uns gespeicherten Daten gelöscht. Im Falle eines Vertragsabschlusses werden sämtliche Daten aus dem Vertragsverhältnis bis zum Ablauf der steuerrechtlichen Aufbewahrungsfrist (7 Jahre) gespeichert.
 
-        <Heading as="h4" size="md" mt="4">
-          Recht auf Auskunft, Berichtigung, Sperrung, Löschung
-        </Heading>
+Die Daten Name, Anschrift gekaufte Ware und Kaufdatum werden darüber hinaus gehend bis zum Ablauf der Produkthaftung (10 Jahre) gespeichert. Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des §96 Abs 3 TKG sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit 2 (notwendig zur Vertragserfüllung) der DSGVO.
 
-        <Text>
-          Sie haben jederzeit im Rahmen der geltenden gesetzlichen Bestimmungen
-          das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
-          personenbezogenen Daten, Herkunft der Daten, deren Empfänger und den
-          Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung,
-          Sperrung oder Löschung dieser Daten. Diesbezüglich und auch zu
-          weiteren Fragen zum Thema personenbezogene Daten können Sie sich
-          jederzeit über die im Impressum aufgeführten Kontaktmöglichkeiten an
-          uns wenden.
-        </Text>
+Cookies
 
-        <Heading as="h4" size="md" mt="4">
-          SSL- bzw. TLS-Verschlüsselung
-        </Heading>
+Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden an.
 
-        <Text>
-          Aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher
-          Inhalte, die Sie an uns als Seitenbetreiber senden, nutzt unsere
-          Website eine SSL-bzw. TLS-Verschlüsselung. Damit sind Daten, die Sie
-          über diese Website übermitteln, für Dritte nicht mitlesbar. Sie
-          erkennen eine verschlüsselte Verbindung an der „https://“ Adresszeile
-          Ihres Browsers und am Schloss-Symbol in der Browserzeile.
-        </Text>
+Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.
 
-        <Heading as="h4" size="md" mt="4">
-          Cookies
-        </Heading>
+Wenn Sie dies nicht wünschen, so können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben.
 
-        <Text>
-          Unsere Website verwendet Cookies. Das sind kleine Textdateien, die Ihr
-          Webbrowser auf Ihrem Endgerät speichert. Cookies helfen uns dabei,
-          unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.
-        </Text>
+Bei der Deaktivierung von Cookies kann die Funktionalität unserer Website eingeschränkt sein.
 
-        <Text>
-          Einige Cookies sind “Session-Cookies.” Solche Cookies werden nach Ende
-          Ihrer Browser-Sitzung von selbst gelöscht. Hingegen bleiben andere
-          Cookies auf Ihrem Endgerät bestehen, bis Sie diese selbst löschen.
-          Solche Cookies helfen uns, Sie bei Rückkehr auf unserer Website
-          wiederzuerkennen.
-        </Text>
+Newsletter
 
-        <Text>
-          Mit einem modernen Webbrowser können Sie das Setzen von Cookies
-          überwachen, einschränken oder unterbinden. Viele Webbrowser lassen
-          sich so konfigurieren, dass Cookies mit dem Schließen des Programms
-          von selbst gelöscht werden. Die Deaktivierung von Cookies kann eine
-          eingeschränkte Funktionalität unserer Website zur Folge haben.
-        </Text>
+Sie haben die Möglichkeit, über unsere Website unseren Newsletter zu abonnieren. Hierfür benötigen wir Ihre E-Mail-Adresse und Ihre Erklärung, dass Sie mit dem Bezug des Newsletters einverstanden sind.
 
-        <Text>
-          Das Setzen von Cookies, die zur Ausübung elektronischer
-          Kommunikationsvorgänge oder der Bereitstellung bestimmter, von Ihnen
-          erwünschter Funktionen (z.B. Warenkorb) notwendig sind, erfolgt auf
-          Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Als Betreiber dieser Website
-          haben wir ein berechtigtes Interesse an der Speicherung von Cookies
-          zur technisch fehlerfreien und reibungslosen Bereitstellung unserer
-          Dienste. Sofern die Setzung anderer Cookies (z.B. für
-          Analyse-Funktionen) erfolgt, werden diese in dieser
-          Datenschutzerklärung separat behandelt.
-        </Text>
+Um Sie zielgerichtet mit Informationen zu versorgen, erheben und verarbeiten wir außerdem freiwillig gemachte Angaben zu Interessengebieten.
 
-        <Heading as="h4" size="md" mt="4">
-          Cloudflare
-        </Heading>
+Das Abo des Newsletters können Sie jederzeit stornieren. Senden Sie Ihre Stornierung bitte an folgende E-Mail-Adresse: office@agt-guntrade.at
 
-        <Text>
-          Unsere Website verwendet das Content Delivery Network Cloudflare. Der
-          Sinn eines Content Delivery Networks ist es, Ladezeiten zu verkürzen
-          und Ausfällen vorzubeugen. Dies ist ein US-amerikanischer Dienst.
-          Verwendet werden dafür von uns ausschließlich technisch notwendige
-          Cookies. Verarbeitet werden hierbei Daten wie z.B.: IP-Adresse,
-          Kontakt- und Protokollinfos, Sicherheitsfingerabdrücke und
-          Leistungsdaten für Websites. Die Verarbeitung erfolgt unter Einhaltung
-          der DSGVO und diese Daten werden in der Regel nach 24 Stunden wieder
-          gelöscht, sollte es zu keinen Auffälligkeiten kommen. Für mehr
-          Informationen besuchen Sie bitte:{' '}
-          <a href="https://www.cloudflare.com/de-de/learning/what-is-cloudflare/">
-            https://www.cloudflare.com/de-de/learning/what-is-cloudflare/
-          </a>
-          .
-        </Text>
+Wir löschen anschließend umgehend Ihre Daten im Zusammenhang mit dem Newsletter-Versand.
+
+Ihre Rechte
+
+Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt sind, können Sie sich bei der Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde.
+
+Sie erreichen uns unter folgenden Kontaktdaten:
+
+AGT Gun Trade GmbH Ressnig 20 9170 Ferlach /Austria Telefonnummer: 0650 720 19 60 E-Mail: office@agt-guntrade.at`}
+        />
+
         {cc?.validConsent() ? (
           <>
             <Button
