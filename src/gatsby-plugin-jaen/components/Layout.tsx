@@ -40,6 +40,9 @@ export const Layout: React.FC<LayoutProps> = ({children, pageProps}) => {
                   <Link as={GatsbyLink} to={'/impressum'}>
                     Impressum
                   </Link>,
+                  <Link as={GatsbyLink} to={'/agb'}>
+                    AGB
+                  </Link>,
                   <Link as={GatsbyLink} to={'/privacy'}>
                     Datenschutz
                   </Link>,
