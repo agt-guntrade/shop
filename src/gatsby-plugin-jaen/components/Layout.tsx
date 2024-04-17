@@ -52,13 +52,12 @@ export const Layout: React.FC<LayoutProps> = ({children, pageProps}) => {
                 ]}
                 col3h="Öffnungszeiten"
                 col3={[
-                  'MO: Geschlossen',
-                  'DI: 8:00 - 12:00 - 14:00 - 18:00',
-                  'MI: 8:00 - 12:00',
-                  'DO: 8:00 - 12:00 - 14:00 - 18:00',
-                  'FR: 8:00 - 12:00 - 14:00 - 18:00',
-                  'SA: 8:00 - 12:00',
-                  'Sonn und Feiertag: Geschlossen'
+                  'Montag: geschlossen',
+                  'Dienstag: 8Uhr - 12Uhr & 14Uhr - 18Uhr',
+                  'Mittwoch: nach Terminvereinbarung wegen Außendienst',
+                  'Do.-Fr. 8Uhr - 12Uhr & 14Uhr - 18Uhr',
+                  'Sa. 9Uhr - 12Uhr',
+                  'Sonn- & Feiertags: geschlossen'
                 ]}
               />
             </SearchModalProvider>
