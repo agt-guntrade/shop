@@ -21,8 +21,6 @@ const ProductPageTemplate = (props: ProductPageTemplateProps) => {
 
   // const analytics = useAnalytics()
 
-  console.log(`isOnWishList: ${isOnWishList}`)
-
   const handleWishlistAdd = (id: string) => {
     if (!isOnWishList) {
       const {priceFormatted, compareAtPriceFormatted} =
