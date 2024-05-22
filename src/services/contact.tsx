@@ -118,7 +118,7 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({
   }
 
   const fixedValues = useMemo(() => {
-    if (!authentication.user) {
+    if (!authentication.user.profile) {
       return undefined
     }
 
