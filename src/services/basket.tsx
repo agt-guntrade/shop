@@ -283,7 +283,7 @@ export const BasketDrawerProvider = withStoreContext<BasketDrawerProps>(
     }
 
     const fixedValues = useMemo(() => {
-      if (!authentication.user) {
+      if (!authentication.user.profile) {
         return undefined
       }
 
