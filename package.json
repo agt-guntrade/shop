@@ -19,10 +19,12 @@
   },
   "dependencies": {
     "@atsnek/jaen": "^1.0.0-rc.86",
+    "@atsnek/jaen-fields-mdx": "^1.0.0-rc.20",
     "@chakra-ui/icons": "^2",
     "@chakra-ui/react": "^2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@nikolovlazar/chakra-ui-prose": "^1.2.1",
     "@snek-at/gatsby-plugin-scaleserp": "^1.0.7",
     "@snek-at/gatsby-theme-shopify": "1.14.7",
     "@snek-at/uikit": "^1.0.0",
