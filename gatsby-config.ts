@@ -9,27 +9,33 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-jaen`,
       options: {
+        pylonUrl: 'https://pylons.cronit.io/jaen/graphql',
         remote: {
           repository: 'agt-guntrade/shop'
         },
         zitadel: {
-          organizationId: '253329432192745475',
-          clientId: '252746210698395651@services',
-          authority: 'https://accounts.cronit.io',
+          organizationId: '277049780788535300',
+          clientId: '277049969163182084@shop',
+          authority: 'https://accounts2.cronit.io',
           redirectUri:
             process.env.NODE_ENV === 'production'
               ? 'https://ried.agt-guntrade.at'
               : 'http://localhost:8000',
-          projectIds: []
+          projectIds: ['270250070505431044']
         },
         sentry: {
           org: 'cronit',
           project: 'agt-guntrade-shop',
-          dsn: 'https://80e0097af1f71b1df45d4e3ec519912e@sentry.cronit.io/6'
+          dsn: 'https://9c5258c9df2e385800a582e94f6068ea@sentry.cronit.io/13'
         }
       }
     },
-    `gatsby-jaen-mailpress`,
+    {
+      resolve: `gatsby-jaen-mailpress`,
+      options: {
+        pylonUrl: 'https://pylons.cronit.io/mailpress/graphql'
+      }
+    },
     {
       resolve: '@snek-at/gatsby-plugin-scaleserp',
       options: {
