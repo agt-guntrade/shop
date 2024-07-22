@@ -1,4 +1,4 @@
-import {PageConfig} from '@atsnek/jaen'
+import {PageConfig} from 'jaen'
 import {Box, Button, Heading, Text} from '@chakra-ui/react'
 import {Link, PageProps} from 'gatsby'
 import * as React from 'react'
@@ -26,7 +26,7 @@ const NotFoundPage: React.FC<PageProps> = props => {
 
 export default NotFoundPage
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'
 
 export const pageConfig: PageConfig = {
   label: '404 | AGT Gun Trade'

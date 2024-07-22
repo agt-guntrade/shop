@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box, Accordion} from '@chakra-ui/react'
-import {withJaenMock} from '@atsnek/jaen'
+import {withJaenMock} from 'jaen'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 
 import {

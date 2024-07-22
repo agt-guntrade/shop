@@ -5,7 +5,7 @@ import {doNotConvertToString} from 'snek-query'
 
 import {BasketDrawer} from '../components/organisms/BasketDrawer'
 
-import {useAuth} from '@atsnek/jaen'
+import {useAuth} from 'jaen'
 import {useToast} from '@chakra-ui/react'
 import {OrderFormValues, OrderModal} from '../components/organisms/OrderModal'
 import {useWholesaleUser} from '../hooks/use-wholesale-user'

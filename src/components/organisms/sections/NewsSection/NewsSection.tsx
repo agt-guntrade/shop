@@ -6,7 +6,7 @@ import {
   HStack,
   useDisclosure
 } from '@chakra-ui/react'
-import {connectBlock, Field, useJaenPageIndex} from '@atsnek/jaen'
+import {connectBlock, Field, useJaenPageIndex} from 'jaen'
 import {Slider} from '@snek-at/uikit'
 import React, {ReactNode} from 'react'
 import {scroller} from 'react-scroll'

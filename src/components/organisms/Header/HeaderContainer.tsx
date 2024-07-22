@@ -1,4 +1,4 @@
-// import {useAnalytics} from '@atsnek/jaen'
+// import {useAnalytics} from 'jaen'
 import React from 'react'
 import {useFlatMenu} from '../../../hooks/menu'
 import {Header} from './Header'

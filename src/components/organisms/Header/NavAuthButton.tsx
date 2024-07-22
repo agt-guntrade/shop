@@ -1,4 +1,4 @@
-import {useAuth} from '@atsnek/jaen'
+import {useAuth} from 'jaen'
 import {Button, IconButton} from '@chakra-ui/react'
 import {AiOutlineUser} from '@react-icons/all-files/ai/AiOutlineUser'
 import React from 'react'

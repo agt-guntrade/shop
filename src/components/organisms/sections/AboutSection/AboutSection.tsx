@@ -1,4 +1,4 @@
-import {Field} from '@atsnek/jaen'
+import {Field} from 'jaen'
 import {
   Box,
   Button,
@@ -15,8 +15,8 @@ import {CONTAINER_MAX_WIDTH} from '../../../../common/sizes'
 import {useContactModal} from '../../../../services/contact'
 import {Bullet} from '../../../atoms/Bullet'
 import CardWithImageBackground from '../../../molecules/CardWithImageBackground'
-import { StickyStrokeLogo } from '../../../molecules/StickyStrokeLogo'
-import { getThemeColor } from '../../../../common/utils'
+import {StickyStrokeLogo} from '../../../molecules/StickyStrokeLogo'
+import {getThemeColor} from '../../../../common/utils'
 
 export interface AboutSectionProps {
   name: string

@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react'
 import {Divider, Box} from '@chakra-ui/layout'
-import {Field, connectBlock} from '@atsnek/jaen'
+import {Field, connectBlock} from 'jaen'
 
 import {getThemeColor} from '../../../../common/utils'
 import {ParallaxBackground} from '../../../molecules/ParallaxBackground'

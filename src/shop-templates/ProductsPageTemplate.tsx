@@ -1,4 +1,4 @@
-import {Head as JaenHead, PageConfig, PageProps} from '@atsnek/jaen'
+import {Head as JaenHead, PageConfig, PageProps} from 'jaen'
 import {
   ProductsPageContext,
   ProductsPageData,

@@ -1,7 +1,7 @@
 import {graphql} from 'gatsby'
 import React from 'react'
 
-import {Head as JaenHead, PageProps} from '@atsnek/jaen'
+import {Head as JaenHead, PageProps} from 'jaen'
 import {
   CollectionPageData,
   ColllectionPageContext,

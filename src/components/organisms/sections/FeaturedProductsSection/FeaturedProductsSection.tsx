@@ -8,7 +8,7 @@ import {getThemeColor} from '../../../../common/utils'
 import {Bullet} from '../../../atoms/Bullet'
 import {FixedStrokeLogo} from '../../../molecules/FixedStrokeLogo'
 import {ProductGrid} from '../../../molecules/ProductGrid'
-import {Field} from '@atsnek/jaen'
+import {Field} from 'jaen'
 
 export interface FeaturedProductsSectionProps {
   name: string

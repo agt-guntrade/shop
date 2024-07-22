@@ -1,5 +1,5 @@
 import React from 'react'
-import {withJaenMock} from '@atsnek/jaen'
+import {withJaenMock} from 'jaen'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 
 import {FAQSectionJSX} from '../FAQSection'

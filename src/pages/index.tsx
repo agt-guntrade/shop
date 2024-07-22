@@ -1,4 +1,4 @@
-import {PageConfig} from '@atsnek/jaen'
+import {PageConfig} from 'jaen'
 import {GoogleReview} from '@snek-at/gatsby-plugin-scaleserp'
 import {ShopifyProduct} from '@snek-at/gatsby-theme-shopify'
 import {graphql, navigate, PageProps} from 'gatsby'
@@ -156,7 +156,7 @@ export const query = graphql`
 
 export default IndexPage
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'
 
 export const pageConfig: PageConfig = {
   label: 'AGT Gun Trade',

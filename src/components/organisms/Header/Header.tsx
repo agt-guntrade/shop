@@ -24,7 +24,7 @@ import React from 'react'
 import {Searchbar, SearchbarProps} from '../../molecules/Searchbar'
 import {useBasket} from '../../../services/basket'
 import {useContactModal} from '../../../services/contact'
-import {useAuth} from '@atsnek/jaen'
+import {useAuth} from 'jaen'
 import {ShoppingCartButton} from './ShoppingCartButton'
 import Logo from '../../../gatsby-plugin-jaen/components/Logo'
 

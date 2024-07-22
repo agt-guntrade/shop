@@ -1,4 +1,4 @@
-import {withJaenMock} from '@atsnek/jaen'
+import {withJaenMock} from 'jaen'
 import {ComponentMeta, ComponentStory} from '@storybook/react'
 import React from 'react'
 import {AboutSectionJSX} from '../AboutSection'

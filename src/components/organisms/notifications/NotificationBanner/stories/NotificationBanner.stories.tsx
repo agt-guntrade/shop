@@ -3,7 +3,7 @@ import React from 'react'
 import {ComponentStory, ComponentMeta} from '@storybook/react'
 
 import {NotificationBanner} from '../NotificationBanner'
-import {withJaenMock} from '@atsnek/jaen'
+import {withJaenMock} from 'jaen'
 
 export default {
   title: 'Components/Organisms/notifications/NotificationBanner',

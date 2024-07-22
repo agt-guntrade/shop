@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import * as React from 'react'
 import {FiInfo} from '@react-icons/all-files/fi/FiInfo'
-import {Field} from '@atsnek/jaen'
+import {Field} from 'jaen'
 
 export interface NotificationBannerProps {}
 

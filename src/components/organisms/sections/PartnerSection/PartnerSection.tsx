@@ -1,4 +1,4 @@
-import {Field} from '@atsnek/jaen'
+import {Field} from 'jaen'
 import {Box, Container, Divider, HStack, Heading} from '@chakra-ui/layout'
 import {Slider} from '@snek-at/uikit'
 import React from 'react'

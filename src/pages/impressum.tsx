@@ -1,7 +1,7 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {Field, PageConfig} from '@atsnek/jaen'
+import {Field, PageConfig} from 'jaen'
 import {ContainerLayout} from '../components/ContainerLayout'
 import {BreadcrumbsBanner} from '../components/molecules/BreadcrumbsBanner'
 import {GoogleMaps} from '../components/molecules/GoogleMaps'
@@ -133,7 +133,7 @@ export const query = graphql`
 
 export default ImprintPage
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'
 
 export const pageConfig: PageConfig = {
   label: 'Impressum | AGT Gun Trade',

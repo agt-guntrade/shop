@@ -1,7 +1,7 @@
 import {navigate, PageProps} from 'gatsby'
 import React, {useEffect} from 'react'
 
-import {PageConfig} from '@atsnek/jaen'
+import {PageConfig} from 'jaen'
 
 const Page: React.FC<PageProps> = ({path}) => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const Page: React.FC<PageProps> = ({path}) => {
 
 export default Page
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'
 
 export const pageConfig: PageConfig = {
   label: 'Onlineshop',

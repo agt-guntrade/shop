@@ -1,7 +1,7 @@
 import {Link} from '@chakra-ui/react'
 import {SearchProvider} from '@snek-at/gatsby-theme-shopify'
 import React from 'react'
-import {LayoutProps} from '@atsnek/jaen'
+import {LayoutProps} from 'jaen'
 import {Link as GatsbyLink} from 'gatsby'
 
 import {BasketDrawerProvider} from '../../services/basket'

@@ -1,7 +1,7 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {Field, PageConfig, useCookieConsentContext} from '@atsnek/jaen'
+import {Field, PageConfig, useCookieConsentContext} from 'jaen'
 import {Heading, Text, Button} from '@chakra-ui/react'
 import {ContainerLayout} from '../components/ContainerLayout'
 import {BreadcrumbsBanner} from '../components/molecules/BreadcrumbsBanner'
@@ -95,7 +95,7 @@ export const query = graphql`
 
 export default PrivacyPage
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'
 
 export const pageConfig: PageConfig = {
   label: 'Datenschutz',

@@ -3,7 +3,7 @@ import {sq} from 'gatsby-jaen-mailpress'
 import React, {useMemo} from 'react'
 import {doNotConvertToString} from 'snek-query'
 
-import {useAuth} from '@atsnek/jaen'
+import {useAuth} from 'jaen'
 import {navigate} from 'gatsby'
 import {
   ContactFormValues,
@@ -76,7 +76,7 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({
   const onSubmit = async (data: ContactFormValues): Promise<void> => {
     // sleep 3 seconds to simulate a network request
 
-    console.log(data, meta)
+    console.log(data, meta, sq)
 
     const [_, errors] = await sq.mutate(m =>
       m.sendTemplateMail({

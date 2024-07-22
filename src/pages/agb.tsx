@@ -1,10 +1,10 @@
 import {graphql, PageProps} from 'gatsby'
 import React from 'react'
 
-import {PageConfig} from '@atsnek/jaen'
-import { Prose } from '@nikolovlazar/chakra-ui-prose'
+import {PageConfig} from 'jaen'
+import {Prose} from '@nikolovlazar/chakra-ui-prose'
 
-import { MdxField } from "@atsnek/jaen-fields-mdx";
+import {MdxField} from 'jaen-fields-mdx'
 
 import {ContainerLayout} from '../components/ContainerLayout'
 import {BreadcrumbsBanner} from '../components/molecules/BreadcrumbsBanner'
@@ -17,7 +17,7 @@ const AGBPage: React.FC<PageProps> = ({path}) => {
         <MdxField
           name="mdx-content"
           components={{
-            wrapper: Prose,
+            wrapper: Prose
           }}
         />
       </ContainerLayout>
@@ -33,7 +33,7 @@ export const query = graphql`
 
 export default AGBPage
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'
 
 export const pageConfig: PageConfig = {
   label: 'AGB | AGT Gun Trade',

@@ -37,7 +37,7 @@ import {BreadcrumbsBanner} from '../../molecules/BreadcrumbsBanner'
 
 import {getProductPrices, replaceHexColorsInHTML} from '../../../common/utils'
 
-import {PhotoProvider} from '@atsnek/jaen'
+import {PhotoProvider} from 'jaen'
 import {PhotoView} from 'react-photo-view'
 import {getSrcFromImageData} from '../../../common/get-src-from-image-data'
 import {getProductMetafields} from '../../../common/getProductMetafields'

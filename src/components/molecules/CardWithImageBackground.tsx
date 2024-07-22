@@ -1,5 +1,5 @@
 import {Box, Grid, Heading, HStack, Stack, Text} from '@chakra-ui/react'
-import {Field, useContentManagement} from '@atsnek/jaen'
+import {Field, useContentManagement} from 'jaen'
 import {navigate} from 'gatsby'
 import React from 'react'
 import {FC} from 'react'

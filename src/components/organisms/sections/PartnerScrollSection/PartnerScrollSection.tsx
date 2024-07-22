@@ -8,7 +8,7 @@ import {
   AspectRatio,
   useColorModeValue
 } from '@chakra-ui/react'
-import {Field, connectBlock} from '@atsnek/jaen'
+import {Field, connectBlock} from 'jaen'
 import {StaticImage} from 'gatsby-plugin-image'
 import {Slider} from '@snek-at/uikit'
 

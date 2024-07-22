@@ -1,4 +1,4 @@
-import {Head as JaenHead} from '@atsnek/jaen'
+import {Head as JaenHead} from 'jaen'
 import {
   getFormattedProductPrices,
   getProductTags,

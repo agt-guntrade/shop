@@ -1,4 +1,4 @@
-import {Field} from '@atsnek/jaen'
+import {Field} from 'jaen'
 import {
   Button,
   Center,
@@ -108,4 +108,4 @@ export const query = graphql`
 
 export default ContactPage
 
-export {Head} from '@atsnek/jaen'
+export {Head} from 'jaen'

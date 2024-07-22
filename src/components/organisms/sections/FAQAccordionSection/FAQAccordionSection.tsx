@@ -1,4 +1,4 @@
-import {Field, connectBlock} from '@atsnek/jaen'
+import {Field, connectBlock} from 'jaen'
 import {
   Accordion,
   AccordionButton,

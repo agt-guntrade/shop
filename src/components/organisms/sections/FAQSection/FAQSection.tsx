@@ -1,6 +1,6 @@
 import {Box, Container, Divider, Heading, Stack} from '@chakra-ui/layout'
 import {useColorModeValue, Text, Button} from '@chakra-ui/react'
-import {connectBlock, Field} from '@atsnek/jaen'
+import {connectBlock, Field} from 'jaen'
 import React, {ReactNode} from 'react'
 
 import {getThemeColor} from '../../../../common/utils'
