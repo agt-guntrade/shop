@@ -277,6 +277,7 @@ export const Searchbar = (props: SearchbarProps) => {
                         }}
                         onClick={() => {
                           props.onProductClick(index)
+                          onClose()
                         }}>
                         <Td>
                           <Image
