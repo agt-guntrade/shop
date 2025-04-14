@@ -13,6 +13,7 @@ import {
 import {SideButtons} from '../components/molecules/buttons/SideButtons'
 import {useContactModal} from '../services/contact'
 import {ScrollSpy} from '../components/molecules/ScrollSpy'
+import DisclaimerBanner from '../components/disclaimer-banner'
 
 interface IndexPageData {
   googleReviews: {
@@ -38,6 +39,7 @@ const IndexPage: React.FC<PageProps<IndexPageData>> = props => {
 
   return (
     <>
+      <DisclaimerBanner />
       <HeroSection
         name="hero"
         latestProducts={props.data.latestProducts.nodes}
