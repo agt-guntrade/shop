@@ -8,7 +8,7 @@ import {config} from './config.js'
 import {isRateLimited, parseContactPayload} from './contact.js'
 import {getState, requestDeploy, requestDeployNow} from './deploy-queue.js'
 import {isContactEnabled, sendContactMail, verifyTransport} from './mailer.js'
-import {isValidShopifySignature} from './shopify.js'
+import {isValidShopifySignature, secretFingerprint} from './shopify.js'
 
 const app = new Hono()
 
@@ -50,12 +50,26 @@ app.post('/webhooks/shopify', async c => {
       config.shopify.webhookSecret
     )
   ) {
+    // Both 401s look identical in an access log, so say which check failed.
+    log('shopify signature rejected', {
+      hasSignatureHeader: Boolean(c.req.header('x-shopify-hmac-sha256')),
+      shopDomain: c.req.header('x-shopify-shop-domain') ?? null,
+      topic: c.req.header('x-shopify-topic') ?? null,
+      bodyBytes: Buffer.byteLength(rawBody),
+      secretFingerprint: secretFingerprint(config.shopify.webhookSecret)
+    })
+
     return c.json({error: 'invalid signature'}, 401)
   }
 
   const shopDomain = c.req.header('x-shopify-shop-domain')
 
   if (config.shopify.shopDomain && shopDomain !== config.shopify.shopDomain) {
+    log('shopify shop domain mismatch', {
+      received: shopDomain ?? null,
+      expected: config.shopify.shopDomain
+    })
+
     return c.json({error: 'unexpected shop domain'}, 401)
   }
 
@@ -163,7 +177,9 @@ serve({fetch: app.fetch, port: config.port, hostname: '0.0.0.0'}, info => {
     repo: `${config.github.owner}/${config.github.repo}`,
     workflow: config.github.workflow,
     ref: config.github.ref,
-    contact: isContactEnabled()
+    contact: isContactEnabled(),
+    shopifySecretFingerprint: secretFingerprint(config.shopify.webhookSecret),
+    shopifyShopDomain: config.shopify.shopDomain ?? null
   })
 })
 

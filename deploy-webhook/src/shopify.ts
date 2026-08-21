@@ -1,4 +1,4 @@
-import {createHmac, timingSafeEqual} from 'node:crypto'
+import {createHash, createHmac, timingSafeEqual} from 'node:crypto'
 
 /**
  * Shopify signs the raw request body with the webhook signing secret and
@@ -22,3 +22,10 @@ export const isValidShopifySignature = (
 
   return timingSafeEqual(expected, received)
 }
+
+/**
+ * Short, non-reversible fingerprint of the configured secret. Lets you compare
+ * what the server runs with against what you pasted, without logging either.
+ */
+export const secretFingerprint = (secret: string): string =>
+  createHash('sha256').update(secret, 'utf8').digest('hex').slice(0, 8)
