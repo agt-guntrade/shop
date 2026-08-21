@@ -1,7 +1,5 @@
 import {useToast} from '@chakra-ui/react'
-import {sq} from 'gatsby-jaen-mailpress'
 import React, {useMemo} from 'react'
-import {doNotConvertToString} from 'snek-query'
 
 import {useAuth} from 'jaen'
 import {navigate} from 'gatsby'
@@ -10,6 +8,10 @@ import {
   ContactModal
 } from '../components/organisms/ContactModal'
 import {useQueryRouter} from '../hooks/use-query-router'
+
+const CONTACT_ENDPOINT =
+  process.env.GATSBY_CONTACT_ENDPOINT ??
+  'https://deploy.guntrade.at/contact'
 
 export interface ContactModalContextProps {
   onOpen: (args?: {meta?: Record<string, any>}) => void
@@ -74,28 +76,34 @@ export const ContactModalProvider: React.FC<ContactModalDrawerProps> = ({
   }
 
   const onSubmit = async (data: ContactFormValues): Promise<void> => {
-    // sleep 3 seconds to simulate a network request
+    let failed = false
 
-    console.log(data, meta, sq)
-
-    const [_, errors] = await sq.mutate(m =>
-      m.sendTemplateMail({
-        envelope: {
-          replyTo: data.email
-        },
-        id: '7f16be43-f719-4d57-8d24-79bbbb25f39d',
-        values: {
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
           firstName: data.firstName,
           lastName: data.lastName,
           email: data.email,
           phone: data.phone,
           message: data.message,
+          agreeToTerms: data.agreeToTerms,
           invokedOnUrl: meta?.url
-        }
+        })
       })
-    )
 
-    if (errors) {
+      failed = !response.ok
+
+      if (failed) {
+        console.error('Contact request failed', await response.text())
+      }
+    } catch (error) {
+      failed = true
+      console.error('Contact request failed', error)
+    }
+
+    if (failed) {
       // Deutsch
       toast({
         title: 'Fehler',
