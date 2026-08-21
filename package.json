@@ -61,6 +61,6 @@
     "typescript": "^4.6.3"
   },
   "resolutions": {
-    "gatsby-source-shopify": "^9.0.0"
+    "gatsby-source-shopify": "^10.1.0"
   }
 }
