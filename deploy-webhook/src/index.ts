@@ -2,6 +2,7 @@ import {serve} from '@hono/node-server'
 import {getConnInfo} from '@hono/node-server/conninfo'
 import {Hono} from 'hono'
 import {cors} from 'hono/cors'
+import {logger} from 'hono/logger'
 
 import {config} from './config.js'
 import {isRateLimited, parseContactPayload} from './contact.js'
@@ -14,6 +15,13 @@ const app = new Hono()
 const log = (message: string, extra: Record<string, unknown> = {}): void => {
   console.log(JSON.stringify({at: new Date().toISOString(), message, ...extra}))
 }
+
+const requestLogger = logger()
+
+// Log every request except the healthcheck, which Docker hits every 30s.
+app.use('*', (c, next) =>
+  c.req.path === '/health' ? next() : requestLogger(c, next)
+)
 
 app.get('/health', c => c.json({status: 'ok'}))
 
