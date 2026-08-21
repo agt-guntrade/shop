@@ -12,9 +12,12 @@ permissions:
 
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions#on
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes targeting the default branch. The webhook service is
+  # deployed by Coolify, not from here, so it must not rebuild the site.
   push:
     branches: ['main']
+    paths-ignore:
+      - 'deploy-webhook/**'
   # Allows you to run this workflow from another workflow (jaen-publish.yaml)
   workflow_call:
   # Allows you to run this workflow manually from the Actions tab
