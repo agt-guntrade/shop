@@ -11,7 +11,7 @@ import {useQueryRouter} from '../hooks/use-query-router'
 
 const CONTACT_ENDPOINT =
   process.env.GATSBY_CONTACT_ENDPOINT ??
-  'https://deploy.guntrade.at/contact'
+  'https://w0kgswssk0cg8k0kwg04g08k.cronit.io/contact'
 
 export interface ContactModalContextProps {
   onOpen: (args?: {meta?: Record<string, any>}) => void

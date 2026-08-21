@@ -107,6 +107,7 @@ export const config = {
     subjectPrefix: process.env.CONTACT_SUBJECT_PREFIX ?? '[Website]',
     // Browsers send the form cross-origin, so the shop domains need CORS.
     allowedOrigins: list('CONTACT_ALLOWED_ORIGINS', [
+      'https://ried.agt-guntrade.at',
       'https://www.agt-guntrade.at',
       'https://agt-guntrade.at',
       'http://localhost:8000'

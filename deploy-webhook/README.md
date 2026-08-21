@@ -80,8 +80,8 @@ field in the payload is treated as a honeypot: the request is accepted and
 silently dropped.
 
 The frontend picks the URL from `GATSBY_CONTACT_ENDPOINT`, falling back to the
-constant at the top of `src/services/contact.tsx` - adjust it to the domain
-you give the service in Coolify.
+constant at the top of `src/services/contact.tsx`, which points at the current
+Coolify domain. Change both places if the service moves.
 
 ## GitHub token
 
@@ -97,8 +97,10 @@ repository permission **Actions: Read and write**. Nothing else is needed.
 4. Add the environment variables from `.env.example` (at minimum
    `GITHUB_TOKEN` and `SHOPIFY_WEBHOOK_SECRET`, plus the `SMTP_*` block if the
    contact form should be handled here).
-5. Set a domain, e.g. `https://deploy.guntrade.at`, and deploy.
-6. Verify: `curl https://deploy.guntrade.at/health` → `{"status":"ok"}`.
+5. Set a domain and deploy. Currently:
+   `https://w0kgswssk0cg8k0kwg04g08k.cronit.io`
+6. Verify:
+   `curl https://w0kgswssk0cg8k0kwg04g08k.cronit.io/health` → `{"status":"ok"}`.
 
 Turn off Coolify's auto-deploy on push if you do not want this service to
 rebuild on every shop commit.
@@ -109,7 +111,7 @@ rebuild on every shop commit.
 want to react to (product create/update/delete, collection create/update/delete):
 
 - Format: `JSON`
-- URL: `https://deploy.guntrade.at/webhooks/shopify`
+- URL: `https://w0kgswssk0cg8k0kwg04g08k.cronit.io/webhooks/shopify`
 - API version: latest stable
 
 Shopify shows **one** signing secret for all webhooks of the store — put it
