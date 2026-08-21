@@ -7,35 +7,94 @@
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions#name
 name: Deploy
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions#on
 on:
   # Runs on pushes targeting the default branch
   push:
     branches: ['main']
-  # Allows you to run this workflow from another workflow
+  # Allows you to run this workflow from another workflow (jaen-publish.yaml)
   workflow_call:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# A newer deploy replaces a running one instead of queueing behind it.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  # Applies to every node process the build spawns, workers included, so this
+  # stays well below the runner's 16 GB.
+  NODE_OPTIONS: --max-old-space-size=8192
+  CLOUDFLARE_PROJECT_NAME: 'agt2'
+
 # https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobs
 jobs:
   deploy:
-    uses: atsnek/jaen/.github/workflows/jaen-deploy.yaml@main
-    # https://docs.github.com/en/actions/using-workflows/reusing-workflows#using-inputs-and-secrets-in-a-reusable-workflow
-    with:
-      CLOUDFLARE_PROJECT_NAME: 'agt2'
-    secrets:
-      GATSBY_MYSHOPIFY_URL: ${{ secrets.GATSBY_MYSHOPIFY_URL }}
-      GATSBY_STOREFRONT_API_KEY: ${{ secrets.GATSBY_STOREFRONT_API_KEY }}
-      SCALE_SERP_APIKEY: ${{ secrets.SCALE_SERP_APIKEY }}
-      SCALE_SERP_GOOGLE_PLACE_ID: ${{ secrets.SCALE_SERP_GOOGLE_PLACE_ID }}
-      SHOPIFY_APP_PASSWORD: ${{ secrets.SHOPIFY_APP_PASSWORD }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ github.event.client_payload.cwd || '.' }}
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+        with:
+          path: '.'
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node 🔧
+        uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+          cache: yarn
+
+      - name: Install dependencies 📦
+        run: yarn install
+
+      - name: Restore Gatsby cache 🗄️
+        uses: actions/cache@v6
+        with:
+          path: |
+            public
+            .cache
+          # The key must not reference the build output - "public" does not
+          # exist yet at restore time, which silently disabled this cache.
+          # A per-run key means the cache is rewritten every build, while the
+          # restore keys fall back to the most recent one.
+          key: ${{ runner.os }}-gatsby-${{ hashFiles('yarn.lock') }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-gatsby-${{ hashFiles('yarn.lock') }}-
+            ${{ runner.os }}-gatsby-
+
+      - name: Build with Gatsby 🛠️
+        run: yarn build
+        env:
+          PREFIX_PATHS: 'true'
+          # Use every vCPU of the runner, not just the physical cores.
+          GATSBY_CPU_COUNT: logical_cores
+          GATSBY_MYSHOPIFY_URL: ${{ secrets.GATSBY_MYSHOPIFY_URL }}
+          GATSBY_STOREFRONT_API_KEY: ${{ secrets.GATSBY_STOREFRONT_API_KEY }}
+          SHOPIFY_APP_PASSWORD: ${{ secrets.SHOPIFY_APP_PASSWORD }}
+          SCALE_SERP_APIKEY: ${{ secrets.SCALE_SERP_APIKEY }}
+          SCALE_SERP_GOOGLE_PLACE_ID: ${{ secrets.SCALE_SERP_GOOGLE_PLACE_ID }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+      # See: https://github.com/cloudflare/pages-action
+      - name: Deploy Cloudflare Pages 🚀
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ env.CLOUDFLARE_PROJECT_NAME }}
+          directory: ./public
+          wranglerVersion: '3'
