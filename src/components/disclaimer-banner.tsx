@@ -8,14 +8,15 @@ const DisclaimerBanner = () => {
       Wichtiger Hinweis
     </Text>
     <Text color="gray.700">
-      Liebe Kundinnen und Kunden, wir möchten uns dafür entschuldigen, dass in den vergangenen Monaten keine neuen Produkte auf unserer Website hinzugefügt wurden. 
-      Wir wissen, dass viele von Ihnen auf frische Inspiration gewartet haben.
+      Liebe Kundinnen und Kunden, wir arbeiten weiterhin mit Hochdruck an einer neuen und verbesserten Version unserer Website, 
+      die Ihnen bald ein noch angenehmeres Einkaufserlebnis bieten wird.
     </Text>
     <Text color="gray.700">
-      Aktuell arbeiten wir mit Hochdruck an einer neuen und verbesserten Version unserer Website, die Ihnen bald ein noch angenehmeres Einkaufserlebnis und viele spannende Neuheiten bieten wird.
+      Bis dahin pflegen wir selbstverständlich weiterhin neue Produkte in unser bestehendes Sortiment ein – 
+      es lohnt sich also, regelmäßig vorbeizuschauen.
     </Text>
     <Text color="gray.700">
-      In den kommenden zwei Monaten wird unsere Website umfassend überarbeitet. Bei Fragen, Wünschen oder Anregungen erreichen Sie uns gerne telefonisch oder per E-Mail.
+      Bei Fragen, Wünschen oder Anregungen erreichen Sie uns gerne telefonisch oder per E-Mail.
     </Text>
     <Text fontStyle="italic" color="gray.600">
       Vielen Dank für Ihre Geduld und Ihr Vertrauen.
