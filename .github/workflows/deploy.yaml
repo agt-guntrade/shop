@@ -92,12 +92,12 @@ jobs:
           SCALE_SERP_GOOGLE_PLACE_ID: ${{ secrets.SCALE_SERP_GOOGLE_PLACE_ID }}
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
-      # See: https://github.com/cloudflare/pages-action
+      # pages-action was archived by Cloudflare; wrangler-action is the
+      # supported replacement. See: https://github.com/cloudflare/wrangler-action
       - name: Deploy Cloudflare Pages 🚀
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ env.CLOUDFLARE_PROJECT_NAME }}
-          directory: ./public
+          command: pages deploy ./public --project-name=${{ env.CLOUDFLARE_PROJECT_NAME }}
           wranglerVersion: '3'
